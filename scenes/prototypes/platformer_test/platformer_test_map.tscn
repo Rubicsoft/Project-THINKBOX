@@ -1,26 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=6 format=3 uid="uid://dnh0hd3gy112"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
+[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_8mlji"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6uv2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsq50"]
 
 [node name="PlatformerTest_Map" type="Node3D"]
 
-[node name="Grounds" type="CSGCombiner3D" parent="."]
+[node name="BaseGrounds" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_35qe0")
 use_collision = true
 
-[node name="Ground1" type="CSGBox3D" parent="Grounds"]
+[node name="Ground1" type="CSGBox3D" parent="BaseGrounds"]
 size = Vector3(20, 0.5, 20)
 
-[node name="Ground4" type="CSGBox3D" parent="Grounds"]
+[node name="CSGBox3D" type="CSGBox3D" parent="BaseGrounds/Ground1"]
+transform = Transform3D(20.54, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 0, -5)
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="BaseGrounds/Ground1"]
+transform = Transform3D(20.54, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 0, 0)
+operation = 2
+
+[node name="Ground4" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -11, 0)
 size = Vector3(20, 0.5, 20)
 
-[node name="Ground2" type="CSGBox3D" parent="Grounds"]
+[node name="Ground2" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -34)
 size = Vector3(20, 0.5, 20)
 
-[node name="Ground3" type="CSGBox3D" parent="Grounds"]
+[node name="Ground3" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -5, -34)
 size = Vector3(20, 0.5, 20)
 
@@ -31,3 +44,63 @@ use_collision = true
 [node name="Bridge1" type="CSGBox3D" parent="Bridges"]
 transform = Transform3D(2, 0, 0, 0, 0.783888, -0.620902, 0, 0.620902, 0.783888, 0, 5.31504, -16.0381)
 size = Vector3(1, 1, 21.4409)
+
+[node name="Bridge1Cut" type="CSGBox3D" parent="Bridges/Bridge1"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.0853276, -0.649842)
+operation = 2
+size = Vector3(1, 1.6521, 9.87512)
+
+[node name="Platformes" type="Node3D" parent="."]
+
+[node name="Bridge1" type="Node3D" parent="Platformes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.85975, -16.6752)
+
+[node name="Box1" type="MeshInstance3D" parent="Platformes/Bridge1"]
+transform = Transform3D(2.5, 0, 0, 0, 0.2, 0, 0, 0, 1.1, -1, -2, 1)
+mesh = SubResource("BoxMesh_o6uv2")
+surface_material_override/0 = ExtResource("3_8mlji")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platformes/Bridge1/Box1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box1/StaticBody3D"]
+shape = SubResource("BoxShape3D_dsq50")
+
+[node name="Box2" type="MeshInstance3D" parent="Platformes/Bridge1"]
+transform = Transform3D(2.5, 0, 0, 0, 0.2, 0, 0, 0, 1.1, 1, -0.885389, -0.923897)
+mesh = SubResource("BoxMesh_o6uv2")
+surface_material_override/0 = ExtResource("3_8mlji")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platformes/Bridge1/Box2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box2/StaticBody3D"]
+shape = SubResource("BoxShape3D_dsq50")
+
+[node name="Box3" type="MeshInstance3D" parent="Platformes/Bridge1"]
+transform = Transform3D(1.63395, 0, 0, 0, 0.2, 0, 0, 0, 1.1, -2.4649, -0.0390348, -2)
+mesh = SubResource("BoxMesh_o6uv2")
+surface_material_override/0 = ExtResource("3_8mlji")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platformes/Bridge1/Box3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box3/StaticBody3D"]
+shape = SubResource("BoxShape3D_dsq50")
+
+[node name="Box4" type="MeshInstance3D" parent="Platformes/Bridge1"]
+transform = Transform3D(1.63395, 0, 0, 0, 0.2, 0, 0, 0, 1.1, -2.4649, 0.909339, -3.8164)
+mesh = SubResource("BoxMesh_o6uv2")
+surface_material_override/0 = ExtResource("3_8mlji")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platformes/Bridge1/Box4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box4/StaticBody3D"]
+shape = SubResource("BoxShape3D_dsq50")
+
+[node name="Box5" type="MeshInstance3D" parent="Platformes/Bridge1"]
+transform = Transform3D(1.63395, 0, 0, 0, 0.2, 0, 0, 0, 1.1, -2.4649, 2.25922, -5.94253)
+mesh = SubResource("BoxMesh_o6uv2")
+surface_material_override/0 = ExtResource("3_8mlji")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platformes/Bridge1/Box5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box5/StaticBody3D"]
+shape = SubResource("BoxShape3D_dsq50")

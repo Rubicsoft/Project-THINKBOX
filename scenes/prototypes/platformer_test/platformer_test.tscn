@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=7 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
 [ext_resource type="PackedScene" uid="uid://dnh0hd3gy112" path="res://scenes/prototypes/platformer_test/platformer_test_map.tscn" id="1_a6e5d"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_08vw4"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="3_yxuk2"]
 [ext_resource type="AudioStream" uid="uid://c15xdynkprgty" path="res://assets/bgm/bgm_01.ogg" id="5_tfpe2"]
+[ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="6_8wd6p"]
 
 [node name="PlatformerTest" type="Node3D"]
 
@@ -27,3 +28,13 @@ process_mode = 3
 stream = ExtResource("5_tfpe2")
 autoplay = true
 bus = &"BGM"
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
+billboard = 1
+no_depth_test = true
+text = "This is second experiment of prototyping
+Welcome to Platformer test level"
+font = ExtResource("6_8wd6p")
+font_size = 16
+outline_size = 0

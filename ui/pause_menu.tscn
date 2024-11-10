@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccqhi340y01gb"]
+[gd_scene load_steps=8 format=3 uid="uid://ccqhi340y01gb"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
 [ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="2_g7itt"]
@@ -9,6 +9,10 @@ default_font = ExtResource("2_p1qrx")
 default_font_size = 12
 
 [sub_resource type="Theme" id="Theme_fqxcl"]
+default_font = ExtResource("2_g7itt")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_tev0w"]
 default_font = ExtResource("2_g7itt")
 default_font_size = 32
 
@@ -62,6 +66,12 @@ theme = SubResource("Theme_fqxcl")
 text = "RESUME GAME"
 flat = true
 
+[node name="RestartBtn" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_tev0w")
+text = "RESTART LEVEL"
+flat = true
+
 [node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_g8stg")
@@ -69,4 +79,5 @@ text = "QUIT TO DESKTOP"
 flat = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

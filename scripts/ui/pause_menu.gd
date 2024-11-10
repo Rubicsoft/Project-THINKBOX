@@ -35,3 +35,7 @@ func _on_quit_btn_pressed():
 
 func _on_resume_btn_pressed():
 	get_tree().paused = false
+
+func _on_restart_btn_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
