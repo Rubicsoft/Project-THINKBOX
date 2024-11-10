@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 
-var mouse_sensitivity: float = 4.0
+var mouse_sensitivity: float = 3.0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -11,8 +11,8 @@ const YAW_LIMIT_SMOOTHNESS = 5.0
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 10.0))
-		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 10.0))
+		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
+		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
 		print(deg_to_rad(-event.relative.x))
 
 func _process(delta):
@@ -33,9 +33,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		#velocity.x = direction.x * SPEED
 		velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-		velocity.z = direction.z * SPEED
+		velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
