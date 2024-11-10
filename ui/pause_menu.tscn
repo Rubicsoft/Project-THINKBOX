@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccqhi340y01gb"]
+[gd_scene load_steps=5 format=3 uid="uid://ccqhi340y01gb"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
+[ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="2_g7itt"]
+
+[sub_resource type="Theme" id="Theme_fqxcl"]
+default_font = ExtResource("2_g7itt")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_g8stg"]
+default_font = ExtResource("2_g7itt")
+default_font_size = 32
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,10 +46,15 @@ alignment = 1
 
 [node name="ResumeBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_fqxcl")
 text = "RESUME"
 flat = true
 
 [node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_g8stg")
 text = "QUIT TO DESKTOP"
 flat = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

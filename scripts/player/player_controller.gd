@@ -5,7 +5,7 @@ extends CharacterBody3D
 var mouse_sensitivity: float = 3.0
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
 
