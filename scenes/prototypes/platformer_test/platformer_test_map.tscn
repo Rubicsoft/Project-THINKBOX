@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=3 format=3 uid="uid://dnh0hd3gy112"]
+
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
 
 [node name="PlatformerTest_Map" type="Node3D"]
+
+[node name="Grounds" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_35qe0")
+use_collision = true
+
+[node name="Ground1" type="CSGBox3D" parent="Grounds"]
+size = Vector3(20, 0.5, 20)
+
+[node name="Ground4" type="CSGBox3D" parent="Grounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -11, 0)
+size = Vector3(20, 0.5, 20)
+
+[node name="Ground2" type="CSGBox3D" parent="Grounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -34)
+size = Vector3(20, 0.5, 20)
+
+[node name="Ground3" type="CSGBox3D" parent="Grounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -5, -34)
+size = Vector3(20, 0.5, 20)
+
+[node name="Bridges" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("2_5k4my")
+use_collision = true
+
+[node name="Bridge1" type="CSGBox3D" parent="Bridges"]
+transform = Transform3D(2, 0, 0, 0, 0.783888, -0.620902, 0, 0.620902, 0.783888, 0, 5.31504, -16.0381)
+size = Vector3(1, 1, 21.4409)

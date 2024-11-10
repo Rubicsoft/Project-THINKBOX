@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=6 format=3 uid="uid://cbj2k6ds1813r"]
 
+[ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
 [ext_resource type="PackedScene" uid="uid://dnh0hd3gy112" path="res://scenes/prototypes/platformer_test/platformer_test_map.tscn" id="1_a6e5d"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_08vw4"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="3_yxuk2"]
+[ext_resource type="AudioStream" uid="uid://c15xdynkprgty" path="res://assets/bgm/bgm_01.ogg" id="5_tfpe2"]
 
 [node name="PlatformerTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_7ihx3")
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, 0, 6, 0)
+shadow_enabled = true
 
 [node name="PlatformerTest_Map" parent="." instance=ExtResource("1_a6e5d")]
 
 [node name="Player" parent="." instance=ExtResource("2_08vw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7)
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_yxuk2")]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_tfpe2")
+autoplay = true
+bus = &"BGM"
