@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvgmobu7ugwh"]
+
+[ext_resource type="Script" path="res://scripts/fall_killzone.gd" id="1_xk5qm"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4yaap"]
+
+[node name="FallKillzone" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_xk5qm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_4yaap")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
