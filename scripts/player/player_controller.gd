@@ -9,18 +9,17 @@ const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
 		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
-		print(deg_to_rad(-event.relative.x))
 
-func _process(delta):
+func _process(delta) -> void:
 	var camera_yaw_limit = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

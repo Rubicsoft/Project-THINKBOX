@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_qq34y"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_oanet"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="4_ic8f0"]
-[ext_resource type="AudioStream" uid="uid://h2255y611ask" path="res://assets/bgm/bgm_eternal_garden.ogg" id="6_tv1wg"]
+[ext_resource type="AudioStream" uid="uid://c15xdynkprgty" path="res://assets/bgm/bgm_01.ogg" id="6_hgurq"]
 [ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="7_ipjdf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c81t5"]
@@ -73,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("6_tv1wg")
+stream = ExtResource("6_hgurq")
 autoplay = true
 bus = &"BGM"
 
