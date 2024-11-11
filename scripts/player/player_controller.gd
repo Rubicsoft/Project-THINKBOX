@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var camera = $Camera3D
+@onready var camera_animation = $CameraAnimation
 
 var mouse_sensitivity: float = 3.0
 

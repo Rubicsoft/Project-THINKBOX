@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=11 format=3 uid="uid://dnh0hd3gy112"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
@@ -7,6 +7,50 @@
 [sub_resource type="BoxMesh" id="BoxMesh_o6uv2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dsq50"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcdvk"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w2e7x"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="Animation" id="Animation_8ntoj"]
+resource_name = "up_down"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4, 2, -3), Vector3(-4, 5, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_arv4y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4, 2, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mlncn"]
+_data = {
+"RESET": SubResource("Animation_arv4y"),
+"up_down": SubResource("Animation_8ntoj")
+}
 
 [node name="PlatformerTest_Map" type="Node3D"]
 
@@ -33,6 +77,31 @@ size = Vector3(20, 0.5, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -34)
 size = Vector3(20, 0.5, 20)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8.5)
+operation = 2
+size = Vector3(9, 1, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 5.5)
+operation = 2
+size = Vector3(9, 1, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
+operation = 2
+size = Vector3(16, 1, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9.5)
+operation = 2
+size = Vector3(9, 1, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+operation = 2
+size = Vector3(9, 1, 5)
+
 [node name="Ground3" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -5, -34)
 size = Vector3(20, 0.5, 20)
@@ -42,13 +111,17 @@ material_override = ExtResource("2_5k4my")
 use_collision = true
 
 [node name="Bridge1" type="CSGBox3D" parent="Bridges"]
-transform = Transform3D(2, 0, 0, 0, 0.783888, -0.620902, 0, 0.620902, 0.783888, 0, 5.31504, -16.0381)
-size = Vector3(1, 1, 21.4409)
+transform = Transform3D(2, 0, 0, 0, 0.783888, -0.620902, 0, 0.620902, 0.783888, 0, 5.76237, -16.6029)
+size = Vector3(1, 1, 20)
 
 [node name="Bridge1Cut" type="CSGBox3D" parent="Bridges/Bridge1"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.0853276, -0.649842)
 operation = 2
 size = Vector3(1, 1.6521, 9.87512)
+
+[node name="Bridge2" type="CSGBox3D" parent="Bridges"]
+transform = Transform3D(-8.44439e-08, 0.39686, 0.917879, -2.26267e-08, 0.917879, -0.39686, -2, -2.71405e-08, -3.42648e-08, 19, 7.76237, -39.6029)
+size = Vector3(1, 1, 20)
 
 [node name="Platformes" type="Node3D" parent="."]
 
@@ -104,3 +177,18 @@ surface_material_override/0 = ExtResource("3_8mlji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/Box5/StaticBody3D"]
 shape = SubResource("BoxShape3D_dsq50")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Platformes/Bridge1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Bridge1/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_mcdvk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platformes/Bridge1/AnimatableBody3D"]
+mesh = SubResource("BoxMesh_w2e7x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platformes/Bridge1/AnimatableBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_mlncn")
+}
+autoplay = "up_down"

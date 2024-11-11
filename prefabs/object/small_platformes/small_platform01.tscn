@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gar0brb2bnc"]
+
+[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="1_pipau"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0qds"]
+size = Vector3(1.5, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rprfd"]
+size = Vector3(1.5, 0.2, 1)
+
+[node name="SmallPlatform" type="AnimatableBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_x0qds")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rprfd")
+surface_material_override/0 = ExtResource("1_pipau")

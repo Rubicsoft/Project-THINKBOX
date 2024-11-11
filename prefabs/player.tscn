@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=7 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 
@@ -37,10 +37,27 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(1.309, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4ctno"]
+resource_name = "fall_camera"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.260822, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_noqhs"]
 _data = {
 "RESET": SubResource("Animation_uav1u"),
-"died": SubResource("Animation_qurg7")
+"died": SubResource("Animation_qurg7"),
+"fall_camera": SubResource("Animation_4ctno")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -56,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.663132, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="CameraAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_noqhs")
 }
