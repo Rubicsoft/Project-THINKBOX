@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpf8q8g1rtg1e"]
+[gd_scene load_steps=12 format=3 uid="uid://bpf8q8g1rtg1e"]
 
 [ext_resource type="Texture2D" uid="uid://cnf3053ft2cdk" path="res://scenes/prototypes/kenney_prototype_textures/red/texture_01.png" id="1_wpiv4"]
+[ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_yoyqc"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_3e4tm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iao75"]
 size = Vector3(1.2, 2.52, 0.1)
@@ -13,22 +15,8 @@ albedo_texture = ExtResource("1_wpiv4")
 roughness = 0.55
 uv1_triplanar = true
 
-[sub_resource type="Animation" id="Animation_k5ite"]
-resource_name = "door_open"
-length = 0.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
+[sub_resource type="BoxMesh" id="BoxMesh_q72s2"]
+size = Vector3(0.1, 0.4, 0.2)
 
 [sub_resource type="Animation" id="Animation_w3l2g"]
 length = 0.001
@@ -45,13 +33,47 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_n1y4o"]
+resource_name = "door_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k5ite"]
+resource_name = "door_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56mby"]
 _data = {
 "RESET": SubResource("Animation_w3l2g"),
+"door_close": SubResource("Animation_n1y4o"),
 "door_open": SubResource("Animation_k5ite")
 }
 
-[node name="Door" type="Node3D"]
+[node name="Door" type="Node3D" groups=["interactable"]]
+script = ExtResource("1_yoyqc")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599791, 0, 0)
@@ -66,8 +88,12 @@ mesh = SubResource("BoxMesh_jk5bp")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_88ght")
 
+[node name="DoorHandle" type="MeshInstance3D" parent="AnimatableBody3D/Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("BoxMesh_q72s2")
+surface_material_override/0 = ExtResource("3_3e4tm")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
 libraries = {
 "": SubResource("AnimationLibrary_56mby")
 }
-autoplay = "door_open"
