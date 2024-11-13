@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpf8q8g1rtg1e"]
+
+[ext_resource type="Texture2D" uid="uid://cnf3053ft2cdk" path="res://scenes/prototypes/kenney_prototype_textures/red/texture_01.png" id="1_wpiv4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iao75"]
+size = Vector3(1.2, 2.52, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jk5bp"]
+size = Vector3(1.2, 2.52, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88ght"]
+albedo_texture = ExtResource("1_wpiv4")
+roughness = 0.55
+uv1_triplanar = true
+
+[sub_resource type="Animation" id="Animation_k5ite"]
+resource_name = "door_open"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w3l2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56mby"]
+_data = {
+"RESET": SubResource("Animation_w3l2g"),
+"door_open": SubResource("Animation_k5ite")
+}
+
+[node name="Door" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599791, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
+shape = SubResource("BoxShape3D_iao75")
+
+[node name="Box" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
+mesh = SubResource("BoxMesh_jk5bp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_88ght")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_56mby")
+}
+autoplay = "door_open"

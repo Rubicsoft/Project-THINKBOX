@@ -63,18 +63,22 @@ vertical_alignment = 1
 [node name="ResumeBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_fqxcl")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
 text = "RESUME GAME"
 flat = true
 
 [node name="RestartBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_tev0w")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
 text = "RESTART LEVEL"
 flat = true
 
 [node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_g8stg")
+theme_override_colors/font_hover_color = Color(1, 0.17, 0.17, 0.498039)
+theme_override_colors/font_color = Color(1, 0.17, 0.17, 1)
 text = "QUIT TO DESKTOP"
 flat = true
 

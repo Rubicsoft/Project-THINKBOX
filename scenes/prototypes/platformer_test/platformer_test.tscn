@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=9 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
 [ext_resource type="PackedScene" uid="uid://dnh0hd3gy112" path="res://scenes/prototypes/platformer_test/platformer_test_map.tscn" id="1_a6e5d"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cuxb3l1kik8pn" path="res://assets/bgm/bgm_02.ogg" id="5_t17ke"]
 [ext_resource type="PackedScene" uid="uid://bvgmobu7ugwh" path="res://prefabs/fall_killzone.tscn" id="6_8gg48"]
 [ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="7_a06he"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="8_homic"]
 
 [node name="PlatformerTest" type="Node3D"]
 
@@ -40,3 +41,6 @@ no_depth_test = true
 text = "Welcome to Platformer test level"
 font = ExtResource("7_a06he")
 outline_size = 0
+
+[node name="Door" parent="." instance=ExtResource("8_homic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, -3)
