@@ -5,6 +5,14 @@ extends Node3D
 var toggle: bool = false
 var is_interactable: bool = true
 
+func _input(event):
+	if event.is_action_pressed("interact"):
+		toggle = not toggle
+		if toggle == false:
+			animation.play("door_close")
+		if toggle == true:
+			animation.play("door_open")
+
 func interact():
 	if is_interactable == true:
 		is_interactable = false
