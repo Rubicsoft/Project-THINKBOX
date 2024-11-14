@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=12 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
 [ext_resource type="PackedScene" uid="uid://dnh0hd3gy112" path="res://scenes/prototypes/platformer_test/platformer_test_map.tscn" id="1_a6e5d"]
@@ -8,6 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://bvgmobu7ugwh" path="res://prefabs/fall_killzone.tscn" id="6_8gg48"]
 [ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="7_a06he"]
 [ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="8_homic"]
+[ext_resource type="ArrayMesh" uid="uid://cfxs83veluhb1" path="res://assets/model/suzanne_monkey.obj" id="9_tsjta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdb65"]
+albedo_color = Color(0.71276, 0.71276, 0.71276, 1)
+metallic = 0.66
+roughness = 0.32
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ocr1p"]
+points = PackedVector3Array(-0.000133812, 0.492092, -0.0390938, -0.000133812, 0.449213, -0.27349, -0.226705, 0.464823, -0.0351761, -0.160192, 0.378873, 0.367099, -0.000133812, 0.449213, 0.144455, 0.160058, 0.378873, 0.367099, 0.226437, 0.464823, -0.0351761, -0.000133812, 0.281168, -0.425781, -0.625111, 0.234339, -0.27349, -0.226705, 0.433507, -0.191468, 0.226437, 0.433507, -0.191468, 0.624977, 0.234339, -0.27349, -0.617215, 0.253899, -0.210973, -0.226705, 0.425702, 0.117115, -0.429722, 0.214778, 0.29683, -0.156311, 0.320288, 0.417946, 0.156177, 0.320288, 0.417946, 0.429588, 0.214778, 0.29683, 0.226437, 0.425702, 0.117115, 0.617081, 0.253899, -0.210973, -0.000133812, 0.0350737, -0.414111, -0.656293, 0.0272689, -0.265655, 0.656159, 0.0272689, -0.265655, -0.683594, 0.148389, -0.250067, 0.683594, 0.148389, -0.250067, -0.675832, 0.160048, -0.210973, -0.640769, 0.0272689, -0.214891, -0.183612, -0.445359, 0.265571, -0.132891, -0.410189, 0.332006, -0.343804, 0.206973, 0.363264, -0.17585, 0.121024, 0.414028, -0.101575, 0.308533, 0.425781, 0.101442, 0.308533, 0.425781, 0.175716, 0.121024, 0.414028, 0.343671, 0.206973, 0.363264, 0.132757, -0.410189, 0.332006, 0.183478, -0.445359, 0.265571, 0.640501, 0.0272689, -0.214891, 0.675698, 0.160048, -0.210973, -0.000133812, -0.0977053, -0.336007, -0.519655, -0.0430713, -0.246149, -0.164073, -0.457114, 0.199137, -0.164073, -0.472724, 0.261654, 0.519387, -0.0430713, -0.246149, 0.163939, -0.472724, 0.261654, 0.163939, -0.457114, 0.199137, -0.117233, -0.457114, 0.316335, -0.0586167, -0.417994, 0.355429, -0.0547357, -0.113315, 0.414028, -0.22269, 0.0780486, 0.390605, 0.0546019, -0.113315, 0.414028, 0.222556, 0.0780486, 0.390605, 0.0584829, -0.417994, 0.355429, 0.1171, -0.457114, 0.316335, -0.000133812, -0.488334, 0.230395, -0.0899325, -0.484383, 0.277324, 0.0897987, -0.484383, 0.277324, -0.0821704, -0.464919, 0.316335, -0.0313157, -0.441505, 0.347593, -0.000133812, -0.382824, 0.367099, -0.0547357, -0.359409, 0.367099, 0.0546019, -0.359409, 0.367099, 0.031182, -0.441505, 0.347593, 0.0819028, -0.464919, 0.316335, -0.000133812, -0.492188, 0.288994, -0.000133812, -0.472724, 0.320253)
 
 [node name="PlatformerTest" type="Node3D"]
 
@@ -19,6 +28,14 @@ transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.70710
 shadow_enabled = true
 
 [node name="PlatformerTest_Map" parent="." instance=ExtResource("1_a6e5d")]
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door_1" parent="Doors" instance=ExtResource("8_homic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
+
+[node name="Door_2" parent="Doors" instance=ExtResource("8_homic")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)
 
 [node name="Player" parent="." instance=ExtResource("2_08vw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7)
@@ -42,8 +59,12 @@ text = "Welcome to Platformer test level"
 font = ExtResource("7_a06he")
 outline_size = 0
 
-[node name="Door_1" parent="." instance=ExtResource("8_homic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
+[node name="Suzanne" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.795674, 0.605725, 0, -0.605725, 0.795674, 2, 0.523242, -2)
+mesh = ExtResource("9_tsjta")
+surface_material_override/0 = SubResource("StandardMaterial3D_qdb65")
 
-[node name="Door_2" parent="." instance=ExtResource("8_homic")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)
+[node name="StaticBody3D" type="StaticBody3D" parent="Suzanne"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suzanne/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ocr1p")

@@ -17,3 +17,4 @@ sky = SubResource("Sky_bt0eo")
 ssr_enabled = true
 ssao_enabled = true
 ssao_power = 2.0
+glow_enabled = true

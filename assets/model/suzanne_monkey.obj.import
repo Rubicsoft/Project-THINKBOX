@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfxs83veluhb1"
+path="res://.godot/imported/suzanne_monkey.obj-8227415e749a03832cf98debf96a2d16.mesh"
+
+[deps]
+
+files=["res://.godot/imported/suzanne_monkey.obj-8227415e749a03832cf98debf96a2d16.mesh"]
+
+source_file="res://assets/model/suzanne_monkey.obj"
+dest_files=["res://.godot/imported/suzanne_monkey.obj-8227415e749a03832cf98debf96a2d16.mesh", "res://.godot/imported/suzanne_monkey.obj-8227415e749a03832cf98debf96a2d16.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://vkqifsa2867t"]
+[gd_scene load_steps=6 format=3 uid="uid://vkqifsa2867t"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_7g3tc"]
 [ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="2_usum6"]
+[ext_resource type="FontFile" uid="uid://dv7q8djmxhf6m" path="res://assets/font/PlusJakartaSans-Bold.ttf" id="3_6p7pp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nhwc0"]
 font = ExtResource("2_usum6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyoqr"]
+font = ExtResource("3_6p7pp")
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7g3tc")
 
-[node name="Label" type="Label" parent="."]
+[node name="CollideWith" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -29,3 +33,12 @@ text = "detect someting..."
 label_settings = SubResource("LabelSettings_nhwc0")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FrameRate" type="Label" parent="."]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 75.0
+offset_bottom = 35.0
+text = "FPS : 60"
+label_settings = SubResource("LabelSettings_fyoqr")
