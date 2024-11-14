@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0i01hmk1koji"]
+
+[ext_resource type="Script" path="res://scripts/platforms/climbable_platform.gd" id="1_wle7h"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_wle7h")

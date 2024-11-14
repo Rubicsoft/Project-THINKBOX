@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpf8q8g1rtg1e"]
+[gd_scene load_steps=11 format=3 uid="uid://bpf8q8g1rtg1e"]
 
-[ext_resource type="Texture2D" uid="uid://cnf3053ft2cdk" path="res://scenes/prototypes/kenney_prototype_textures/red/texture_01.png" id="1_wpiv4"]
 [ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_yoyqc"]
+[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="2_m3d0y"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_3e4tm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iao75"]
@@ -9,11 +9,6 @@ size = Vector3(1.2, 2.52, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jk5bp"]
 size = Vector3(1.2, 2.52, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88ght"]
-albedo_texture = ExtResource("1_wpiv4")
-roughness = 0.55
-uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_q72s2"]
 size = Vector3(0.1, 0.4, 0.2)
@@ -86,7 +81,7 @@ shape = SubResource("BoxShape3D_iao75")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
 mesh = SubResource("BoxMesh_jk5bp")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_88ght")
+surface_material_override/0 = ExtResource("2_m3d0y")
 
 [node name="DoorHandle" type="MeshInstance3D" parent="AnimatableBody3D/Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

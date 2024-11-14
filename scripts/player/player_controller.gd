@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var camera_animation = $CameraAnimation
+@onready var interact_raycast = $Camera3D/InteractRayCast
 
 var mouse_sensitivity: float = 3.0
 

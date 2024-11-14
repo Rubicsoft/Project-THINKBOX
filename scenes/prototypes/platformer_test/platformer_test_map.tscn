@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=14 format=3 uid="uid://dnh0hd3gy112"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_8mlji"]
+[ext_resource type="PackedScene" uid="uid://b0i01hmk1koji" path="res://prefabs/object/climbable_platform.tscn" id="4_pgbkc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o6uv2"]
 
@@ -51,6 +52,12 @@ _data = {
 "RESET": SubResource("Animation_arv4y"),
 "up_down": SubResource("Animation_8ntoj")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_78aei"]
+size = Vector3(1, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuael"]
+size = Vector3(1, 3, 0.5)
 
 [node name="PlatformerTest_Map" type="Node3D"]
 
@@ -202,3 +209,13 @@ libraries = {
 "": SubResource("AnimationLibrary_mlncn")
 }
 autoplay = "up_down"
+
+[node name="Climb" type="MeshInstance3D" parent="Platformes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.77875, -2.71891)
+mesh = SubResource("BoxMesh_78aei")
+surface_material_override/0 = ExtResource("2_5k4my")
+
+[node name="StaticBody3D" parent="Platformes/Climb" instance=ExtResource("4_pgbkc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platformes/Climb/StaticBody3D"]
+shape = SubResource("BoxShape3D_iuael")
