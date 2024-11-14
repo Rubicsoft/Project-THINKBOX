@@ -69,6 +69,15 @@ operation = 2
 transform = Transform3D(20.54, 0, 0, 0, 1, 0, 0, 0, 1.8, 0, 0, 0)
 operation = 2
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="BaseGrounds/Ground1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.75, -2.71149)
+size = Vector3(16, 3, 0.422974)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="BaseGrounds/Ground1/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129822, 0.5, 0)
+operation = 2
+size = Vector3(1.25964, 4, 1)
+
 [node name="Ground4" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -11, 0)
 size = Vector3(20, 0.5, 20)

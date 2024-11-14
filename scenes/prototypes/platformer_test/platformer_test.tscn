@@ -42,5 +42,8 @@ text = "Welcome to Platformer test level"
 font = ExtResource("7_a06he")
 outline_size = 0
 
-[node name="Door" parent="." instance=ExtResource("8_homic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, -3)
+[node name="Door_1" parent="." instance=ExtResource("8_homic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
+
+[node name="Door_2" parent="." instance=ExtResource("8_homic")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)

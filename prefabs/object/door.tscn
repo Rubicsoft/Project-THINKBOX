@@ -72,11 +72,11 @@ _data = {
 "door_open": SubResource("Animation_k5ite")
 }
 
-[node name="Door" type="Node3D" groups=["interactable"]]
-script = ExtResource("1_yoyqc")
+[node name="Door" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599791, 0, 0)
+script = ExtResource("1_yoyqc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
