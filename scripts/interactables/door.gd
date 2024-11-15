@@ -22,5 +22,6 @@ func interact():
 			animation.play("door_close")
 		if toggle == true:
 			animation.play("door_open")
-		get_tree().create_timer(1.0, false).timeout
-		is_interactable = true
+
+func _on_animation_player_animation_finished(anim_name):
+	is_interactable = true

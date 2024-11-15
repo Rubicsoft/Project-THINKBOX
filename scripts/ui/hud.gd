@@ -4,11 +4,11 @@ extends Control
 @onready var collide_label = $CollideWith
 @onready var frame_rate = $FrameRate
 
-
-func _ready():
-	pass # Replace with function body.
-
 func _process(delta):
+	# Set only visible when the game is playing(not paused)
+	visible = not get_tree().paused
+	
+	# Handle label for interactables
 	collide_label.text = ""
 	if interact_raycast.is_colliding():
 		var collider = interact_raycast.get_collider()

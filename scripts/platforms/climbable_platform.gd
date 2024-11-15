@@ -1,5 +1,6 @@
 extends StaticBody3D
 
+var prompt_msg = "Climbable Platform"
 
 func _ready():
 	pass # Replace with function body.
