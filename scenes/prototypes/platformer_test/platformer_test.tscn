@@ -34,6 +34,9 @@ shadow_enabled = true
 [node name="Door_1" parent="Doors" instance=ExtResource("8_homic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
 
+[node name="Door_3" parent="Doors" instance=ExtResource("8_homic")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.39638, 1.51, 3.37154)
+
 [node name="Door_2" parent="Doors" instance=ExtResource("8_homic")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)
 
