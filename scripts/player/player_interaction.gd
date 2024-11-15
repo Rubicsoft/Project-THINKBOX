@@ -1,10 +1,8 @@
 extends RayCast3D
 
 
-func _ready():
-	pass
-
 func _input(event):
+	# Check if the player collide with interactables and interact them
 	if is_colliding():
 		var hit_obj = get_collider()
 		print("Type of Collide object : ", typeof(hit_obj))

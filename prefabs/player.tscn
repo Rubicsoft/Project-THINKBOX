@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=10 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
 [ext_resource type="PackedScene" uid="uid://vkqifsa2867t" path="res://ui/hud.tscn" id="3_hrfvy"]
+[ext_resource type="AudioStream" uid="uid://cpgjtdaemyum6" path="res://assets/sounds/running.ogg" id="4_8hhmw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0qlb0"]
 radius = 0.267689
@@ -77,9 +78,6 @@ fov = 80.0
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_563i8")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.663132, 0)
-
 [node name="CameraAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_noqhs")
@@ -87,3 +85,9 @@ libraries = {
 
 [node name="HUD" parent="." node_paths=PackedStringArray("interact_raycast") instance=ExtResource("3_hrfvy")]
 interact_raycast = NodePath("../Camera3D/InteractRayCast")
+
+[node name="Audios" type="Node3D" parent="."]
+
+[node name="Run" type="AudioStreamPlayer3D" parent="Audios"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.570644, 0)
+stream = ExtResource("4_8hhmw")

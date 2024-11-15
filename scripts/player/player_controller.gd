@@ -3,20 +3,25 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var camera_animation = $CameraAnimation
 @onready var interact_raycast = $Camera3D/InteractRayCast
+# Sound Effects
+@onready var run_sfx = $Audios/Run
 
 var mouse_sensitivity: float = 3.0
 
+# Constants
 const SPEED = 5.0
 const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
 
 func _input(event) -> void:
+	# Handle camera movement based on mouse input
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
 		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
 
 func _process(delta) -> void:
+	# Limit the camera yaw and also smooth it out
 	var camera_yaw_limit = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
@@ -36,6 +41,7 @@ func _physics_process(delta) -> void:
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+		#run_sfx.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

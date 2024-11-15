@@ -1,8 +1,11 @@
 extends Control
 
 @export var interact_raycast: RayCast3D
+
 @onready var collide_label = $CollideWith
 @onready var frame_rate = $FrameRate
+@onready var crosshair = $Control/Crosshair
+
 
 func _process(delta):
 	# Set only visible when the game is playing(not paused)
