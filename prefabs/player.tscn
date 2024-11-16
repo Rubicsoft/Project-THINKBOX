@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=11 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
@@ -11,58 +11,41 @@
 radius = 0.267689
 height = 1.7
 
-[sub_resource type="Animation" id="Animation_uav1u"]
+[sub_resource type="Animation" id="Animation_omk0n"]
+resource_name = "player_walking"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sx2nl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0.442644, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qurg7"]
-resource_name = "died"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.309, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4ctno"]
-resource_name = "fall_camera"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.260822, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_noqhs"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v25mb"]
 _data = {
-"RESET": SubResource("Animation_uav1u"),
-"died": SubResource("Animation_qurg7"),
-"fall_camera": SubResource("Animation_4ctno")
+"RESET": SubResource("Animation_sx2nl"),
+"player_walking": SubResource("Animation_omk0n")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -72,20 +55,8 @@ script = ExtResource("1_jk8oh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0qlb0")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)
-
-[node name="InteractRayCast" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -2)
-script = ExtResource("2_563i8")
-
-[node name="CameraAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_noqhs")
-}
-
 [node name="HUD" parent="." node_paths=PackedStringArray("interact_raycast") instance=ExtResource("3_hrfvy")]
-interact_raycast = NodePath("../Camera3D/InteractRayCast")
+interact_raycast = NodePath("../CameraPivot/Camera3D/InteractRayCast")
 
 [node name="Audios" type="Node3D" parent="."]
 
@@ -99,3 +70,17 @@ stream = ExtResource("5_3yces")
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("6_lkgnu")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+
+[node name="InteractRayCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_563i8")
+
+[node name="CameraAnimation" type="AnimationPlayer" parent="CameraPivot"]
+libraries = {
+"": SubResource("AnimationLibrary_v25mb")
+}

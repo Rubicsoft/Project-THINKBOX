@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-@onready var camera = $Camera3D
-@onready var camera_animation = $CameraAnimation
-@onready var interact_raycast = $Camera3D/InteractRayCast
+@onready var camera = $CameraPivot/Camera3D
+@onready var interact_raycast = $CameraPivot/Camera3D/InteractRayCast
+@onready var camera_animation = $CameraPivot/CameraAnimation
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
@@ -44,6 +44,7 @@ func _physics_process(delta) -> void:
 		velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		#run_sfx.play()
+		camera_animation.play("player_walking")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
