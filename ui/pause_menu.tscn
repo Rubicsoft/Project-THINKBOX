@@ -10,15 +10,15 @@ default_font_size = 12
 
 [sub_resource type="Theme" id="Theme_fqxcl"]
 default_font = ExtResource("2_g7itt")
-default_font_size = 32
+default_font_size = 24
 
 [sub_resource type="Theme" id="Theme_tev0w"]
 default_font = ExtResource("2_g7itt")
-default_font_size = 32
+default_font_size = 24
 
 [sub_resource type="Theme" id="Theme_g8stg"]
 default_font = ExtResource("2_g7itt")
-default_font_size = 32
+default_font_size = 24
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3

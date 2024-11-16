@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var interact_raycast = $Camera3D/InteractRayCast
 # Sound Effects
 @onready var run_sfx = $Audios/Run
+@onready var jump_sfx = $Audios/Jump
 
 var mouse_sensitivity: float = 3.0
 
@@ -34,6 +35,7 @@ func _physics_process(delta) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_sfx.play_audio()
 
 	# Handle movement
 	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")

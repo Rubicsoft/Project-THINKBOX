@@ -118,6 +118,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
 operation = 2
 size = Vector3(9, 1, 5)
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="BaseGrounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -1.5)
+size = Vector3(0.5, 2, 10)
+
 [node name="Ground3" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -5, -34)
 size = Vector3(20, 0.5, 20)
