@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var player_voice = $Audios/PlayerVoice
 
 var mouse_sensitivity: float = 3.0
+var gamepad_look_sensitivity: float = 3.0
 
 # Constants
 const SPEED = 5.0
@@ -24,6 +25,10 @@ func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
 		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
+	
+	var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
+	print(gamepad_look_dir)
+	rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
 
 func _process(delta) -> void:
 	# Limit the camera yaw and also smooth it out

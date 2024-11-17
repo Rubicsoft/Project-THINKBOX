@@ -39,22 +39,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_omk0n"]
-resource_name = "player_walking"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_uh6hg"]
 resource_name = "player_jump"
 length = 0.5
@@ -69,6 +53,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.108472, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_omk0n"]
+resource_name = "player_walking"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v25mb"]
@@ -104,6 +104,7 @@ script = ExtResource("6_lkgnu")
 [node name="PlayerVoice" type="AudioStreamPlayer3D" parent="Audios"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189971, 0)
 stream = ExtResource("6_7vlan")
+bus = &"SFX"
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)

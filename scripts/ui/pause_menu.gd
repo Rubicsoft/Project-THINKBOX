@@ -2,7 +2,7 @@ extends Control
 
 var bgm_normal_volume: float
 
-const BGM_PAUSED_VOLUME = -6.0
+const BGM_PAUSED_VOLUME = -10.0
 const BGM_PAUSE_SMOOTHNESS = 5.0
 
 func _ready() -> void:

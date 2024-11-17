@@ -1,6 +1,7 @@
 extends StaticBody3D
 
-var prompt_msg: String = "Just a book :v"
+@export var prompt_msg: String = "Just a book :v"
+@onready var sound = $Sound
 
 func interact() -> void:
-	pass
+	sound.play()
