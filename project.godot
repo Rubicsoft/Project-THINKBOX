@@ -71,6 +71,4 @@ interact={
 
 [rendering]
 
-scaling_3d/mode=2
-scaling_3d/scale=0.7
 anti_aliasing/quality/screen_space_aa=1

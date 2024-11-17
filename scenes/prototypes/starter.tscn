@@ -1,13 +1,72 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbmen0qt0vy8p"]
+[gd_scene load_steps=30 format=3 uid="uid://dbmen0qt0vy8p"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_6j7ye"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_dlkln"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="2_ogpv1"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_qq34y"]
+[ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="3_5cvif"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_oanet"]
+[ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="4_1h6o1"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="4_ic8f0"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="5_hhluh"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="6_ff26i"]
 [ext_resource type="AudioStream" uid="uid://c15xdynkprgty" path="res://assets/bgm/bgm_01.ogg" id="6_hgurq"]
 [ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="7_ipjdf"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="7_tswwr"]
+[ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="8_d6224"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="9_gnlho"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="9_xuufj"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="10_rd050"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="11_avs6c"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="12_10fht"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="13_o1jhr"]
+[ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="14_7qawv"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="15_ws4fd"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_o3r77"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("7_tswwr")
+pre_blur_processor_stage = ExtResource("6_ff26i")
+camera_rotation_component = ExtResource("4_1h6o1")
+camera_movement_component = ExtResource("3_5cvif")
+object_movement_component = ExtResource("5_hhluh")
+debug = false
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_1b2yi"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("11_avs6c")
+blur_stage = ExtResource("8_d6224")
+overlay_stage = ExtResource("10_rd050")
+tile_max_x_stage = ExtResource("12_10fht")
+tile_max_y_stage = ExtResource("13_o1jhr")
+neighbor_max_stage = ExtResource("9_xuufj")
+tile_variance_stage = ExtResource("14_7qawv")
+tile_size = 40
+linear_falloff_slope = 1.0
+importance_bias = 40.0
+maximum_jitter_value = 0.95
+minimum_user_threshold = 1.5
+debug = false
+
+[sub_resource type="Compositor" id="Compositor_8rhuf"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_o3r77"), SubResource("CompositorEffect_1b2yi")])
+script = ExtResource("15_ws4fd")
+samples = 16
+intensity = 0.4
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = false
+target_constant_framerate = 30.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xqe1"]
 size = Vector3(100, 0.2, 100)
@@ -24,6 +83,7 @@ script = ExtResource("1_6j7ye")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_ogpv1")
+compositor = SubResource("Compositor_8rhuf")
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.258819, 0.482963, -0.836516, -4.13128e-16, 0.866025, 0.5, 0.965926, 0.12941, -0.224144, 0, 5, 0)
@@ -70,3 +130,6 @@ Where this game is started"
 font = ExtResource("7_ipjdf")
 font_size = 16
 outline_size = 0
+
+[node name="Door" parent="." instance=ExtResource("9_gnlho")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.36, 3)

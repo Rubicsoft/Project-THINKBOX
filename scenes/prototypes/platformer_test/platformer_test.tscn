@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=32 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
 [ext_resource type="PackedScene" uid="uid://dnh0hd3gy112" path="res://scenes/prototypes/platformer_test/platformer_test_map.tscn" id="1_a6e5d"]
@@ -22,8 +22,10 @@
 [ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="11_uot1m"]
 [ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="12_j2yrk"]
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
+[ext_resource type="PackedScene" uid="uid://dowskkpbxp3w" path="res://prefabs/object/interactables/book.tscn" id="23_dye86"]
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_n5xgv"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
@@ -37,7 +39,7 @@ camera_movement_component = ExtResource("2_1vt5s")
 object_movement_component = ExtResource("4_1l7eu")
 debug = false
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_ovant"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_c566x"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
@@ -58,8 +60,15 @@ maximum_jitter_value = 0.95
 minimum_user_threshold = 1.5
 debug = false
 
-[sub_resource type="Compositor" id="Compositor_d31p6"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_n5xgv"), SubResource("CompositorEffect_ovant")])
+[sub_resource type="Compositor" id="Compositor_niakq"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_46y18"), SubResource("CompositorEffect_c566x")])
+script = ExtResource("14_skvpd")
+samples = 8
+intensity = 0.5
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = false
+target_constant_framerate = 30.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdb65"]
 albedo_color = Color(0.71276, 0.71276, 0.71276, 1)
@@ -79,7 +88,7 @@ rings = 16
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7ihx3")
-compositor = SubResource("Compositor_d31p6")
+compositor = SubResource("Compositor_niakq")
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, 0, 6, 0)
@@ -228,3 +237,6 @@ surface_material_override/0 = ExtResource("10_70wkj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AmbaBalls2/Ball4"]
 shape = SubResource("SphereShape3D_2qpiy")
+
+[node name="Book" parent="." instance=ExtResource("23_dye86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
