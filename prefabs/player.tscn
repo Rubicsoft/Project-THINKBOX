@@ -1,31 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=13 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
 [ext_resource type="PackedScene" uid="uid://vkqifsa2867t" path="res://ui/hud.tscn" id="3_hrfvy"]
 [ext_resource type="AudioStream" uid="uid://cpgjtdaemyum6" path="res://assets/sounds/running.ogg" id="4_8hhmw"]
 [ext_resource type="AudioStream" uid="uid://dlc00mlb2h3s" path="res://assets/sounds/jump_01.ogg" id="5_3yces"]
+[ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="6_7vlan"]
 [ext_resource type="Script" path="res://scripts/player/jump_sfx.gd" id="6_lkgnu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0qlb0"]
 radius = 0.267689
 height = 1.7
-
-[sub_resource type="Animation" id="Animation_omk0n"]
-resource_name = "player_walking"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_sx2nl"]
 length = 0.001
@@ -41,10 +26,55 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0.442644, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_omk0n"]
+resource_name = "player_walking"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uh6hg"]
+resource_name = "player_jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.108472, 0, 0), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v25mb"]
 _data = {
 "RESET": SubResource("Animation_sx2nl"),
+"player_jump": SubResource("Animation_uh6hg"),
 "player_walking": SubResource("Animation_omk0n")
 }
 
@@ -70,6 +100,10 @@ stream = ExtResource("5_3yces")
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("6_lkgnu")
+
+[node name="PlayerVoice" type="AudioStreamPlayer3D" parent="Audios"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189971, 0)
+stream = ExtResource("6_7vlan")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)

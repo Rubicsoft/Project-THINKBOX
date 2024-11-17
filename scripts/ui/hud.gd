@@ -16,7 +16,7 @@ func _process(delta):
 	if interact_raycast.is_colliding():
 		var collider = interact_raycast.get_collider()
 		#label.text = collider.name
-		if collider is Interactable:
+		if collider.has_method("interact"):
 			collide_label.text = collider.prompt_msg
 	
 	frame_rate.text = "FPS " + str(Engine.get_frames_per_second())

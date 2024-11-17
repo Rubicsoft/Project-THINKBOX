@@ -6,6 +6,7 @@ extends CharacterBody3D
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
+@onready var player_voice = $Audios/PlayerVoice
 
 var mouse_sensitivity: float = 3.0
 
@@ -14,6 +15,9 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
+
+func _ready():
+	player_voice.play()
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
@@ -35,6 +39,7 @@ func _physics_process(delta) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		camera_animation.play("player_jump")
 		jump_sfx.play_audio()
 
 	# Handle movement
@@ -44,7 +49,8 @@ func _physics_process(delta) -> void:
 		velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		#run_sfx.play()
-		camera_animation.play("player_walking")
+		if is_on_floor():
+			camera_animation.play("player_walking")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

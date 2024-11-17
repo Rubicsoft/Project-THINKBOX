@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=640
+window/size/mode=4
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg")
 
 [file_customization]
 
@@ -66,4 +71,6 @@ interact={
 
 [rendering]
 
+scaling_3d/mode=2
+scaling_3d/scale=0.7
 anti_aliasing/quality/screen_space_aa=1

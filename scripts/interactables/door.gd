@@ -1,5 +1,4 @@
 extends AnimatableBody3D
-class_name Interactable
 
 @onready var animation = $AnimationPlayer
 var prompt_msg = "Door"
