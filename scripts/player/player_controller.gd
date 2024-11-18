@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var jump_sfx = $Audios/Jump
 @onready var player_voice = $Audios/PlayerVoice
 
+@export var is_controlable: bool = true
 var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
 
@@ -22,13 +23,16 @@ func _ready():
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
-	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
-		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
+	if is_controlable:
+		if event is InputEventMouseMotion:
+			rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
+			print(event.relative.x)
+			camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
 	
-	var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
-	print(gamepad_look_dir)
-	rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
+	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
+	#print(gamepad_look_dir)
+	#rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
+	#camera.rotate_x(gamepad_look_dir.y * gamepad_look_sensitivity / 20.0)
 
 func _process(delta) -> void:
 	# Limit the camera yaw and also smooth it out
@@ -48,16 +52,17 @@ func _physics_process(delta) -> void:
 		jump_sfx.play_audio()
 
 	# Handle movement
-	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-		velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-		#run_sfx.play()
-		if is_on_floor():
-			camera_animation.play("player_walking")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if is_controlable:
+		var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+			if is_on_floor():
+				camera_animation.play("player_walking")
+				run_sfx.play_audio()
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
