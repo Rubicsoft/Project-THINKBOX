@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://0t3722jkicgt"]
+
+[ext_resource type="Script" path="res://scripts/interactables/keys/square_key.gd" id="1_wanwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1h4hs"]
+size = Vector3(0.22467, 0.0952148, 0.516113)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p5l7i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jemx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a44mp"]
+
+[sub_resource type="Animation" id="Animation_h8j7g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blocking:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vrluf"]
+resource_name = "collected"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blocking:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"add_key"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48i6o"]
+_data = {
+"RESET": SubResource("Animation_h8j7g"),
+"collected": SubResource("Animation_vrluf")
+}
+
+[node name="SquareKey" type="RigidBody3D"]
+script = ExtResource("1_wanwe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1h4hs")
+
+[node name="Blocking" type="Node3D" parent="."]
+
+[node name="Pillar" type="MeshInstance3D" parent="Blocking"]
+transform = Transform3D(0.0797291, 0, 0, 0, 0.0360831, 0, 0, 0, 0.537815, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_p5l7i")
+
+[node name="TopBig" type="MeshInstance3D" parent="Blocking"]
+transform = Transform3D(0.195258, 0, 0, 0, 0.042476, 0, 0, 0, 0.183376, 0, 0, -0.179264)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_4jemx")
+
+[node name="TopSmall" type="MeshInstance3D" parent="Blocking"]
+transform = Transform3D(0.119692, 0, 0, 0, 0.0294697, 0, 0, 0, 0.15074, -0.043588, 0, 0.167588)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_a44mp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_48i6o")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

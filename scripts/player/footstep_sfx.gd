@@ -3,7 +3,7 @@ extends AudioStreamPlayer3D
 var sounds = []
 var is_playable: bool = true
 
-func _ready():
+func _ready() -> void:
 	sounds = [
 		preload("res://assets/sounds/footsteps/footstep_01.ogg"),
 		preload("res://assets/sounds/footsteps/footstep_02.ogg"),
