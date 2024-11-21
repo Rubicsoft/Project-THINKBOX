@@ -24,8 +24,8 @@
 [ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="12_j2yrk"]
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
-[ext_resource type="PackedScene" uid="uid://dowskkpbxp3w" path="res://prefabs/object/interactables/book.tscn" id="23_dye86"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="26_ey70r"]
+[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="26_hhnlm"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -244,13 +244,6 @@ surface_material_override/0 = ExtResource("10_70wkj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AmbaBalls2/Ball4"]
 shape = SubResource("SphereShape3D_2qpiy")
 
-[node name="Book" parent="." instance=ExtResource("23_dye86")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
-
-[node name="Book2" parent="." instance=ExtResource("23_dye86")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
-prompt_msg = "Amongus"
-
 [node name="LockedDoors" type="Node3D" parent="."]
 
 [node name="SquareDoors" type="Node3D" parent="LockedDoors"]
@@ -268,3 +261,5 @@ player = NodePath("../../Player")
 [node name="Checkpoint_3" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.85, 4)
 player = NodePath("../../Player")
+
+[node name="MovingPlatform_Spin" parent="." instance=ExtResource("26_hhnlm")]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccqhi340y01gb"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
-[ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="2_g7itt"]
+[ext_resource type="FontFile" uid="uid://dv7q8djmxhf6m" path="res://assets/font/PlusJakartaSans-Bold.ttf" id="2_jprgo"]
 
-[sub_resource type="Theme" id="Theme_kc5q3"]
-default_font = ExtResource("2_g7itt")
+[sub_resource type="Theme" id="Theme_4xa8n"]
+default_font = ExtResource("2_jprgo")
 default_font_size = 24
 
 [node name="PauseMenu" type="Control"]
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_4xa8n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -38,7 +39,6 @@ offset_right = 24.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_kc5q3")
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
