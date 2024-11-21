@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=34 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
 [ext_resource type="PackedScene" uid="uid://dowskkpbxp3w" path="res://prefabs/object/interactables/book.tscn" id="23_dye86"]
+[ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="26_ey70r"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -121,7 +122,7 @@ autoplay = true
 bus = &"BGM"
 
 [node name="FallKillzone" parent="." instance=ExtResource("6_8gg48")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
@@ -253,3 +254,17 @@ prompt_msg = "Amongus"
 [node name="LockedDoors" type="Node3D" parent="."]
 
 [node name="SquareDoors" type="Node3D" parent="LockedDoors"]
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Checkpoint_1" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.85, -8)
+player = NodePath("../../Player")
+
+[node name="Checkpoint_2" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 12.85, -30)
+player = NodePath("../../Player")
+
+[node name="Checkpoint_3" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.85, 4)
+player = NodePath("../../Player")

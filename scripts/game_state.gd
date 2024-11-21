@@ -4,4 +4,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _process(delta) -> void:
-	print("Square Key collected : " + str(Global.get_value("square_key")))
+	print("Live left : " + str(Global.get_value("live_left")))
+	if Global.get_value("live_left") <= 0:
+		get_tree().quit()

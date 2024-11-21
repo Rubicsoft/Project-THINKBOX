@@ -1,8 +1,12 @@
 extends Node
 
 var state: Dictionary = {
-	"square_key" : 0
+	"live_left" : 3
 }
+var default_state: Dictionary
+
+func _ready():
+	default_state = state
 
 func get_value(key):
 	if state.has(key):
@@ -17,3 +21,6 @@ func decrease_value(key) -> void:
 
 func increase_value(key) -> void:
 	state[key] = state[key] + 1
+
+func reset_state() -> void:
+	state = default_state

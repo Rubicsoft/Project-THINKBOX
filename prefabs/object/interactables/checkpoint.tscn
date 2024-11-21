@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cchnpmgryo14"]
+
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="1_ti8kp"]
+[ext_resource type="Script" path="res://scripts/interactables/checkpoint_pillar.gd" id="1_vgu2e"]
+[ext_resource type="FontFile" uid="uid://dv7q8djmxhf6m" path="res://assets/font/PlusJakartaSans-Bold.ttf" id="3_iv1u5"]
+[ext_resource type="AudioStream" uid="uid://dplhpac0psblx" path="res://assets/sounds/diamond.wav" id="4_7h46m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ph0kk"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ej141"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[node name="Checkpoint" type="StaticBody3D"]
+script = ExtResource("1_vgu2e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ph0kk")
+
+[node name="Block" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ej141")
+surface_material_override/0 = ExtResource("1_ti8kp")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882933, 0)
+billboard = 1
+text = "Collected"
+font = ExtResource("3_iv1u5")
+outline_size = 0
+
+[node name="CollectedSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_7h46m")
