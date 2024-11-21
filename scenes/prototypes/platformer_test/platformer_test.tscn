@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=33 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -25,7 +25,6 @@
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
 [ext_resource type="PackedScene" uid="uid://dowskkpbxp3w" path="res://prefabs/object/interactables/book.tscn" id="23_dye86"]
-[ext_resource type="PackedScene" uid="uid://0t3722jkicgt" path="res://prefabs/object/interactables/keys/square_key.tscn" id="25_ktke5"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -251,15 +250,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
 prompt_msg = "Amongus"
 
-[node name="Keys" type="Node3D" parent="."]
+[node name="LockedDoors" type="Node3D" parent="."]
 
-[node name="SquareKey" parent="Keys" instance=ExtResource("25_ktke5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
-
-[node name="SquareKey2" parent="Keys" instance=ExtResource("25_ktke5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23854, 1, 4)
-prompt_msg = "Ambatukam"
-
-[node name="SquareKey3" parent="Keys" instance=ExtResource("25_ktke5")]
-transform = Transform3D(0.679672, 0, 0.733516, 0, 1, 0, -0.733516, 0, 0.679672, 2.08399, 1.15461, 4)
-prompt_msg = "POP MIE"
+[node name="SquareDoors" type="Node3D" parent="LockedDoors"]
