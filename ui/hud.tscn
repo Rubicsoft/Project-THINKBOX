@@ -90,3 +90,48 @@ text = "Game is still under alpha development"
 label_settings = SubResource("LabelSettings_x804b")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Life1" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+color = Color(1, 0, 0, 1)
+
+[node name="Life2" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_top = 16.0
+offset_right = -65.0
+offset_bottom = 56.0
+grow_horizontal = 0
+color = Color(1, 0, 0, 1)
+
+[node name="Life3" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 16.0
+offset_right = -115.0
+offset_bottom = 56.0
+grow_horizontal = 0
+color = Color(1, 0, 0, 1)

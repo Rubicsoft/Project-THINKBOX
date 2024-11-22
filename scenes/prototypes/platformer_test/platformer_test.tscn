@@ -107,6 +107,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
 [node name="Door_2" parent="Doors" instance=ExtResource("8_homic")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)
 
+[node name="Door_4" parent="Doors" instance=ExtResource("8_homic")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.58484, 13.51, -29)
+
 [node name="Door_3" parent="Doors" instance=ExtResource("8_homic")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.3964, -9.49, 6.37154)
 
@@ -263,3 +266,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.85, 4)
 player = NodePath("../../Player")
 
 [node name="MovingPlatform_Spin" parent="." instance=ExtResource("26_hhnlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)

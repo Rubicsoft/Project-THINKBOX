@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://brue55wemoi8a"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_m0wed"]
+[gd_scene load_steps=6 format=3 uid="uid://brue55wemoi8a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlncq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ku0vs"]
+
+[sub_resource type="Animation" id="Animation_45fba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_orcwe"]
 resource_name = "platform_loop"
@@ -22,45 +35,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.23333, 2.5, 3.73333, 5, 6.23333, 7.46667, 8.73333, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.181549, 0), Vector3(0, 0, 0), Vector3(0, 0.181549, 0), Vector3(0, 0, 0), Vector3(0, 0.181549, 0), Vector3(0, 0, 0), Vector3(0, 0.181549, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_45fba"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kufat"]
 _data = {
@@ -69,11 +43,6 @@ _data = {
 }
 
 [node name="MovingPlatform_Spin" type="AnimatableBody3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
-mesh = SubResource("PrismMesh_m0wed")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vlncq")

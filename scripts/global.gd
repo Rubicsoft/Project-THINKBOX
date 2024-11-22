@@ -1,9 +1,9 @@
 extends Node
 
 var state: Dictionary = {
-	"live_left" : 3
+	"life_left" : 3
 }
-var default_state: Dictionary
+var default_state
 
 func _ready():
 	default_state = state
