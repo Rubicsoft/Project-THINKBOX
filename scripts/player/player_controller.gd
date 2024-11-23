@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
 @onready var player_voice = $Audios/PlayerVoice
+@onready var jump_ground = $Audios/JumpGround
 
 @export var is_controlable: bool = true
 var mouse_sensitivity: float = 3.0
@@ -50,6 +51,7 @@ func _physics_process(delta) -> void:
 		velocity.y = JUMP_VELOCITY
 		camera_animation.play("player_jump")
 		jump_sfx.play_audio()
+		jump_ground.play()
 
 	# Handle movement
 	if is_controlable:
