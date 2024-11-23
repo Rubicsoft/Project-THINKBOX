@@ -8,5 +8,65 @@
 material_override = ExtResource("1_3nw4t")
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds"]
+[node name="Ground1" type="CSGCombiner3D" parent="Grounds"]
+
+[node name="Subground1" type="CSGCombiner3D" parent="Grounds/Ground1"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground1"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground2" type="CSGCombiner3D" parent="Grounds/Ground1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground2"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground3" type="CSGCombiner3D" parent="Grounds/Ground1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground3"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground4" type="CSGCombiner3D" parent="Grounds/Ground1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -13, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground4"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground5" type="CSGCombiner3D" parent="Grounds/Ground1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -13, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground5"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Ground2" type="CSGCombiner3D" parent="Grounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26, 0)
+
+[node name="Subground1" type="CSGCombiner3D" parent="Grounds/Ground2"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground1"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground2" type="CSGCombiner3D" parent="Grounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground2"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground3" type="CSGCombiner3D" parent="Grounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground3"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground4" type="CSGCombiner3D" parent="Grounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -13, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground4"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Subground5" type="CSGCombiner3D" parent="Grounds/Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -13, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground5"]
 size = Vector3(40, 0.5, 40)
