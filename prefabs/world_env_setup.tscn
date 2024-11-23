@@ -1,0 +1,83 @@
+[gd_scene load_steps=20 format=3 uid="uid://cvrmwy7eblbem"]
+
+[ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="1_v4dpf"]
+[ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="2_mvrql"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="3_7i5nx"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="4_8r7k4"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="5_enhjx"]
+[ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="6_jin26"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="7_rv1g4"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="8_yp1qv"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="9_67q8d"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="10_o1s8j"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="11_514c4"]
+[ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="12_230ii"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="13_t217r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c81t5"]
+sky_top_color = Color(0.295553, 0.463538, 0.626782, 1)
+sky_horizon_color = Color(0.8148, 0.8924, 0.97, 1)
+sky_curve = 0.252269
+ground_bottom_color = Color(0.0252, 0.03854, 0.06, 1)
+ground_horizon_color = Color(0.815686, 0.894118, 0.968627, 1)
+ground_curve = 0.0887656
+
+[sub_resource type="Sky" id="Sky_i040i"]
+sky_material = SubResource("ProceduralSkyMaterial_c81t5")
+
+[sub_resource type="Environment" id="Environment_4a1w3"]
+background_mode = 2
+sky = SubResource("Sky_i040i")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_4442o"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("5_enhjx")
+pre_blur_processor_stage = ExtResource("4_8r7k4")
+camera_rotation_component = ExtResource("2_mvrql")
+camera_movement_component = ExtResource("1_v4dpf")
+object_movement_component = ExtResource("3_7i5nx")
+debug = false
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_45yxf"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("9_67q8d")
+blur_stage = ExtResource("6_jin26")
+overlay_stage = ExtResource("8_yp1qv")
+tile_max_x_stage = ExtResource("10_o1s8j")
+tile_max_y_stage = ExtResource("11_514c4")
+neighbor_max_stage = ExtResource("7_rv1g4")
+tile_variance_stage = ExtResource("12_230ii")
+tile_size = 40
+linear_falloff_slope = 1.0
+importance_bias = 40.0
+maximum_jitter_value = 0.95
+minimum_user_threshold = 1.5
+debug = false
+
+[sub_resource type="Compositor" id="Compositor_k3xwa"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_4442o"), SubResource("CompositorEffect_45yxf")])
+script = ExtResource("13_t217r")
+samples = 8
+intensity = 0.5
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = false
+target_constant_framerate = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_4a1w3")
+compositor = SubResource("Compositor_k3xwa")

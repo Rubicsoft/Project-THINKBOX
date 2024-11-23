@@ -247,10 +247,6 @@ surface_material_override/0 = ExtResource("10_70wkj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AmbaBalls2/Ball4"]
 shape = SubResource("SphereShape3D_2qpiy")
 
-[node name="LockedDoors" type="Node3D" parent="."]
-
-[node name="SquareDoors" type="Node3D" parent="LockedDoors"]
-
 [node name="Checkpoints" type="Node3D" parent="."]
 
 [node name="Checkpoint_1" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]

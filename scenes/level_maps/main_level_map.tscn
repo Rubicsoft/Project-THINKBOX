@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://nekfqs42o871"]
+
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_3nw4t"]
+
+[node name="MainLevel_Map" type="Node3D"]
+
+[node name="Grounds" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_3nw4t")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Grounds"]
+size = Vector3(40, 0.5, 40)
