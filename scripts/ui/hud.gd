@@ -4,7 +4,7 @@ extends Control
 
 @onready var collide_label = $CollideWith
 @onready var frame_rate = $FrameRate
-@onready var crosshair = $Control/Crosshair
+@onready var crosshair = $Crosshair_Pivot/Crosshair
 #Healthbar
 @onready var life_1 = $Health/Life1
 @onready var life_2 = $Health/Life2
@@ -16,6 +16,7 @@ func _process(delta) -> void:
 	visible = not get_tree().paused
 	
 	healthbar()
+	crosshair.texture = preload("res://assets/img/crosshair.png")
 	
 	# Handle label for interactables
 	collide_label.text = ""
@@ -24,6 +25,7 @@ func _process(delta) -> void:
 		#label.text = collider.name
 		if collider.has_method("interact"):
 			collide_label.text = collider.prompt_msg
+			crosshair.texture = preload("res://assets/img/crosshair_hovered.png")
 	
 	frame_rate.text = "FPS " + str(Engine.get_frames_per_second())
 
