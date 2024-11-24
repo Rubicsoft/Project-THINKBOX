@@ -1,72 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://nekfqs42o871"]
+[gd_scene load_steps=7 format=3 uid="uid://nekfqs42o871"]
 
-[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_3nw4t"]
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
+[ext_resource type="PackedScene" uid="uid://c1toykjeg27op" path="res://scenes/level_maps/main_level_subgrounds/subground_2.tscn" id="2_3wgdg"]
+[ext_resource type="PackedScene" uid="uid://bvm0177fay37x" path="res://scenes/level_maps/main_level_subgrounds/subground_1.tscn" id="2_m056q"]
+[ext_resource type="PackedScene" uid="uid://ct8cvaa8wiqe5" path="res://scenes/level_maps/main_level_subgrounds/subground_3.tscn" id="4_hecg3"]
+[ext_resource type="PackedScene" uid="uid://c7c1joojlvqak" path="res://scenes/level_maps/main_level_subgrounds/subground_4.tscn" id="5_7a0w4"]
+[ext_resource type="PackedScene" uid="uid://b08qsm4yvd5gr" path="res://scenes/level_maps/main_level_subgrounds/subground_5.tscn" id="6_fcddv"]
 
 [node name="MainLevel_Map" type="Node3D"]
 
 [node name="Grounds" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_3nw4t")
+material_override = ExtResource("1_64ofg")
 use_collision = true
 
 [node name="Ground1" type="CSGCombiner3D" parent="Grounds"]
 
-[node name="Subground1" type="CSGCombiner3D" parent="Grounds/Ground1"]
+[node name="Subground1" parent="Grounds/Ground1" instance=ExtResource("2_m056q")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground1"]
-size = Vector3(40, 0.5, 40)
+[node name="Subground2" parent="Grounds/Ground1" instance=ExtResource("2_3wgdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -20, 0)
 
-[node name="Subground2" type="CSGCombiner3D" parent="Grounds/Ground1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 50)
+[node name="Subground3" parent="Grounds/Ground1" instance=ExtResource("4_hecg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -20, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground2"]
-size = Vector3(40, 0.5, 40)
+[node name="Subground4" parent="Grounds/Ground1" instance=ExtResource("5_7a0w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 50)
 
-[node name="Subground3" type="CSGCombiner3D" parent="Grounds/Ground1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -50)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground3"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground4" type="CSGCombiner3D" parent="Grounds/Ground1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -13, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground4"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground5" type="CSGCombiner3D" parent="Grounds/Ground1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -13, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground1/Subground5"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Ground2" type="CSGCombiner3D" parent="Grounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26, 0)
-
-[node name="Subground1" type="CSGCombiner3D" parent="Grounds/Ground2"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground1"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground2" type="CSGCombiner3D" parent="Grounds/Ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 50)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground2"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground3" type="CSGCombiner3D" parent="Grounds/Ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, -50)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground3"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground4" type="CSGCombiner3D" parent="Grounds/Ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -13, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground4"]
-size = Vector3(40, 0.5, 40)
-
-[node name="Subground5" type="CSGCombiner3D" parent="Grounds/Ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -13, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Grounds/Ground2/Subground5"]
-size = Vector3(40, 0.5, 40)
+[node name="Subground5" parent="Grounds/Ground1" instance=ExtResource("6_fcddv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -50)
