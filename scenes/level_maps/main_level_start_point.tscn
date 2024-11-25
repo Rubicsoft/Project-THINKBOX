@@ -31,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.374074, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.4, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrks1"]
@@ -47,12 +47,12 @@ material_override = ExtResource("1_6b2vn")
 use_collision = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Building"]
-radius = 10.0
+radius = 8.0
 height = 0.5
-sides = 12
+sides = 32
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.75)
 size = Vector3(5, 4, 3.5)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Building/CSGBox3D"]

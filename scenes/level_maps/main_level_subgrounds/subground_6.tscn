@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdclffds00l1f"]
-
-[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_vlo4c"]
-
-[node name="Subground1" type="CSGCombiner3D"]
-material_overlay = ExtResource("1_vlo4c")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(40, 0.5, 40)
