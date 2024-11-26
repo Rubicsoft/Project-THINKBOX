@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=42 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -30,6 +30,8 @@
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="28_8n61s"]
 [ext_resource type="ArrayMesh" uid="uid://cnjuq2t4pltd6" path="res://assets/model/bench_2.obj" id="29_4sa1r"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="29_fnvfc"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="29_tq6hy"]
+[ext_resource type="PackedScene" uid="uid://c8nvswcey6gwl" path="res://prefabs/object/decor/bench02.tscn" id="32_d832v"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -91,7 +93,7 @@ rings = 16
 [sub_resource type="SphereShape3D" id="SphereShape3D_2qpiy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_11kmd"]
-size = Vector3(2, 0.707336, 1)
+size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fhokp"]
 size = Vector3(2, 0.5, 1)
@@ -286,7 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, 6)
 
 [node name="Bench01_1" type="MeshInstance3D" parent="Benches01"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, -0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, -0.251476, 0)
 mesh = ExtResource("27_e077s")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("28_8n61s")
@@ -294,11 +296,11 @@ surface_material_override/0 = ExtResource("28_8n61s")
 [node name="StaticBody3D" type="StaticBody3D" parent="Benches01/Bench01_1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Benches01/Bench01_1/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611969, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501476, 0)
 shape = SubResource("BoxShape3D_11kmd")
 
 [node name="Bench01_2" type="MeshInstance3D" parent="Benches01"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, -0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, -0.215637, 0)
 mesh = ExtResource("27_e077s")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("28_8n61s")
@@ -306,8 +308,11 @@ surface_material_override/0 = ExtResource("28_8n61s")
 [node name="StaticBody3D" type="StaticBody3D" parent="Benches01/Bench01_2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Benches01/Bench01_2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611969, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465637, 0)
 shape = SubResource("BoxShape3D_11kmd")
+
+[node name="Bench01" parent="Benches01" instance=ExtResource("29_tq6hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -2.5)
 
 [node name="Benches02" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
@@ -335,3 +340,6 @@ skeleton = NodePath("../../Benches01")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Benches02/Bench02_2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_fhokp")
+
+[node name="Bench02" parent="Benches02" instance=ExtResource("32_d832v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.5)

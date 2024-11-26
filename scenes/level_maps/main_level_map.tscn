@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nekfqs42o871"]
+[gd_scene load_steps=4 format=3 uid="uid://nekfqs42o871"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="2_bcvu4"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="3_dlnhm"]
 
 [node name="MainLevel_Map" type="Node3D"]
 
@@ -24,3 +25,6 @@ transform = Transform3D(0.832283, 0, -0.554351, 0, 1, 0, 0.554351, 0, 0.832283, 
 
 [node name="MovingPlatform_Spin" parent="." instance=ExtResource("2_bcvu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94999, 4.53275, 12.7812)
+
+[node name="Bench01" parent="." instance=ExtResource("3_dlnhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)

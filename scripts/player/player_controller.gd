@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var player_voice = $Audios/PlayerVoice
 @onready var jump_ground = $Audios/JumpGround
 
-@export var is_controlable: bool = true
+#@export var is_controlable: bool = true
 var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
 
@@ -25,7 +25,7 @@ func _ready():
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
-	if is_controlable:
+	if Global.is_player_controllable:
 		if event is InputEventMouseMotion:
 			rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
 			camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
@@ -54,7 +54,7 @@ func _physics_process(delta) -> void:
 		jump_ground.play()
 
 	# Handle movement
-	if is_controlable:
+	if Global.is_player_controllable:
 		var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
