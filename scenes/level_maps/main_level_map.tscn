@@ -12,7 +12,7 @@ use_collision = true
 size = Vector3(200, 0.5, 200)
 material = ExtResource("1_64ofg")
 
-[node name="NickelPeak" type="CSGBox3D" parent="Map"]
+[node name="NickelPeak" type="CSGCombiner3D" parent="Map"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/NickelPeak"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.9221, 0, 55.1867)
