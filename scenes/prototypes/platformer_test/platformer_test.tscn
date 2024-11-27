@@ -29,8 +29,8 @@
 [ext_resource type="ArrayMesh" uid="uid://caobueplqgjsv" path="res://assets/model/bench_1.obj" id="27_e077s"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="28_8n61s"]
 [ext_resource type="ArrayMesh" uid="uid://cnjuq2t4pltd6" path="res://assets/model/bench_2.obj" id="29_4sa1r"]
-[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="29_fnvfc"]
 [ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="29_tq6hy"]
+[ext_resource type="Material" uid="uid://dla6kpqt8d55b" path="res://materials/bench02.tres" id="30_38mi8"]
 [ext_resource type="PackedScene" uid="uid://c8nvswcey6gwl" path="res://prefabs/object/decor/bench02.tscn" id="32_d832v"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
@@ -319,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
 
 [node name="Bench02_1" type="MeshInstance3D" parent="Benches02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 0)
-material_override = ExtResource("29_fnvfc")
+material_override = ExtResource("30_38mi8")
 mesh = ExtResource("29_4sa1r")
 skeleton = NodePath("../../Benches01")
 
@@ -331,7 +331,7 @@ shape = SubResource("BoxShape3D_fhokp")
 
 [node name="Bench02_2" type="MeshInstance3D" parent="Benches02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, 0)
-material_override = ExtResource("29_fnvfc")
+material_override = ExtResource("30_38mi8")
 mesh = ExtResource("29_4sa1r")
 skeleton = NodePath("../../Benches01")
 

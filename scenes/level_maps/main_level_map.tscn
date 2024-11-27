@@ -27,4 +27,4 @@ transform = Transform3D(0.832283, 0, -0.554351, 0, 1, 0, 0.554351, 0, 0.832283, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94999, 4.53275, 12.7812)
 
 [node name="Bench01" parent="." instance=ExtResource("3_dlnhm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.25, 7)
