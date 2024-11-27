@@ -71,7 +71,7 @@ debug = false
 [sub_resource type="Compositor" id="Compositor_k3xwa"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_4442o"), SubResource("CompositorEffect_45yxf")])
 script = ExtResource("13_t217r")
-samples = 8
+samples = 12
 intensity = 0.5
 center_fade = 0.0
 framerate_independent = true

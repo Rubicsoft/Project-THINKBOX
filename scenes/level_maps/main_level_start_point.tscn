@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://x0d54oo7tmwp"]
+[gd_scene load_steps=7 format=3 uid="uid://x0d54oo7tmwp"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_6b2vn"]
 [ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="2_d055f"]
+[ext_resource type="FontFile" uid="uid://dv7q8djmxhf6m" path="res://assets/font/PlusJakartaSans-Bold.ttf" id="3_i7lms"]
 
 [sub_resource type="Animation" id="Animation_ian8a"]
 length = 0.001
@@ -47,27 +48,29 @@ _data = {
 material_override = ExtResource("1_6b2vn")
 use_collision = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Building"]
-radius = 8.0
-height = 0.5
-sides = 32
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.75)
-size = Vector3(5, 4, 3.5)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Building/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.25)
-operation = 2
-size = Vector3(2, 3.5, 3)
-
 [node name="Benches" type="Node3D" parent="Building"]
 
 [node name="Bench01" parent="Building/Benches" instance=ExtResource("2_d055f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.25, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, -1.75, 0)
 
 [node name="Bench02" parent="Building/Benches" instance=ExtResource("2_d055f")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.25, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, -1.75, 0)
+
+[node name="Label3D" type="Label3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 3)
+billboard = 1
+text = "Collect checkpoints and then comeback here"
+font = ExtResource("3_i7lms")
+font_size = 24
+outline_size = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Building"]
+size = Vector3(9.5, 4.5, 18.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Building/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
+operation = 2
+size = Vector3(8.5, 3.5, 18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
