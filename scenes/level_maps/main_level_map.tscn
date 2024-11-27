@@ -1,30 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://nekfqs42o871"]
+[gd_scene load_steps=3 format=3 uid="uid://nekfqs42o871"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
-[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="2_bcvu4"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_jihrj"]
 
 [node name="MainLevel_Map" type="Node3D"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="Map" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_64ofg")
 use_collision = true
 
-[node name="Ground" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="Ground" type="CSGBox3D" parent="Map"]
 size = Vector3(200, 0.5, 200)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.25, 9)
-size = Vector3(2, 2, 2)
+[node name="NickelPeak" type="CSGBox3D" parent="Map"]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
-transform = Transform3D(0.941264, 0, 0.33767, 0, 1, 0, -0.33767, 0, 0.941264, -0.608608, -0.5, -1.7021)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
-transform = Transform3D(0.832283, 0, -0.554351, 0, 1, 0, 0.554351, 0, 0.832283, -0.0903006, 1.5, 0.64325)
-
-[node name="MovingPlatform_Spin" parent="." instance=ExtResource("2_bcvu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94999, 4.53275, 12.7812)
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/NickelPeak"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 65.5)
+size = Vector3(11, 1, 8)
 
 [node name="Mountains" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("3_jihrj")
