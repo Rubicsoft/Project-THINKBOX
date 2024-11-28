@@ -6,6 +6,8 @@ If you're interested, please support the development of the game :)
 
 More info for level design [HERE][level_design_doc]
 
+This project is using *Godot 4.3*
+
 ## Support Me 💟
 [Instagram][ig_link]
 
