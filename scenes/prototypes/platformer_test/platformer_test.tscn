@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=43 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="29_tq6hy"]
 [ext_resource type="Material" uid="uid://dla6kpqt8d55b" path="res://materials/bench02.tres" id="30_38mi8"]
 [ext_resource type="PackedScene" uid="uid://c8nvswcey6gwl" path="res://prefabs/object/decor/bench02.tscn" id="32_d832v"]
+[ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="33_jhocu"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -343,3 +344,12 @@ shape = SubResource("BoxShape3D_fhokp")
 
 [node name="Bench02" parent="Benches02" instance=ExtResource("32_d832v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.5)
+
+[node name="Trampolines" type="Node3D" parent="."]
+
+[node name="Trampoline_Platform1" parent="Trampolines" instance=ExtResource("33_jhocu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -7)
+
+[node name="Trampoline_Platform2" parent="Trampolines" instance=ExtResource("33_jhocu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, -13)
+JUMP_FORCE = 16.0
