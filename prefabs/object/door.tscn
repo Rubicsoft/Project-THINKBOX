@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_yoyqc"]
 [ext_resource type="ArrayMesh" uid="uid://b14ucul5ucp3l" path="res://assets/model/door/door_base.obj" id="2_7crcp"]
-[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="2_m3d0y"]
-[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_3e4tm"]
+[ext_resource type="Material" uid="uid://b71grmrowo1xu" path="res://materials/door/door_wood.tres" id="3_l8k4e"]
 [ext_resource type="AudioStream" uid="uid://c6kfrmofx7kar" path="res://assets/sounds/door_open.ogg" id="4_gwxu0"]
-[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="4_nw6cn"]
+[ext_resource type="Material" uid="uid://bn58ndial6h26" path="res://materials/door/door_glass.tres" id="4_yrdeu"]
 [ext_resource type="AudioStream" uid="uid://dngvvdqyhave4" path="res://assets/sounds/door_close.ogg" id="5_8iq6t"]
+[ext_resource type="Material" uid="uid://bbryyh3ec5jur" path="res://materials/door/door_metal.tres" id="5_hpr6o"]
 [ext_resource type="ArrayMesh" uid="uid://dtl0clen6ti7w" path="res://assets/model/door/door_lock.obj" id="6_u05sk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iao75"]
@@ -152,13 +152,13 @@ shape = SubResource("BoxShape3D_iao75")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
 mesh = ExtResource("2_7crcp")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_m3d0y")
-surface_material_override/1 = ExtResource("4_nw6cn")
-surface_material_override/2 = ExtResource("3_3e4tm")
+surface_material_override/0 = ExtResource("3_l8k4e")
+surface_material_override/1 = ExtResource("4_yrdeu")
+surface_material_override/2 = ExtResource("5_hpr6o")
 
 [node name="DoorHandle" type="MeshInstance3D" parent="AnimatableBody3D/DoorMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498, 0, 0)
-material_override = ExtResource("3_3e4tm")
+material_override = ExtResource("5_hpr6o")
 mesh = ExtResource("6_u05sk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]

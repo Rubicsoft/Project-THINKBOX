@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bn58ndial6h26"]
+
+[ext_resource type="Texture2D" uid="uid://cyrqqka02c0d0" path="res://assets/texture/garage_floor/garage_floor_nor_gl.jpg" id="1_6wvp0"]
+[ext_resource type="Texture2D" uid="uid://nhavhtvg03fv" path="res://assets/texture/garage_floor/garage_floor_rough.jpg" id="2_7clnf"]
+
+[resource]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.941176)
+roughness = 0.05
+roughness_texture = ExtResource("2_7clnf")
+normal_enabled = true
+normal_scale = 0.9
+normal_texture = ExtResource("1_6wvp0")
+uv1_scale = Vector3(3, 3, 3)

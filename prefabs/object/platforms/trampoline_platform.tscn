@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://k2mmvmj0c3vt"]
+[gd_scene load_steps=7 format=3 uid="uid://k2mmvmj0c3vt"]
 
 [ext_resource type="Script" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="2_4vwkj"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_owlv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ls26"]
 size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p082g"]
 size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qw3e0"]
+size = Vector3(0.8, 0.1, 0.8)
 
 [node name="Trampoline_Platform" type="Area3D"]
 collision_mask = 2
@@ -19,5 +23,13 @@ shape = SubResource("BoxShape3D_4ls26")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_p082g")
 surface_material_override/0 = ExtResource("2_4vwkj")
+
+[node name="BoingSFX" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Bouncer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111262, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_qw3e0")
+surface_material_override/0 = ExtResource("3_owlv6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
