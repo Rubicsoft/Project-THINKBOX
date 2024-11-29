@@ -16,8 +16,8 @@ func interact() -> void:
 		node_reaction()
 		Checkpoint.last_position = player.global_position
 		Checkpoint.last_rotation = player.global_rotation
-		print("Player last position : " + str(Checkpoint.last_position))
-		print("Player last rotation : " + str(rad_to_deg(Checkpoint.last_rotation.y)))
+		#print("Player last position : " + str(Checkpoint.last_position))
+		#print("Player last rotation : " + str(rad_to_deg(Checkpoint.last_rotation.y)))
 
 func node_reaction() -> void:
 	label.visible = true

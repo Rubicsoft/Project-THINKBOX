@@ -357,3 +357,16 @@ JUMP_FORCE = 16.0
 [node name="Trampoline_Platform3" parent="Trampolines" instance=ExtResource("33_jhocu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -10.5, -2)
 JUMP_FORCE = 20.0
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.25, 3, -2.25)
+light_energy = 11.423
+spot_angle = 36.7952
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.25, 3, -3.25)
+light_energy = 11.423
+shadow_enabled = true
+spot_angle = 36.7952

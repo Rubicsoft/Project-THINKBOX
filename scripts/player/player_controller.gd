@@ -21,7 +21,7 @@ const YAW_LIMIT_SMOOTHNESS = 5.0
 
 func _ready():
 	Checkpoint.last_position = global_position
-	player_voice.play()
+	#player_voice.play()
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
