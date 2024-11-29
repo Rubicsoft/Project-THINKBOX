@@ -347,5 +347,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.5)
 
 [node name="Trampolines" type="Node3D" parent="."]
 
-[node name="Trampoline_Platform" parent="Trampolines" instance=ExtResource("33_jhocu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 6)
+[node name="Trampoline_Platform1" parent="Trampolines" instance=ExtResource("33_jhocu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -7)
+
+[node name="Trampoline_Platform2" parent="Trampolines" instance=ExtResource("33_jhocu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, -13)
+JUMP_FORCE = 16.0
