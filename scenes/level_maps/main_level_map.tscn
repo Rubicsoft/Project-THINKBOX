@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nekfqs42o871"]
+[gd_scene load_steps=5 format=3 uid="uid://nekfqs42o871"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_tus8r"]
+[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="3_g7qkb"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_jihrj"]
 
 [node name="MainLevel_Map" type="Node3D"]
@@ -10,6 +12,12 @@ use_collision = true
 
 [node name="Ground" type="CSGBox3D" parent="Map"]
 size = Vector3(200, 0.5, 200)
+material = ExtResource("1_64ofg")
+
+[node name="CarbonValley" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5347, -1.5, -50.8227)
+operation = 2
+size = Vector3(7, 4, 9)
 material = ExtResource("1_64ofg")
 
 [node name="NickelPeak" type="CSGCombiner3D" parent="Map"]
@@ -27,8 +35,64 @@ size = Vector3(30.4325, 1, 33)
 [node name="ZincPeak" type="CSGCombiner3D" parent="Map"]
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map/ZincPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0779, 0, -13.8133)
-size = Vector3(30.4325, 1, 33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8616, 0.499, -13.8133)
+size = Vector3(26, 2, 33)
+material = ExtResource("2_tus8r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/ZincPeak"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8616, 2.499, -13.8133)
+radius = 13.0
+sides = 16
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138351, 1.499, 0.1867)
+radius = 12.0
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+radius = 11.0
+sides = 16
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+radius = 9.0
+height = 4.0
+sides = 16
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+radius = 8.0
+sides = 16
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+radius = 6.0
+height = 6.0
+sides = 16
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+radius = 4.0
+height = 8.0
+sides = 16
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
+radius = 3.0
+height = 26.0
+sides = 16
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 0)
+radius = 2.0
+height = 18.0
+sides = 16
+
+[node name="SpinPlatform" type="Node3D" parent="Map/ZincPeak"]
+
+[node name="MovingPlatform_Spin" parent="Map/ZincPeak/SpinPlatform" instance=ExtResource("3_g7qkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 6, -13)
 
 [node name="CobaltPeak" type="CSGCombiner3D" parent="Map"]
 
