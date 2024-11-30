@@ -43,51 +43,60 @@ material = ExtResource("2_tus8r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8616, 2.499, -13.8133)
 radius = 13.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138351, 1.499, 0.1867)
 radius = 12.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 radius = 11.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 radius = 9.0
 height = 4.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 radius = 8.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 radius = 6.0
 height = 6.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 radius = 4.0
 height = 8.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
 radius = 3.0
 height = 26.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 0)
 radius = 2.0
 height = 18.0
 sides = 16
+material = ExtResource("3_jihrj")
 
 [node name="SpinPlatform" type="Node3D" parent="Map/ZincPeak"]
 

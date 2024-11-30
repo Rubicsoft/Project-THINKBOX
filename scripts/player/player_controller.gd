@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera = $CameraPivot/Camera3D
 @onready var interact_raycast = $CameraPivot/Camera3D/InteractRayCast
 @onready var camera_animation = $CameraPivot/CameraAnimation
+@onready var quickclimb_raycast = $QuickClimbRaycast
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
@@ -71,6 +72,7 @@ func _physics_process(delta) -> void:
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	quick_climbing()
 	fall_dying()
 
 func fall_dying() -> void:
@@ -86,3 +88,8 @@ func fall_dying() -> void:
 		# Reset value for previeous variables
 		was_in_air = false
 		fall_velocity_before = velocity.y
+
+func quick_climbing() -> void:
+	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
+		print("QUICK CLIMB")
+		velocity.y = 5.0
