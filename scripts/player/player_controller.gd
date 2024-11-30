@@ -12,6 +12,8 @@ extends CharacterBody3D
 #@export var is_controlable: bool = true
 var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
+var was_in_air: bool = false
+var fall_velocity_before: float
 
 # Constants
 const SPEED = 5.0
@@ -68,3 +70,16 @@ func _physics_process(delta) -> void:
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	fall_dying()
+
+func fall_dying() -> void:
+	print(str(fall_velocity_before))
+	if not is_on_floor():
+		was_in_air = true
+		fall_velocity_before = velocity.y
+	elif fall_velocity_before < -5.0 and was_in_air and is_on_floor():
+		# Dying
+		Checkpoint.respawn(self)
+		Global.decrease_value("life_left")
+		was_in_air = false
+		fall_velocity_before = velocity.y
