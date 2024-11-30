@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_owlv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ls26"]
-size = Vector3(1, 0.2, 1)
+size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p082g"]
 size = Vector3(1, 0.2, 1)
@@ -18,6 +18,7 @@ collision_mask = 2
 script = ExtResource("1_482j1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("BoxShape3D_4ls26")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
