@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=12 format=3 uid="uid://dnh0hd3gy112"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
@@ -51,6 +51,8 @@ _data = {
 "RESET": SubResource("Animation_arv4y"),
 "up_down": SubResource("Animation_8ntoj")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_vuou0"]
 
 [node name="PlatformerTest_Map" type="Node3D"]
 
@@ -220,3 +222,9 @@ libraries = {
 "": SubResource("AnimationLibrary_mlncn")
 }
 autoplay = "up_down"
+
+[node name="ClimbablePlatforms" type="Node3D" parent="Platformes"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platformes/ClimbablePlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -2.5)
+mesh = SubResource("BoxMesh_vuou0")

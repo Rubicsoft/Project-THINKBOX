@@ -159,6 +159,7 @@ surface_material_override/2 = ExtResource("5_hpr6o")
 [node name="DoorHandle" type="MeshInstance3D" parent="AnimatableBody3D/DoorMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498, 0, 0)
 material_override = ExtResource("5_hpr6o")
+cast_shadow = 0
 mesh = ExtResource("6_u05sk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
