@@ -20,6 +20,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
+const FALL_DAMAGE_SPEED = 20.0
 
 func _ready():
 	Checkpoint.last_position = global_position
@@ -73,13 +74,15 @@ func _physics_process(delta) -> void:
 	fall_dying()
 
 func fall_dying() -> void:
-	print(str(fall_velocity_before))
 	if not is_on_floor():
+		# Get value for next frame
 		was_in_air = true
 		fall_velocity_before = velocity.y
-	elif fall_velocity_before < -5.0 and was_in_air and is_on_floor():
-		# Dying
+	elif fall_velocity_before < -FALL_DAMAGE_SPEED and was_in_air and is_on_floor():
+		# Dying action
 		Checkpoint.respawn(self)
 		Global.decrease_value("life_left")
+		
+		# Reset value for previeous variables
 		was_in_air = false
 		fall_velocity_before = velocity.y
