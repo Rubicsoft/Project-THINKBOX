@@ -80,13 +80,13 @@ sides = 16
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
 radius = 3.0
-height = 26.0
+height = 20.0
 sides = 16
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 0)
 radius = 2.0
-height = 18.0
+height = 14.0
 sides = 16
 
 [node name="SpinPlatform" type="Node3D" parent="Map/ZincPeak"]
