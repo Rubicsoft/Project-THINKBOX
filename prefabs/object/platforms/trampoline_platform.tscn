@@ -1,17 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://k2mmvmj0c3vt"]
+[gd_scene load_steps=10 format=3 uid="uid://k2mmvmj0c3vt"]
 
 [ext_resource type="Script" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="2_4vwkj"]
-[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_owlv6"]
+[ext_resource type="Texture2D" uid="uid://dktmy5glo1q0" path="res://assets/img/trampoline_tex/trampoline_01.png" id="4_m0176"]
+[ext_resource type="Texture2D" uid="uid://vyd77tr2usig" path="res://assets/img/trampoline_tex/trampoline_02.png" id="5_twg55"]
+[ext_resource type="Texture2D" uid="uid://o0ajt08ppknw" path="res://assets/img/trampoline_tex/trampoline_ring.png" id="6_jjmny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ls26"]
 size = Vector3(1, 0.5, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_p082g"]
-size = Vector3(1, 0.2, 1)
+[sub_resource type="Animation" id="Animation_aba6x"]
+resource_name = "spin_loop"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrampolineTex_01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrampolineTex_02:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
 
-[sub_resource type="BoxMesh" id="BoxMesh_qw3e0"]
-size = Vector3(0.8, 0.1, 0.8)
+[sub_resource type="Animation" id="Animation_ubc0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrampolineTex_01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrampolineTex_02:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg7ly"]
+_data = {
+"RESET": SubResource("Animation_ubc0n"),
+"spin_loop": SubResource("Animation_aba6x")
+}
 
 [node name="Trampoline_Platform" type="Area3D"]
 collision_mask = 2
@@ -21,16 +79,73 @@ script = ExtResource("1_482j1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("BoxShape3D_4ls26")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_p082g")
-surface_material_override/0 = ExtResource("2_4vwkj")
-
 [node name="BoingSFX" type="AudioStreamPlayer3D" parent="."]
 
-[node name="Bouncer" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111262, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_qw3e0")
-surface_material_override/0 = ExtResource("3_owlv6")
+[node name="TrampolineTex_01" type="Node3D" parent="."]
+
+[node name="TTex01_1" type="Sprite3D" parent="TrampolineTex_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("4_m0176")
+
+[node name="TTex01_2" type="Sprite3D" parent="TrampolineTex_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("4_m0176")
+
+[node name="TTex01_3" type="Sprite3D" parent="TrampolineTex_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("4_m0176")
+
+[node name="TrampolineTex_02" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="TTex02_1" type="Sprite3D" parent="TrampolineTex_02"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.372, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("5_twg55")
+
+[node name="TTex02_2" type="Sprite3D" parent="TrampolineTex_02"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.628, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("5_twg55")
+
+[node name="TTex02_4" type="Sprite3D" parent="TrampolineTex_02"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+pixel_size = 0.0007
+axis = 1
+texture = ExtResource("5_twg55")
+
+[node name="TrampolineTex_Ring" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="TrampolineTex_Ring"]
+pixel_size = 0.002
+axis = 1
+texture = ExtResource("6_jjmny")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("2_4vwkj")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+height = 0.25
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+operation = 2
+radius = 0.427556
+height = 0.5
+sides = 16
+
+[node name="Spin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wg7ly")
+}
+autoplay = "spin_loop"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
