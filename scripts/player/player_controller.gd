@@ -92,4 +92,6 @@ func fall_dying() -> void:
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		print("QUICK CLIMB")
+		var hit_obj: Object = quickclimb_raycast.get_collider()
+		print(hit_obj)
 		velocity.y = 5.0
