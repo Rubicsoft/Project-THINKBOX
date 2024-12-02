@@ -35,6 +35,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrampolineTex_Ring:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_aba6x"]
 resource_name = "spin_loop"
@@ -63,6 +75,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrampolineTex_Ring:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wg7ly"]
@@ -123,8 +147,14 @@ texture = ExtResource("5_twg55")
 
 [node name="TrampolineTex_Ring" type="Node3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="TrampolineTex_Ring"]
-pixel_size = 0.002
+[node name="TTexRing_1" type="Sprite3D" parent="TrampolineTex_Ring"]
+pixel_size = 0.0015
+axis = 1
+texture = ExtResource("6_jjmny")
+
+[node name="TTexRing_2" type="Sprite3D" parent="TrampolineTex_Ring"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.001
 axis = 1
 texture = ExtResource("6_jjmny")
 
