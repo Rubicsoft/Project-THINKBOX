@@ -8,12 +8,10 @@ const CLIMB_SMOOTHNESS = 12.5
 
 func _physics_process(delta):
 	if is_climbing and Input.is_action_pressed("move_foreward"):
-		print("Climb")
 		player.velocity.y = CLIMB_SPEED
 
 func _on_body_entered(body) -> void:
 	if body is CharacterBody3D:
-		print("Climb")
 		player = body
 		is_climbing = true
 
