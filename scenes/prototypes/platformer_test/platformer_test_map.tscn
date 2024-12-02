@@ -231,7 +231,7 @@ autoplay = "up_down"
 [node name="ClimbablePlatforms" type="Node3D" parent="Platformes"]
 
 [node name="Climb1" type="MeshInstance3D" parent="Platformes/ClimbablePlatforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.7825, -2.74562)
+transform = Transform3D(1, 0, 0, 0, 0.954593, 0, 0, 0, 1, -2.5, 1.7825, -2.74562)
 mesh = SubResource("BoxMesh_vuou0")
 surface_material_override/0 = ExtResource("2_5k4my")
 
