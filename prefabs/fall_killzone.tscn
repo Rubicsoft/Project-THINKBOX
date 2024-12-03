@@ -6,6 +6,7 @@
 
 [node name="FallKillzone" type="Area3D"]
 collision_mask = 3
+input_ray_pickable = false
 script = ExtResource("1_xk5qm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

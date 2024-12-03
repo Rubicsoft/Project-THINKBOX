@@ -11,7 +11,7 @@ func _physics_process(delta):
 		player.velocity.y = CLIMB_SPEED
 
 func _on_body_entered(body) -> void:
-	if body is CharacterBody3D:
+	if body is Player:
 		player = body
 		is_climbing = true
 

@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var camera = $CameraPivot/Camera3D
 @onready var interact_raycast = $CameraPivot/Camera3D/InteractRayCast
@@ -83,7 +84,7 @@ func fall_dying() -> void:
 	elif fall_velocity_before < -FALL_DAMAGE_SPEED and was_in_air and is_on_floor():
 		# Dying action
 		Checkpoint.respawn(self)
-		#Global.decrease_value("life_left")
+		Global.decrease_value("life_left")
 		
 		# Reset value for previeous variables
 		was_in_air = false
@@ -93,5 +94,4 @@ func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		var hit_obj: Object = quickclimb_raycast.get_collider()
 		if hit_obj is AnimatableBody3D:
-			print(hit_obj)
 			velocity.y = 5.0
