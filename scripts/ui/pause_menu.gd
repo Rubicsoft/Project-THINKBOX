@@ -17,11 +17,9 @@ func _process(_delta) -> void:
 	match get_tree().paused:
 		true:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), lerp(bgm_normal_volume, BGM_PAUSED_VOLUME, BGM_PAUSE_SMOOTHNESS * delta))
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), BGM_PAUSED_VOLUME)
 		false:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), lerp(BGM_PAUSED_VOLUME, bgm_normal_volume, BGM_PAUSE_SMOOTHNESS * delta))
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), bgm_normal_volume)
 
 func pause_game() -> void:

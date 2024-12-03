@@ -135,13 +135,13 @@ texture = ExtResource("5_twg55")
 
 [node name="TTex02_2" type="Sprite3D" parent="TrampolineTex_02"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.628, 0)
-pixel_size = 0.0007
+pixel_size = 0.001
 axis = 1
 texture = ExtResource("5_twg55")
 
 [node name="TTex02_4" type="Sprite3D" parent="TrampolineTex_02"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
-pixel_size = 0.0007
+pixel_size = 0.0006
 axis = 1
 texture = ExtResource("5_twg55")
 
