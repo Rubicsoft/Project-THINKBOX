@@ -83,7 +83,7 @@ func fall_dying() -> void:
 	elif fall_velocity_before < -FALL_DAMAGE_SPEED and was_in_air and is_on_floor():
 		# Dying action
 		Checkpoint.respawn(self)
-		Global.decrease_value("life_left")
+		#Global.decrease_value("life_left")
 		
 		# Reset value for previeous variables
 		was_in_air = false
