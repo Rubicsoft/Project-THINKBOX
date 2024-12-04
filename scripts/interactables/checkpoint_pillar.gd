@@ -10,7 +10,7 @@ var is_obtained: bool = false
 func _ready():
 	label.visible = false
 
-func interact() -> void:
+func _on_interact() -> void:
 	if not is_obtained:
 		is_obtained = true
 		node_reaction()

@@ -23,7 +23,7 @@ func _process(delta) -> void:
 	if interact_raycast.is_colliding():
 		var collider = interact_raycast.get_collider()
 		#label.text = collider.name
-		if collider.has_method("interact"):
+		if collider.has_method("_on_interact"):
 			collide_label.text = collider.prompt_msg
 			crosshair.texture = preload("res://assets/img/crosshair_hovered.png")
 	
