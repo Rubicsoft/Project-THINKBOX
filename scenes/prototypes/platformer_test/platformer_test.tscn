@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=45 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -98,6 +98,14 @@ size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fhokp"]
 size = Vector3(2, 0.5, 1)
+
+[sub_resource type="Animation" id="Animation_kjhcp"]
+resource_name = "opening"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ansyt"]
+_data = {
+"opening": SubResource("Animation_kjhcp")
+}
 
 [node name="PlatformerTest" type="Node3D"]
 script = ExtResource("1_1fcd3")
@@ -375,3 +383,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.25,
 light_energy = 11.423
 shadow_enabled = true
 spot_angle = 36.7952
+
+[node name="Cutscene" type="Node" parent="."]
+
+[node name="Opening_Cutscene" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_ansyt")
+}
