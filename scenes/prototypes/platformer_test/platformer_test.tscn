@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=46 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -101,14 +101,116 @@ size = Vector3(2, 0.5, 1)
 
 [sub_resource type="Animation" id="Animation_kjhcp"]
 resource_name = "opening"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(15.953, 1.50449, 15.7177), Vector3(8.95305, 1.50449, 9.71771)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D1:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9.74237, 1.19936, -3.10875), Vector3(10.3642, 1.19936, -3.9725)]
+}
+
+[sub_resource type="Animation" id="Animation_6fjrm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(15.953, 1.50449, 15.7177)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D1:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.74237, 1.19936, -3.10875)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ansyt"]
 _data = {
+"RESET": SubResource("Animation_6fjrm"),
 "opening": SubResource("Animation_kjhcp")
 }
 
-[node name="PlatformerTest" type="Node3D"]
+[node name="PlatformerTest" type="Node3D" node_paths=PackedStringArray("opening_cutscene")]
 script = ExtResource("1_1fcd3")
+opening_cutscene = NodePath("Cutscene/Opening_Cutscene")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7ihx3")
@@ -390,3 +492,13 @@ spot_angle = 36.7952
 libraries = {
 "": SubResource("AnimationLibrary_ansyt")
 }
+
+[node name="Camera3D1" type="Camera3D" parent="Cutscene"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.953, 1.50449, 15.7177)
+current = true
+fov = 60.0
+
+[node name="Camera3D2" type="Camera3D" parent="Cutscene"]
+transform = Transform3D(0.548381, 0, 0.836229, 0, 1, 0, -0.836229, 0, 0.548381, 9.74237, 1.19936, -3.10875)
+current = true
+fov = 35.0

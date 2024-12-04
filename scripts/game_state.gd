@@ -8,7 +8,7 @@ func _ready() -> void:
 	# Make the mouse invisible and centered when in gameplay
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if opening_cutscene:
-		opening_cutscene.play()
+		opening_cutscene.play("opening")
 		Global.is_player_controllable = false
 
 func _process(delta) -> void:
