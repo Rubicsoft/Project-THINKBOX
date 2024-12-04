@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://o0ajt08ppknw" path="res://assets/img/trampoline_tex/trampoline_ring.png" id="6_jjmny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ls26"]
-size = Vector3(1, 0.5, 1)
+size = Vector3(1.5, 0.5, 1.5)
 
 [sub_resource type="Animation" id="Animation_ubc0n"]
 length = 0.001

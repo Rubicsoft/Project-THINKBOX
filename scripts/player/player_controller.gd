@@ -1,17 +1,17 @@
 extends CharacterBody3D
 class_name Player
 
-@onready var camera = $CameraPivot/Camera3D
-@onready var interact_raycast = $CameraPivot/Camera3D/InteractRayCast
-@onready var camera_animation = $CameraPivot/CameraAnimation
-@onready var quickclimb_raycast = $QuickClimbRaycast
+@onready var camera: Camera3D = $CameraPivot/Camera3D
+@onready var interact_raycast: RayCast3D = $CameraPivot/Camera3D/InteractRayCast
+@onready var camera_animation: AnimationPlayer = $CameraPivot/CameraAnimation
+@onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
+@onready var after_dying: Timer = $AfterDying
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
 @onready var player_voice = $Audios/PlayerVoice
 @onready var jump_ground = $Audios/JumpGround
 
-#@export var is_controlable: bool = true
 var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
@@ -43,8 +43,9 @@ func _input(event) -> void:
 func _process(delta) -> void:
 	# Limit the camera yaw and also smooth it out
 	var camera_yaw_limit = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-	camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	if is_on_floor():
+		camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
@@ -95,3 +96,6 @@ func quick_climbing() -> void:
 		var hit_obj: Object = quickclimb_raycast.get_collider()
 		if hit_obj is AnimatableBody3D:
 			velocity.y = 5.0
+
+func _on_after_dying_timeout() -> void:
+	Global.is_player_controllable = true
