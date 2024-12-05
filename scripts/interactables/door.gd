@@ -13,7 +13,7 @@ func _process(delta):
 		false:
 			prompt_msg = "Door\n[OPEN]"
 
-func interact():
+func _on_interact():
 	if is_interactable == true:
 		is_interactable = false
 		toggle = not toggle
