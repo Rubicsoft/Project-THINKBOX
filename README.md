@@ -1,4 +1,4 @@
-# Project THINKBOX
+# Codex-RUN
 
 *This game is still under alpha development*
 
