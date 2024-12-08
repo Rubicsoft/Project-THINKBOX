@@ -11,8 +11,7 @@ This project is using *Godot 4.3*
 
 ## Cloning
 
-Use **Git LFS** to clone this repository
-For more info about Git LFS [Click Here][lfs_link]
+Use **Git LFS** to clone this repository. For more info about Git LFS [Click Here][lfs_link]
 
 ## Support Me 💟
 [Instagram][ig_link]
