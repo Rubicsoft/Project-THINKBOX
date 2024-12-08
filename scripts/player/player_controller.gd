@@ -90,6 +90,11 @@ func fall_dying() -> void:
 		# Reset value for previeous variables
 		was_in_air = false
 		fall_velocity_before = velocity.y
+	elif was_in_air and is_on_floor():
+		print("FALL")
+		camera_animation.play("player_take_fall")
+		was_in_air = false
+		fall_velocity_before = velocity.y
 
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
