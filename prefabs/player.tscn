@@ -56,22 +56,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.108472, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_omk0n"]
-resource_name = "player_walking"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_j6pxq"]
 resource_name = "player_take_fall"
 length = 0.4
@@ -86,6 +70,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0.261799), Vector3(0, 0, -0.261799), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_omk0n"]
+resource_name = "player_walking"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.442644, 0), Vector3(0, 0.345315, 0), Vector3(0, 0.442644, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v25mb"]

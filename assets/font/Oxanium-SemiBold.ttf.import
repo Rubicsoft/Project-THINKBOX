@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dkfx842xjv3oa"
-path="res://.godot/imported/PlusJakartaSans-ExtraBold.ttf-f457a96d04794264e23cbe8e6862400b.fontdata"
+uid="uid://d4l0eikde40fs"
+path="res://.godot/imported/Oxanium-SemiBold.ttf-90963faf8a1246b28b445964f6b96a9d.fontdata"
 
 [deps]
 
-source_file="res://assets/font/PlusJakartaSans-ExtraBold.ttf"
-dest_files=["res://.godot/imported/PlusJakartaSans-ExtraBold.ttf-f457a96d04794264e23cbe8e6862400b.fontdata"]
+source_file="res://assets/font/Oxanium-SemiBold.ttf"
+dest_files=["res://.godot/imported/Oxanium-SemiBold.ttf-90963faf8a1246b28b445964f6b96a9d.fontdata"]
 
 [params]
 

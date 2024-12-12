@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="4_ic8f0"]
 [ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="5_hhluh"]
 [ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="6_ff26i"]
-[ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="7_ipjdf"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="7_tswwr"]
 [ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="8_d6224"]
 [ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="9_gnlho"]
@@ -22,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="14_7qawv"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="15_ws4fd"]
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="20_fcaky"]
+[ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="21_l6v1d"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_o3r77"]
 resource_local_to_scene = false
@@ -128,7 +128,7 @@ billboard = 1
 no_depth_test = true
 text = "Welcome to Prototypye Starter level
 Where this game is started"
-font = ExtResource("7_ipjdf")
+font = ExtResource("21_l6v1d")
 font_size = 16
 outline_size = 0
 

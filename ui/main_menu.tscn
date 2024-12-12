@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk0u3y3sy6ff0"]
 
-[ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="1_ml587"]
+[ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="1_gnbra"]
 
 [sub_resource type="Theme" id="Theme_7w1f0"]
-default_font = ExtResource("1_ml587")
+default_font = ExtResource("1_gnbra")
 default_font_size = 32
 
 [node name="MainMenuUI" type="Control"]

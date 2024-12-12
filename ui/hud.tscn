@@ -1,20 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://vkqifsa2867t"]
+[gd_scene load_steps=8 format=3 uid="uid://vkqifsa2867t"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_7g3tc"]
-[ext_resource type="FontFile" uid="uid://dkfx842xjv3oa" path="res://assets/font/PlusJakartaSans-ExtraBold.ttf" id="2_usum6"]
-[ext_resource type="FontFile" uid="uid://dv7q8djmxhf6m" path="res://assets/font/PlusJakartaSans-Bold.ttf" id="3_6p7pp"]
+[ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="2_5nc8n"]
+[ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="3_pwasb"]
 [ext_resource type="Texture2D" uid="uid://hm8opkqditge" path="res://assets/img/crosshair.png" id="4_bhe1p"]
-[ext_resource type="FontFile" uid="uid://um0wlrewdfuu" path="res://assets/font/PlusJakartaSans-Regular.ttf" id="5_xpky4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nhwc0"]
-font = ExtResource("2_usum6")
+font = ExtResource("2_5nc8n")
 font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyoqr"]
-font = ExtResource("3_6p7pp")
+font = ExtResource("3_pwasb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_x804b"]
-font = ExtResource("5_xpky4")
+font = ExtResource("2_5nc8n")
 
 [node name="HUD" type="Control"]
 process_mode = 3
