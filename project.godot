@@ -25,6 +25,8 @@ Checkpoint="*res://scripts/checkpoint.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=960
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
