@@ -92,7 +92,7 @@ func fall_dying() -> void:
 		fall_velocity_before = velocity.y
 	elif was_in_air and is_on_floor():
 		print("FALL")
-		#camera_animation.play("player_take_fall")
+		camera_animation.play("player_jump", -1, 3.0)
 		was_in_air = false
 		fall_velocity_before = velocity.y
 

@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Codex-RUN"
+config/description="Hans need to collect Codex'es"
+config/version="0.0.1"
 config/tags=PackedStringArray("3d", "project")
 run/main_scene="res://scenes/main_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
