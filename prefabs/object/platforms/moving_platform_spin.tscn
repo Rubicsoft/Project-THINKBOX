@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://brue55wemoi8a"]
+[gd_scene load_steps=8 format=3 uid="uid://brue55wemoi8a"]
 
+[ext_resource type="Script" path="res://scripts/platforms/moving_platform.gd" id="1_5hxt5"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="1_ayg0n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlncq"]
@@ -45,6 +46,7 @@ _data = {
 }
 
 [node name="MovingPlatform_Spin" type="AnimatableBody3D"]
+script = ExtResource("1_5hxt5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vlncq")

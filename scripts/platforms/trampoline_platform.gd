@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var JUMP_FORCE: float = 10.0
+@export_range(1.0, 20.0, 0.1) var JUMP_FORCE: float = 10.0
 
 func make_jump(player: CharacterBody3D) -> void:
 	if player.velocity.y:

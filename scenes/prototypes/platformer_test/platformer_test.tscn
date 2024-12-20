@@ -505,5 +505,7 @@ transform = Transform3D(0.548381, 0, 0.836229, 0, 1, 0, -0.836229, 0, 0.548381, 
 current = true
 fov = 35.0
 
-[node name="Codex" parent="." instance=ExtResource("35_2hvfs")]
+[node name="Codex_s" type="Node3D" parent="."]
+
+[node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)

@@ -12,14 +12,15 @@ class_name Player
 @onready var player_voice = $Audios/PlayerVoice
 @onready var jump_ground = $Audios/JumpGround
 
+@export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
+@export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 5.0
+
 var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
 
 # Constants
-const SPEED = 5.0
-const JUMP_VELOCITY = 5.0
 const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
 const FALL_DAMAGE_SPEED = 20.0
