@@ -392,8 +392,14 @@ player = NodePath("../../Player")
 [node name="MovingPlatform_Spin" parent="SpinningPlatform" instance=ExtResource("26_hhnlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
 
-[node name="MovingPlatform_Spin2" parent="SpinningPlatform" instance=ExtResource("26_hhnlm")]
+[node name="MovingPlatform_Spin2" parent="SpinningPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("26_hhnlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 16)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 10.0
+
+[node name="Node3D" type="Node3D" parent="SpinningPlatform/MovingPlatform_Spin2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 0)
 
 [node name="MovingPlatform_Spin3" parent="SpinningPlatform" instance=ExtResource("26_hhnlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 19)
