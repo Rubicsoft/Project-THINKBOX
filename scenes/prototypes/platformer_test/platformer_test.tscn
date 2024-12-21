@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=47 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="2_1vt5s"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_08vw4"]
 [ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="3_me1pg"]
-[ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="3_yxuk2"]
 [ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="4_1l7eu"]
 [ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="5_50vxe"]
 [ext_resource type="PackedScene" uid="uid://bvgmobu7ugwh" path="res://prefabs/fall_killzone.tscn" id="6_8gg48"]
@@ -240,8 +239,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.39
 
 [node name="Player" parent="." instance=ExtResource("2_08vw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7)
-
-[node name="PauseMenu" parent="." instance=ExtResource("3_yxuk2")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3

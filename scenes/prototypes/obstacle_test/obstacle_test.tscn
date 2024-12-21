@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc3fo1jqnsy7v"]
+[gd_scene load_steps=5 format=3 uid="uid://bc3fo1jqnsy7v"]
 
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_q8osr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_qotat"]
+[ext_resource type="PackedScene" uid="uid://baiy2smi6x1tv" path="res://scenes/prototypes/obstacle_test/obstacle_test_level.tscn" id="2_1c0qx"]
+[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_lnn7i"]
 
 [node name="Obstacle_TestLevel" type="Node3D"]
+script = ExtResource("1_q8osr")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_qotat")]
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5, 0)
+shadow_enabled = true
+
+[node name="ObstacleTest_Level" parent="." instance=ExtResource("2_1c0qx")]
+
+[node name="Player" parent="." instance=ExtResource("3_lnn7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
