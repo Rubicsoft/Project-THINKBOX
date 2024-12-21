@@ -25,6 +25,7 @@ const MOVEMENT_SMOOTHNESS = 8.0
 const YAW_LIMIT_SMOOTHNESS = 5.0
 const FALL_DAMAGE_SPEED = 20.0
 
+
 func _ready():
 	Checkpoint.last_position = global_position
 	#player_voice.play()
@@ -41,12 +42,14 @@ func _input(event) -> void:
 	#rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
 	#camera.rotate_x(gamepad_look_dir.y * gamepad_look_sensitivity / 20.0)
 
+
 func _process(delta) -> void:
 	# Limit the camera yaw and also smooth it out
 	var camera_yaw_limit = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	if is_on_floor():
 		camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
@@ -55,10 +58,7 @@ func _physics_process(delta) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		camera_animation.play("player_jump")
-		jump_sfx.play_audio()
-		jump_ground.play()
+		jump()
 
 	# Handle movement
 	if Global.is_player_controllable:
@@ -78,6 +78,7 @@ func _physics_process(delta) -> void:
 	quick_climbing()
 	fall_dying()
 
+
 func fall_dying() -> void:
 	if not is_on_floor():
 		# Get value for next frame
@@ -85,8 +86,7 @@ func fall_dying() -> void:
 		fall_velocity_before = velocity.y
 	elif fall_velocity_before < -FALL_DAMAGE_SPEED and was_in_air and is_on_floor():
 		# Dying action
-		Checkpoint.respawn(self)
-		Global.decrease_value("life_left")
+		kill_self()
 		
 		# Reset value for previeous variables
 		was_in_air = false
@@ -97,11 +97,29 @@ func fall_dying() -> void:
 		was_in_air = false
 		fall_velocity_before = velocity.y
 
+
+# Quick climbing mechanic
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		var hit_obj: Object = quickclimb_raycast.get_collider()
 		if hit_obj is AnimatableBody3D:
 			velocity.y = 5.0
+
+
+# Handle Jump
+func jump(effect_only: bool = false) -> void:
+	if not effect_only:
+		velocity.y = JUMP_VELOCITY
+	camera_animation.play("player_jump")
+	jump_sfx.play_audio()
+	jump_ground.play()
+
+
+# To kill the Player
+func kill_self() -> void:
+	Checkpoint.respawn(self)
+	Global.decrease_value("life_left")
+
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true

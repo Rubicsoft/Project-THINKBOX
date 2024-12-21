@@ -9,6 +9,10 @@ var start_position: Vector3
 func _ready():
 	start_position = global_position
 	
+	tweening()
+	
+
+func tweening() -> void:
 	if end_position and is_moving:
-		var moving = get_tree().create_tween()
-		moving.tween_property(self, "global_position", end_position.global_position, duration)
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", end_position.global_position, duration)
