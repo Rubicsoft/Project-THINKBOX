@@ -168,4 +168,12 @@ target_position = Vector3(0, 1, 0)
 [node name="AfterDying" type="Timer" parent="."]
 one_shot = true
 
+[node name="WallClimb_Raycasts" type="Node3D" parent="."]
+
+[node name="WC_Ray_Right" type="RayCast3D" parent="WallClimb_Raycasts"]
+target_position = Vector3(0.5, 0, 0)
+
+[node name="WC_Ray_Left" type="RayCast3D" parent="WallClimb_Raycasts"]
+target_position = Vector3(-0.5, 0, 0)
+
 [connection signal="timeout" from="AfterDying" to="." method="_on_after_dying_timeout"]
