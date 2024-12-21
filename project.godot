@@ -37,7 +37,8 @@ enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://assets/": "orange"
+"res://assets/": "orange",
+"res://scripts/": "yellow"
 }
 
 [input]

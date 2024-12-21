@@ -1,13 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=19 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
+[ext_resource type="Script" path="res://scripts/audio/random_audio_playback.gd" id="3_e8558"]
 [ext_resource type="PackedScene" uid="uid://vkqifsa2867t" path="res://ui/hud.tscn" id="3_hrfvy"]
-[ext_resource type="Script" path="res://scripts/player/footstep_sfx.gd" id="3_sut87"]
+[ext_resource type="AudioStream" uid="uid://cetqgf2kbjeu8" path="res://assets/sounds/footsteps/footstep_01.ogg" id="4_ee4hq"]
 [ext_resource type="AudioStream" uid="uid://dlc00mlb2h3s" path="res://assets/sounds/jump_01.ogg" id="5_3yces"]
+[ext_resource type="AudioStream" uid="uid://uxek6pd564hs" path="res://assets/sounds/footsteps/footstep_02.ogg" id="5_nbdku"]
 [ext_resource type="AudioStream" uid="uid://1b5l4rpq540d" path="res://assets/sounds/jump_ground.ogg" id="6_4jc5n"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="6_7vlan"]
-[ext_resource type="Script" path="res://scripts/player/jump_sfx.gd" id="6_lkgnu"]
+[ext_resource type="AudioStream" uid="uid://bo7y6huethce1" path="res://assets/sounds/footsteps/footstep_03.ogg" id="6_r07hw"]
+[ext_resource type="AudioStream" uid="uid://h6itpulhbwea" path="res://assets/sounds/jump_02.ogg" id="8_i0mia"]
+[ext_resource type="AudioStream" uid="uid://2kwvvb3vk8gi" path="res://assets/sounds/jump_03.ogg" id="9_xto3w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0qlb0"]
 radius = 0.267689
@@ -112,14 +116,22 @@ interact_raycast = NodePath("../CameraPivot/Camera3D/InteractRayCast")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.404477, 0)
 volume_db = 10.0
 max_db = 6.0
-script = ExtResource("3_sut87")
+bus = &"SFX"
+script = ExtResource("3_e8558")
+audio_1 = ExtResource("4_ee4hq")
+audio_2 = ExtResource("5_nbdku")
+audio_3 = ExtResource("6_r07hw")
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="Audios"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.323541, 0)
 stream = ExtResource("5_3yces")
 volume_db = -5.0
 bus = &"SFX"
-script = ExtResource("6_lkgnu")
+script = ExtResource("3_e8558")
+continuity = true
+audio_1 = ExtResource("5_3yces")
+audio_2 = ExtResource("8_i0mia")
+audio_3 = ExtResource("9_xto3w")
 
 [node name="JumpGround" type="AudioStreamPlayer3D" parent="Audios"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.814534, 0)
@@ -153,5 +165,4 @@ target_position = Vector3(0, 1, 0)
 [node name="AfterDying" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="finished" from="Audios/Run" to="Audios/Run" method="_on_finished"]
 [connection signal="timeout" from="AfterDying" to="." method="_on_after_dying_timeout"]
