@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=8 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
 [ext_resource type="PackedScene" uid="uid://nekfqs42o871" path="res://scenes/level_maps/main_level_map.tscn" id="2_ik5fb"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_em0gt"]
-[ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="5_tayks"]
 [ext_resource type="PackedScene" uid="uid://bvgmobu7ugwh" path="res://prefabs/fall_killzone.tscn" id="6_fut36"]
 [ext_resource type="PackedScene" uid="uid://x0d54oo7tmwp" path="res://scenes/level_maps/main_level_start_point.tscn" id="7_oolvu"]
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="8_yms2s"]
@@ -20,8 +19,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_em0gt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4.1, 0)
-
-[node name="PauseMenu" parent="." instance=ExtResource("5_tayks")]
 
 [node name="FallKillzone" parent="." instance=ExtResource("6_fut36")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47, 0)
