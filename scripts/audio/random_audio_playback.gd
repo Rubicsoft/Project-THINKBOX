@@ -1,4 +1,5 @@
 extends AudioStreamPlayer3D
+class_name RandomAudioPlayback
 
 @export var is_playable: bool = true
 @export var continuity: bool = false

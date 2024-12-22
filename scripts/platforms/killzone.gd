@@ -11,6 +11,8 @@ var killzone_active: bool = true
 func _process(delta) -> void:
 	var minimum_height: float
 	
+	print(killzone_active)
+	
 	if player:
 		if activate_above_player:
 			# Custom minimum height
@@ -22,7 +24,7 @@ func _process(delta) -> void:
 			else:
 				killzone_active = false
 	else :
-		print("Player node not detected")
+		printerr("Player node is not detected")
 
 
 func set_minimum_height() -> float:
@@ -36,3 +38,5 @@ func _on_body_entered(body) -> void:
 	if player:
 		if (body == player) and killzone_active:
 			player.kill_self()
+	else:
+		printerr("Player node is not detected")

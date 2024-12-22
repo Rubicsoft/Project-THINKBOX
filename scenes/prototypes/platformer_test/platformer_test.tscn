@@ -512,10 +512,14 @@ fov = 35.0
 [node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)
 
-[node name="Fall_Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("34_y384k")]
+[node name="Fall_Killzone" parent="." node_paths=PackedStringArray("player", "above_minimum") instance=ExtResource("34_y384k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
 player = NodePath("../Player")
 activate_above_player = true
+above_minimum = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fall_Killzone"]
 shape = SubResource("WorldBoundaryShape3D_j6b72")
+
+[node name="Node3D" type="Node3D" parent="Fall_Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.25, 0)

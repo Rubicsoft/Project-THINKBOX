@@ -1,11 +1,14 @@
 extends CharacterBody3D
 class_name Player
 
+# Nodes
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 @onready var interact_raycast: RayCast3D = $CameraPivot/Camera3D/InteractRayCast
 @onready var camera_animation: AnimationPlayer = $CameraPivot/CameraAnimation
 @onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
 @onready var after_dying: Timer = $AfterDying
+@onready var player_audios: Node3D = $Audios
+
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
@@ -104,6 +107,7 @@ func jump(do_action: bool = true) -> void:
 		velocity.y = JUMP_VELOCITY
 	camera_animation.play("player_jump")
 	jump_sfx.play_audio()
+	#player_audios.play_audio("jump")
 	jump_ground.play()
 
 
