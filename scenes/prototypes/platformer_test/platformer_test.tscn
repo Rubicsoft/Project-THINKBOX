@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=48 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="3_me1pg"]
 [ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="4_1l7eu"]
 [ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="5_50vxe"]
-[ext_resource type="PackedScene" uid="uid://bvgmobu7ugwh" path="res://prefabs/fall_killzone.tscn" id="6_8gg48"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="6_mnpuf"]
 [ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="7_pb6v7"]
 [ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="8_dnsjv"]
@@ -33,6 +32,7 @@
 [ext_resource type="Material" uid="uid://dla6kpqt8d55b" path="res://materials/bench02.tres" id="30_38mi8"]
 [ext_resource type="PackedScene" uid="uid://c8nvswcey6gwl" path="res://prefabs/object/decor/bench02.tscn" id="32_d832v"]
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="33_jhocu"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="34_y384k"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="35_2hvfs"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
@@ -209,6 +209,8 @@ _data = {
 "opening": SubResource("Animation_kjhcp")
 }
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j6b72"]
+
 [node name="PlatformerTest" type="Node3D" node_paths=PackedStringArray("opening_cutscene")]
 script = ExtResource("1_1fcd3")
 opening_cutscene = NodePath("Cutscene/Opening_Cutscene")
@@ -246,9 +248,6 @@ stream = ExtResource("20_1eo5e")
 volume_db = -5.0
 autoplay = true
 bus = &"BGM"
-
-[node name="FallKillzone" parent="." instance=ExtResource("6_8gg48")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
@@ -512,3 +511,11 @@ fov = 35.0
 
 [node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)
+
+[node name="Fall_Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("34_y384k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
+player = NodePath("../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fall_Killzone"]
+shape = SubResource("WorldBoundaryShape3D_j6b72")

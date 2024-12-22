@@ -15,7 +15,6 @@ class_name Player
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 5.0
 
-var mouse_sensitivity: float = 3.0
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
@@ -34,8 +33,8 @@ func _input(event) -> void:
 	# Handle camera movement based on mouse input
 	if Global.is_player_controllable:
 		if event is InputEventMouseMotion:
-			rotate_y(deg_to_rad(-event.relative.x) * (mouse_sensitivity / 20.0))
-			camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_sensitivity / 20.0))
+			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
+			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
 	
 	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 	#print(gamepad_look_dir)
@@ -76,23 +75,16 @@ func _physics_process(delta) -> void:
 
 	move_and_slide()
 	quick_climbing()
-	fall_dying()
+	take_fall()
 
 
-func fall_dying() -> void:
+func take_fall() -> void:
 	if not is_on_floor():
 		# Get value for next frame
 		was_in_air = true
 		fall_velocity_before = velocity.y
-	elif fall_velocity_before < -FALL_DAMAGE_SPEED and was_in_air and is_on_floor():
-		# Dying action
-		kill_self()
 		
-		# Reset value for previeous variables
-		was_in_air = false
-		fall_velocity_before = velocity.y
 	elif was_in_air and is_on_floor():
-		print("FALL")
 		camera_animation.play("player_jump", -1, 3.0)
 		was_in_air = false
 		fall_velocity_before = velocity.y
