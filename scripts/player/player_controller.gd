@@ -107,8 +107,8 @@ func quick_climbing() -> void:
 
 
 # Handle Jump
-func jump(effect_only: bool = false) -> void:
-	if not effect_only:
+func jump(do_action: bool = true) -> void:
+	if do_action:
 		velocity.y = JUMP_VELOCITY
 	camera_animation.play("player_jump")
 	jump_sfx.play_audio()
@@ -118,7 +118,7 @@ func jump(effect_only: bool = false) -> void:
 # To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
-	Global.decrease_value("life_left")
+	Global.decrease_value("live_left")
 
 
 func _on_after_dying_timeout() -> void:

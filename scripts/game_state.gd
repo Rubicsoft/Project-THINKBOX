@@ -15,10 +15,10 @@ func _ready() -> void:
 		opening_cutscene.connect("animation_finished", Callable(self, "_on_opening_cutscene_finished"))
 
 func _process(delta) -> void:
-	print("Player life left " + str(Global.get_value("life_left")))
+	print("Player live left " + str(Global.get_value("live_left")))
 	
 	# Quit the game when there is no live left
-	if Global.get_value("life_left") <= 0:
+	if Global.get_value("live_left") <= 0:
 		get_tree().quit()
 
 func _on_opening_cutscene_finished(anim_name: StringName) -> void:

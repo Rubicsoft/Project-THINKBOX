@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc3fo1jqnsy7v"]
+[gd_scene load_steps=10 format=3 uid="uid://bc3fo1jqnsy7v"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_q8osr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_qotat"]
 [ext_resource type="PackedScene" uid="uid://baiy2smi6x1tv" path="res://scenes/prototypes/obstacle_test/obstacle_test_level.tscn" id="2_1c0qx"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_lnn7i"]
+[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="5_8pmdl"]
+[ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="5_23010"]
+
+[sub_resource type="GDScript" id="GDScript_fx2l4"]
+resource_name = "kill_player_zonetest"
+script/source = "extends Area3D
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.kill_self()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfb6r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wipsc"]
 
 [node name="Obstacle_TestLevel" type="Node3D"]
 script = ExtResource("1_q8osr")
@@ -18,3 +34,25 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_lnn7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1.25, -4.5)
+collision_mask = 2
+script = SubResource("GDScript_fx2l4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_sfb6r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_wipsc")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Label3D" type="Label3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+billboard = 1
+modulate = Color(1, 0, 0, 1)
+text = "Kill Player"
+font = ExtResource("5_23010")
+outline_size = 0
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
