@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://k2mmvmj0c3vt"]
+[gd_scene load_steps=11 format=3 uid="uid://k2mmvmj0c3vt"]
 
 [ext_resource type="Script" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="2_4vwkj"]
+[ext_resource type="AudioStream" uid="uid://dmbm6uqy8nno5" path="res://assets/sounds/trampoline_platform.ogg" id="2_y4wrk"]
 [ext_resource type="Texture2D" uid="uid://dktmy5glo1q0" path="res://assets/img/trampoline_tex/trampoline_01.png" id="4_m0176"]
 [ext_resource type="Texture2D" uid="uid://vyd77tr2usig" path="res://assets/img/trampoline_tex/trampoline_02.png" id="5_twg55"]
 [ext_resource type="Texture2D" uid="uid://o0ajt08ppknw" path="res://assets/img/trampoline_tex/trampoline_ring.png" id="6_jjmny"]
@@ -104,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("BoxShape3D_4ls26")
 
 [node name="BoingSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_y4wrk")
 
 [node name="TrampolineTex_01" type="Node3D" parent="."]
 
