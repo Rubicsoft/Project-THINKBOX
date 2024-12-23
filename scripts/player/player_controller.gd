@@ -5,6 +5,7 @@ class_name Player
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 @onready var interact_raycast: RayCast3D = $CameraPivot/Camera3D/InteractRayCast
 @onready var camera_animation: AnimationPlayer = $CameraPivot/CameraAnimation
+@onready var camera_fx: Control = $CameraFX
 @onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
 @onready var after_dying: Timer = $AfterDying
 @onready var player_audios: Node3D = $Audios
@@ -115,6 +116,7 @@ func jump(do_action: bool = true) -> void:
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.decrease_value("live_left")
+	camera_fx.play_effect("glitch_fadeout")
 
 
 func _on_after_dying_timeout() -> void:

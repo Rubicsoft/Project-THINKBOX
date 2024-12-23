@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=22 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="3_d2abn"]
 [ext_resource type="Script" path="res://scripts/audio/random_audio_playback.gd" id="3_e8558"]
 [ext_resource type="PackedScene" uid="uid://vkqifsa2867t" path="res://ui/hud.tscn" id="3_hrfvy"]
+[ext_resource type="PackedScene" uid="uid://d0i54q40rin28" path="res://prefabs/visual/camera_fx.tscn" id="3_p6xfp"]
 [ext_resource type="Script" path="res://scripts/player/player_sounds.gd" id="4_2cis8"]
 [ext_resource type="AudioStream" uid="uid://cetqgf2kbjeu8" path="res://assets/sounds/footsteps/footstep_01.ogg" id="4_ee4hq"]
 [ext_resource type="AudioStream" uid="uid://dlc00mlb2h3s" path="res://assets/sounds/jump_01.ogg" id="5_3yces"]
@@ -112,6 +113,8 @@ shape = SubResource("CapsuleShape3D_0qlb0")
 [node name="HUD" parent="." node_paths=PackedStringArray("interact_raycast") instance=ExtResource("3_hrfvy")]
 interact_raycast = NodePath("../CameraPivot/Camera3D/InteractRayCast")
 
+[node name="CameraFX" parent="." instance=ExtResource("3_p6xfp")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("3_d2abn")]
 
 [node name="Audios" type="Node3D" parent="."]
@@ -168,6 +171,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, 1, 0)
 
 [node name="AfterDying" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="AfterDying" to="." method="_on_after_dying_timeout"]
