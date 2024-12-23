@@ -11,8 +11,6 @@ var killzone_active: bool = true
 func _process(delta) -> void:
 	var minimum_height: float
 	
-	print(killzone_active)
-	
 	if player:
 		if activate_above_player:
 			# Custom minimum height

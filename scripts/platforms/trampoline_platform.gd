@@ -9,7 +9,6 @@ func make_jump(player: CharacterBody3D) -> void:
 		player.velocity.y = JUMP_FORCE
 		player.jump(false) # Play jump effect
 		boing_sfx.play()
-		print("BOUNCE")
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
