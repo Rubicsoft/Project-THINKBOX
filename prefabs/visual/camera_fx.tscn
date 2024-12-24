@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0i54q40rin28"]
+[gd_scene load_steps=8 format=3 uid="uid://d0i54q40rin28"]
 
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="1_0annu"]
+[ext_resource type="AudioStream" uid="uid://rb2hrtq63kq1" path="res://assets/sounds/glitch.ogg" id="2_jo6up"]
 
 [sub_resource type="GDScript" id="GDScript_dfdqh"]
 resource_name = "camera_fx_control"
@@ -25,46 +26,6 @@ shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 8.0
 shader_parameter/shake_block_size = 64.0
 shader_parameter/shake_color_rate = 0.0
-
-[sub_resource type="Animation" id="Animation_d5uyr"]
-resource_name = "glitch_fadeout"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GlitchFX:material:shader_parameter/shake_power")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GlitchFX:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GlitchFX:material:shader_parameter/shake_color_rate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.1, 0.0]
-}
 
 [sub_resource type="Animation" id="Animation_i0amw"]
 length = 0.001
@@ -105,6 +66,58 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_d5uyr"]
+resource_name = "glitch_fadeout"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlitchFX:material:shader_parameter/shake_power")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlitchFX:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlitchFX:material:shader_parameter/shake_color_rate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlitchFX/Glitch_SFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tyl0w"]
 _data = {
 "RESET": SubResource("Animation_i0amw"),
@@ -128,6 +141,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Glitch_SFX" type="AudioStreamPlayer" parent="GlitchFX"]
+stream = ExtResource("2_jo6up")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
