@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="12_j2yrk"]
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
-[ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="20_1eo5e"]
+[ext_resource type="AudioStream" uid="uid://b5vos7sjt0olw" path="res://assets/bgm/bgm_01.ogg" id="19_yurkc"]
 [ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="22_k48h4"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="24_ge1ci"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="26_ey70r"]
@@ -244,7 +244,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("20_1eo5e")
+stream = ExtResource("19_yurkc")
 volume_db = -5.0
 autoplay = true
 bus = &"BGM"
