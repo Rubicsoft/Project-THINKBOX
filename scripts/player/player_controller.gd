@@ -116,7 +116,7 @@ func jump(do_action: bool = true) -> void:
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_value("death_count")
-	camera_fx.play_effect("glitch_fadeout")
+	camera_fx.play_effect("glitch_fadeout", false)
 
 
 func _on_after_dying_timeout() -> void:

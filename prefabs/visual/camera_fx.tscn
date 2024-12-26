@@ -9,14 +9,23 @@ script/source = "extends Control
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
+
 func _ready() -> void:
+	anim.connect(\"animation_finished\", Callable(self, \"_on_effect_finished\"))
 	for i in range(get_child_count()):
 		if get_child(i) is ColorRect:
 			get_child(i).visible = false
 
 
-func play_effect(effect_name: String) -> void:
+func play_effect(effect_name: String, pausable: bool = true) -> void:
 	anim.play(effect_name)
+	if not pausable:
+		Global.is_pausable = false
+
+
+func _on_effect_finished(anim_name: StringName) -> void:
+	if Global.is_pausable == false:
+		Global.is_pausable = true
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4g73l"]
