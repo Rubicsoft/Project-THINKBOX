@@ -115,7 +115,7 @@ func jump(do_action: bool = true) -> void:
 # To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
-	Global.decrease_value("live_left")
+	Global.increase_value("death_count")
 	camera_fx.play_effect("glitch_fadeout")
 
 

@@ -15,11 +15,9 @@ func _ready() -> void:
 		opening_cutscene.connect("animation_finished", Callable(self, "_on_opening_cutscene_finished"))
 
 func _process(delta) -> void:
-	print("Player live left " + str(Global.get_value("live_left")))
+	print("Player death count : " + str(Global.get_value("death_count")))
+	print("Codex collected : " + str(Global.get_value("codex_collected")))
 	
-	# Quit the game when there is no live left
-	if Global.get_value("live_left") <= 0:
-		get_tree().quit()
 
 func _on_opening_cutscene_finished(anim_name: StringName) -> void:
 	Global.is_player_controllable = true

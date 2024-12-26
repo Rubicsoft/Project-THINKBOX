@@ -371,9 +371,13 @@ shape = SubResource("SphereShape3D_2qpiy")
 
 [node name="Checkpoints" type="Node3D" parent="."]
 
-[node name="Checkpoint_1" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
+[node name="Checkpoint_1" parent="Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("26_ey70r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.85, -8)
 player = NodePath("../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Checkpoints/Checkpoint_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.25, 1)
 
 [node name="Checkpoint_2" parent="Checkpoints" node_paths=PackedStringArray("player") instance=ExtResource("26_ey70r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 12.85, -30)

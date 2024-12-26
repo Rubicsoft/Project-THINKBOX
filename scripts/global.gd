@@ -4,7 +4,8 @@ var is_player_controllable: bool = true
 var is_playing_cutscene: bool
 
 var state: Dictionary = {
-	"live_left" : 3
+	"death_count" : 0, 
+	"codex_collected" : 0
 }
 var default_state
 

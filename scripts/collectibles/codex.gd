@@ -8,7 +8,7 @@ var is_pickable: bool = true
 func _on_body_entered(body):
 	if is_pickable:
 		is_pickable = false
-		print("CODEX")
+		Global.increase_value("codex_collected")
 		animation.play("codex_pickup")
 
 
