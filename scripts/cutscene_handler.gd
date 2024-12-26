@@ -1,21 +1,39 @@
 extends Node
 
 @export var cutscene: AnimationPlayer
+@export var cutscene_name: String
 @export var player_controlability: bool = false
 
+
 func _ready() -> void:
+	if cutscene:
+		cutscene.connect("animation_finished", Callable(self, "_on_cutscene_finished"))
+	
 	for i in range(cutscene.get_child_count()):
 		if get_child(i) is Camera3D:
-			# Make all cameras aren't current unless they're played
+			# Disable all cameras unless they're triggered to play
 			get_child(i).current = false
 	
 	var parent: Node = get_parent()
 	if parent is Area3D:
-		# Play cutscene when trigerred
-		pass
-	elif (parent is GameSceneLogic) or (parent is Node3D):
+		# Play cutscene when triggered
+		parent.connect("body_entered", Callable(self, "_on_hitbox_triggered"))
+	elif (parent is GameSceneState):
 		# Play in the beginning
-		pass
+		play_cutscene()
+
 
 func play_cutscene() -> void:
-	pass
+	cutscene.play(cutscene_name)
+	if not player_controlability:
+		Global.is_player_controllable = false
+
+
+func _on_cutscene_finished(anim_name: StringName) -> void:
+	if not player_controlability:
+		Global.is_player_controllable = true
+
+
+func _on_hitbox_triggered() -> void:
+	play_cutscene()
+	print("PLAY CUTSCENE WOYY!")

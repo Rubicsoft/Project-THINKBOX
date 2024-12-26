@@ -1,7 +1,6 @@
 extends Node
 
 var is_player_controllable: bool = true
-var is_playing_cutscene: bool
 
 var state: Dictionary = {
 	"death_count" : 0, 

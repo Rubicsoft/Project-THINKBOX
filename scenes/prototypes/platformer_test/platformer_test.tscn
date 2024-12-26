@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=50 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="12_j2yrk"]
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_x16mg"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_skvpd"]
+[ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_o02wy"]
 [ext_resource type="AudioStream" uid="uid://b5vos7sjt0olw" path="res://assets/bgm/bgm_01.ogg" id="19_yurkc"]
 [ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="22_k48h4"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="24_ge1ci"]
@@ -105,7 +106,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D1:position")
+tracks/0/path = NodePath("Opening_Cutscene/Camera3D1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +118,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D1:current")
+tracks/1/path = NodePath("Opening_Cutscene/Camera3D1:current")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -129,7 +130,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/path = NodePath("Opening_Cutscene/Camera3D2:current")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -141,7 +142,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D2:position")
+tracks/3/path = NodePath("Opening_Cutscene/Camera3D2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -157,7 +158,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D1:position")
+tracks/0/path = NodePath("Opening_Cutscene/Camera3D1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +170,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D1:current")
+tracks/1/path = NodePath("Opening_Cutscene/Camera3D1:current")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -181,7 +182,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/path = NodePath("Opening_Cutscene/Camera3D2:current")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -193,7 +194,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D2:position")
+tracks/3/path = NodePath("Opening_Cutscene/Camera3D2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -211,9 +212,11 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j6b72"]
 
-[node name="PlatformerTest" type="Node3D" node_paths=PackedStringArray("opening_cutscene")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_phq7y"]
+size = Vector3(1, 2.25, 2.75)
+
+[node name="PlatformerTest" type="Node3D"]
 script = ExtResource("1_1fcd3")
-opening_cutscene = NodePath("Cutscene/Opening_Cutscene")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7ihx3")
@@ -224,6 +227,10 @@ transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.70710
 shadow_enabled = true
 
 [node name="PlatformerTest_Map" parent="." instance=ExtResource("1_a6e5d")]
+
+[node name="Begin_Cutscene" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
+cutscene = NodePath("../Cutscene/Opening_Cutscene")
+cutscene_name = "opening"
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -501,12 +508,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ansyt")
 }
 
-[node name="Camera3D1" type="Camera3D" parent="Cutscene"]
+[node name="Camera3D1" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.953, 1.50449, 15.7177)
 current = true
 fov = 60.0
 
-[node name="Camera3D2" type="Camera3D" parent="Cutscene"]
+[node name="Camera3D2" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.548381, 0, 0.836229, 0, 1, 0, -0.836229, 0, 0.548381, 9.74237, 1.19936, -3.10875)
 current = true
 fov = 35.0
@@ -527,3 +534,14 @@ shape = SubResource("WorldBoundaryShape3D_j6b72")
 
 [node name="Node3D" type="Node3D" parent="Fall_Killzone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.25, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0.749995, 8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.875)
+shape = SubResource("BoxShape3D_phq7y")
+
+[node name="CutsceneHandler" parent="Area3D" node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
+cutscene = NodePath("../../Cutscene/Opening_Cutscene")
+cutscene_name = "opening"

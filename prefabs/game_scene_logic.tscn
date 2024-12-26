@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpgyvsq3o4ai2"]
-
-[ext_resource type="Script" path="res://scripts/game_scene_logic.gd" id="1_ugbig"]
+[gd_scene format=3 uid="uid://0wohgcayqlp2"]
 
 [node name="SceneHandler" type="Node3D"]
-script = ExtResource("1_ugbig")
