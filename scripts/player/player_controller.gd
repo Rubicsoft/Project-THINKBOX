@@ -8,7 +8,6 @@ class_name Player
 @onready var camera_fx: Control = $CameraFX
 @onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
 @onready var after_dying: Timer = $AfterDying
-@onready var player_audios: Node3D = $Audios
 
 # Sound Effects
 @onready var run_sfx = $Audios/Run
