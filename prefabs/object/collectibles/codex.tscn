@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tps266mromjo"]
+[gd_scene load_steps=10 format=3 uid="uid://tps266mromjo"]
 
 [ext_resource type="Script" path="res://scripts/collectibles/codex.gd" id="1_340sp"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_b25hg"]
@@ -35,6 +35,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2th4b"]
 resource_name = "codex_pickup"
@@ -64,10 +76,28 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_srxcg"]
+resource_name = "codex_spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djrux"]
 _data = {
 "RESET": SubResource("Animation_37jax"),
-"codex_pickup": SubResource("Animation_2th4b")
+"codex_pickup": SubResource("Animation_2th4b"),
+"codex_spin": SubResource("Animation_srxcg")
 }
 
 [node name="Codex" type="Area3D"]
@@ -85,6 +115,7 @@ shape = SubResource("BoxShape3D_gcvo8")
 libraries = {
 "": SubResource("AnimationLibrary_djrux")
 }
+autoplay = "codex_spin"
 
 [node name="PickUp" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_17mat")

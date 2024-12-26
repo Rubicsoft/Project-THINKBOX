@@ -527,6 +527,9 @@ fov = 35.0
 [node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)
 
+[node name="Codex2" parent="Codex_s" instance=ExtResource("35_2hvfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 2)
+
 [node name="Fall_Killzone" parent="." node_paths=PackedStringArray("player", "above_minimum") instance=ExtResource("34_y384k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
 player = NodePath("../Player")
