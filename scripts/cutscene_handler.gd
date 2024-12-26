@@ -3,6 +3,7 @@ extends Node
 @export var cutscene: AnimationPlayer
 @export var cutscene_name: String
 @export var player_controlability: bool = false
+@export var pausable: bool = true
 
 
 func _ready() -> void:
@@ -27,11 +28,15 @@ func play_cutscene() -> void:
 	cutscene.play(cutscene_name)
 	if not player_controlability:
 		Global.is_player_controllable = false
+	if pausable:
+		Global.is_pausable = false
 
 
-func _on_cutscene_finished(anim_name: StringName) -> void:
+func _on_cutscene_finished(_anim_name: StringName) -> void:
 	if not player_controlability:
 		Global.is_player_controllable = true
+	if pausable:
+		Global.is_pausable = true
 
 
 func _on_hitbox_triggered() -> void:

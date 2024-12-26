@@ -1,6 +1,7 @@
 extends Node
 
 var is_player_controllable: bool = true
+var is_pausable: bool = true
 
 var state: Dictionary = {
 	"death_count" : 0, 
