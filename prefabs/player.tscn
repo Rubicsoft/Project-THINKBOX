@@ -103,6 +103,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+editor_description = "Handle the gameplay. Everything is always controlled by the player."
 collision_layer = 2
 script = ExtResource("1_jk8oh")
 

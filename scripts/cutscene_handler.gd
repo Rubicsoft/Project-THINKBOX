@@ -9,11 +9,13 @@ extends Node
 func _ready() -> void:
 	if cutscene:
 		cutscene.connect("animation_finished", Callable(self, "_on_cutscene_finished"))
-	
-	for i in range(cutscene.get_child_count()):
-		if get_child(i) is Camera3D:
-			# Disable all cameras unless they're triggered to play
-			get_child(i).current = false
+		
+		for i in range(cutscene.get_child_count()):
+			if get_child(i) is Camera3D:
+				# Disable all cameras unless they're triggered to play
+				get_child(i).current = false
+	else:
+		printerr("Please assign cutscene")
 	
 	var parent: Node = get_parent()
 	if parent is Area3D:
@@ -25,7 +27,8 @@ func _ready() -> void:
 
 
 func play_cutscene() -> void:
-	cutscene.play(cutscene_name)
+	if cutscene:
+		cutscene.play(cutscene_name)
 	if not player_controlability:
 		Global.is_player_controllable = false
 	if pausable:

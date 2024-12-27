@@ -101,6 +101,7 @@ _data = {
 }
 
 [node name="Codex" type="Area3D"]
+editor_description = "Collect this thing to finish the game"
 collision_mask = 2
 script = ExtResource("1_340sp")
 

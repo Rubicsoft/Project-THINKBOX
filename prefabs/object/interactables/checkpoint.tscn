@@ -12,6 +12,7 @@ size = Vector3(0.5, 1.2, 0.5)
 size = Vector3(0.5, 1.2, 0.5)
 
 [node name="Checkpoint" type="StaticBody3D"]
+editor_description = "Player don't need to restart from beginning when they die"
 script = ExtResource("1_vgu2e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

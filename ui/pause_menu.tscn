@@ -61,6 +61,12 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
 text = "RESTART LEVEL"
 flat = true
 
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
+text = "MAIN MENU"
+flat = true
+
 [node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0.17, 0.17, 0.498039)

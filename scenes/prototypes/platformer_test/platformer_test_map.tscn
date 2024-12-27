@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnh0hd3gy112"]
+[gd_scene load_steps=15 format=3 uid="uid://dnh0hd3gy112"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_35qe0"]
+[ext_resource type="PackedScene" uid="uid://dmk7w4h7y6k" path="res://prefabs/tools/prototyping/door_csg.tscn" id="2_4xr3t"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_5k4my"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_8mlji"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="4_8tgkh"]
@@ -80,10 +81,8 @@ operation = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.75, -2.71149)
 size = Vector3(16, 3, 0.422974)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="BaseGrounds/Ground1/CSGBox3D3"]
+[node name="CSGBox3D" parent="BaseGrounds/Ground1/CSGBox3D3" instance=ExtResource("2_4xr3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129822, -0.24, 0)
-operation = 2
-size = Vector3(1.2, 2.52, 0.75)
 
 [node name="Ground4" type="CSGBox3D" parent="BaseGrounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -11, 0)

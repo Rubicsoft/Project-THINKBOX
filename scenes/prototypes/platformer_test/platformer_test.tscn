@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=51 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -210,10 +210,13 @@ _data = {
 "opening": SubResource("Animation_kjhcp")
 }
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j6b72"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_phq7y"]
 size = Vector3(1, 2.25, 2.75)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j6b72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ff2i"]
+size = Vector3(27.75, 0.5, 47.75)
 
 [node name="PlatformerTest" type="Node3D"]
 script = ExtResource("1_1fcd3")
@@ -530,20 +533,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)
 [node name="Codex2" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 2)
 
-[node name="Fall_Killzone" parent="." node_paths=PackedStringArray("player", "above_minimum") instance=ExtResource("34_y384k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
-player = NodePath("../Player")
-activate_above_player = true
-above_minimum = NodePath("Node3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fall_Killzone"]
-shape = SubResource("WorldBoundaryShape3D_j6b72")
-
-[node name="Node3D" type="Node3D" parent="Fall_Killzone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.25, 0)
-
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0.749995, 8)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.875)
@@ -552,3 +544,26 @@ shape = SubResource("BoxShape3D_phq7y")
 [node name="CutsceneHandler" parent="Area3D" node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
 cutscene = NodePath("../../Cutscene/Opening_Cutscene")
 cutscene_name = "opening"
+
+[node name="Killzones" type="Node3D" parent="."]
+
+[node name="Fall_Killzone" parent="Killzones" node_paths=PackedStringArray("player", "above_minimum") instance=ExtResource("34_y384k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
+player = NodePath("../../Player")
+activate_above_player = true
+above_minimum = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzones/Fall_Killzone"]
+shape = SubResource("WorldBoundaryShape3D_j6b72")
+
+[node name="Node3D" type="Node3D" parent="Killzones/Fall_Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.25, 0)
+
+[node name="Killzone" parent="Killzones" node_paths=PackedStringArray("player") instance=ExtResource("34_y384k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32581, -36)
+player = NodePath("../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzones/Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.875, 0, -4.375)
+shape = SubResource("BoxShape3D_8ff2i")

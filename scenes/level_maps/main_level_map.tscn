@@ -1,204 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://nekfqs42o871"]
+[gd_scene load_steps=3 format=3 uid="uid://cu8l5o17qk5o5"]
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
-[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_tus8r"]
-[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="3_g7qkb"]
-[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="3_jihrj"]
+[ext_resource type="PackedScene" uid="uid://dmk7w4h7y6k" path="res://prefabs/tools/prototyping/door_csg.tscn" id="2_5iilh"]
 
 [node name="MainLevel_Map" type="Node3D"]
 
-[node name="Map" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_64ofg")
 use_collision = true
 
-[node name="Ground" type="CSGBox3D" parent="Map"]
-size = Vector3(200, 0.5, 200)
-material = ExtResource("1_64ofg")
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(30, 0.2, 30)
 
-[node name="CarbonValley" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5347, -1.5, -50.8227)
-operation = 2
-size = Vector3(7, 4, 9)
-material = ExtResource("1_64ofg")
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, 7, 0)
+size = Vector3(0.5, 14, 30)
 
-[node name="NickelPeak" type="CSGCombiner3D" parent="Map"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 7, 0)
+size = Vector3(0.5, 14, 30)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/NickelPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.9221, 0, 55.1867)
-size = Vector3(30.4325, 1, 33)
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 7, 15)
+size = Vector3(0.5, 14, 30)
 
-[node name="FerrumPeak" type="CSGCombiner3D" parent="Map"]
+[node name="CSGBox3D2" parent="CSGCombiner3D/CSGBox3D4" instance=ExtResource("2_5iilh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.740001, 0)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/FerrumPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0779, 0, 41.1867)
-size = Vector3(30.4325, 1, 33)
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 7, -15)
+size = Vector3(0.5, 14, 30)
 
-[node name="ZincPeak" type="CSGCombiner3D" parent="Map"]
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/ZincPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8616, 0.499, -13.8133)
-size = Vector3(26, 2, 33)
-material = ExtResource("2_tus8r")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/ZincPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8616, 2.499, -13.8133)
-radius = 13.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138351, 1.499, 0.1867)
-radius = 12.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-radius = 11.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-radius = 9.0
-height = 4.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
-radius = 8.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-radius = 6.0
-height = 6.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-radius = 4.0
-height = 8.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
-radius = 3.0
-height = 20.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Map/ZincPeak/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 0)
-radius = 2.0
-height = 14.0
-sides = 16
-material = ExtResource("3_jihrj")
-
-[node name="SpinPlatform" type="Node3D" parent="Map/ZincPeak"]
-
-[node name="MovingPlatform_Spin" parent="Map/ZincPeak/SpinPlatform" instance=ExtResource("3_g7qkb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 6, -13)
-
-[node name="CobaltPeak" type="CSGCombiner3D" parent="Map"]
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/CobaltPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.07788, 0, -58.8133)
-size = Vector3(30.4325, 1, 33)
-
-[node name="HydraPeak" type="CSGCombiner3D" parent="Map"]
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/HydraPeak"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9221, 0, -42.8133)
-size = Vector3(30.4325, 1, 33)
-
-[node name="Mountains" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("3_jihrj")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.6679, 5.5, -7.34778)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 92.6679, 5, -35.3478)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.5897, 3, -68.3478)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 64.5631, 6.5, 81.6907)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 78.5631, 6, 57.442)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 89.7993, 4, 25.824)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -23.0248, 6.5, 97.0116)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.97515, 6, 97.0116)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 37.9752, 4, 90.9335)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -90.7683, 6.5, 46.4407)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -70.9693, 6, 66.2397)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -43.3369, 4, 85.2763)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -100.384, 5.5, -43.6811)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -100.384, 5, -15.6811)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -94.3061, 3, 17.3189)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -34.6791, 5.5, -92.6024)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -58.9278, 5, -78.6024)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -84.4676, 3, -56.8386)
-size = Vector3(13, 17, 40.8645)
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 62.822, 5.5, -90.2932)
-size = Vector3(6.84369, 12, 40.8645)
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, 35.7761, 5, -97.5401)
-size = Vector3(6.84369, 17, 40.8645)
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="Mountains"]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 2.32739, 3, -100.21)
-size = Vector3(13, 17, 40.8645)
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 2.25, 13.5)
+size = Vector3(17.5, 5.5, 3)
