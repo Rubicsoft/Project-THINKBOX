@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=52 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="33_jhocu"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="34_y384k"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="35_2hvfs"]
+[ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="36_nni7k"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -567,3 +568,12 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzones/Killzone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.875, 0, -4.375)
 shape = SubResource("BoxShape3D_8ff2i")
+
+[node name="FlatPlatform" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_1" parent="FlatPlatform" instance=ExtResource("36_nni7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.75)
+
+[node name="MovingPlatform_Flat_2" parent="FlatPlatform" instance=ExtResource("36_nni7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 1.5)

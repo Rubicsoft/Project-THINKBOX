@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://3rb1lofm2fi6"]
+
+[ext_resource type="Script" path="res://scripts/platforms/moving_platform.gd" id="1_2mne4"]
+[ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="2_aywat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nunh4"]
+size = Vector3(1.5, 0.2, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0h7g"]
+size = Vector3(1.5, 0.2, 1.5)
+
+[node name="MovingPlatform_Flat" type="AnimatableBody3D"]
+script = ExtResource("1_2mne4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nunh4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_g0h7g")
+surface_material_override/0 = ExtResource("2_aywat")
