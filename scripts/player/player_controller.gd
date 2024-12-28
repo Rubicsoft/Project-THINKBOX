@@ -70,7 +70,8 @@ func _physics_process(delta) -> void:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			if is_on_floor():
-				camera_animation.play("player_walking")
+				if GameSettings.head_bobing:
+					camera_animation.play("player_walking")
 				run_sfx.play_audio()
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -97,7 +98,7 @@ func take_fall() -> void:
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		var hit_obj: Object = quickclimb_raycast.get_collider()
-		if hit_obj is AnimatableBody3D:
+		if hit_obj is MovingPlatform:
 			velocity.y = 5.0
 
 

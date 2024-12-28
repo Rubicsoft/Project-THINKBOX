@@ -19,6 +19,7 @@ func _process(delta) -> void:
 	
 	healthbar()
 	crosshair.texture = crosshair_texture
+	crosshair.visible = GameSettings.enable_crosshair
 	
 	# Handle label for interactables
 	collide_label.text = ""

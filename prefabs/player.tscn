@@ -155,6 +155,7 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+fov = 85.0
 
 [node name="InteractRayCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
 target_position = Vector3(0, 0, -2)
