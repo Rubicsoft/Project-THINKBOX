@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://cvrmwy7eblbem"]
+[gd_scene load_steps=18 format=3 uid="uid://cvrmwy7eblbem"]
 
+[ext_resource type="Environment" uid="uid://nfupari6mpx5" path="res://prefabs/visual/world_env_visual_settings.tres" id="1_oaehy"]
 [ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="1_v4dpf"]
 [ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="2_mvrql"]
 [ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="3_7i5nx"]
@@ -13,25 +14,6 @@
 [ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="11_514c4"]
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="12_230ii"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="13_t217r"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c81t5"]
-sky_top_color = Color(0.295553, 0.463538, 0.626782, 1)
-sky_horizon_color = Color(0.8148, 0.8924, 0.97, 1)
-sky_curve = 0.252269
-ground_bottom_color = Color(0.0252, 0.03854, 0.06, 1)
-ground_horizon_color = Color(0.815686, 0.894118, 0.968627, 1)
-ground_curve = 0.0887656
-
-[sub_resource type="Sky" id="Sky_i040i"]
-sky_material = SubResource("ProceduralSkyMaterial_c81t5")
-
-[sub_resource type="Environment" id="Environment_4a1w3"]
-background_mode = 2
-sky = SubResource("Sky_i040i")
-tonemap_mode = 2
-ssr_enabled = true
-ssao_enabled = true
-glow_enabled = true
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_4442o"]
 resource_local_to_scene = false
@@ -79,5 +61,5 @@ uncapped_independence = false
 target_constant_framerate = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
-environment = SubResource("Environment_4a1w3")
+environment = ExtResource("1_oaehy")
 compositor = SubResource("Compositor_k3xwa")

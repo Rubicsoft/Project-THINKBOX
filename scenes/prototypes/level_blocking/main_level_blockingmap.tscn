@@ -53,6 +53,10 @@ size = Vector3(0.5, 14, 30)
 [node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D5" instance=ExtResource("2_5iilh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 0.625, 8.375)
+size = Vector3(3, 1.25, 47.25)
+
 [node name="Pillars" type="CSGCombiner3D" parent="."]
 visible = false
 material_override = ExtResource("3_d7508")
