@@ -7,7 +7,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_qxbj6"]
 size = Vector3(0.5, 0.7, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gcvo8"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_r6lfi"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_37jax"]
 length = 0.001
@@ -110,7 +111,7 @@ mesh = SubResource("BoxMesh_qxbj6")
 surface_material_override/0 = ExtResource("2_b25hg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_gcvo8")
+shape = SubResource("SphereShape3D_r6lfi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

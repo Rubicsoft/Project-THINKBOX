@@ -2,5 +2,4 @@ Physics Layer
 
 - 1 : Most object
 - 2 : Player
-- 3 : Wall-Climbing object
-- 4 : Killzone
+- 3 : QuickClimbable object

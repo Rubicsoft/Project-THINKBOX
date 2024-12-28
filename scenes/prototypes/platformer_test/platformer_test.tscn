@@ -239,16 +239,16 @@ cutscene_name = "opening"
 [node name="Doors" type="Node3D" parent="."]
 
 [node name="Door_1" parent="Doors" instance=ExtResource("8_homic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396378, 1.51, -2.62846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973898, 1.51, -2.62846)
 
 [node name="Door_2" parent="Doors" instance=ExtResource("8_homic")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.396, 13.51, -41)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.396, 13.51, -41.5)
 
 [node name="Door_4" parent="Doors" instance=ExtResource("8_homic")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.58484, 13.51, -29)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58484, 13.51, -28.25)
 
 [node name="Door_3" parent="Doors" instance=ExtResource("8_homic")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.3964, -9.49, 6.37154)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3964, -9.49, 6.37154)
 
 [node name="Player" parent="." instance=ExtResource("2_08vw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 7)

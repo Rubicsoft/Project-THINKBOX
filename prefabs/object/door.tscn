@@ -29,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Audios/DoorOpen:playing")
+tracks/1/path = NodePath("Audios/DoorOpen:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +41,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Audios/DoorClose:playing")
+tracks/2/path = NodePath("Audios/DoorClose:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -81,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Audios/DoorClose:playing")
+tracks/1/path = NodePath("Audios/DoorClose:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +109,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Audios/DoorOpen:playing")
+tracks/1/path = NodePath("Audios/DoorOpen:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,17 +138,15 @@ _data = {
 "door_open": SubResource("Animation_k5ite")
 }
 
-[node name="Door" type="Node3D"]
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+[node name="AnimatableBody3D" type="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599791, 0, 0)
 script = ExtResource("1_yoyqc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
 shape = SubResource("BoxShape3D_iao75")
 
-[node name="DoorMesh" type="MeshInstance3D" parent="AnimatableBody3D"]
+[node name="DoorMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
 mesh = ExtResource("2_7crcp")
 skeleton = NodePath("../..")
@@ -156,18 +154,19 @@ surface_material_override/0 = ExtResource("3_l8k4e")
 surface_material_override/1 = ExtResource("4_yrdeu")
 surface_material_override/2 = ExtResource("5_hpr6o")
 
-[node name="DoorHandle" type="MeshInstance3D" parent="AnimatableBody3D/DoorMesh"]
+[node name="DoorHandle" type="MeshInstance3D" parent="DoorMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498, 0, 0)
 material_override = ExtResource("5_hpr6o")
 cast_shadow = 0
 mesh = ExtResource("6_u05sk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_56mby")
 }
 
 [node name="Audios" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599791, 0, 0)
 
 [node name="DoorOpen" type="AudioStreamPlayer3D" parent="Audios"]
 stream = ExtResource("4_gwxu0")
@@ -177,4 +176,6 @@ bus = &"SFX"
 stream = ExtResource("5_8iq6t")
 bus = &"SFX"
 
-[connection signal="animation_finished" from="AnimatableBody3D/AnimationPlayer" to="AnimatableBody3D" method="_on_animation_player_animation_finished"]
+[node name="Door" type="Node3D" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

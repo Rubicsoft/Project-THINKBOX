@@ -16,7 +16,8 @@ class_name Player
 @onready var jump_ground = $Audios/JumpGround
 
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
-@export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 5.0
+@export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
+@export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 5.0
 
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
@@ -56,7 +57,7 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * 2.0 * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -99,7 +100,8 @@ func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		var hit_obj: Object = quickclimb_raycast.get_collider()
 		if hit_obj is MovingPlatform:
-			velocity.y = 5.0
+			velocity.y = QUICKCLIMB_ENERGY
+			print(hit_obj.collision_layer)
 
 
 # Handle Jump
@@ -108,7 +110,6 @@ func jump(do_action: bool = true) -> void:
 		velocity.y = JUMP_VELOCITY
 	camera_animation.play("player_jump")
 	jump_sfx.play_audio()
-	#player_audios.play_audio("jump")
 	jump_ground.play()
 
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://o0ajt08ppknw" path="res://assets/img/trampoline_tex/trampoline_ring.png" id="6_jjmny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ls26"]
-size = Vector3(1.5, 0.5, 1.5)
+size = Vector3(1.5, 1, 1.5)
 
 [sub_resource type="Animation" id="Animation_ubc0n"]
 length = 0.001
@@ -101,7 +101,7 @@ collision_mask = 2
 script = ExtResource("1_482j1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("BoxShape3D_4ls26")
 
 [node name="BoingSFX" type="AudioStreamPlayer3D" parent="."]

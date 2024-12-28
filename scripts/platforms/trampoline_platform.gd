@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var boing_sfx = $BoingSFX
 
-@export_range(1.0, 20.0, 0.1) var JUMP_FORCE: float = 10.0
+@export_range(1.0, 10.0, 0.1) var JUMP_FORCE: float = 10.0
 
 func make_jump(player: CharacterBody3D) -> void:
 	if player.velocity.y:

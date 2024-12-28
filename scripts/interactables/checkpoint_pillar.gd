@@ -1,5 +1,6 @@
 extends StaticBody3D
 
+
 @export var player: CharacterBody3D
 @export var custom_position: Node3D
 
@@ -14,7 +15,7 @@ func _ready():
 
 
 func _on_interact() -> void:
-	if not is_obtained:
+	if not is_obtained and player:
 		is_obtained = true
 		node_reaction()
 		if custom_position:
