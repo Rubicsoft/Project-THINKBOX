@@ -115,7 +115,8 @@ interact_raycast = NodePath("../CameraPivot/Camera3D/InteractRayCast")
 
 [node name="CameraFX" parent="." instance=ExtResource("3_p6xfp")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_d2abn")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("camera_fx") instance=ExtResource("3_d2abn")]
+camera_fx = NodePath("../CameraFX")
 
 [node name="Audios" type="Node3D" parent="."]
 

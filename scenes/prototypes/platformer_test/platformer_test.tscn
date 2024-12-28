@@ -529,10 +529,10 @@ fov = 35.0
 [node name="Codex_s" type="Node3D" parent="."]
 
 [node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 4)
 
 [node name="Codex2" parent="Codex_s" instance=ExtResource("35_2hvfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.849994, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 2)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0.749995, 8)

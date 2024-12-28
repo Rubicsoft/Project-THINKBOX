@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://kufasch8m0a0" path="res://assets/sounds/checkpoint.ogg" id="3_17mat"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qxbj6"]
-size = Vector3(0.5, 0.7, 0.1)
+size = Vector3(0.7, 1, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r6lfi"]
 radius = 1.0

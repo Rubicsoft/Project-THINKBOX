@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vkqifsa2867t"]
+[gd_scene load_steps=10 format=3 uid="uid://vkqifsa2867t"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_7g3tc"]
 [ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="2_5nc8n"]
@@ -15,6 +15,10 @@ font = ExtResource("3_pwasb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_x804b"]
 font = ExtResource("2_5nc8n")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugrmo"]
+font = ExtResource("3_pwasb")
+font_size = 76
 
 [node name="HUD" type="Control"]
 process_mode = 3
@@ -81,47 +85,17 @@ label_settings = SubResource("LabelSettings_x804b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Health" type="Control" parent="."]
+[node name="DeathCount" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -108.0
 grow_horizontal = 0
-
-[node name="Life1" type="ColorRect" parent="Health"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -56.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 56.0
-grow_horizontal = 0
-color = Color(1, 0, 0, 1)
-
-[node name="Life2" type="ColorRect" parent="Health"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -105.0
-offset_top = 16.0
-offset_right = -65.0
-offset_bottom = 56.0
-grow_horizontal = 0
-color = Color(1, 0, 0, 1)
-
-[node name="Life3" type="ColorRect" parent="Health"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -155.0
-offset_top = 16.0
-offset_right = -115.0
-offset_bottom = 56.0
-grow_horizontal = 0
-color = Color(1, 0, 0, 1)
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_ugrmo")
+horizontal_alignment = 1

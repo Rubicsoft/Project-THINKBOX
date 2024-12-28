@@ -16,6 +16,8 @@ config/version="0.0.1"
 config/tags=PackedStringArray("3d", "project")
 run/main_scene="res://scenes/main_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://assets/img/remi_logo.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]

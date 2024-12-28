@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=12 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_em0gt"]
 [ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="5_0yum3"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_e2mni"]
+[ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="7_2jjfy"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="7_areyj"]
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="8_yms2s"]
 
@@ -31,11 +32,9 @@ transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 5.85,
 [node name="MainLevel_BlockingMap" parent="Level" instance=ExtResource("2_ik5fb")]
 
 [node name="Doors" type="Node3D" parent="Level"]
-visible = false
 
-[node name="Door" parent="Level/Doors" instance=ExtResource("5_0yum3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 15)
-visible = false
+[node name="Door_1" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.25, 15)
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
@@ -46,6 +45,11 @@ custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4)
+
+[node name="FlatPlatform" type="Node3D" parent="Level"]
+
+[node name="MovingPlatform_Flat" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 5.5)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3

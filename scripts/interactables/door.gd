@@ -1,5 +1,6 @@
 extends AnimatableBody3D
 
+
 @onready var animation = $AnimationPlayer
 var prompt_msg = "Door"
 
