@@ -15,13 +15,20 @@ func _process(delta):
 			prompt_msg = "Door\n[OPEN]"
 
 func _on_interact():
+	var handle_position: String = get_parent().handle_position
 	if is_interactable == true:
 		is_interactable = false
 		toggle = not toggle
 		if toggle == false:
-			animation.play("door_close")
+			if handle_position == "Left":
+				animation.play("door_close_left_handle")
+			elif handle_position == "Right":
+				animation.play("door_close_right_handle")
 		if toggle == true:
-			animation.play("door_open")
+			if handle_position == "Left":
+				animation.play("door_open_left_handle")
+			elif handle_position == "Right":
+				animation.play("door_open_right_handle")
 
 func _on_animation_player_animation_finished(anim_name):
 	is_interactable = true
