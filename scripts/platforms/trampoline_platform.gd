@@ -6,7 +6,7 @@ extends Area3D
 
 func make_jump(player: CharacterBody3D) -> void:
 	if player.velocity.y:
-		player.velocity.y = JUMP_FORCE
+		player.velocity.y = JUMP_FORCE * 2.0
 		player.jump(false) # Play jump effect
 		boing_sfx.play()
 

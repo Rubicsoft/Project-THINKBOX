@@ -17,7 +17,7 @@ class_name Player
 
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
-@export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 5.0
+@export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
 
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
@@ -119,6 +119,9 @@ func kill_self() -> void:
 	Global.increase_value("death_count")
 	camera_fx.play_effect("glitch_fadeout", false)
 
+
+func crouch(event: InputEvent) -> void:
+	pass
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true
