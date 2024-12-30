@@ -136,7 +136,7 @@ shader_parameter/shake_color_rate = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oy1yy"]
 shader = ExtResource("3_i3tra")
-shader_parameter/Blur = 2.5
+shader_parameter/Blur = 3.0
 shader_parameter/FlareThreshold = null
 shader_parameter/Thresholdsmoothness = 0.2
 shader_parameter/Flares = 5

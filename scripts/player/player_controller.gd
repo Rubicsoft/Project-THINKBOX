@@ -99,7 +99,7 @@ func take_fall() -> void:
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		var hit_obj: Object = quickclimb_raycast.get_collider()
-		if hit_obj is MovingPlatform:
+		if hit_obj is FloatingPlatform:
 			velocity.y = QUICKCLIMB_ENERGY
 			print(hit_obj.collision_layer)
 
