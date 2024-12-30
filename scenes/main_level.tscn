@@ -26,7 +26,7 @@ transform = Transform3D(0.965926, 0.183013, -0.183013, 0.00188781, 0.702105, 0.7
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_em0gt")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 5.85, 24)
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -12.15, 53)
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -38,21 +38,33 @@ transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 5.85,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.25, 15)
 handle_position = "Left"
 
-[node name="Door_3" parent="Level/Doors" instance=ExtResource("5_0yum3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.25, 0)
-
 [node name="Door_2" parent="Level/Doors" instance=ExtResource("5_0yum3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.26, 20.078)
 
+[node name="Door_3" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.25, 0)
+
+[node name="Door_4" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
+handle_position = "Left"
+
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
-[node name="Checkpoint" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5.6, 13)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
-[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint"]
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4)
+
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.85, 1.5)
+player = NodePath("../../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.75, 0, -1.5)
 
 [node name="FlatPlatform" type="Node3D" parent="Level"]
 
@@ -66,6 +78,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 2)
 
 [node name="Trampoline_Platform_1" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12.5, 26.8236)
+
+[node name="Trampoline_Platform_2" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5.75, 28.0736)
+
+[node name="Trampoline_Platform_3" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 25.3236)
 
 [node name="Lights" type="Node3D" parent="Level"]
 
