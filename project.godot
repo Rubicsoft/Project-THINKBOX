@@ -25,6 +25,7 @@ config/icon="res://icon.svg"
 Global="*res://scripts/global.gd"
 Checkpoint="*res://scripts/checkpoint.gd"
 GameSettings="*res://scripts/game_settings.gd"
+CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
 
 [display]
 
@@ -35,7 +36,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg")
+enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg")
 
 [file_customization]
 
