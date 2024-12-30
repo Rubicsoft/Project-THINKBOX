@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="6_ff26i"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="7_tswwr"]
 [ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="8_d6224"]
-[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="9_gnlho"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="9_gnlho"]
 [ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="9_xuufj"]
 [ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="10_rd050"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="11_avs6c"]

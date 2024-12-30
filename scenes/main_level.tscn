@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
 [ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/main_level_blockingmap.tscn" id="2_ik5fb"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_em0gt"]
-[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="5_0yum3"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="5_0yum3"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_e2mni"]
 [ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="7_2jjfy"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="7_areyj"]

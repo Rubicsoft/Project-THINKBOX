@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=53 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="6_mnpuf"]
 [ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="7_pb6v7"]
 [ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="8_dnsjv"]
-[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/door.tscn" id="8_homic"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="8_homic"]
 [ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="9_8tu1a"]
 [ext_resource type="ArrayMesh" uid="uid://cfxs83veluhb1" path="res://assets/model/suzanne_monkey.obj" id="9_tsjta"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="10_1eh45"]
@@ -93,6 +93,12 @@ points = PackedVector3Array(-0.000133812, 0.492092, -0.0390938, -0.000133812, 0.
 [sub_resource type="SphereMesh" id="SphereMesh_yuawa"]
 radial_segments = 32
 rings = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmlfl"]
+shading_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.57
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2qpiy"]
 
@@ -295,8 +301,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.112309)
 mass = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AmbaBalls/Ball1"]
+cast_shadow = 0
 mesh = SubResource("SphereMesh_yuawa")
-surface_material_override/0 = ExtResource("10_70wkj")
+surface_material_override/0 = SubResource("StandardMaterial3D_cmlfl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AmbaBalls/Ball1"]
 shape = SubResource("SphereShape3D_2qpiy")
