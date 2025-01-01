@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bogopsy06xw2a"]
+
+[ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="1_finwj"]
+[ext_resource type="Script" path="res://scripts/visual/guidebox.gd" id="1_k6yfx"]
+
+[node name="Guidebox" type="Node3D"]
+script = ExtResource("1_k6yfx")
+
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+text = "This is Guidebox"
+font = ExtResource("1_finwj")
+outline_size = 0
+text_direction = 1
