@@ -36,6 +36,8 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 [Instagram][ig_link]
 
 *Developed by **REMI Games***
+*Published by **NaN Ark***
+
 *Created by **Reymo Je***
 
 [level_design_doc]: LEVEL_DESIGN_DOC.md
