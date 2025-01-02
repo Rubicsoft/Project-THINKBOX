@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=17 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -10,6 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="7_areyj"]
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_jjt03"]
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="8_yms2s"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_fhhq5"]
+[ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_polhk"]
+size = Vector3(0.25, 8, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dx0s7"]
+size = Vector3(0.25, 8, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qmfwk"]
 
@@ -46,6 +54,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.84
 
 [node name="Door_4" parent="Level/Doors" instance=ExtResource("5_0yum3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
+handle_position = "Left"
+
+[node name="Door_5" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
 handle_position = "Left"
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
@@ -94,6 +106,18 @@ shadow_enabled = true
 [node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 17.1906)
 shadow_enabled = true
+
+[node name="Climbable" type="Node3D" parent="Level"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Climbable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.25, -1.75)
+mesh = SubResource("BoxMesh_polhk")
+surface_material_override/0 = ExtResource("9_fhhq5")
+
+[node name="Climbable_Platform" parent="Level/Climbable/MeshInstance3D" instance=ExtResource("10_3vjy4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/MeshInstance3D/Climbable_Platform"]
+shape = SubResource("BoxShape3D_dx0s7")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
