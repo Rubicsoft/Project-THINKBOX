@@ -10,9 +10,9 @@ var is_interactable: bool = true
 func _process(delta):
 	match toggle:
 		true:
-			prompt_msg = "Door\n[CLOSE]"
+			prompt_msg = "Wooden Door\n[CLOSE]"
 		false:
-			prompt_msg = "Door\n[OPEN]"
+			prompt_msg = "Wooden Door\n[OPEN]"
 
 func _on_interact():
 	var handle_position: String = get_parent().handle_position

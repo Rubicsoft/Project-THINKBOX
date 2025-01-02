@@ -7,7 +7,7 @@ extends StaticBody3D
 @onready var label = $Label3D
 @onready var collected_sfx = $CollectedSFX
 
-var prompt_msg: String = "Checkpoint\n[COLLECT]"
+var prompt_msg: String = "Apply Checkpoint"
 var is_obtained: bool = false
 
 func _ready():
