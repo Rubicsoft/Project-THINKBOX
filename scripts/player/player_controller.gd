@@ -101,7 +101,8 @@ func quick_climbing() -> void:
 		var hit_obj: Object = quickclimb_raycast.get_collider()
 		if hit_obj is FloatingPlatform:
 			velocity.y = QUICKCLIMB_ENERGY
-			print(hit_obj.collision_layer)
+			jump(false)
+			#print(hit_obj.collision_layer)
 
 
 # Handle Jump
