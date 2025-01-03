@@ -98,12 +98,14 @@ shadow_enabled = true
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
 
-[node name="Guidebox_1" parent="Level/Guideboxes" instance=ExtResource("9_suvgc")]
+[node name="Guidebox_1" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 12.75)
+player = NodePath("../../../Player")
 guidebox_message = "Take checkpoint"
 
-[node name="Guidebox_2" parent="Level/Guideboxes" instance=ExtResource("9_suvgc")]
+[node name="Guidebox_2" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -12.25, 48.75)
+player = NodePath("../../../Player")
 guidebox_message = "WASD to Move"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
