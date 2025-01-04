@@ -91,8 +91,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 [node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 2)
 
-[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.5, 17.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 1.0
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 
 [node name="Trampolines" type="Node3D" parent="Level"]
 
