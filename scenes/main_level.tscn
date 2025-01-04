@@ -194,6 +194,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -12.25, 48.75)
 player = NodePath("../../../Player")
 guidebox_message = "WASD to Move"
 
+[node name="Guidebox_3" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12, 28.75)
+player = NodePath("../../../Player")
+guidebox_message = "Use trampolines to accelerate in the air"
+visible_distance = 10.0
+
+[node name="Guidebox_4" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 22.25)
+player = NodePath("../../../Player")
+guidebox_message = "Left Mouse to Interact"
+
+[node name="Guidebox_5" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 2.5, -2.75)
+player = NodePath("../../../Player")
+guidebox_message = "You can climb to something climbable"
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("8_yms2s")
