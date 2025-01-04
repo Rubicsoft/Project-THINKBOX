@@ -29,10 +29,10 @@ func _ready() -> void:
 func play_cutscene() -> void:
 	if cutscene:
 		cutscene.play(cutscene_name)
-	if not player_controlability:
-		Global.is_player_controllable = false
-	if pausable:
-		Global.is_pausable = false
+		if not player_controlability:
+			Global.is_player_controllable = false
+		if pausable:
+			Global.is_pausable = false
 
 
 func _on_cutscene_finished(_anim_name: StringName) -> void:

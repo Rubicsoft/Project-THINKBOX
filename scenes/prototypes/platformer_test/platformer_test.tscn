@@ -132,7 +132,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -144,7 +144,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -238,8 +238,7 @@ shadow_enabled = true
 
 [node name="PlatformerTest_Map" parent="." instance=ExtResource("1_a6e5d")]
 
-[node name="Begin_Cutscene" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
-cutscene = NodePath("../Cutscene/Opening_Cutscene")
+[node name="Begin_Cutscene" parent="." instance=ExtResource("17_o02wy")]
 cutscene_name = "opening"
 
 [node name="Doors" type="Node3D" parent="."]
@@ -525,21 +524,22 @@ libraries = {
 
 [node name="Camera3D1" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.953, 1.50449, 15.7177)
-current = true
 fov = 60.0
 
 [node name="Camera3D2" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.548381, 0, 0.836229, 0, 1, 0, -0.836229, 0, 0.548381, 9.74237, 1.19936, -3.10875)
-current = true
 fov = 35.0
 
 [node name="Codex_s" type="Node3D" parent="."]
 
-[node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
+[node name="Codex1" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 4)
 
 [node name="Codex2" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 2)
+
+[node name="Codex3" parent="Codex_s" instance=ExtResource("35_2hvfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.34999, -7.75)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0.749995, 8)
