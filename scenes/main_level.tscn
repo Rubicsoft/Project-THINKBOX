@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=19 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="8_yms2s"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_fhhq5"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
+[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -23,6 +24,9 @@ size = Vector3(0.25, 8, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ii88j"]
 size = Vector3(30, 0.5, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edu34"]
+size = Vector3(2.75, 0.5, 16)
 
 [node name="MainLevel" type="Node3D"]
 script = ExtResource("1_pgyml")
@@ -50,7 +54,7 @@ handle_position = "Left"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.26, 20.078)
 
 [node name="Door_3" parent="Level/Doors" instance=ExtResource("5_0yum3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.25, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.5725, 0)
 
 [node name="Door_4" parent="Level/Doors" instance=ExtResource("5_0yum3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
@@ -71,12 +75,12 @@ custom_position = NodePath("Node3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4)
 
 [node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.85, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 8.1, -0.75)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.75, 0, -1.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 0.75)
 
 [node name="FlatPlatform" type="Node3D" parent="Level"]
 
@@ -85,6 +89,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 
 [node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 2)
+
+[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.5, 17.75)
 
 [node name="Trampolines" type="Node3D" parent="Level"]
 
@@ -96,6 +103,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5.75, 28.0736)
 
 [node name="Trampoline_Platform_3" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 25.3236)
+
+[node name="Trampoline_Platform_4" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.25, 8.8236)
+JUMP_FORCE = 5.0
 
 [node name="Lights" type="Node3D" parent="Level"]
 
@@ -119,24 +130,54 @@ surface_material_override/0 = ExtResource("9_fhhq5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/MeshInstance3D/Climbable_Platform"]
 shape = SubResource("BoxShape3D_dx0s7")
 
+[node name="SpinningPlatform" type="Node3D" parent="Level"]
+
+[node name="MovingPlatform_Spin_1" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 7.5, -1)
+
+[node name="MovingPlatform_Spin_2" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.25, 1)
+
+[node name="MovingPlatform_Spin_3" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, 2.25)
+
+[node name="MovingPlatform_Spin_4" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.75, -0.25)
+
+[node name="MovingPlatform_Spin_5" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -4.75)
+
+[node name="MovingPlatform_Spin_6" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, -9.25)
+
+[node name="Killzones" type="Node3D" parent="Level"]
+
+[node name="World_Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+player = NodePath("../../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/World_Killzone"]
+shape = SubResource("WorldBoundaryShape3D_qmfwk")
+
+[node name="Killzone1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549121, 0)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone1"]
+shape = SubResource("BoxShape3D_ii88j")
+
+[node name="Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.25, 13.25)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
+shape = SubResource("BoxShape3D_edu34")
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("8_yms2s")
 volume_db = -5.0
 autoplay = true
 bus = &"BGM"
-
-[node name="World_Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
-player = NodePath("../Player")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World_Killzone"]
-shape = SubResource("WorldBoundaryShape3D_qmfwk")
-
-[node name="Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549121, 0)
-player = NodePath("../Player")
-activate_above_player = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
-shape = SubResource("BoxShape3D_ii88j")
