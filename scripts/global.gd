@@ -28,3 +28,10 @@ func increase_value(key) -> void:
 
 func reset_state() -> void:
 	state = default_state
+
+
+func get_distance_3d(object1: Node3D, object2: Node3D) -> float:
+	var pos_obj1: Vector3 = object1.global_transform.origin
+	var pos_obj2: Vector3 = object2.global_transform.origin
+	
+	return pos_obj1.distance_to(pos_obj2)

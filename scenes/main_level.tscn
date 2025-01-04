@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=20 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_jjt03"]
 [ext_resource type="AudioStream" uid="uid://bgj7w7xm6dtk0" path="res://assets/bgm/bgm_03.ogg" id="8_yms2s"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_fhhq5"]
+[ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="9_suvgc"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
 
@@ -174,6 +175,18 @@ activate_above_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
 shape = SubResource("BoxShape3D_edu34")
+
+[node name="Guideboxes" type="Node3D" parent="Level"]
+
+[node name="Guidebox_1" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 12.75)
+player = NodePath("../../../Player")
+guidebox_message = "Take checkpoint"
+
+[node name="Guidebox_2" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -12.25, 48.75)
+player = NodePath("../../../Player")
+guidebox_message = "WASD to Move"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
