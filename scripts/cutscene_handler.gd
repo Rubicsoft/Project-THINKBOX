@@ -4,6 +4,7 @@ extends Node
 @export var cutscene_name: String
 @export var player_controlability: bool = false
 @export var pausable: bool = true
+@export var hide_hud: bool = true
 
 
 func _ready() -> void:
@@ -33,6 +34,8 @@ func play_cutscene() -> void:
 			Global.is_player_controllable = false
 		if pausable:
 			Global.is_pausable = false
+		if hide_hud:
+			Global.is_playing_cutscene = true
 
 
 func _on_cutscene_finished(_anim_name: StringName) -> void:
@@ -40,6 +43,8 @@ func _on_cutscene_finished(_anim_name: StringName) -> void:
 		Global.is_player_controllable = true
 	if pausable:
 		Global.is_pausable = true
+	if hide_hud:
+		Global.is_playing_cutscene = false
 
 
 func _on_hitbox_triggered() -> void:

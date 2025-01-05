@@ -100,7 +100,7 @@ offset_left = -185.0
 offset_top = -108.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "5"
+text = "0"
 label_settings = SubResource("LabelSettings_ugrmo")
 horizontal_alignment = 1
 
@@ -130,7 +130,7 @@ offset_top = -216.0
 offset_bottom = -108.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "5"
+text = "0"
 label_settings = SubResource("LabelSettings_ugrmo")
 horizontal_alignment = 1
 
