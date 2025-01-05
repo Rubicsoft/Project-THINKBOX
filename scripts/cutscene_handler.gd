@@ -5,6 +5,7 @@ extends Node
 @export var player_controlability: bool = false
 @export var pausable: bool = true
 @export var hide_hud: bool = true
+@export var skipable: bool = false
 
 
 func _ready() -> void:
@@ -27,6 +28,11 @@ func _ready() -> void:
 		play_cutscene()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_cutscene") and Global.is_playing_cutscene and skipable:
+		skip_cutscene()
+
+
 func play_cutscene() -> void:
 	if cutscene:
 		cutscene.play(cutscene_name)
@@ -36,6 +42,11 @@ func play_cutscene() -> void:
 			Global.is_pausable = false
 		if hide_hud:
 			Global.is_playing_cutscene = true
+
+
+func skip_cutscene() -> void:
+	if cutscene:
+		cutscene.play("RESET")
 
 
 func _on_cutscene_finished(_anim_name: StringName) -> void:
