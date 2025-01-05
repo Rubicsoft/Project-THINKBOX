@@ -586,6 +586,7 @@ shape = SubResource("BoxShape3D_phq7y")
 [node name="CutsceneHandler" parent="Area3D" node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
 cutscene = NodePath("../../Cutscene/Opening_Cutscene")
 cutscene_name = "opening"
+hide_hud = false
 
 [node name="Killzones" type="Node3D" parent="."]
 

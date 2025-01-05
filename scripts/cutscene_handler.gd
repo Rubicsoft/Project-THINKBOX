@@ -58,6 +58,6 @@ func _on_cutscene_finished(_anim_name: StringName) -> void:
 		Global.is_playing_cutscene = false
 
 
-func _on_hitbox_triggered() -> void:
-	play_cutscene()
-	print("PLAY CUTSCENE WOYY!")
+func _on_hitbox_triggered(body: Node3D) -> void:
+	if body is Player:
+		play_cutscene()

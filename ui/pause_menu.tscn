@@ -83,4 +83,5 @@ flat = true
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/RestartCheckpointBtn" to="." method="_on_restart_checkpoint_btn_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
