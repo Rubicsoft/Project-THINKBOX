@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=26 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -163,6 +163,14 @@ _data = {
 "RESET": SubResource("Animation_t616l"),
 "opening": SubResource("Animation_qac2f")
 }
+
+[sub_resource type="GDScript" id="GDScript_k3yni"]
+resource_name = "camera_fov"
+script/source = "extends Camera3D
+
+func _process(delta: float) -> void:
+	fov = GameSettings.camera_fov
+"
 
 [node name="MainLevel" type="Node3D"]
 script = ExtResource("1_pgyml")
@@ -344,6 +352,7 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -11.7086, 53)
 fov = 85.0
+script = SubResource("GDScript_k3yni")
 
 [node name="PlayerVoice" type="AudioStreamPlayer3D" parent="AnimationPlayer/Camera3D"]
 stream = ExtResource("16_8lvnk")
