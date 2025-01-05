@@ -32,6 +32,10 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 * [JFA driven motion blur][motion_blur_link] : Jump flood algorithm driven motion blur compositor effect for Godot 4.3
 * [Godot Jolt][godot_jolt_link] : Godot Jolt is a native extension for the Godot game engine that allows you to use the Jolt physics engine to power Godot's 3D physics
 
+## Shader used
+* [Glitch Effect Shader for Godot Engine 4][glitch_link]
+* [Screen Space Lens Flare with rainbow colored effect][lens_flare_link]
+
 ## Support Me 💟
 [Instagram][ig_link]
 
@@ -46,3 +50,5 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 [lfs_link]: https://git-lfs.com/
 [godot_jolt_link]: https://github.com/godot-jolt/godot-jolt
 [motion_blur_link]: https://github.com/sphynx-owner/JFA_driven_motion_blur_addon
+[glitch_link]: https://godotshaders.com/shader/glitch-effect-shader-for-godot-engine-4/
+[lens_flare_link]: https://godotshaders.com/shader/screen-space-lens-flare-with-rainbow-colored-effect/
