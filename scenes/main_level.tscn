@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=26 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="9_suvgc"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_1ryib"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="15_5furw"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="16_8lvnk"]
 
@@ -344,6 +345,17 @@ guidebox_message = "Left Mouse to Interact"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 2.5, -2.75)
 player = NodePath("../../../Player")
 guidebox_message = "You can climb to something climbable"
+
+[node name="Benches" type="Node3D" parent="Level"]
+
+[node name="Bench01_1" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.25, 40.5)
+
+[node name="Bench01_3" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.25, 40.5)
+
+[node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
