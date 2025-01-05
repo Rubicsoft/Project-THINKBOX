@@ -8,16 +8,18 @@ extends Control
 @onready var frame_rate = $FrameRate
 @onready var crosshair = $Crosshair_Pivot/Crosshair
 @onready var death_count: Label = $DeathCount
+@onready var codex_collected: Label = $CodexCollected
 
 
 func _process(delta) -> void:
-	# Set only visible when the game is playing(not paused)
-	visible = not get_tree().paused
+	# Set only visible when the game is playing and not playing cutscene
+	visible = not get_tree().paused and not Global.is_playing_cutscene
 	
 	crosshair.texture = crosshair_texture
 	crosshair.visible = GameSettings.enable_crosshair
 	
 	death_count.text = str(Global.get_value("death_count"))
+	codex_collected.text = str(Global.get_value("codex_collected"))
 	
 	# Handle label for interactables
 	collide_label.text = ""

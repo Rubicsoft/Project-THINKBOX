@@ -132,7 +132,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -144,7 +144,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -157,6 +157,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(9.74237, 1.19936, -3.10875)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Opening_Cutscene/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_kjhcp"]
@@ -209,6 +221,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(9.74237, 1.19936, -3.10875), Vector3(10.3642, 1.19936, -3.9725)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Opening_Cutscene/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ansyt"]
@@ -525,21 +549,31 @@ libraries = {
 
 [node name="Camera3D1" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.953, 1.50449, 15.7177)
-current = true
 fov = 60.0
 
 [node name="Camera3D2" type="Camera3D" parent="Cutscene/Opening_Cutscene"]
 transform = Transform3D(0.548381, 0, 0.836229, 0, 1, 0, -0.836229, 0, 0.548381, 9.74237, 1.19936, -3.10875)
-current = true
 fov = 35.0
+
+[node name="ColorRect" type="ColorRect" parent="Cutscene/Opening_Cutscene"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="Codex_s" type="Node3D" parent="."]
 
-[node name="Codex" parent="Codex_s" instance=ExtResource("35_2hvfs")]
+[node name="Codex1" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 4)
 
 [node name="Codex2" parent="Codex_s" instance=ExtResource("35_2hvfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.34999, 2)
+
+[node name="Codex3" parent="Codex_s" instance=ExtResource("35_2hvfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.34999, -7.75)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0.749995, 8)
