@@ -418,3 +418,12 @@ sides = 16
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.125, -0.25)
 size = Vector3(55, 0.5, 9.5)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+material_override = ExtResource("1_64ofg")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.25, 2.75)
+size = Vector3(1.5, 0.5, 12)

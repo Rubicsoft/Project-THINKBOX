@@ -14,10 +14,6 @@ func _ready() -> void:
 	# Call the AnimationPlayer signal when it's finished
 	if opening_cutscene:
 		opening_cutscene.connect("animation_finished", Callable(self, "_on_opening_cutscene_finished"))
-
-func _process(delta) -> void:
-	print("Player death count : " + str(Global.get_value("death_count")))
-	print("Codex collected : " + str(Global.get_value("codex_collected")))
 	
 
 func _on_opening_cutscene_finished(anim_name: StringName) -> void:
