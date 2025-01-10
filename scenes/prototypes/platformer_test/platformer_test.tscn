@@ -265,6 +265,7 @@ shadow_enabled = true
 [node name="Begin_Cutscene" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
 cutscene = NodePath("../Cutscene/Opening_Cutscene")
 cutscene_name = "opening"
+skipable = true
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -443,6 +444,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 16)
 is_moving = true
 end_position = NodePath("Node3D")
+duration = 8.0
+delay = true
 
 [node name="Node3D" type="Node3D" parent="SpinningPlatform/MovingPlatform_Spin2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 0)
