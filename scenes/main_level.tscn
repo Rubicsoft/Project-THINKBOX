@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=28 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -168,6 +168,14 @@ _data = {
 "opening": SubResource("Animation_qac2f")
 }
 
+[sub_resource type="GDScript" id="GDScript_k3yni"]
+resource_name = "camera_fov"
+script/source = "extends Camera3D
+
+func _process(delta: float) -> void:
+	fov = GameSettings.camera_fov
+"
+
 [node name="MainLevel" type="Node3D"]
 script = ExtResource("1_pgyml")
 
@@ -243,7 +251,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 1.0
+delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
@@ -252,7 +260,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 1.0
+delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
@@ -261,7 +269,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.5, 17.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 1.0
+duration = 3.0
+delay = true
+delay_time = 0.5
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
@@ -421,6 +431,7 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -11.7086, 53)
 fov = 85.0
+script = SubResource("GDScript_k3yni")
 
 [node name="PlayerVoice" type="AudioStreamPlayer3D" parent="AnimationPlayer/Camera3D"]
 stream = ExtResource("16_8lvnk")

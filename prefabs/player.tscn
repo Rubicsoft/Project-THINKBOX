@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=24 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
@@ -18,6 +18,14 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0qlb0"]
 radius = 0.267689
 height = 1.7
+
+[sub_resource type="GDScript" id="GDScript_1kna6"]
+resource_name = "camera_fov"
+script/source = "extends Camera3D
+
+func _process(delta: float) -> void:
+	fov = GameSettings.camera_fov
+"
 
 [sub_resource type="Animation" id="Animation_sx2nl"]
 length = 0.001
@@ -164,7 +172,7 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442644, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-fov = 85.0
+script = SubResource("GDScript_1kna6")
 
 [node name="InteractRayCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
 target_position = Vector3(0, 0, -2)

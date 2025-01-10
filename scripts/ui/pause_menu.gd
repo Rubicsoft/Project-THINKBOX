@@ -52,3 +52,6 @@ func _on_restart_checkpoint_btn_pressed() -> void:
 			camera_fx.play_effect("glitch_fadeout", false)
 	else:
 		printerr("No Player node inserted")
+
+func _on_main_menu_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
