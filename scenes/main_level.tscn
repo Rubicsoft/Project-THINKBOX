@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=27 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -31,6 +31,9 @@ size = Vector3(30, 0.5, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edu34"]
 size = Vector3(2.75, 0.5, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43r4u"]
+size = Vector3(19.25, 1.25, 54.25)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -201,6 +204,13 @@ handle_position = "Left"
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
 handle_position = "Left"
 
+[node name="Door_6" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.219301, 6.76, -15)
+
+[node name="Door_7" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.24464, 6.76, -27.75)
+handle_position = "Left"
+
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
 [node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
@@ -335,13 +345,21 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone1"]
 shape = SubResource("BoxShape3D_ii88j")
 
-[node name="Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="Killzone2" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.25, 13.25)
 player = NodePath("../../../Player")
 activate_above_player = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone2"]
 shape = SubResource("BoxShape3D_edu34")
+
+[node name="Killzone3" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83542, -54.5)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone3"]
+shape = SubResource("BoxShape3D_43r4u")
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
 
