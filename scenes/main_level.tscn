@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=27 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="9_suvgc"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_1ryib"]
+[ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="15_5furw"]
+[ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="16_8lvnk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -28,6 +31,142 @@ size = Vector3(30, 0.5, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edu34"]
 size = Vector3(2.75, 0.5, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43r4u"]
+size = Vector3(19.25, 1.25, 54.25)
+
+[sub_resource type="Animation" id="Animation_t616l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.25, -11.7086, 53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Camera3D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.13163e-14, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Camera3D/PlayerVoice:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qac2f"]
+resource_name = "opening"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.25, -11.7086, 57.5), Vector3(-0.25, -11.7086, 53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Camera3D:current")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Camera3D:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.76667, 2.16667, 2.86667, 3.2, 4.06667, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.0472, 2.13163e-14, 0), Vector3(0, 2.13163e-14, 0), Vector3(0, 2.13163e-14, 0), Vector3(0.261799, -0.523599, 0), Vector3(0.261799, -0.523599, 0), Vector3(-0.584167, 0.395382, 0.108586), Vector3(-0.584167, 0.395382, 0.108586), Vector3(0, 2.13163e-14, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Camera3D/PlayerVoice:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtl4c"]
+_data = {
+"RESET": SubResource("Animation_t616l"),
+"opening": SubResource("Animation_qac2f")
+}
 
 [node name="MainLevel" type="Node3D"]
 script = ExtResource("1_pgyml")
@@ -65,6 +204,13 @@ handle_position = "Left"
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
 handle_position = "Left"
 
+[node name="Door_6" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.219301, 6.76, -15)
+
+[node name="Door_7" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.24464, 6.76, -27.75)
+handle_position = "Left"
+
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
 [node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
@@ -83,16 +229,42 @@ custom_position = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 0.75)
 
+[node name="Checkpoint_3" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.75, 1.85, 37)
+player = NodePath("../../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -2.18557e-08)
+
 [node name="FlatPlatform" type="Node3D" parent="Level"]
 
-[node name="MovingPlatform_Flat_1" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_1" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 1.0
 
-[node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 2)
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 1.0
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.5, 17.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 1.0
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 
 [node name="Trampolines" type="Node3D" parent="Level"]
 
@@ -117,6 +289,11 @@ shadow_enabled = true
 
 [node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 17.1906)
+shadow_enabled = true
+
+[node name="OmniLight3D_3" type="OmniLight3D" parent="Level/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.75382, 36.4406)
+light_energy = 5.695
 shadow_enabled = true
 
 [node name="Climbable" type="Node3D" parent="Level"]
@@ -168,13 +345,21 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone1"]
 shape = SubResource("BoxShape3D_ii88j")
 
-[node name="Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="Killzone2" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.25, 13.25)
 player = NodePath("../../../Player")
 activate_above_player = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone2"]
 shape = SubResource("BoxShape3D_edu34")
+
+[node name="Killzone3" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83542, -54.5)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone3"]
+shape = SubResource("BoxShape3D_43r4u")
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
 
@@ -188,9 +373,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -12.25, 48.75)
 player = NodePath("../../../Player")
 guidebox_message = "WASD to Move"
 
+[node name="Guidebox_3" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12, 28.75)
+player = NodePath("../../../Player")
+guidebox_message = "Use trampolines to accelerate in the air"
+visible_distance = 10.0
+
+[node name="Guidebox_4" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 22.25)
+player = NodePath("../../../Player")
+guidebox_message = "Left Mouse to Interact"
+
+[node name="Guidebox_5" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 2.5, -2.75)
+player = NodePath("../../../Player")
+guidebox_message = "You can climb to something climbable"
+
+[node name="Benches" type="Node3D" parent="Level"]
+
+[node name="Bench01_1" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.25, 40.5)
+
+[node name="Bench01_3" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.25, 40.5)
+
+[node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("8_yms2s")
 volume_db = -5.0
 autoplay = true
 bus = &"BGM"
+
+[node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("15_5furw")]
+cutscene = NodePath("../AnimationPlayer")
+cutscene_name = "opening"
+pausable = false
+skipable = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jtl4c")
+}
+
+[node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -11.7086, 53)
+fov = 85.0
+
+[node name="PlayerVoice" type="AudioStreamPlayer3D" parent="AnimationPlayer/Camera3D"]
+stream = ExtResource("16_8lvnk")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
