@@ -364,56 +364,46 @@ size = Vector3(0.5, 3.5, 9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.125, 0)
 size = Vector3(0.125, 3.5, 9)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D5"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.75, 0)
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D5"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -0.75, 0)
 operation = 2
-radius = 1.75
-height = 0.5
-sides = 16
+size = Vector3(3, 0.5, 3)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 2.125, 0)
 size = Vector3(0.125, 3.5, 9)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D8"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.75, 0)
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D8"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -0.75, 0)
 operation = 2
-radius = 1.75
-height = 0.5
-sides = 16
+size = Vector3(3, 0.5, 3)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.75, 2.125, 0)
 size = Vector3(0.125, 3.5, 9)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D9"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.75, 0)
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D9"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -0.75, 0)
 operation = 2
-radius = 1.75
-height = 0.5
-sides = 16
+size = Vector3(3, 0.5, 3)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 2.125, 0)
 size = Vector3(0.125, 3.5, 9)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D6"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.75, 0)
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D6"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -0.75, 0)
 operation = 2
-radius = 1.75
-height = 0.5
-sides = 16
+size = Vector3(3, 0.5, 3)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.25, 2.125, 0)
 size = Vector3(0.125, 3.5, 9)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D7"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.75, 0)
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D7"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, -0.75, 0)
 operation = 2
-radius = 1.75
-height = 0.5
-sides = 16
+size = Vector3(3, 0.5, 3)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.125, -0.25)

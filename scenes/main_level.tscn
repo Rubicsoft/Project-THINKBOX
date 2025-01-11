@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=29 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
 [ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_1ryib"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="15_5furw"]
+[ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_fnasl"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="16_8lvnk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
@@ -33,7 +34,7 @@ size = Vector3(30, 0.5, 30)
 size = Vector3(2.75, 0.5, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43r4u"]
-size = Vector3(19.25, 1.25, 54.25)
+size = Vector3(19.25, 1.25, 66.5)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -371,6 +372,7 @@ player = NodePath("../../../Player")
 activate_above_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.125)
 shape = SubResource("BoxShape3D_43r4u")
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
@@ -411,6 +413,14 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1
 
 [node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_1ryib")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)
+
+[node name="Codexes" type="Node3D" parent="Level"]
+
+[node name="Codex1" parent="Level/Codexes" instance=ExtResource("15_fnasl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.5, 33)
+
+[node name="Codex2" parent="Level/Codexes" instance=ExtResource("15_fnasl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 8.5, 29)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
