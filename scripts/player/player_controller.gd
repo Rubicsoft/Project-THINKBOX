@@ -18,10 +18,12 @@ class_name Player
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
 @export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
+@export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
+var spec_double_speed: bool = false
 
 # Constants
 const MOVEMENT_SMOOTHNESS = 8.0
@@ -39,7 +41,19 @@ func _input(event) -> void:
 		if event is InputEventMouseMotion:
 			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
 			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
-	
+		
+		
+		if event.is_action_pressed("spectator"):
+			Global.spectator_mode = not Global.spectator_mode
+		if event.is_action_pressed("tap") and Global.spectator_mode:
+			spec_double_speed = not spec_double_speed
+			match spec_double_speed:
+				true:
+					SPEED = SPEED * 2.0
+				false:
+					SPEED = SPEED * 1/2.0
+		if not Global.spectator_mode:
+			spec_double_speed = false
 	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 	#print(gamepad_look_dir)
 	#rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
@@ -56,16 +70,16 @@ func _process(delta) -> void:
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not Global.spectator_mode:
 		velocity += get_gravity() * 2.0 * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.spectator_mode:
 		jump()
 
 	# Handle movement
+	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
 	if Global.is_player_controllable:
-		var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
@@ -77,7 +91,15 @@ func _physics_process(delta) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	if Global.spectator_mode:
+		var spectator_updown = Input.get_axis("go_down", "go_up")
+		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
+		if spectator_direction:
+			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+	
 	move_and_slide()
 	quick_climbing()
 	take_fall()
