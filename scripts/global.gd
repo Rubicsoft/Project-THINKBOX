@@ -3,6 +3,7 @@ extends Node
 var is_player_controllable: bool = true
 var is_pausable: bool = true
 var is_playing_cutscene: bool = false
+var spectator_mode: bool = false
 
 var state: Dictionary = {
 	"death_count" : 0, 
