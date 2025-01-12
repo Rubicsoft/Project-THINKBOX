@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://baiy2smi6x1tv"]
+[gd_scene load_steps=3 format=3 uid="uid://baiy2smi6x1tv"]
 
-[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_p2iqw"]
+[ext_resource type="Shader" uid="uid://dd37cjnufvrn0" path="res://shaders/tron_map.tres" id="1_7i5iq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwgp5"]
+render_priority = 0
+shader = ExtResource("1_7i5iq")
+shader_parameter/Background_Color = Color(0, 0, 0, 1)
+shader_parameter/Grid_Scale = 50.0
+shader_parameter/Grid_Color = Color(1, 1, 1, 1)
 
 [node name="ObstacleTest_Level" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_p2iqw")
+material_override = SubResource("ShaderMaterial_rwgp5")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
