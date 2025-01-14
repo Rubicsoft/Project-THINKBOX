@@ -144,6 +144,15 @@ func jump(do_action: bool = true) -> void:
 func dash() -> void:
 	velocity.x = (SPEED * DASH_SPEED) * velocity.normalized().x
 	velocity.z = (SPEED * DASH_SPEED) * velocity.normalized().z
+	Global.decrease_value("dash_orbs")
+	
+	var anim = get_tree().create_tween()
+	anim.set_trans(Tween.TRANS_SINE)
+	const dash_fov = 30.0
+	
+	if velocity.normalized() != Vector3.ZERO:
+		anim.tween_property(camera, "fov", camera.fov + dash_fov, 0.05)
+		anim.tween_property(camera, "fov", camera.fov - dash_fov, 0.05)
 
 
 # To kill the Player
