@@ -17,6 +17,7 @@ class_name Player
 
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
+@export_range(1, 20, 0.1) var DASH_SPEED: float = 10.0
 @export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 
@@ -76,6 +77,9 @@ func _physics_process(delta) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.spectator_mode:
 		jump()
+	
+	if Input.is_action_just_pressed("dash"):
+		dash()
 
 	# Handle movement
 	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
@@ -136,15 +140,18 @@ func jump(do_action: bool = true) -> void:
 	jump_ground.play()
 
 
+# Handle dashing
+func dash() -> void:
+	velocity.x = (SPEED * DASH_SPEED) * velocity.normalized().x
+	velocity.z = (SPEED * DASH_SPEED) * velocity.normalized().z
+
+
 # To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_value("death_count")
 	camera_fx.play_effect("glitch_fadeout", false)
 
-
-func crouch(event: InputEvent) -> void:
-	pass
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true
