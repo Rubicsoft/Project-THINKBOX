@@ -5,9 +5,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rwgp5"]
 render_priority = 0
 shader = ExtResource("1_7i5iq")
-shader_parameter/Background_Color = Color(0, 0, 0, 1)
+shader_parameter/Background_Color = Color(0.0569579, 0.0654212, 0.16316, 1)
 shader_parameter/Grid_Scale = 50.0
-shader_parameter/Grid_Color = Color(1, 1, 1, 1)
+shader_parameter/Grid_Color = Color(0, 0.79023, 0.222364, 1)
 
 [node name="ObstacleTest_Level" type="Node3D"]
 
