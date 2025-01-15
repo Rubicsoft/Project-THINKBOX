@@ -21,6 +21,7 @@ class_name Player
 @export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 
+# Variables
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
@@ -33,8 +34,8 @@ const FALL_DAMAGE_SPEED = 20.0
 
 
 func _ready():
+	# Default checkpoint position
 	Checkpoint.last_position = global_position
-	#player_voice.play()
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
@@ -46,6 +47,7 @@ func _input(event) -> void:
 		
 		if event.is_action_pressed("spectator"):
 			Global.spectator_mode = not Global.spectator_mode
+		
 		if event.is_action_pressed("tap") and Global.spectator_mode:
 			spec_double_speed = not spec_double_speed
 			match spec_double_speed:
@@ -55,6 +57,7 @@ func _input(event) -> void:
 					SPEED = SPEED * 1/2.0
 		if not Global.spectator_mode:
 			spec_double_speed = false
+	
 	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 	#print(gamepad_look_dir)
 	#rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
@@ -78,13 +81,23 @@ func _physics_process(delta) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.spectator_mode:
 		jump()
 	
-	if Input.is_action_just_pressed("dash"):
-		dash()
-
 	# Handle movement
-	var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
+	var direction: Vector3 = move_player(input_dir, delta)
+	
+	spectator_controller(input_dir, delta)		# Spectator Mode Controller
+	dash(direction)								# Dashing system
+	quick_climbing()							# Quick climb/ledge
+	take_fall()									# Player takes fall
+	
+	move_and_slide()
+
+
+
+# Handle Player's movement
+func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	if Global.is_player_controllable:
-		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
@@ -95,20 +108,24 @@ func _physics_process(delta) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		return direction
 	
-	if Global.spectator_mode:
+	return Vector3.ZERO
+
+
+# Spectator Mode controller
+func spectator_controller(input_dir: Vector2, delta: float) -> void:
+	if Global.spectator_mode and Global.is_player_controllable:
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
 			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
-	
-	move_and_slide()
-	quick_climbing()
-	take_fall()
 
 
+# Player takes some action when fall
 func take_fall() -> void:
 	if not is_on_floor():
 		# Get value for next frame
@@ -128,7 +145,6 @@ func quick_climbing() -> void:
 		if hit_obj is FloatingPlatform:
 			velocity.y = QUICKCLIMB_ENERGY
 			jump(false)
-			#print(hit_obj.collision_layer)
 
 
 # Handle Jump
@@ -141,18 +157,19 @@ func jump(do_action: bool = true) -> void:
 
 
 # Handle dashing
-func dash() -> void:
-	velocity.x = (SPEED * DASH_SPEED) * velocity.normalized().x
-	velocity.z = (SPEED * DASH_SPEED) * velocity.normalized().z
-	Global.decrease_value("dash_orbs")
-	
-	var anim = get_tree().create_tween()
-	anim.set_trans(Tween.TRANS_SINE)
-	const dash_fov = 30.0
-	
-	if velocity.normalized() != Vector3.ZERO:
-		anim.tween_property(camera, "fov", camera.fov + dash_fov, 0.05)
-		anim.tween_property(camera, "fov", camera.fov - dash_fov, 0.05)
+func dash(input_direction: Vector3) -> void:
+	if Input.is_action_just_pressed("dash"):
+		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
+		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
+		Global.decrease_value("dash_orbs")
+		
+		var anim = get_tree().create_tween()
+		anim.set_trans(Tween.TRANS_SINE)
+		const dash_fov = 20.0
+		
+		if input_direction != Vector3.ZERO:
+			anim.tween_property(camera, "fov", camera.fov + dash_fov, 0.05)
+			anim.tween_property(camera, "fov", camera.fov - dash_fov, 0.05)
 
 
 # To kill the Player

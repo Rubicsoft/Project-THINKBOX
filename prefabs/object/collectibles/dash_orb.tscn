@@ -6,7 +6,7 @@
 radius = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_ua0yg"]
-size = Vector3(0.7, 1, 0.1)
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="DashOrb" type="Area3D"]
 
