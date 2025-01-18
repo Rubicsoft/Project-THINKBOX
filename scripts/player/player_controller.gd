@@ -106,8 +106,9 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 					camera_animation.play("player_walking")
 				run_sfx.play_audio()
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			if is_on_floor() or Global.spectator_mode:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 		return direction
 	
