@@ -158,7 +158,7 @@ func jump(do_action: bool = true) -> void:
 
 # Handle dashing
 func dash(input_direction: Vector3) -> void:
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and Global.get_value("dash_orbs") > 0:
 		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
 		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
 		Global.decrease_value("dash_orbs")
