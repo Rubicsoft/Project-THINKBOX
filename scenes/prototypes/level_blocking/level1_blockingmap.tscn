@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmk7w4h7y6k" path="res://prefabs/tools/prototyping/door_csg.tscn" id="2_5iilh"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_d7508"]
 
-[node name="MainLevel_BlockingMap" type="Node3D"]
+[node name="Level1_BlockingMap" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_64ofg")
