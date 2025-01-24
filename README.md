@@ -4,9 +4,9 @@
 
 If you're interested, please support the development of the game :)
 
-More info for level design [HERE][level_design_doc]
+<!-- More info for level design [HERE][level_design_doc]
 
-[MECHANICS][mechanic_doc]
+[MECHANICS][mechanic_doc] -->
 
 This project is using *Godot 4.3*
 
@@ -16,7 +16,7 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 
 ## Folder Structure
 
-| Folder Name | Description |
+| **Folder Name** | **Description** |
 | ---- | ---- |
 | addons | Contains required addons |
 | assets | Game contents such as images, textures, audios, fonts, etc |
@@ -36,8 +36,9 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 * [Glitch Effect Shader for Godot Engine 4][glitch_link]
 * [Screen Space Lens Flare with rainbow colored effect][lens_flare_link]
 
-## Support Me 💟
-[Instagram][ig_link]
+## Support Us 💟
+* **Reymo Je** : Lead Game Engineer and Art | [GitHub][reymo_github_link] | [Instagram][reymo_ig_link]
+* **Dans** : 2D Game Artist
 
 *Developed by **REMI Games***
 *Published by **NaN Ark***
@@ -46,7 +47,8 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 
 [level_design_doc]: LEVEL_DESIGN_DOC.md
 [mechanic_doc]: MECHANICS.md
-[ig_link]: https://www.instagram.com/reymo_je_xefron/
+[reymo_ig_link]: https://www.instagram.com/reymo_je_xefron/
+[reymo_github_link]: https://github.com/Rubicsoft
 [lfs_link]: https://git-lfs.com/
 [godot_jolt_link]: https://github.com/godot-jolt/godot-jolt
 [motion_blur_link]: https://github.com/sphynx-owner/JFA_driven_motion_blur_addon

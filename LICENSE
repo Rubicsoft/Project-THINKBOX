@@ -1,21 +1,52 @@
-MIT License
+Project Thinkbox Proprietary License
 
-Copyright (c) 2024 REMI Games
+Copyright (c) 2024-2025 REMI Games
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This license governs the use of the source code and assets provided with this game project. By using or modifying the provided materials, you agree to the following terms :
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+
+1. Grant of License
+    
+    The source code is licensed to you for modification, customization, and distribution under the conditions specified in this agreement.
+
+    The assets(art, music, sound effects, models, and other media) are provided solely for use within this project.
+
+
+2. Permitted Uses
+    
+    You may : 
+        Modify, enhance, or customize the source code for personal or commercial use.
+
+        Share or distribute modified versions of the source code.
+    
+    You may not :
+        Resell, redistribute, or repackage the assets in any form, as part of another project.
+
+
+3. Prohibited Uses
+
+    You may not :
+        Claim ownership of the assets or original source code.
+
+        Use the assets for any project unrelated to this game.
+
+        Reproduce, sell, or distribute the assets outside of this project.
+
+
+4. Attribution
+
+    Any public use or distribution of the source code must include appropriate credit to the original developers.
+
+
+5. Liability
+
+    Any public use or distribution of the source code must include appropriate credit to the original developers.
+
+
+6. Termination
+
+    This license will be terminated if:
+        You violate any terms outlined in this agreement.
+
+        Misuse or unauthorized distribution of the assets occurs.
