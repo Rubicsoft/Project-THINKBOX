@@ -5,14 +5,23 @@ extends Node3D
 @export var visible_distance: float = 5.0
 
 @onready var label: Label3D = $Label3D
-@onready var animation: AnimationPlayer = $AnimationPlayer
+
+var is_visible: bool = false
+const fade_duration = 0.5
 
 func _process(delta: float) -> void:
 	label.text = guidebox_message
 	if player:
-		#print("Distance" + str(Global.get_distance_3d(self, player)))
 		if Global.get_distance_3d(self, player) <= visible_distance:
-			visible = true
-			#animation.play("guidebox_show")
+			# Show label
+			toggle_show(true)
 		else:
-			visible = false
+			# Hide label
+			toggle_show(false)
+
+func toggle_show(visibility: bool) -> void:
+	var tween = get_tree().create_tween()
+	var target_opacity: float = 1.0 if visibility else 0.0
+	
+	tween.tween_property(label, "modulate:a", target_opacity, fade_duration)
+	

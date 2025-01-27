@@ -17,11 +17,15 @@ class_name Player
 
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
+@export_range(1, 20, 0.1) var DASH_SPEED: float = 10.0
 @export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
+@export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 
+# Variables
 var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
+var spec_double_speed: bool = false
 
 # Constants
 const MOVEMENT_SMOOTHNESS = 8.0
@@ -30,8 +34,8 @@ const FALL_DAMAGE_SPEED = 20.0
 
 
 func _ready():
+	# Default checkpoint position
 	Checkpoint.last_position = global_position
-	#player_voice.play()
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
@@ -39,6 +43,20 @@ func _input(event) -> void:
 		if event is InputEventMouseMotion:
 			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
 			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
+		
+		
+		if event.is_action_pressed("spectator"):
+			Global.spectator_mode = not Global.spectator_mode
+		
+		if event.is_action_pressed("tap") and Global.spectator_mode:
+			spec_double_speed = not spec_double_speed
+			match spec_double_speed:
+				true:
+					SPEED = SPEED * 2.0
+				false:
+					SPEED = SPEED * 1/2.0
+		if not Global.spectator_mode:
+			spec_double_speed = false
 	
 	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 	#print(gamepad_look_dir)
@@ -56,17 +74,30 @@ func _process(delta) -> void:
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not Global.spectator_mode:
 		velocity += get_gravity() * 2.0 * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.spectator_mode:
 		jump()
-
+	
 	# Handle movement
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
+	var direction: Vector3 = move_player(input_dir, delta)
+	
+	spectator_controller(input_dir, delta)		# Spectator Mode Controller
+	dash(direction)								# Dashing system
+	quick_climbing()							# Quick climb/ledge
+	take_fall()									# Player takes fall
+	
+	move_and_slide()
+
+
+
+# Handle Player's movement
+func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	if Global.is_player_controllable:
-		var input_dir = Input.get_vector("move_left", "move_right", "move_foreward", "move_backward")
-		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
@@ -75,14 +106,27 @@ func _physics_process(delta) -> void:
 					camera_animation.play("player_walking")
 				run_sfx.play_audio()
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			if is_on_floor() or Global.spectator_mode:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		return direction
+	
+	return Vector3.ZERO
 
-	move_and_slide()
-	quick_climbing()
-	take_fall()
+
+# Spectator Mode controller
+func spectator_controller(input_dir: Vector2, delta: float) -> void:
+	if Global.spectator_mode and Global.is_player_controllable:
+		var spectator_updown = Input.get_axis("go_down", "go_up")
+		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
+		if spectator_direction:
+			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 
 
+# Player takes some action when fall
 func take_fall() -> void:
 	if not is_on_floor():
 		# Get value for next frame
@@ -102,7 +146,6 @@ func quick_climbing() -> void:
 		if hit_obj is FloatingPlatform:
 			velocity.y = QUICKCLIMB_ENERGY
 			jump(false)
-			#print(hit_obj.collision_layer)
 
 
 # Handle Jump
@@ -114,15 +157,28 @@ func jump(do_action: bool = true) -> void:
 	jump_ground.play()
 
 
+# Handle dashing
+func dash(input_direction: Vector3) -> void:
+	if Input.is_action_just_pressed("dash") and Global.get_value("dash_orbs") > 0:
+		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
+		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
+		Global.decrease_value("dash_orbs")
+		
+		var anim = get_tree().create_tween()
+		anim.set_trans(Tween.TRANS_SINE)
+		const dash_fov = 20.0
+		
+		if input_direction != Vector3.ZERO:
+			anim.tween_property(camera, "fov", camera.fov + dash_fov, 0.05)
+			anim.tween_property(camera, "fov", camera.fov - dash_fov, 0.05)
+
+
 # To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_value("death_count")
 	camera_fx.play_effect("glitch_fadeout", false)
 
-
-func crouch(event: InputEvent) -> void:
-	pass
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true
