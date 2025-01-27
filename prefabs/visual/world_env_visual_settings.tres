@@ -18,5 +18,4 @@ tonemap_mode = 2
 tonemap_white = 3.2
 ssr_enabled = true
 ssr_max_steps = 128
-ssao_enabled = true
 glow_enabled = true

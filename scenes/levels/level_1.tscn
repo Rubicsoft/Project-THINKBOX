@@ -1,22 +1,23 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=30 format=3 uid="uid://d2005iq2a4ocn"]
 
-[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_ofu1t"]
-[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pgyml"]
-[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/main_level_blockingmap.tscn" id="2_ik5fb"]
-[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_em0gt"]
-[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="5_0yum3"]
-[ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_e2mni"]
-[ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="7_2jjfy"]
-[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="7_areyj"]
-[ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_jjt03"]
-[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_fhhq5"]
-[ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="9_suvgc"]
-[ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_3vjy4"]
-[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_cdb4h"]
-[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_1ryib"]
-[ext_resource type="AudioStream" uid="uid://31v18ukarh5x" path="res://assets/bgm/bgm_04.ogg" id="15_2afrj"]
-[ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="15_5furw"]
-[ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="16_8lvnk"]
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_s78rj"]
+[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
+[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
+[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level1_blockingmap.tscn" id="4_guvhk"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="5_dp3n0"]
+[ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_pvjjm"]
+[ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="7_gqcia"]
+[ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_g25en"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_7cifc"]
+[ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_ip4ny"]
+[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_johce"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="12_nklfr"]
+[ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="13_uuv5u"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_66vgj"]
+[ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
+[ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
+[ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
+[ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="18_8nmu8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -33,7 +34,10 @@ size = Vector3(30, 0.5, 30)
 size = Vector3(2.75, 0.5, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43r4u"]
-size = Vector3(19.25, 1.25, 54.25)
+size = Vector3(65.5, 1.25, 66.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8k1qn"]
+size = Vector3(8, 11, 53.5)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -176,52 +180,52 @@ func _process(delta: float) -> void:
 	fov = GameSettings.camera_fov
 "
 
-[node name="MainLevel" type="Node3D"]
-script = ExtResource("1_pgyml")
+[node name="Level_1" type="Node3D"]
+script = ExtResource("1_s78rj")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("1_ofu1t")]
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_s6g0h")]
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.965926, 0.183013, -0.183013, 0.00188781, 0.702105, 0.712071, 0.258812, -0.688154, 0.677836, 0, 3, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("3_em0gt")]
+[node name="Player" parent="." instance=ExtResource("3_xvyq1")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -12.15, 53)
 
 [node name="Level" type="Node3D" parent="."]
 
-[node name="MainLevel_BlockingMap" parent="Level" instance=ExtResource("2_ik5fb")]
+[node name="Level1_BlockingMap" parent="Level" instance=ExtResource("4_guvhk")]
 
 [node name="Doors" type="Node3D" parent="Level"]
 
-[node name="Door_1" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_1" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.25, 15)
 handle_position = "Left"
 
-[node name="Door_2" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_2" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.26, 20.078)
 
-[node name="Door_3" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_3" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.5725, 0)
 
-[node name="Door_4" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_4" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
 handle_position = "Left"
 
-[node name="Door_5" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_5" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
 handle_position = "Left"
 
-[node name="Door_6" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_6" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.219301, 6.76, -15)
 
-[node name="Door_7" parent="Level/Doors" instance=ExtResource("5_0yum3")]
+[node name="Door_7" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.24464, 6.76, -27.75)
 handle_position = "Left"
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
-[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5.6, 13)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
@@ -229,7 +233,7 @@ custom_position = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4)
 
-[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 8.1, -0.75)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
@@ -237,7 +241,7 @@ custom_position = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 0.75)
 
-[node name="Checkpoint_3" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_e2mni")]
+[node name="Checkpoint_3" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.75, 1.85, 37)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
@@ -245,51 +249,114 @@ custom_position = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -2.18557e-08)
 
+[node name="Checkpoint_4" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.1, -29.75)
+player = NodePath("../../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 1.5)
+
 [node name="FlatPlatform" type="Node3D" parent="Level"]
 
-[node name="MovingPlatform_Flat_1" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_1" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 is_moving = true
 end_position = NodePath("Node3D")
+duration = 3.0
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_2" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
 is_moving = true
 end_position = NodePath("Node3D")
+duration = 3.0
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_2jjfy")]
+[node name="MovingPlatform_Flat_3" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.5, 17.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 3.0
-delay = true
-delay_time = 0.5
+duration = 2.0
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 
+[node name="MovingPlatform_Flat_4" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -36.75)
+is_moving = true
+end_position = NodePath("Node3D")
+delay = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_5" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -39.75)
+is_moving = true
+end_position = NodePath("Node3D")
+delay = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_6" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -42.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 4.0
+delay = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_7" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -45.75)
+is_moving = true
+end_position = NodePath("Node3D")
+delay = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_8" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -48.75)
+is_moving = true
+end_position = NodePath("Node3D")
+delay = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
+
 [node name="Trampolines" type="Node3D" parent="Level"]
 
-[node name="Trampoline_Platform_1" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+[node name="Trampoline_Platform_1" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12.5, 26.8236)
 
-[node name="Trampoline_Platform_2" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+[node name="Trampoline_Platform_2" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5.75, 28.0736)
 
-[node name="Trampoline_Platform_3" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+[node name="Trampoline_Platform_3" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 25.3236)
 
-[node name="Trampoline_Platform_4" parent="Level/Trampolines" instance=ExtResource("8_jjt03")]
+[node name="Trampoline_Platform_4" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.25, 8.8236)
 JUMP_FORCE = 5.0
+
+[node name="Trampoline_Platform_5" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.75, -54.1764)
+
+[node name="Trampoline_Platform_6" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -59.9264)
+
+[node name="Trampoline_Platform_7" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.75, -65.6764)
 
 [node name="Lights" type="Node3D" parent="Level"]
 
@@ -311,43 +378,43 @@ shadow_enabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Climbable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.25, -1.75)
 mesh = SubResource("BoxMesh_polhk")
-surface_material_override/0 = ExtResource("9_fhhq5")
+surface_material_override/0 = ExtResource("9_7cifc")
 
-[node name="Climbable_Platform" parent="Level/Climbable/MeshInstance3D" instance=ExtResource("10_3vjy4")]
+[node name="Climbable_Platform" parent="Level/Climbable/MeshInstance3D" instance=ExtResource("10_ip4ny")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/MeshInstance3D/Climbable_Platform"]
 shape = SubResource("BoxShape3D_dx0s7")
 
 [node name="SpinningPlatform" type="Node3D" parent="Level"]
 
-[node name="MovingPlatform_Spin_1" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_1" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 7.5, -1)
 
-[node name="MovingPlatform_Spin_2" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_2" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.25, 1)
 
-[node name="MovingPlatform_Spin_3" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_3" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, 2.25)
 
-[node name="MovingPlatform_Spin_4" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_4" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.75, -0.25)
 
-[node name="MovingPlatform_Spin_5" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_5" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -4.75)
 
-[node name="MovingPlatform_Spin_6" parent="Level/SpinningPlatform" instance=ExtResource("11_cdb4h")]
+[node name="MovingPlatform_Spin_6" parent="Level/SpinningPlatform" instance=ExtResource("11_johce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, -9.25)
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
-[node name="World_Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="World_Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 player = NodePath("../../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/World_Killzone"]
 shape = SubResource("WorldBoundaryShape3D_qmfwk")
 
-[node name="Killzone1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="Killzone1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549121, 0)
 player = NodePath("../../../Player")
 activate_above_player = true
@@ -355,7 +422,7 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone1"]
 shape = SubResource("BoxShape3D_ii88j")
 
-[node name="Killzone2" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="Killzone2" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.25, 13.25)
 player = NodePath("../../../Player")
 activate_above_player = true
@@ -363,61 +430,93 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone2"]
 shape = SubResource("BoxShape3D_edu34")
 
-[node name="Killzone3" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("7_areyj")]
+[node name="Killzone3" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83542, -54.5)
 player = NodePath("../../../Player")
 activate_above_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.125)
 shape = SubResource("BoxShape3D_43r4u")
+
+[node name="Killzone4" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83542, -54.5)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 5.16458, 0)
+shape = SubResource("BoxShape3D_8k1qn")
+
+[node name="Killzone5" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83542, -54.5)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 5.165, 0)
+shape = SubResource("BoxShape3D_8k1qn")
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
 
-[node name="Guidebox_1" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+[node name="Guidebox_1" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 12.75)
 player = NodePath("../../../Player")
 guidebox_message = "Take checkpoint"
 
-[node name="Guidebox_2" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+[node name="Guidebox_2" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -12.25, 48.75)
 player = NodePath("../../../Player")
 guidebox_message = "WASD to Move"
 
-[node name="Guidebox_3" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12, 28.75)
+[node name="Guidebox_3" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -12, 27.75)
 player = NodePath("../../../Player")
 guidebox_message = "Use trampolines to accelerate in the air"
-visible_distance = 10.0
 
-[node name="Guidebox_4" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+[node name="Guidebox_4" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6, 22.25)
 player = NodePath("../../../Player")
 guidebox_message = "Left Mouse to Interact"
 
-[node name="Guidebox_5" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("9_suvgc")]
+[node name="Guidebox_5" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 2.5, -2.75)
 player = NodePath("../../../Player")
 guidebox_message = "You can climb to something climbable"
 
+[node name="Guidebox_6" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2, 34)
+player = NodePath("../../../Player")
+guidebox_message = "Collect Codex in order to pass"
+visible_distance = 10.0
+
 [node name="Benches" type="Node3D" parent="Level"]
 
-[node name="Bench01_1" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+[node name="Bench01_1" parent="Level/Benches" instance=ExtResource("14_66vgj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.25, 40.5)
 
-[node name="Bench01_3" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+[node name="Bench01_3" parent="Level/Benches" instance=ExtResource("14_66vgj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.25, 40.5)
 
-[node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_1ryib")]
+[node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_66vgj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)
+
+[node name="Codexes" type="Node3D" parent="Level"]
+
+[node name="Codex1" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.5, 33)
+
+[node name="Codex2" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 8.5, 29)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("15_2afrj")
+stream = ExtResource("16_gihbv")
 volume_db = -5.0
 autoplay = true
 bus = &"BGM"
 
-[node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("15_5furw")]
+[node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_ck3ym")]
 cutscene = NodePath("../AnimationPlayer")
 cutscene_name = "opening"
 pausable = false
@@ -434,7 +533,7 @@ fov = 85.0
 script = SubResource("GDScript_k3yni")
 
 [node name="PlayerVoice" type="AudioStreamPlayer3D" parent="AnimationPlayer/Camera3D"]
-stream = ExtResource("16_8lvnk")
+stream = ExtResource("18_8nmu8")
 
 [node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
 anchors_preset = 15
