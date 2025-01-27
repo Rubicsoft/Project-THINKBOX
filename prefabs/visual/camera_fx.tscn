@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0i54q40rin28"]
+[gd_scene load_steps=12 format=3 uid="uid://d0i54q40rin28"]
 
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="1_0annu"]
+[ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="1_ium52"]
 [ext_resource type="AudioStream" uid="uid://rb2hrtq63kq1" path="res://assets/sounds/glitch.ogg" id="2_jo6up"]
 [ext_resource type="Shader" path="res://shaders/lens_flare.gdshader" id="3_i3tra"]
 
@@ -67,10 +68,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_d5uyr"]
 resource_name = "glitch_fadeout"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -78,7 +91,7 @@ tracks/0/path = NodePath("AnimationPlayer/GlitchFX:material:shader_parameter/sha
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.5, 0.0]
@@ -90,7 +103,7 @@ tracks/1/path = NodePath("AnimationPlayer/GlitchFX:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -102,7 +115,7 @@ tracks/2/path = NodePath("AnimationPlayer/GlitchFX:material:shader_parameter/sha
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.1, 0.0]
@@ -119,6 +132,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/Label:visible")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tyl0w"]
 _data = {
@@ -133,6 +158,10 @@ shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 8.0
 shader_parameter/shake_block_size = 128.0
 shader_parameter/shake_color_rate = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mpl7f"]
+font = ExtResource("1_ium52")
+font_size = 64
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oy1yy"]
 shader = ExtResource("3_i3tra")
@@ -172,9 +201,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Glitch_SFX" type="AudioStreamPlayer" parent="AnimationPlayer/GlitchFX"]
 stream = ExtResource("2_jo6up")
+
+[node name="Label" type="Label" parent="AnimationPlayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -32.5
+offset_right = 241.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "DISCONNECTED"
+label_settings = SubResource("LabelSettings_mpl7f")
+vertical_alignment = 1
 
 [node name="LensFlareFX" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_oy1yy")
@@ -184,3 +231,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

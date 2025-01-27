@@ -72,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Crosshair" type="Sprite2D" parent="Crosshair_Pivot"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_bhe1p")
 
 [node name="AlphaDevInfo" type="Label" parent="."]
