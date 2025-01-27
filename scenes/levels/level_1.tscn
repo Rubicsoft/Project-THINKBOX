@@ -249,6 +249,14 @@ custom_position = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -2.18557e-08)
 
+[node name="Checkpoint_4" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.1, -29.75)
+player = NodePath("../../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 1.5)
+
 [node name="FlatPlatform" type="Node3D" parent="Level"]
 
 [node name="MovingPlatform_Flat_1" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
@@ -280,6 +288,47 @@ duration = 2.0
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 
+[node name="MovingPlatform_Flat_4" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -36.75)
+is_moving = true
+end_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_5" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -39.75)
+is_moving = true
+end_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_6" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -42.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_7" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -45.75)
+is_moving = true
+end_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
+
+[node name="MovingPlatform_Flat_8" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -48.75)
+is_moving = true
+end_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
+
 [node name="Trampolines" type="Node3D" parent="Level"]
 
 [node name="Trampoline_Platform_1" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
@@ -294,6 +343,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 25.3236)
 [node name="Trampoline_Platform_4" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.25, 8.8236)
 JUMP_FORCE = 5.0
+
+[node name="Trampoline_Platform_5" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.75, -54.1764)
+
+[node name="Trampoline_Platform_6" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -59.9264)
+
+[node name="Trampoline_Platform_7" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 3.75, -65.6764)
 
 [node name="Lights" type="Node3D" parent="Level"]
 

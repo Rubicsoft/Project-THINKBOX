@@ -1,3 +1,41 @@
-[gd_scene format=3 uid="uid://71l68bcdyh2d"]
+[gd_scene load_steps=8 format=3 uid="uid://71l68bcdyh2d"]
+
+[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_2na8t"]
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_36ugt"]
+[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ca4jg"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u70xy"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3ub3l"]
 
 [node name="Node" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_2na8t")]
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.965926, 0.183013, -0.183013, 0, 0.707107, 0.707107, 0.258819, -0.683013, 0.683013, 0, 5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ca4jg")
+surface_material_override/0 = ExtResource("2_36ugt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_u70xy")
+
+[node name="Player" parent="." instance=ExtResource("3_y5nra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_17dgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+player = NodePath("../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape3D_3ub3l")
