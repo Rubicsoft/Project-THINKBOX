@@ -519,7 +519,6 @@ bus = &"BGM"
 [node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_ck3ym")]
 cutscene = NodePath("../AnimationPlayer")
 cutscene_name = "opening"
-pausable = false
 skipable = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

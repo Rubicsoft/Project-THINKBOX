@@ -2,7 +2,10 @@ extends Control
 
 @export var camera_fx: Control
 
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
+
+var pausemenu_visibility: bool = false
 var bgm_normal_volume: float
 
 const BGM_PAUSED_VOLUME = -10.0
@@ -16,7 +19,7 @@ func _input(event) -> void:
 		pause_game()
 
 func _process(_delta) -> void:
-	visible = get_tree().paused
+	visible = pausemenu_visibility
 	match get_tree().paused:
 		true:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -28,22 +31,33 @@ func _process(_delta) -> void:
 
 func pause_game() -> void:
 	get_tree().paused = true
+	pausemenu_visibility = true
+	anim.play("pause_popup")
 
 func resume_game() -> void:
 	get_tree().paused = false
 
+
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
 
+
 func _on_resume_btn_pressed() -> void:
+	anim.play_backwards("pause_popup")
+	pausemenu_visibility = false
 	get_tree().paused = false
+
 
 func _on_restart_btn_pressed() -> void:
 	get_tree().paused = false
 	Global.reset_state()
 	get_tree().reload_current_scene()
 
+
 func _on_restart_checkpoint_btn_pressed() -> void:
+	anim.play_backwards("pause_popup")
+	pausemenu_visibility = false
+	
 	var parent: Node = get_parent()
 	if parent is Player:
 		Checkpoint.respawn(parent)
@@ -52,6 +66,7 @@ func _on_restart_checkpoint_btn_pressed() -> void:
 			camera_fx.play_effect("glitch_fadeout", false)
 	else:
 		printerr("No Player node inserted")
+
 
 func _on_main_menu_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
