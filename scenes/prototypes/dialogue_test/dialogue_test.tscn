@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4q5vkqbjwjnf"]
+
+[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
+[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_qhd6p"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_saa3v"]
+
+[node name="Node" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_y6pgr")]
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 0)
+
+[node name="Sandbox" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Sandbox"]
+material_override = ExtResource("2_h4aj3")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
+size = Vector3(20, 0.5, 20)
+
+[node name="Player" parent="." instance=ExtResource("3_6el13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qhd6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+player = NodePath("../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape3D_saa3v")

@@ -145,6 +145,11 @@ dash={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="main_actors"
+3d_physics/layer_2="player"
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
