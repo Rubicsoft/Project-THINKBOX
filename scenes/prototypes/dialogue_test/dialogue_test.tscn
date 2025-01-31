@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4q5vkqbjwjnf"]
+[gd_scene load_steps=9 format=3 uid="uid://b4q5vkqbjwjnf"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_qhd6p"]
+[ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="5_l4gqo"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="6_arxb6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_saa3v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fiou7"]
+size = Vector3(2.5, 3, 2)
 
 [node name="Node" type="Node3D"]
 
@@ -13,6 +18,7 @@
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 0)
+shadow_enabled = true
 
 [node name="Sandbox" type="Node3D" parent="."]
 
@@ -23,13 +29,38 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
 size = Vector3(20, 0.5, 20)
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -8)
+size = Vector3(3, 3.5, 3)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sandbox/CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0.5)
+operation = 2
+size = Vector3(2.5, 3.25, 2)
+
 [node name="Player" parent="." instance=ExtResource("3_6el13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
-[node name="Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qhd6p")]
+[node name="WorldKillzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qhd6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 player = NodePath("../Player")
 activate_above_player = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldKillzone"]
 shape = SubResource("WorldBoundaryShape3D_saa3v")
+
+[node name="Guideboxes" type="Node3D" parent="."]
+
+[node name="Guidebox" parent="Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("5_l4gqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.25, -6)
+player = NodePath("../../Player")
+guidebox_message = "Enter this area to toggle a dialogue"
+
+[node name="D_Triggers" type="Node3D" parent="."]
+
+[node name="DialogueTrigger" parent="D_Triggers" instance=ExtResource("6_arxb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_fiou7")
