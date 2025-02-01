@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4q5vkqbjwjnf"]
+[gd_scene load_steps=12 format=3 uid="uid://b4q5vkqbjwjnf"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_qhd6p"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="5_l4gqo"]
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="6_arxb6"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/dialogue_handler.tscn" id="7_dp56e"]
+[ext_resource type="JSON" path="res://dialogues/prototype/testing_dialogue.json" id="8_84myy"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_saa3v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fiou7"]
 size = Vector3(2.5, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_geph4"]
+size = Vector3(22, 4, 4)
 
 [node name="Node" type="Node3D"]
 
@@ -27,6 +32,10 @@ material_override = ExtResource("2_h4aj3")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
+size = Vector3(20, 0.5, 20)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
 size = Vector3(20, 0.5, 20)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
@@ -58,9 +67,18 @@ guidebox_message = "Enter this area to toggle a dialogue"
 
 [node name="D_Triggers" type="Node3D" parent="."]
 
-[node name="DialogueTrigger" parent="D_Triggers" instance=ExtResource("6_arxb6")]
+[node name="DialogueTrigger1" parent="D_Triggers" instance=ExtResource("6_arxb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_fiou7")
+
+[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger1" instance=ExtResource("7_dp56e")]
+dialogue_file = ExtResource("8_84myy")
+
+[node name="DialogueTrigger2" parent="D_Triggers" instance=ExtResource("6_arxb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger2"]
+shape = SubResource("BoxShape3D_geph4")
