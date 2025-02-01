@@ -22,7 +22,6 @@ class_name Player
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 
 # Variables
-var gamepad_look_sensitivity: float = 3.0
 var was_in_air: bool = false
 var fall_velocity_before: float
 var spec_double_speed: bool = false
@@ -57,11 +56,6 @@ func _input(event) -> void:
 					SPEED = SPEED * 1/2.0
 		if not Global.spectator_mode:
 			spec_double_speed = false
-	
-	#var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
-	#print(gamepad_look_dir)
-	#rotate_y(-gamepad_look_dir.x * gamepad_look_sensitivity / 20.0)
-	#camera.rotate_x(gamepad_look_dir.y * gamepad_look_sensitivity / 20.0)
 
 
 func _process(delta) -> void:
@@ -70,6 +64,8 @@ func _process(delta) -> void:
 	if is_on_floor():
 		camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	
+	gamepad_look_input(delta)		# Handles gamepad input for camera looking
 
 
 func _physics_process(delta) -> void:
@@ -115,6 +111,15 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	return Vector3.ZERO
 
 
+# Handles gamepad input for camera looking
+func gamepad_look_input(delta: float) -> void:
+	if Global.is_player_controllable:
+		var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
+		
+		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
+		camera.rotate_x(gamepad_look_dir.y * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
+
+
 # Spectator Mode controller
 func spectator_controller(input_dir: Vector2, delta: float) -> void:
 	if Global.spectator_mode and Global.is_player_controllable:
@@ -150,11 +155,12 @@ func quick_climbing() -> void:
 
 # Handle Jump
 func jump(do_action: bool = true) -> void:
-	if do_action:
-		velocity.y = JUMP_VELOCITY
-	camera_animation.play("player_jump")
-	jump_sfx.play_audio()
-	jump_ground.play()
+	if Global.is_player_controllable:
+		if do_action:
+			velocity.y = JUMP_VELOCITY
+		camera_animation.play("player_jump")
+		jump_sfx.play_audio()
+		jump_ground.play()
 
 
 # Handle dashing
@@ -179,6 +185,8 @@ func kill_self() -> void:
 	Global.increase_value("death_count")
 	camera_fx.play_effect("glitch_fadeout", false)
 
+
+# SIGNALS
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true
