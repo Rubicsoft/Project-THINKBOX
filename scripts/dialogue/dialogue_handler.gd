@@ -2,8 +2,9 @@ extends Node
 class_name DialogHandler
 
 @export var dialogue_file: JSON
+@export var dialogue_gui: DialogueGUI
 
-var dialogue_dict: Dictionary
+var dialogue_dict: Dictionary = {}
 
 
 func _ready() -> void:

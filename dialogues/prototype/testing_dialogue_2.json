@@ -1,0 +1,14 @@
+{
+	"chats" : [
+		{
+			"actor" : "HANS",
+			"dialogue" : "Should I just dash.", 
+			"voice-path" : "res://assets/voicebanks/hans_vo3.ogg"
+		}, 
+		{
+			"actor" : "HANS",
+			"dialogue" : "It is too far away.", 
+			"voice-path" : "res://assets/voicebanks/hans_vo4.ogg"
+		}
+	]
+}
