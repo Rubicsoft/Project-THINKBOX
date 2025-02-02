@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=39 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
@@ -62,6 +62,9 @@ size = Vector3(65.5, 1.25, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8k1qn"]
 size = Vector3(8, 11, 53.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_upqxj"]
+size = Vector3(3.25, 0.5, 28)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -316,7 +319,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -36.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_4"]
@@ -326,7 +328,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -39.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_5"]
@@ -336,6 +337,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -42.75)
 is_moving = true
 end_position = NodePath("Node3D")
+duration = 2.5
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_6"]
@@ -345,7 +347,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -45.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_7"]
@@ -355,7 +356,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -48.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
 delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
@@ -392,6 +392,24 @@ delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="MovingPlatform_Flat_12" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 25.25)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.5
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
+
+[node name="MovingPlatform_Flat_13" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 4.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 2.0
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
 
 [node name="Trampolines" type="Node3D" parent="Level"]
 
@@ -573,6 +591,14 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 5.165, 0)
 shape = SubResource("BoxShape3D_8k1qn")
+
+[node name="Killzone6" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.25, 14.25)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone6"]
+shape = SubResource("BoxShape3D_upqxj")
 
 [node name="Guideboxes" type="Node3D" parent="Level"]
 
