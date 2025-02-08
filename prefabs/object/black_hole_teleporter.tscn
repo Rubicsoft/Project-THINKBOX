@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhjxhk7hg1rcu"]
+
+[ext_resource type="Script" path="res://scripts/platforms/teleport_zone.gd" id="1_tymih"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_wt03v"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ixsqc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_efttu"]
+
+[node name="BlackHole_Teleporter" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_tymih")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ixsqc")
+surface_material_override/0 = ExtResource("2_wt03v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_efttu")
