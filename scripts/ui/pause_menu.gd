@@ -61,6 +61,7 @@ func _on_restart_checkpoint_btn_pressed() -> void:
 	var parent: Node = get_parent()
 	if parent is Player:
 		Checkpoint.respawn(parent)
+		Global.increase_global_state("death_count", 1)
 		resume_game()
 		if camera_fx:
 			camera_fx.play_effect("glitch_fadeout", false)
