@@ -45,7 +45,8 @@ func _input(event) -> void:
 		
 		
 		if event.is_action_pressed("spectator"):
-			Global.spectator_mode = not Global.spectator_mode
+			#Global.spectator_mode = not Global.spectator_mode
+			Global.set_global_condition("spectator_mode", not Global.get_global_condition("spectator_mode"))
 		
 		if event.is_action_pressed("tap") and Global.spectator_mode:
 			spec_double_speed = not spec_double_speed
@@ -70,7 +71,7 @@ func _process(delta) -> void:
 
 func _physics_process(delta) -> void:
 	# Add the gravity.
-	if not is_on_floor() and not Global.spectator_mode:
+	if not is_on_floor() and not Global.get_global_condition("spectator_mode"):
 		velocity += get_gravity() * 2.0 * delta
 
 	# Handle jump.
@@ -92,7 +93,7 @@ func _physics_process(delta) -> void:
 
 # Handle Player's movement
 func move_player(input_dir: Vector2, delta: float) -> Vector3:
-	if Global.is_player_controllable:
+	if Global.get_global_condition("is_player_controllable"):
 		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
@@ -102,7 +103,7 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 					camera_animation.play("player_walking")
 				run_sfx.play_audio()
 		else:
-			if is_on_floor() or Global.spectator_mode:
+			if is_on_floor() or Global.get_global_condition("spectator_mode"):
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 		
@@ -122,7 +123,7 @@ func gamepad_look_input(delta: float) -> void:
 
 # Spectator Mode controller
 func spectator_controller(input_dir: Vector2, delta: float) -> void:
-	if Global.spectator_mode and Global.is_player_controllable:
+	if Global.get_global_condition("spectator_mode") and Global.is_player_controllable:
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
@@ -155,7 +156,7 @@ func quick_climbing() -> void:
 
 # Handle Jump
 func jump(do_action: bool = true) -> void:
-	if Global.is_player_controllable:
+	if Global.get_global_condition("is_player_controllable"):
 		if do_action:
 			velocity.y = JUMP_VELOCITY
 		camera_animation.play("player_jump")
@@ -165,10 +166,11 @@ func jump(do_action: bool = true) -> void:
 
 # Handle dashing
 func dash(input_direction: Vector3) -> void:
-	if Input.is_action_just_pressed("dash") and Global.get_value("dash_orbs") > 0:
+	if Input.is_action_just_pressed("dash") and Global.get_global_state("dash_orbs") > 0:
 		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
 		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
 		Global.decrease_value("dash_orbs")
+		Global.decrease_global_state("dash_orbs", 1)
 		
 		var anim = get_tree().create_tween()
 		anim.set_trans(Tween.TRANS_SINE)
@@ -183,6 +185,7 @@ func dash(input_direction: Vector3) -> void:
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_value("death_count")
+	Global.increase_global_state("death_count", 1)
 	camera_fx.play_effect("glitch_fadeout", false)
 
 
@@ -190,3 +193,4 @@ func kill_self() -> void:
 
 func _on_after_dying_timeout() -> void:
 	Global.is_player_controllable = true
+	Global.set_global_condition("is_player_controllable", true)

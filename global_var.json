@@ -1,0 +1,15 @@
+{
+	"conditions" : {
+		"is_player_controllable" : true, 
+		"is_pausable" : true, 
+		"is_playing_cutscene" : false, 
+		"spectator_mode" : false, 
+		"is_on_dialogue" : false
+	}, 
+	
+	"state" : {
+		"death_count" : 0, 
+		"codex_collected" : 0, 
+		"dash_orbs" : 0
+	}
+}
