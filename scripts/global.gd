@@ -4,7 +4,7 @@ var is_player_controllable: bool = true
 var is_pausable: bool = true
 var is_playing_cutscene: bool = false
 var spectator_mode: bool = false
-var is_on_dialogue: bool = false
+var is_on_dialogue: bool = true
 
 var state: Dictionary = {
 	"death_count" : 0, 
