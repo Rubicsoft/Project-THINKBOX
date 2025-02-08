@@ -660,9 +660,16 @@ shape = SubResource("BoxShape3D_200su")
 [node name="Node3D" type="Node3D" parent="TeleportZones/TeleportZone"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33, 23.5, -40.5)
 
-[node name="BlackHole_Teleporter" parent="TeleportZones" node_paths=PackedStringArray("destination") instance=ExtResource("39_m86oy")]
+[node name="BlackHole_Teleporter1" parent="TeleportZones" node_paths=PackedStringArray("destination") instance=ExtResource("39_m86oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.75, 7.75)
 destination = NodePath("Node3D")
 
-[node name="Node3D" type="Node3D" parent="TeleportZones/BlackHole_Teleporter"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40.75, 10.5, -15.75)
+[node name="Node3D" type="Node3D" parent="TeleportZones/BlackHole_Teleporter1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.25, 10.5, -15.75)
+
+[node name="BlackHole_Teleporter2" parent="TeleportZones" node_paths=PackedStringArray("destination") instance=ExtResource("39_m86oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7686, 11.899, -8.09371)
+destination = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="TeleportZones/BlackHole_Teleporter2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39, -11.75, 15.75)
