@@ -38,8 +38,9 @@ func _ready():
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
-	if Global.is_player_controllable:
+	if Global.get_global_condition("is_player_controllable"):
 		if event is InputEventMouseMotion:
+			print(event)
 			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
 			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
 		
@@ -48,7 +49,7 @@ func _input(event) -> void:
 			#Global.spectator_mode = not Global.spectator_mode
 			Global.set_global_condition("spectator_mode", not Global.get_global_condition("spectator_mode"))
 		
-		if event.is_action_pressed("tap") and Global.spectator_mode:
+		if event.is_action_pressed("tap") and Global.get_global_condition("spectator_mode"):
 			spec_double_speed = not spec_double_speed
 			match spec_double_speed:
 				true:
