@@ -40,7 +40,6 @@ func _input(event) -> void:
 	# Handle camera movement based on mouse input
 	if Global.get_global_condition("is_player_controllable"):
 		if event is InputEventMouseMotion:
-			print(event)
 			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
 			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
 		
