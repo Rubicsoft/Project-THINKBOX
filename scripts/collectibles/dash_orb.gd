@@ -16,6 +16,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player and not picked:
-		Global.increase_value("dash_orbs")
 		Global.increase_global_state("dash_orbs", 1)
 		picked = true

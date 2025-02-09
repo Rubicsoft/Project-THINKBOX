@@ -10,11 +10,11 @@ func _ready() -> void:
 	# Play the opening cutscene
 	if opening_cutscene:
 		opening_cutscene.play("opening")
-		Global.is_player_controllable = false
+		Global.set_global_condition("is_player_controllable", false)
 	# Call the AnimationPlayer signal when it's finished
 	if opening_cutscene:
 		opening_cutscene.connect("animation_finished", Callable(self, "_on_opening_cutscene_finished"))
 	
 
 func _on_opening_cutscene_finished(anim_name: StringName) -> void:
-	Global.is_player_controllable = true
+	Global.set_global_condition("is_player_controllable", true)

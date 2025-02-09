@@ -15,7 +15,7 @@ func _ready() -> void:
 	bgm_normal_volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM"))
 
 func _input(event) -> void:
-	if event.is_action_pressed("esc") and not get_tree().paused and Global.is_pausable:
+	if event.is_action_pressed("esc") and not get_tree().paused and Global.get_global_condition("is_pausable"):
 		pause_game()
 
 func _process(_delta) -> void:

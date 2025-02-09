@@ -55,7 +55,7 @@ func _input(event) -> void:
 					SPEED = SPEED * 2.0
 				false:
 					SPEED = SPEED * 1/2.0
-		if not Global.spectator_mode:
+		if not Global.get_global_condition("spectator_mode"):
 			spec_double_speed = false
 
 
@@ -75,7 +75,7 @@ func _physics_process(delta) -> void:
 		velocity += get_gravity() * 2.0 * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.spectator_mode:
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not Global.get_global_condition("spectator_mode"):
 		jump()
 	
 	# Handle movement
@@ -114,7 +114,7 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 
 # Handles gamepad input for camera looking
 func gamepad_look_input(delta: float) -> void:
-	if Global.is_player_controllable:
+	if Global.get_global_condition("is_player_controllable"):
 		var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 		
 		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
@@ -123,7 +123,7 @@ func gamepad_look_input(delta: float) -> void:
 
 # Spectator Mode controller
 func spectator_controller(input_dir: Vector2, delta: float) -> void:
-	if Global.get_global_condition("spectator_mode") and Global.is_player_controllable:
+	if Global.get_global_condition("spectator_mode") and Global.get_global_condition("is_player_controllable"):
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
@@ -169,7 +169,6 @@ func dash(input_direction: Vector3) -> void:
 	if Input.is_action_just_pressed("dash") and Global.get_global_state("dash_orbs") > 0:
 		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
 		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
-		Global.decrease_value("dash_orbs")
 		Global.decrease_global_state("dash_orbs", 1)
 		
 		var anim = get_tree().create_tween()
@@ -184,7 +183,6 @@ func dash(input_direction: Vector3) -> void:
 # To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
-	Global.increase_value("death_count")
 	Global.increase_global_state("death_count", 1)
 	camera_fx.play_effect("glitch_fadeout", false)
 
@@ -192,5 +190,4 @@ func kill_self() -> void:
 # SIGNALS
 
 func _on_after_dying_timeout() -> void:
-	Global.is_player_controllable = true
 	Global.set_global_condition("is_player_controllable", true)
