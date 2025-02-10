@@ -288,7 +288,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
@@ -298,7 +297,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
@@ -317,7 +315,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -36.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 8.5
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -327,7 +324,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -39.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 8.5
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
@@ -336,7 +332,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -42.75)
 is_moving = true
 end_position = NodePath("Node3D")
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -346,7 +341,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -45.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 8.5
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -356,7 +350,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -48.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 8.5
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
@@ -366,7 +359,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -69.486)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
-delay = true
 delay_time = 0.5
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_9"]
@@ -377,7 +369,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -72.486)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
-delay = true
 delay_time = 0.8
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_10"]
@@ -388,7 +379,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -75.486)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
-delay = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
