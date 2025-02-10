@@ -4,10 +4,6 @@
 
 If you're interested, please support the development of the game :)
 
-<!-- More info for level design [HERE][level_design_doc]
-
-[MECHANICS][mechanic_doc] -->
-
 This project is using *Godot 4.3*
 
 ## Cloning
@@ -36,14 +32,18 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 * [Glitch Effect Shader for Godot Engine 4][glitch_link]
 * [Screen Space Lens Flare with rainbow colored effect][lens_flare_link]
 
-## Support Us 💟
-* **Reymo Je** : Lead Game Engineer and Art | [GitHub][reymo_github_link] | [Instagram][reymo_ig_link]
-* **Dans** : 2D Game Artist
+## Support REMI 💟 
+* **Reymo Je** : Lead Game Developer, Art, and Design | [GitHub][reymo_github_link] | [Instagram][reymo_ig_link]
+* **Gibran** : 2D Game Illustration
+* **Ghina** : Iris' Voice Over
+* **Marsverdi**, **Moqyachiino**, **Dans** : Internal supports
 
 *Developed by **REMI Games***
 *Published by **NaN Ark***
 
 *Created by **Reymo Je***
+
+© 2024-2025 REMI Games
 
 [level_design_doc]: LEVEL_DESIGN_DOC.md
 [mechanic_doc]: MECHANICS.md
