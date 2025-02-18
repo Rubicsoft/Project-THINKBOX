@@ -9,41 +9,4 @@ material_override = ExtResource("1_vyqik")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, 0)
-size = Vector3(16, 72, 16)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, 0)
-operation = 2
-size = Vector3(15, 72, 15)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.25, 0)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 36.25, 0)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 36.25, 0)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 36.25, 0)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 36.25, 4)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 36.25, -4)
-size = Vector3(0.25, 71.5, 15)
-
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_vyqik")
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
-size = Vector3(120, 1, 120)
+size = Vector3(12, 1, 8)
