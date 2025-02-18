@@ -142,20 +142,16 @@ volume_db = 10.0
 max_db = 6.0
 bus = &"SFX"
 script = ExtResource("3_e8558")
-audio_1 = ExtResource("4_ee4hq")
-audio_2 = ExtResource("5_nbdku")
-audio_3 = ExtResource("6_r07hw")
+audio_library = Array[AudioStream]([ExtResource("4_ee4hq"), ExtResource("5_nbdku"), ExtResource("6_r07hw")])
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="Audios"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.323541, 0)
 stream = ExtResource("5_3yces")
 volume_db = -5.0
-bus = &"SFX"
+bus = &"VO"
 script = ExtResource("3_e8558")
 continuity = true
-audio_1 = ExtResource("5_3yces")
-audio_2 = ExtResource("8_i0mia")
-audio_3 = ExtResource("9_xto3w")
+audio_library = Array[AudioStream]([ExtResource("5_3yces"), ExtResource("8_i0mia"), ExtResource("9_xto3w")])
 
 [node name="JumpGround" type="AudioStreamPlayer3D" parent="Audios"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.814534, 0)

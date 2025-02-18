@@ -13,13 +13,13 @@ extends Control
 
 func _process(delta) -> void:
 	# Set only visible when the game is playing and not playing cutscene
-	visible = not get_tree().paused and not Global.is_playing_cutscene
+	visible = not get_tree().paused and not Global.get_global_condition("is_playing_cutscene")
 	
 	crosshair.texture = crosshair_texture
 	crosshair.visible = GameSettings.enable_crosshair
 	
-	death_count.text = str(Global.get_value("death_count"))
-	codex_collected.text = str(Global.get_value("codex_collected"))
+	death_count.text = str(Global.get_global_state("death_count"))
+	codex_collected.text = str(Global.get_global_state("codex_collected"))
 	
 	# Handle label for interactables
 	collide_label.text = ""

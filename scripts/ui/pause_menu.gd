@@ -15,7 +15,7 @@ func _ready() -> void:
 	bgm_normal_volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM"))
 
 func _input(event) -> void:
-	if event.is_action_pressed("esc") and not get_tree().paused and Global.is_pausable:
+	if event.is_action_pressed("esc") and not get_tree().paused and Global.get_global_condition("is_pausable"):
 		pause_game()
 
 func _process(_delta) -> void:
@@ -50,7 +50,7 @@ func _on_resume_btn_pressed() -> void:
 
 func _on_restart_btn_pressed() -> void:
 	get_tree().paused = false
-	Global.reset_state()
+	Global.reset_global()
 	get_tree().reload_current_scene()
 
 
@@ -61,6 +61,7 @@ func _on_restart_checkpoint_btn_pressed() -> void:
 	var parent: Node = get_parent()
 	if parent is Player:
 		Checkpoint.respawn(parent)
+		Global.increase_global_state("death_count", 1)
 		resume_game()
 		if camera_fx:
 			camera_fx.play_effect("glitch_fadeout", false)

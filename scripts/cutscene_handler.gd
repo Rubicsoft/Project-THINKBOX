@@ -29,33 +29,39 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("skip_cutscene") and Global.is_playing_cutscene and skipable:
+	if event.is_action_pressed("skip_cutscene") and Global.get_global_condition("is_playing_cutscene") and skipable:
 		skip_cutscene()
 
 
+# ------ SUPPORTING FUNCTIONS ------
+
+# Play the cutscene
 func play_cutscene() -> void:
 	if cutscene:
 		cutscene.play(cutscene_name)
 		if not player_controlability:
-			Global.is_player_controllable = false
+			Global.set_global_condition("is_player_controllable", false)
 		if pausable:
-			Global.is_pausable = false
+			Global.set_global_condition("is_pausable", false)
 		if hide_hud:
-			Global.is_playing_cutscene = true
+			Global.set_global_condition("is_playing_cutscene", true)
 
 
+# Skip the cutscene
 func skip_cutscene() -> void:
 	if cutscene:
 		cutscene.play("RESET")
 
 
+# ------ SIGNAL ------
+
 func _on_cutscene_finished(_anim_name: StringName) -> void:
 	if not player_controlability:
-		Global.is_player_controllable = true
+		Global.set_global_condition("is_player_controllable", true)
 	if pausable:
-		Global.is_pausable = true
+		Global.set_global_condition("is_pausable", true)
 	if hide_hud:
-		Global.is_playing_cutscene = false
+		Global.set_global_condition("is_playing_cutscene", false)
 
 
 func _on_hitbox_triggered(body: Node3D) -> void:
