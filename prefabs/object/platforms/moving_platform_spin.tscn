@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="1_ayg0n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlncq"]
+size = Vector3(1.5, 0.771973, 1.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ku0vs"]
 
@@ -49,17 +50,18 @@ _data = {
 script = ExtResource("1_5hxt5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114014, 0)
 shape = SubResource("BoxShape3D_vlncq")
 
 [node name="Meshes" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Meshes"]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.349559, 0)
+transform = Transform3D(1.5, 0, 0, 0, 0.3, 0, 0, 0, 1.5, 0, 0.349559, 0)
 mesh = SubResource("BoxMesh_ku0vs")
 surface_material_override/0 = ExtResource("1_ayg0n")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Meshes"]
-transform = Transform3D(0.840021, 0, 0, 0, 0.3, 0, 0, 0, 0.928857, 0, 0.0758811, 0)
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.0758811, 0)
 mesh = SubResource("BoxMesh_ku0vs")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Meshes"]
