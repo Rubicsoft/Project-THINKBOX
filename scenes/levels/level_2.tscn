@@ -26,13 +26,15 @@ transform = Transform3D(0.965926, 0.183013, -0.183013, 0, 0.707107, 0.707107, 0.
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_y5nra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 30.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 279.25)
 
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Level2_BlockingMap" parent="Level" instance=ExtResource("5_rx8f4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
 
 [node name="Level2_FloatingWorld" parent="Level" instance=ExtResource("6_6jydl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
@@ -42,17 +44,18 @@ player = NodePath("../../../Player")
 activate_above_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
 shape = SubResource("WorldBoundaryShape3D_3ub3l")
 
 [node name="Codex" type="Node3D" parent="Level"]
 
 [node name="Codex_1" parent="Level/Codex" instance=ExtResource("6_ac0nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.75, 1.5, -33.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.75, 1.5, 215.75)
 
 [node name="MovingPlatform_Flat" type="Node3D" parent="Level"]
 
 [node name="MovingPlatform_Flat1" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, -22.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, 226.75)
 is_moving = true
 end_position = NodePath("Node3D")
 sine_interpolation = true
@@ -68,27 +71,27 @@ update_scale = false
 [node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
 
 [node name="MovingPlatform_Spin1" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -11.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 237.25)
 
 [node name="MovingPlatform_Spin2" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, 234)
 
 [node name="MovingPlatform_Spin3" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, -18.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 230.5)
 
 [node name="MovingPlatform_Spin4" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, -19.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, 229.5)
 
 [node name="Trampoline" type="Node3D" parent="Level"]
 
 [node name="Trampoline_Platform1" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, -22.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, 226.75)
 JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
 [node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("10_6x8nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 1, -41.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 1, 207.25)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
@@ -98,12 +101,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 4.75)
 [node name="DashOrbs" type="Node3D" parent="Level"]
 
 [node name="DashOrb_1" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5, -39.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5, 209.25)
 
 [node name="BlackHole_Teleporter" type="Node3D" parent="Level"]
 
 [node name="BlackHole_Teleporter1" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("12_a3jp7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.5, -64.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.5, 184.25)
 destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
