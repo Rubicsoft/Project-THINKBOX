@@ -18,6 +18,8 @@ var picked: bool = false:
 
 
 func _process(delta: float) -> void:
+	timer.wait_time = spawn_time
+	
 	if Global.get_global_state("dash_orbs") == 0:
 		picked = false
 
