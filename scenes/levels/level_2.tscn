@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://71l68bcdyh2d"]
+[gd_scene load_steps=15 format=3 uid="uid://71l68bcdyh2d"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_2na8t"]
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_np74h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
 [ext_resource type="PackedScene" uid="uid://dlun8ot8204fv" path="res://scenes/prototypes/level_blocking/level2_blockingmap.tscn" id="5_rx8f4"]
@@ -16,6 +17,7 @@
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3ub3l"]
 
 [node name="Level_2" type="Node3D"]
+script = ExtResource("1_np74h")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_2na8t")]
 
