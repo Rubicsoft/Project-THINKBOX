@@ -34,7 +34,6 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 
 ## Support REMI 💟 
 * **Reymo Je** : Lead Game Developer, Art, and Design | [GitHub][reymo_github_link] | [Instagram][reymo_ig_link]
-* **Gibran** : 2D Game Illustration
 * **Ghina** : Iris' Voice Over
 * **Marsverdi**, **Moqyachiino**, **Dans** : Internal supports
 
