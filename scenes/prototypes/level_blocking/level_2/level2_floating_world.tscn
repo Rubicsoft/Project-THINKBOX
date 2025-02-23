@@ -16,9 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -36.5)
 [node name="FloatingWorld_Base2" parent="World" instance=ExtResource("2_m82el")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -95)
 
-[node name="FloatingWorld_Base8" parent="World" instance=ExtResource("2_m82el")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 7.5, -65.5)
-
 [node name="FloatingWorld_Base3" parent="World" instance=ExtResource("2_m82el")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -127)
 
@@ -33,6 +30,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33.5,
 
 [node name="FloatingWorld_Base7" parent="World" instance=ExtResource("2_m82el")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.5, 0, -150)
+
+[node name="FloatingWorld_Base8" parent="World" instance=ExtResource("2_m82el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 7.5, -65.5)
 
 [node name="Starting" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 18)
