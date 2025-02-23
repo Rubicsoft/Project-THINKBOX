@@ -50,7 +50,10 @@ shape = SubResource("WorldBoundaryShape3D_3ub3l")
 [node name="Codex" type="Node3D" parent="Level"]
 
 [node name="Codex_1" parent="Level/Codex" instance=ExtResource("6_ac0nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.75, 1.5, 215.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, 1.5, 215.25)
+
+[node name="Codex_2" parent="Level/Codex" instance=ExtResource("6_ac0nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.25, 15.75, 182.25)
 
 [node name="MovingPlatform_Flat" type="Node3D" parent="Level"]
 
@@ -68,6 +71,19 @@ remote_path = NodePath("../../../Trampoline/Trampoline_Platform1")
 update_rotation = false
 update_scale = false
 
+[node name="MovingPlatform_Flat2" parent="Level/MovingPlatform_Flat" instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 194.5)
+
+[node name="MovingPlatform_Flat3" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 194.5)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
+
 [node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
 
 [node name="MovingPlatform_Spin1" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
@@ -82,6 +98,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 230.5)
 [node name="MovingPlatform_Spin4" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, 229.5)
 
+[node name="MovingPlatform_Spin5" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 190.25)
+
+[node name="MovingPlatform_Spin6" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.25, 186.25)
+
+[node name="MovingPlatform_Spin7" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.75, 183)
+
+[node name="MovingPlatform_Spin8" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 5.5, 180.5)
+
+[node name="MovingPlatform_Spin9" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6.75, 184.5)
+
 [node name="Trampoline" type="Node3D" parent="Level"]
 
 [node name="Trampoline_Platform1" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
@@ -91,23 +122,37 @@ JUMP_FORCE = 12.0
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
 [node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("10_6x8nd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 1, 207.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 1, 208.25)
 player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 4.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4.75)
+
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("10_6x8nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.6, 184)
+player = NodePath("../../../Player")
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.75, 0, 0)
 
 [node name="DashOrbs" type="Node3D" parent="Level"]
 
 [node name="DashOrb_1" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5, 209.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.5, 209.75)
+
+[node name="DashOrb_2" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 19.5, 184.25)
+
+[node name="DashOrb_3" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 10.75, 169.25)
 
 [node name="BlackHole_Teleporter" type="Node3D" parent="Level"]
 
 [node name="BlackHole_Teleporter1" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("12_a3jp7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.5, 184.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 9.5, 186.5)
 destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -30.25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 6, -4.75)
