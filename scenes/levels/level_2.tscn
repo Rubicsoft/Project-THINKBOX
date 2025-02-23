@@ -67,8 +67,11 @@ sine_interpolation = true
 [node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1"]
-remote_path = NodePath("../../../Trampoline/Trampoline_Platform1")
+[node name="Pivot" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1/Pivot"]
+remote_path = NodePath("../../../../Trampoline/Trampoline_Platform1")
 update_rotation = false
 update_scale = false
 
@@ -125,7 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 17.75, 179.5)
 [node name="Trampoline" type="Node3D" parent="Level"]
 
 [node name="Trampoline_Platform1" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, 226.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -2.75, 226.75)
 JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
