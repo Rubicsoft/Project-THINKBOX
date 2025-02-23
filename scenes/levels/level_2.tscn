@@ -1,14 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://71l68bcdyh2d"]
+[gd_scene load_steps=15 format=3 uid="uid://71l68bcdyh2d"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_2na8t"]
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_np74h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
 [ext_resource type="PackedScene" uid="uid://dlun8ot8204fv" path="res://scenes/prototypes/level_blocking/level2_blockingmap.tscn" id="5_rx8f4"]
 [ext_resource type="PackedScene" uid="uid://c7yp6vvu2u176" path="res://scenes/prototypes/level_blocking/level_2/level2_floating_world.tscn" id="6_6jydl"]
+[ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="6_ac0nd"]
+[ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="6_jyy8i"]
+[ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="6_lvmu6"]
+[ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="9_g20by"]
+[ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="10_6x8nd"]
+[ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="11_xuol6"]
+[ext_resource type="PackedScene" uid="uid://dhjxhk7hg1rcu" path="res://prefabs/object/black_hole_teleporter.tscn" id="12_a3jp7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3ub3l"]
 
-[node name="Level_2" type="Node3D"]
+[node name="Level_2" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_np74h")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_2na8t")]
 
@@ -17,18 +27,133 @@ transform = Transform3D(0.965926, 0.183013, -0.183013, 0, 0.707107, 0.707107, 0.
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_y5nra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 1.25)
-
-[node name="Killzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_17dgu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-player = NodePath("../Player")
-activate_above_player = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape3D_3ub3l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 279.25)
 
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Level2_BlockingMap" parent="Level" instance=ExtResource("5_rx8f4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
 
 [node name="Level2_FloatingWorld" parent="Level" instance=ExtResource("6_6jydl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
+
+[node name="Killzones" type="Node3D" parent="Level"]
+
+[node name="Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("4_17dgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+player = NodePath("../../../Player")
+activate_above_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
+shape = SubResource("WorldBoundaryShape3D_3ub3l")
+
+[node name="Codex" type="Node3D" parent="Level"]
+
+[node name="Codex_1" parent="Level/Codex" instance=ExtResource("6_ac0nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, 1.5, 215.25)
+
+[node name="Codex_2" parent="Level/Codex" instance=ExtResource("6_ac0nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.25, 15.75, 182.25)
+
+[node name="MovingPlatform_Flat" type="Node3D" parent="Level"]
+
+[node name="MovingPlatform_Flat1" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, 226.75)
+is_moving = true
+end_position = NodePath("Node3D")
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat1"]
+remote_path = NodePath("../../../Trampoline/Trampoline_Platform1")
+update_rotation = false
+update_scale = false
+
+[node name="MovingPlatform_Flat2" parent="Level/MovingPlatform_Flat" instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0, 194.5)
+
+[node name="MovingPlatform_Flat3" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 194.5)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
+
+[node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
+
+[node name="MovingPlatform_Spin1" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 238)
+visible_distance = 10.0
+
+[node name="MovingPlatform_Spin2" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, 235.5)
+visible_distance = 7.0
+
+[node name="MovingPlatform_Spin3" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 232)
+
+[node name="MovingPlatform_Spin4" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, 231)
+
+[node name="MovingPlatform_Spin5" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 190.25)
+
+[node name="MovingPlatform_Spin6" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.25, 186.25)
+
+[node name="MovingPlatform_Spin7" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.75, 183)
+
+[node name="MovingPlatform_Spin8" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 5.5, 180.5)
+
+[node name="MovingPlatform_Spin9" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6.75, 184.5)
+
+[node name="Trampoline" type="Node3D" parent="Level"]
+
+[node name="Trampoline_Platform1" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -3, 226.75)
+JUMP_FORCE = 12.0
+
+[node name="Checkpoints" type="Node3D" parent="Level"]
+
+[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("10_6x8nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 1, 208.25)
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4.75)
+
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("10_6x8nd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.6, 184)
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.75, 0, 0)
+
+[node name="DashOrbs" type="Node3D" parent="Level"]
+
+[node name="DashOrb_1" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.5, 209.75)
+
+[node name="DashOrb_2" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 19.5, 184.25)
+
+[node name="DashOrb_3" parent="Level/DashOrbs" instance=ExtResource("11_xuol6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 10.75, 169.25)
+
+[node name="BlackHole_Teleporter" type="Node3D" parent="Level"]
+
+[node name="BlackHole_Teleporter1" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("12_a3jp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 9.5, 186.5)
+destination = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 6, -4.75)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4q5vkqbjwjnf"]
+[gd_scene load_steps=15 format=3 uid="uid://b4q5vkqbjwjnf"]
 
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_oyhnr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]
@@ -19,7 +20,9 @@ size = Vector3(2.5, 3, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_geph4"]
 size = Vector3(22, 4, 4)
 
-[node name="Node" type="Node3D"]
+[node name="DialogueTest_Scene" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_oyhnr")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_y6pgr")]
 

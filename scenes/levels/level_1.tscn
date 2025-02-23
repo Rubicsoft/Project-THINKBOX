@@ -207,8 +207,9 @@ func _process(delta: float) -> void:
 	fov = GameSettings.camera_fov
 "
 
-[node name="Level_1" type="Node3D"]
+[node name="Level_1" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_s78rj")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_s6g0h")]
 
@@ -252,33 +253,29 @@ handle_position = "Left"
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
-[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5.6, 13)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4)
 
-[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 8.1, -0.75)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, 0.75)
 
-[node name="Checkpoint_3" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+[node name="Checkpoint_3" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.75, 1.85, 37)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 0, -2.18557e-08)
 
-[node name="Checkpoint_4" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("6_pvjjm")]
+[node name="Checkpoint_4" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("6_pvjjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.1, -29.75)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_4"]

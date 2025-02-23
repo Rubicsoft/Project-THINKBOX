@@ -1,5 +1,5 @@
 extends AnimatableBody3D
-class_name FloatingPlatform
+class_name FloatingPlatformFlat
 
 
 @export var is_moving: bool = false

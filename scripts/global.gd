@@ -128,3 +128,18 @@ func get_distance_3d(object1: Node3D, object2: Node3D) -> float:
 	var pos_obj2: Vector3 = object2.global_transform.origin
 	
 	return pos_obj1.distance_to(pos_obj2)
+
+
+# Get the Player Node
+func get_player() -> Player:
+	var scene_root: Node = get_tree().get_current_scene()
+	
+	if scene_root is GameSceneState:
+		if scene_root.player:
+			return scene_root.player
+		else:
+			printerr("Please insert Player Node for SceneRoot")
+	else:
+		printerr("No GameSceneState Class on the SceneRoot")
+	
+	return null
