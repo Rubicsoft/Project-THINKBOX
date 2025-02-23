@@ -78,8 +78,9 @@ size = Vector3(100, 0.2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7b0b4"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_6j7ye")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_ogpv1")

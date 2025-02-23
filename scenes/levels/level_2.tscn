@@ -16,8 +16,9 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3ub3l"]
 
-[node name="Level_2" type="Node3D"]
+[node name="Level_2" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_np74h")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_2na8t")]
 
@@ -87,16 +88,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
 [node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
 
 [node name="MovingPlatform_Spin1" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 237.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 238)
+visible_distance = 10.0
 
 [node name="MovingPlatform_Spin2" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, 234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, 235.5)
+visible_distance = 7.0
 
 [node name="MovingPlatform_Spin3" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 230.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 232)
 
 [node name="MovingPlatform_Spin4" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, 229.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0.5, 231)
 
 [node name="MovingPlatform_Spin5" parent="Level/MovingPlatform_Spin" instance=ExtResource("6_lvmu6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 190.25)
@@ -121,17 +124,15 @@ JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
-[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("10_6x8nd")]
+[node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("10_6x8nd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 1, 208.25)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 4.75)
 
-[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("player", "custom_position") instance=ExtResource("10_6x8nd")]
+[node name="Checkpoint_2" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("10_6x8nd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.25, 8.6, 184)
-player = NodePath("../../../Player")
 custom_position = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/Checkpoints/Checkpoint_2"]
