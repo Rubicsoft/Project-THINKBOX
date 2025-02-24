@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=40 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
@@ -65,6 +65,9 @@ size = Vector3(8, 11, 53.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_upqxj"]
 size = Vector3(3.25, 0.5, 28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hs2jk"]
+size = Vector3(11, 4.5, 1)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -287,7 +290,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 7.25)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 3.0
+duration = 2.0
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
@@ -296,7 +300,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 3.0
+duration = 2.0
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
@@ -433,19 +438,48 @@ JUMP_FORCE = 15.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -84)
 JUMP_FORCE = 13.0
 
-[node name="Lights" type="Node3D" parent="Level"]
+[node name="Lighting" type="Node3D" parent="Level"]
 
-[node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lights"]
+[node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 22.3177)
 shadow_enabled = true
 
-[node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lights"]
+[node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 17.1906)
 shadow_enabled = true
 
-[node name="OmniLight3D_3" type="OmniLight3D" parent="Level/Lights"]
+[node name="OmniLight3D_3" type="OmniLight3D" parent="Level/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.75382, 36.4406)
 light_energy = 5.695
+shadow_enabled = true
+
+[node name="OmniLight3D_4" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 33)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_5" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 47)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_6" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 61)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_7" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 75)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_8" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250002, -1.24618, 26.8177)
+light_energy = 3.0
 shadow_enabled = true
 
 [node name="Climbable" type="Node3D" parent="Level"]
@@ -650,6 +684,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 8.5, 29)
 
 [node name="Codex3" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97363, -54)
+
+[node name="InvisibleWall" type="Node3D" parent="Level"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -10.75, 68)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/InvisibleWall/StaticBody3D"]
+shape = SubResource("BoxShape3D_hs2jk")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
