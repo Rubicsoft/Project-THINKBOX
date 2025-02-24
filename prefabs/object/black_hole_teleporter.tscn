@@ -17,3 +17,6 @@ surface_material_override/0 = ExtResource("2_wt03v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_efttu")
+
+[node name="Teleported_SFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
