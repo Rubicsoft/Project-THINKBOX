@@ -142,6 +142,7 @@ volume_db = 10.0
 max_db = 6.0
 bus = &"SFX"
 script = ExtResource("3_e8558")
+disable_hans_dialogue = true
 audio_library = Array[AudioStream]([ExtResource("4_ee4hq"), ExtResource("5_nbdku"), ExtResource("6_r07hw")])
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="Audios"]
@@ -151,6 +152,7 @@ volume_db = -5.0
 bus = &"VO"
 script = ExtResource("3_e8558")
 continuity = true
+disable_hans_dialogue = true
 audio_library = Array[AudioStream]([ExtResource("5_3yces"), ExtResource("8_i0mia"), ExtResource("9_xto3w")])
 
 [node name="JumpGround" type="AudioStreamPlayer3D" parent="Audios"]

@@ -19,7 +19,9 @@ const CHATS = "chats"
 const ACTOR = "actor"
 const DIALOGUE = "dialogue"
 const VOICE_PATH = "voice-path"
+const DISABLE_PLAYER_SFX = "disable-player-sfx"
 
+# Contains the dialogue data
 var dialogue_dict: Dictionary = {}
 
 
@@ -38,6 +40,7 @@ func _ready() -> void:
 		printerr("No AudioStreamPlayer available in " + get_parent().name + "/" + name)
 
 
+# ------ SUPPORTING FUNCTIONS ------
 
 # Play the dialogue
 func play_dialogue() -> void:
@@ -45,20 +48,33 @@ func play_dialogue() -> void:
 		if not played and audio_stream:
 			played = true
 			Global.set_global_condition("is_on_dialogue", true)
+			
 			if not player_controlability:
 				Global.set_global_condition("is_player_controllable", false)
 				var player: Player = Global.get_player()
 				player.velocity = Vector3.ZERO
 			
-			
 			# Play each dialogues
 			for i in range(dialogue_dict[CHATS].size()):
-				audio_stream.stream = ResourceLoader.load(dialogue_dict[CHATS][i][VOICE_PATH])
-				audio_stream.play()
-				
-				set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
-				
-				await audio_stream.finished
+				if dialogue_dict[CHATS][i].has(VOICE_PATH):
+					
+					audio_stream.stream = ResourceLoader.load(dialogue_dict[CHATS][i][VOICE_PATH])
+					audio_stream.play()
+					
+					if dialogue_dict[CHATS][i].has(DISABLE_PLAYER_SFX):
+						if dialogue_dict[CHATS][i][DISABLE_PLAYER_SFX]:
+							Global.set_global_condition("hans_on_dialogue", true)
+					
+					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
+					
+					await audio_stream.finished
+					Global.set_global_condition("hans_on_dialogue", false)
+					
+				else:
+					const empty_voice_duration: float = 1.0
+					
+					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
+					await get_tree().create_timer(empty_voice_duration).timeout
 			
 			Global.set_global_condition("is_on_dialogue", false)
 			if not player_controlability:
