@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=46 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
+[ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="4_fmrw6"]
 [ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level1_blockingmap.tscn" id="4_guvhk"]
 [ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="5_dp3n0"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_pvjjm"]
@@ -17,7 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
 [ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="17_ndhgi"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="18_8nmu8"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/dialogue_handler.tscn" id="18_xss3e"]
+[ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
+[ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -68,6 +73,9 @@ size = Vector3(3.25, 0.5, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs2jk"]
 size = Vector3(11, 4.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsr25"]
+size = Vector3(3, 3, 0.5)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -126,6 +134,18 @@ tracks/4/path = NodePath("AnimationPlayer/Camera3D/PlayerVoice:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level/Dialogue/DialogueHandler_Opening:play")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -195,6 +215,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level/Dialogue/DialogueHandler_Opening:play")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtl4c"]
 _data = {
@@ -222,6 +254,8 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_xvyq1")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -12.15, 53)
+
+[node name="Dialogue_GUI" parent="." instance=ExtResource("4_fmrw6")]
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -692,6 +726,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -10.75, 68)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/InvisibleWall/StaticBody3D"]
 shape = SubResource("BoxShape3D_hs2jk")
+
+[node name="Dialogue" type="Node3D" parent="Level"]
+
+[node name="DialogueHandler_Opening" parent="Level/Dialogue" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("18_xss3e")]
+dialogue_file = ExtResource("20_hyy7m")
+dialogue_gui = NodePath("../../../Dialogue_GUI")
+
+[node name="DialogueTrigger" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("17_ndhgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6.5, 21.25)
+dialog_handler = NodePath("DialogueHandler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogue/DialogueTrigger"]
+shape = SubResource("BoxShape3D_nsr25")
+
+[node name="DialogueHandler" parent="Level/Dialogue/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("18_xss3e")]
+dialogue_file = ExtResource("19_ekjhw")
+dialogue_gui = NodePath("../../../../Dialogue_GUI")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3

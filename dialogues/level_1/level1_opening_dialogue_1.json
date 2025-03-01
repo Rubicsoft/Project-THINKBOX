@@ -1,0 +1,14 @@
+{
+	"chats" : [
+		{
+			"actor" : "HANS",
+			"dialogue" : "Connection successful.", 
+			"disable-player-sfx" : true
+		}, 
+		{
+			"actor" : "HANS",
+			"dialogue" : "I'm in", 
+			"disable-player-sfx" : true
+		}
+	]
+}
