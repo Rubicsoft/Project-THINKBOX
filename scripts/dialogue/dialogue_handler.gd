@@ -45,7 +45,7 @@ func _ready() -> void:
 # Play the dialogue
 func play_dialogue() -> void:
 	if dialogue_dict.has(CHATS):
-		if not played and audio_stream:
+		if not played:
 			played = true
 			Global.set_global_condition("is_on_dialogue", true)
 			
@@ -56,7 +56,7 @@ func play_dialogue() -> void:
 			
 			# Play each dialogues
 			for i in range(dialogue_dict[CHATS].size()):
-				if dialogue_dict[CHATS][i].has(VOICE_PATH):
+				if dialogue_dict[CHATS][i].has(VOICE_PATH) and audio_stream:
 					
 					audio_stream.stream = ResourceLoader.load(dialogue_dict[CHATS][i][VOICE_PATH])
 					audio_stream.play()
@@ -71,7 +71,7 @@ func play_dialogue() -> void:
 					Global.set_global_condition("hans_on_dialogue", false)
 					
 				else:
-					const empty_voice_duration: float = 1.0
+					const empty_voice_duration: float = 2.0
 					
 					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
 					await get_tree().create_timer(empty_voice_duration).timeout
