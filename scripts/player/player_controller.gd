@@ -166,18 +166,24 @@ func jump(do_action: bool = true) -> void:
 
 # Handle dashing
 func dash(input_direction: Vector3) -> void:
+	const dash_fov = 30.0
+	
 	if Input.is_action_just_pressed("dash") and Global.get_global_state("dash_orbs") > 0:
-		velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
-		velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
-		Global.decrease_global_state("dash_orbs", 1)
-		
-		var anim = get_tree().create_tween()
-		anim.set_trans(Tween.TRANS_SINE)
-		const dash_fov = 20.0
-		
 		if input_direction != Vector3.ZERO:
-			anim.tween_property(camera, "fov", camera.fov + dash_fov, 0.05)
-			anim.tween_property(camera, "fov", camera.fov - dash_fov, 0.05)
+			velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
+			velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
+			
+			Global.decrease_global_state("dash_orbs", 1)
+			whoosh_camera(dash_fov)
+
+
+# Make camera whoosh animation
+func whoosh_camera(fov: float) -> void:
+	var anim = get_tree().create_tween()
+	anim.set_trans(Tween.TRANS_SINE)
+	
+	anim.tween_property(camera, "fov", camera.fov - fov, 0.05)
+	anim.tween_property(camera, "fov", camera.fov + fov, 0.05)
 
 
 # To kill the Player

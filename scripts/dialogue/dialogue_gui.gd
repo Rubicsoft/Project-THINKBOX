@@ -6,4 +6,5 @@ class_name DialogueGUI
 
 
 func _process(delta: float) -> void:
+	# Only visible when inside the dialogue
 	visible = Global.get_global_condition("is_on_dialogue")

@@ -2,6 +2,8 @@ extends Area3D
 
 @export var destination: Node3D
 
+@onready var teleported_sfx: AudioStreamPlayer3D = $Teleported_SFX
+
 
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_teleport_enter"))
@@ -16,3 +18,5 @@ func _on_teleport_enter(body: Node3D) -> void:
 		# Set the Player's velocity to ZERO
 		body.velocity = Vector3.ZERO
 		#body.camera_fx.play_effect("glitch_fadeout", false)
+		body.whoosh_camera(30.0)
+		teleported_sfx.play()

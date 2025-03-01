@@ -55,6 +55,8 @@ size = Vector3(2.5, 3.25, 2)
 [node name="Player" parent="." instance=ExtResource("3_6el13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
+[node name="PlayerAudioStream" type="AudioStreamPlayer" parent="Player"]
+
 [node name="WorldKillzone" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qhd6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 player = NodePath("../Player")
@@ -80,9 +82,10 @@ dialog_handler = NodePath("DialogueHandler")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_fiou7")
 
-[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger1" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("7_dp56e")]
+[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger1" node_paths=PackedStringArray("dialogue_gui", "audio_stream") instance=ExtResource("7_dp56e")]
 dialogue_file = ExtResource("8_84myy")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
+audio_stream = NodePath("../../../Player/PlayerAudioStream")
 
 [node name="DialogueTrigger2" parent="D_Triggers" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("6_arxb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
@@ -91,8 +94,9 @@ dialog_handler = NodePath("DialogueHandler")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger2"]
 shape = SubResource("BoxShape3D_geph4")
 
-[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger2" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("7_dp56e")]
+[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger2" node_paths=PackedStringArray("dialogue_gui", "audio_stream") instance=ExtResource("7_dp56e")]
 dialogue_file = ExtResource("9_4f0oy")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
+audio_stream = NodePath("../../../Player/PlayerAudioStream")
 
 [node name="Dialogue_GUI" parent="." instance=ExtResource("9_74aop")]
