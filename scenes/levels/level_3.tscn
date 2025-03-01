@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://dun0wiwk1nldj"]
+[gd_scene load_steps=2 format=3 uid="uid://dun0wiwk1nldj"]
 
-[node name="Node" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_6tvc2"]
+
+[node name="Level_3" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_6tvc2")]
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.5, 0)

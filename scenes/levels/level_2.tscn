@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_np74h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
-[ext_resource type="PackedScene" uid="uid://dlun8ot8204fv" path="res://scenes/prototypes/level_blocking/level2_blockingmap.tscn" id="5_rx8f4"]
+[ext_resource type="PackedScene" uid="uid://ddvksmdv2llpd" path="res://scenes/prototypes/level_blocking/level_2/level2_tower_space.tscn" id="5_dq1v6"]
 [ext_resource type="PackedScene" uid="uid://c7yp6vvu2u176" path="res://scenes/prototypes/level_blocking/level_2/level2_floating_world.tscn" id="6_6jydl"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="6_ac0nd"]
 [ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="6_jyy8i"]
@@ -23,7 +23,7 @@ player = NodePath("Player")
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_2na8t")]
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.965926, 0.183013, -0.183013, 0, 0.707107, 0.707107, 0.258819, -0.683013, 0.683013, 0, 5, 0)
+transform = Transform3D(0.965926, 0.224144, -0.12941, -7.45058e-09, 0.5, 0.866026, 0.258819, -0.836517, 0.482963, 0, 5, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_y5nra")]
@@ -31,11 +31,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 279.25)
 
 [node name="Level" type="Node3D" parent="."]
 
-[node name="Level2_BlockingMap" parent="Level" instance=ExtResource("5_rx8f4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
-
 [node name="Level2_FloatingWorld" parent="Level" instance=ExtResource("6_6jydl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 249)
+
+[node name="Level2_TowerSpace" parent="Level" instance=ExtResource("5_dq1v6")]
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
@@ -129,6 +128,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 17.75, 179.5)
 
 [node name="Trampoline_Platform1" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -2.75, 226.75)
+JUMP_FORCE = 12.0
+
+[node name="Trampoline_Platform2" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 7.5, 152.25)
 JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
