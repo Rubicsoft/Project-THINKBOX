@@ -1,0 +1,14 @@
+{
+	"chats": [
+		{
+			"actor": "HANS",
+			"dialogue": "Well here we are.",
+			"disable-player-sfx": true
+		},
+		{
+			"actor": "HANS",
+			"dialogue": "Just a handsome hackerman.",
+			"disable-player-sfx": true
+		}
+	]
+}

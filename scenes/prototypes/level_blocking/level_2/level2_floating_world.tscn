@@ -20,16 +20,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -95)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -127)
 
 [node name="FloatingWorld_Base4" parent="World" instance=ExtResource("2_m82el")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 77, 0, -142.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43, 0, -162.5)
 
 [node name="FloatingWorld_Base5" parent="World" instance=ExtResource("2_m82el")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, -188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -205.5)
 
 [node name="FloatingWorld_Base6" parent="World" instance=ExtResource("2_m82el")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33.5, -4.5, -179.5)
 
 [node name="FloatingWorld_Base7" parent="World" instance=ExtResource("2_m82el")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.5, 0, -150)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.5, 0, -150)
 
 [node name="FloatingWorld_Base8" parent="World" instance=ExtResource("2_m82el")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 7.5, -65.5)
