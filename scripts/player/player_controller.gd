@@ -190,6 +190,7 @@ func whoosh_camera(fov: float) -> void:
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_global_state("death_count", 1)
+	Global.set_global_state("dash_orbs", 0)
 	camera_fx.play_effect("glitch_fadeout", false)
 
 
