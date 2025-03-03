@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_03fk0"]
 
-[node name="Level3_Blocking" type="Node3D"]
+[node name="Level3_BlockyFloaty" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("1_03fk0")

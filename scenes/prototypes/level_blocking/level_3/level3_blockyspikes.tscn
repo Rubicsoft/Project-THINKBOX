@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://3kh0826i2wm8"]
+
+[ext_resource type="ArrayMesh" uid="uid://ll6r0dbl7cr3" path="res://scenes/prototypes/level_blocking/level_3/model/blocky_spikes.obj" id="1_fv5q2"]
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_n13vq"]
+
+[node name="Level3_BlockySpikes" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_n13vq")
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+mesh = ExtResource("1_fv5q2")
