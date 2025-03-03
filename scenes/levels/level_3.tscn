@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dun0wiwk1nldj"]
+[gd_scene load_steps=9 format=3 uid="uid://dun0wiwk1nldj"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_6tvc2"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_dkmff"]
-[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_wfndy"]
+[ext_resource type="PackedScene" uid="uid://0ci3px1i3780" path="res://scenes/prototypes/level_blocking/level_3/level3_blocking.tscn" id="3_3l7yq"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_tqnjk"]
+[ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="5_4yvy6"]
+[ext_resource type="PackedScene" uid="uid://dhjxhk7hg1rcu" path="res://prefabs/object/black_hole_teleporter.tscn" id="6_inqaj"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oagbt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k3k6v"]
+size = Vector3(60.5, 1, 60.5)
 
 [node name="Level_3" type="Node3D"]
 
@@ -10,13 +18,50 @@
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.5, 0)
+shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_dkmff")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 43.5, 24.35, 65.75)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("2_wfndy")
-use_collision = true
+[node name="Level" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-size = Vector3(100, 1, 100)
+[node name="Level3_Blocking" parent="Level" instance=ExtResource("3_3l7yq")]
+
+[node name="Killzones" type="Node3D" parent="Level"]
+
+[node name="World_Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("4_tqnjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+player = NodePath("../../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/World_Killzone"]
+shape = SubResource("WorldBoundaryShape3D_oagbt")
+
+[node name="Killzone_1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("4_tqnjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 47.75)
+player = NodePath("../../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone_1"]
+shape = SubResource("BoxShape3D_k3k6v")
+
+[node name="DashOrb" type="Node3D" parent="Level"]
+
+[node name="DashOrb_1" parent="Level/DashOrb" instance=ExtResource("5_4yvy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, 14.5)
+
+[node name="BlackHole_Teleporter" type="Node3D" parent="Level"]
+
+[node name="BlackHole_Teleporter1" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("6_inqaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+destination = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 22.35, 68.75)
+
+[node name="BlackHole_Teleporter2" parent="Level/BlackHole_Teleporter" instance=ExtResource("6_inqaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -0.25)
+
+[node name="Lighting" type="Node3D" parent="Level"]
+
+[node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -1.75)
+light_energy = 4.0
