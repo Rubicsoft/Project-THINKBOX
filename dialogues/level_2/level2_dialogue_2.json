@@ -1,0 +1,33 @@
+{
+	"chats": [
+		{
+			"actor": "???",
+			"dialogue": "[static]"
+		},
+		{
+			"actor": "HANS",
+			"dialogue": "What the?",
+			"disable-player-sfx": true
+		},
+		{
+			"actor": "HANS",
+			"dialogue": "Something wierd in this place.",
+			"disable-player-sfx": true
+		},
+		{
+			"actor": "HANS",
+			"dialogue": "Why do I get an audio wave here?",
+			"disable-player-sfx": true
+		},
+		{
+			"actor": "HANS",
+			"dialogue": "I seems I'm not alone in this dimension.",
+			"disable-player-sfx": true
+		},
+		{
+			"actor": "???",
+			"dialogue": "[laughing]",
+			"disable-player-sfx": true
+		}
+	]
+}

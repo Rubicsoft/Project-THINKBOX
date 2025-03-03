@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://71l68bcdyh2d"]
+[gd_scene load_steps=28 format=3 uid="uid://71l68bcdyh2d"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_2na8t"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_np74h"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="18_7245i"]
 [ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/dialogue_handler.tscn" id="19_4o4c1"]
 [ext_resource type="JSON" path="res://dialogues/level_2/level2_dialogue_1.json" id="21_xltxl"]
+[ext_resource type="JSON" path="res://dialogues/level_2/level2_dialogue_2.json" id="22_0lt5w"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3ub3l"]
 
@@ -32,6 +33,9 @@ size = Vector3(0.25, 6.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgb8d"]
 size = Vector3(17.25, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7o5a3"]
+size = Vector3(1, 10, 15)
 
 [node name="Level_2" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_np74h")
@@ -45,6 +49,9 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_y5nra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 279.25)
+
+[node name="DialogueSFX" type="AudioStreamPlayer" parent="Player"]
+bus = &"VO"
 
 [node name="Dialogue_GUI" parent="." instance=ExtResource("4_mhsh6")]
 
@@ -144,15 +151,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat5/Pivot"]
 remote_path = NodePath("../../../../Trampoline/Trampoline_Platform4")
 
-[node name="MovingPlatform_Flat" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
+[node name="MovingPlatform_Flat6" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5039, 0.75, 122.731)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.0
 delay_time = 1.0
 
-[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat"]
+[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="MovingPlatform_Flat7" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3.5, 85.75)
+is_moving = true
+end_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat7/Pivot"]
+remote_path = NodePath("../../../../Trampoline/Trampoline_Platform5")
 
 [node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
 
@@ -207,6 +228,10 @@ JUMP_FORCE = 12.0
 
 [node name="Trampoline_Platform4" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0.25, 145.25)
+JUMP_FORCE = 12.0
+
+[node name="Trampoline_Platform5" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3.25, 85.75)
 JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
@@ -276,6 +301,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 1.5, 211)
 player = NodePath("../../../Player")
 guidebox_message = "Collect DASH ORB to be able to dash"
 
+[node name="Guidebox_3" parent="Level/Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 1.5, 125.25)
+player = NodePath("../../../Player")
+guidebox_message = "When the platform goes up, JUMP to gain momentum"
+
 [node name="Dialogue" type="Node3D" parent="Level"]
 
 [node name="DialogueTrigger_1" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("18_7245i")]
@@ -289,8 +319,26 @@ shape = SubResource("BoxShape3D_dgb8d")
 dialogue_file = ExtResource("21_xltxl")
 dialogue_gui = NodePath("../../../../Dialogue_GUI")
 
+[node name="DialogueTrigger_2" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("18_7245i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.75, 13, 183.5)
+dialog_handler = NodePath("DialogueHandler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogue/DialogueTrigger_2"]
+shape = SubResource("BoxShape3D_7o5a3")
+
+[node name="DialogueHandler" parent="Level/Dialogue/DialogueTrigger_2" node_paths=PackedStringArray("dialogue_gui", "audio_stream") instance=ExtResource("19_4o4c1")]
+dialogue_file = ExtResource("22_0lt5w")
+dialogue_gui = NodePath("../../../../Dialogue_GUI")
+audio_stream = NodePath("../../../../Player/DialogueSFX")
+
 [node name="DebugPortal" type="Node3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 1.75, 281.514)
+
+[node name="Guidebox_Title" parent="Level/DebugPortal" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+player = NodePath("../../../Player")
+guidebox_message = "Debug Portals"
+visible_distance = 10.0
 
 [node name="BlackHole_Teleporter_1" parent="Level/DebugPortal" node_paths=PackedStringArray("destination") instance=ExtResource("12_a3jp7")]
 destination = NodePath("Node3D")
@@ -311,9 +359,3 @@ destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/DebugPortal/BlackHole_Teleporter_3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.25, 6.5, -72.75)
-
-[node name="Guidebox_Title" parent="Level/DebugPortal" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-player = NodePath("../../../Player")
-guidebox_message = "Debug Portals"
-visible_distance = 10.0
