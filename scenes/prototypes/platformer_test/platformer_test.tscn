@@ -438,6 +438,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, 
 
 [node name="Checkpoint_3" parent="Checkpoints" instance=ExtResource("26_ey70r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.85, 4)
+reusable = true
 
 [node name="SpinningPlatform" type="Node3D" parent="."]
 

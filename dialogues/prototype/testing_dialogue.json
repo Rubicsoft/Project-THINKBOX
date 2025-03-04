@@ -3,13 +3,15 @@
 		{
 			"actor" : "HANS",
 			"dialogue" : "Just an empty box.", 
-			"voice-path" : "res://assets/voicebanks/hans_vo1.ogg", 
-			"disable-player-sfx" : true
+			"voice-path" : "res://assets/voicebanks/hans/hans_vo1.ogg", 
+			"delay" : 1.0, 
+			"disable-player-sfx" : true, 
+			"empty-timer" : 2.0
 		}, 
 		{
 			"actor" : "HANS",
 			"dialogue" : "Nothing special from it.", 
-			"voice-path" : "res://assets/voicebanks/hans_vo2.ogg", 
+			"voice-path" : "res://assets/voicebanks/hans/hans_vo2.ogg", 
 			"disable-player-sfx" : true
 		}
 	]

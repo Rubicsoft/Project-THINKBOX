@@ -2,6 +2,7 @@ extends StaticBody3D
 
 
 @export var custom_position: Node3D
+@export var reusable: bool = false
 
 @onready var label = $Label3D
 @onready var collected_sfx = $CollectedSFX
@@ -19,8 +20,11 @@ func _ready():
 
 func _on_interact() -> void:
 	if not is_obtained and player:
-		is_obtained = true
+		if not reusable:
+			is_obtained = true
+		
 		node_reaction()
+		
 		if custom_position:
 			Checkpoint.last_position = custom_position.global_position
 			Checkpoint.last_rotation = custom_position.global_rotation
