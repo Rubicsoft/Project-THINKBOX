@@ -4,6 +4,7 @@
 			"actor" : "HANS",
 			"dialogue" : "Just an empty box.", 
 			"voice-path" : "res://assets/voicebanks/hans/hans_vo1.ogg", 
+			"delay" : 1.0, 
 			"disable-player-sfx" : true
 		}, 
 		{

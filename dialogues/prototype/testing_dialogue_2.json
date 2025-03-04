@@ -4,6 +4,7 @@
 			"actor" : "HANS",
 			"dialogue" : "Should I just dash.", 
 			"voice-path" : "res://assets/voicebanks/hans/hans_vo3.ogg", 
+			"delay" : 2.0, 
 			"disable-player-sfx" : true
 		}, 
 		{
