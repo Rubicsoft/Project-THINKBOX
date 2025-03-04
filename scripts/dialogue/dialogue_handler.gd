@@ -21,6 +21,7 @@ const DIALOGUE = "dialogue"
 const VOICE_PATH = "voice-path"
 const DELAY = "delay"
 const DISABLE_PLAYER_SFX = "disable-player-sfx"
+const EMPTY_TIMER = "empty-timer"
 
 # Contains the dialogue data
 var dialogue_dict: Dictionary = {}
@@ -84,10 +85,16 @@ func play_dialogue() -> void:
 					
 				else:
 					# If 'voice-path' is not defined and there is no AudioStreamPlayer, add timer to the current dialogue
-					const empty_voice_duration: float = 2.0
+					const default_voice_duration: float = 2.0
 					
+					# Set the DialogueGUI
 					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
-					await get_tree().create_timer(empty_voice_duration).timeout
+					
+					# Set the timer. If 'empty-timer' is defined, use its value for the timing, or else use default.
+					if dialogue_dict[CHATS][i].has(EMPTY_TIMER):
+						await get_tree().create_timer(dialogue_dict[CHATS][i][EMPTY_TIMER]).timeout
+					else:
+						await get_tree().create_timer(default_voice_duration).timeout
 			
 			Global.set_global_condition("is_on_dialogue", false)
 			if not player_controlability:
