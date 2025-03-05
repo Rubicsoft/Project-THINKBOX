@@ -120,14 +120,13 @@ sine_interpolation = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
 
 [node name="MovingPlatform_Flat4" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 153.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0, 147.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.0
 sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="Pivot" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -136,14 +135,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 remote_path = NodePath("../../../../Trampoline/Trampoline_Platform3")
 
 [node name="MovingPlatform_Flat5" parent="Level/MovingPlatform_Flat" node_paths=PackedStringArray("end_position") instance=ExtResource("6_jyy8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 145.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 138.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 4.0
 sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
 [node name="Pivot" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -174,6 +173,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat7/Pivot"]
 remote_path = NodePath("../../../../Trampoline/Trampoline_Platform5")
+
+[node name="MovingPlatform_Flat8" parent="Level/MovingPlatform_Flat" instance=ExtResource("6_jyy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 133)
+
+[node name="Pivot" type="Node3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Level/MovingPlatform_Flat/MovingPlatform_Flat8/Pivot"]
+remote_path = NodePath("../../../../Trampoline/Trampoline_Platform6")
 
 [node name="MovingPlatform_Spin" type="Node3D" parent="Level"]
 
@@ -223,15 +231,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 7.5, 152.25)
 JUMP_FORCE = 12.0
 
 [node name="Trampoline_Platform3" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0.25, 153.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 0.25, 147.75)
 JUMP_FORCE = 12.0
 
 [node name="Trampoline_Platform4" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0.25, 145.25)
-JUMP_FORCE = 12.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.25, 138.75)
+JUMP_FORCE = 14.0
 
 [node name="Trampoline_Platform5" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, -3.25, 85.75)
+JUMP_FORCE = 12.0
+
+[node name="Trampoline_Platform6" parent="Level/Trampoline" instance=ExtResource("9_g20by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.25, 133)
 JUMP_FORCE = 12.0
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
@@ -359,3 +371,10 @@ destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/DebugPortal/BlackHole_Teleporter_3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.25, 6.5, -72.75)
+
+[node name="BlackHole_Teleporter_4" parent="Level/DebugPortal" node_paths=PackedStringArray("destination") instance=ExtResource("12_a3jp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+destination = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Level/DebugPortal/BlackHole_Teleporter_4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.75, -0.5, -128.5)
