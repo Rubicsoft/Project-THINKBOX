@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cchnpmgryo14"]
 
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="1_ti8kp"]
-[ext_resource type="Script" path="res://scripts/interactables/checkpoint_pillar.gd" id="1_vgu2e"]
+[ext_resource type="Script" uid="uid://b4e23gccweg7u" path="res://scripts/interactables/checkpoint_pillar.gd" id="1_vgu2e"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="3_6v1no"]
 [ext_resource type="AudioStream" uid="uid://kufasch8m0a0" path="res://assets/sounds/checkpoint.ogg" id="4_qakaf"]
 

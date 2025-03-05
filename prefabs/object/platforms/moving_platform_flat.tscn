@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://3rb1lofm2fi6"]
 
-[ext_resource type="Script" path="res://scripts/platforms/moving_platform.gd" id="1_2mne4"]
+[ext_resource type="Script" uid="uid://bm50jkywtvmdt" path="res://scripts/platforms/moving_platform.gd" id="1_2mne4"]
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="2_aywat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nunh4"]

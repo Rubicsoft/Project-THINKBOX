@@ -5,4 +5,3 @@ export_presets.cfg
 
 # build folder
 /build/
-addons/godot-jolt/windows/~godot-jolt_windows-x64_editor.dll

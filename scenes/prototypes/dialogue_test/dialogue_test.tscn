@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b4q5vkqbjwjnf"]
 
-[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_oyhnr"]
+[ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_oyhnr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]

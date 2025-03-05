@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://71l68bcdyh2d"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_2na8t"]
-[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_np74h"]
+[ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_np74h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
 [ext_resource type="AudioStream" uid="uid://31v18ukarh5x" path="res://assets/bgm/bgm_04.ogg" id="4_l0bfs"]
@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="15_4bjbg"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="16_gh6k2"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="17_iwtrf"]
-[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="18_7245i"]
-[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/dialogue_handler.tscn" id="19_4o4c1"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="18_7245i"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="19_4o4c1"]
 [ext_resource type="JSON" path="res://dialogues/level_2/level2_dialogue_1.json" id="21_xltxl"]
 [ext_resource type="JSON" path="res://dialogues/level_2/level2_dialogue_2.json" id="22_0lt5w"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctu8crcah47p"]
 
-[ext_resource type="Script" path="res://scripts/dialogue/dialogue_gui.gd" id="1_kwgsa"]
+[ext_resource type="Script" uid="uid://cw65rcog67v1c" path="res://scripts/dialogue/dialogue_gui.gd" id="1_kwgsa"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="2_6ojj1"]
 
 [sub_resource type="Theme" id="Theme_5epro"]

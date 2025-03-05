@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ca3c63b6veah8"]
 
-[ext_resource type="Script" path="res://scripts/platforms/teleport_zone.gd" id="1_pcynw"]
+[ext_resource type="Script" uid="uid://drra6l0q8ixxj" path="res://scripts/platforms/teleport_zone.gd" id="1_pcynw"]
 
 [node name="TeleportZone" type="Area3D"]
 collision_mask = 2

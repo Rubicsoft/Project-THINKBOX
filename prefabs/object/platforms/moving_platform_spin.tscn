@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://brue55wemoi8a"]
 
 [ext_resource type="Material" uid="uid://bcarf72hrf16u" path="res://scenes/prototypes/kenney_prototype_textures/materials/light_grid.tres" id="1_ayg0n"]
-[ext_resource type="Script" path="res://scripts/platforms/moving_platform_spin.gd" id="1_g7dbe"]
+[ext_resource type="Script" uid="uid://7o5h6k6cm6j2" path="res://scripts/platforms/moving_platform_spin.gd" id="1_g7dbe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlncq"]
 size = Vector3(1.5, 0.771973, 1.5)
@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kufat"]
 _data = {
-"RESET": SubResource("Animation_45fba"),
-"platform_loop": SubResource("Animation_orcwe")
+&"RESET": SubResource("Animation_45fba"),
+&"platform_loop": SubResource("Animation_orcwe")
 }
 
 [sub_resource type="Animation" id="Animation_hqydy"]
@@ -131,9 +131,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_708b4"]
 _data = {
-"RESET": SubResource("Animation_hqydy"),
-"hide_up": SubResource("Animation_geade"),
-"show_up": SubResource("Animation_dw1d3")
+&"RESET": SubResource("Animation_hqydy"),
+&"hide_up": SubResource("Animation_geade"),
+&"show_up": SubResource("Animation_dw1d3")
 }
 
 [node name="MovingPlatform_Spin" type="AnimatableBody3D"]

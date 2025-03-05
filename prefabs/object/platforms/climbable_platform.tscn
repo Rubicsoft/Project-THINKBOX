@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://q033lllgbdjo"]
 
-[ext_resource type="Script" path="res://scripts/platforms/climbable_platform.gd" id="1_y4anq"]
+[ext_resource type="Script" uid="uid://cejhcrq7mig7i" path="res://scripts/platforms/climbable_platform.gd" id="1_y4anq"]
 
 [node name="Climbable_Platform" type="Area3D"]
 collision_mask = 2

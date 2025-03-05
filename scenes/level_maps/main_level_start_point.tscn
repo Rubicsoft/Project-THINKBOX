@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yrks1"]
 _data = {
-"RESET": SubResource("Animation_ian8a"),
-"platform_loop": SubResource("Animation_syr25")
+&"RESET": SubResource("Animation_ian8a"),
+&"platform_loop": SubResource("Animation_syr25")
 }
 
 [node name="MainLevel_StartPoint" type="Node3D"]

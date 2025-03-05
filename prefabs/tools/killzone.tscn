@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv1e2int8rjlw"]
 
-[ext_resource type="Script" path="res://scripts/platforms/killzone.gd" id="1_6s7hb"]
+[ext_resource type="Script" uid="uid://cca67wuqtvdmx" path="res://scripts/platforms/killzone.gd" id="1_6s7hb"]
 
 [node name="Killzone" type="Area3D"]
 editor_description = "Kills the Player when they fall"

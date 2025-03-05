@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccqhi340y01gb"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
+[ext_resource type="Script" uid="uid://b1wh424dt1e3x" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="2_0b7w2"]
-[ext_resource type="Shader" path="res://shaders/gaussian_blur.gdshader" id="2_2obdx"]
+[ext_resource type="Shader" uid="uid://dkb01ibw2ucdo" path="res://shaders/gaussian_blur.gdshader" id="2_2obdx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7rsq"]
 shader = ExtResource("2_2obdx")
@@ -98,8 +98,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wp7l8"]
 _data = {
-"RESET": SubResource("Animation_h4jru"),
-"pause_popup": SubResource("Animation_gfsb8")
+&"RESET": SubResource("Animation_h4jru"),
+&"pause_popup": SubResource("Animation_gfsb8")
 }
 
 [node name="PauseMenu" type="Control"]

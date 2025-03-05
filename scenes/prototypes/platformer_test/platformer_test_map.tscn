@@ -50,8 +50,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mlncn"]
 _data = {
-"RESET": SubResource("Animation_arv4y"),
-"up_down": SubResource("Animation_8ntoj")
+&"RESET": SubResource("Animation_arv4y"),
+&"up_down": SubResource("Animation_8ntoj")
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_vuou0"]

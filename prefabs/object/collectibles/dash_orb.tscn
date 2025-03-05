@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bpq82gwibi6rr"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/dash_orb.gd" id="1_00ity"]
+[ext_resource type="Script" uid="uid://bkhvseha3jsfk" path="res://scripts/collectibles/dash_orb.gd" id="1_00ity"]
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="1_nm5fa"]
 [ext_resource type="AudioStream" uid="uid://kufasch8m0a0" path="res://assets/sounds/checkpoint.ogg" id="3_u80hx"]
 
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nc2dt"]
 _data = {
-"RESET": SubResource("Animation_1qyck"),
-"spin": SubResource("Animation_dmiuv")
+&"RESET": SubResource("Animation_1qyck"),
+&"spin": SubResource("Animation_dmiuv")
 }
 
 [sub_resource type="Animation" id="Animation_lhx14"]
@@ -109,9 +109,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ablcu"]
 _data = {
-"RESET": SubResource("Animation_lhx14"),
-"pick_up": SubResource("Animation_ysxvi"),
-"show_up": SubResource("Animation_6kcla")
+&"RESET": SubResource("Animation_lhx14"),
+&"pick_up": SubResource("Animation_ysxvi"),
+&"show_up": SubResource("Animation_6kcla")
 }
 
 [node name="DashOrb" type="Area3D"]

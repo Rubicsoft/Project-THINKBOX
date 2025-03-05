@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://cjon57h655mw0"]
 
-[ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
-[ext_resource type="Script" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
+[ext_resource type="Script" uid="uid://78rino2fx5d" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
+[ext_resource type="Script" uid="uid://srkr6o31v3mj" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
 [ext_resource type="PackedScene" uid="uid://ccqhi340y01gb" path="res://ui/pause_menu.tscn" id="3_d2abn"]
-[ext_resource type="Script" path="res://scripts/audio/random_audio_playback.gd" id="3_e8558"]
+[ext_resource type="Script" uid="uid://bojfe4inyhwod" path="res://scripts/audio/random_audio_playback.gd" id="3_e8558"]
 [ext_resource type="PackedScene" uid="uid://vkqifsa2867t" path="res://ui/hud.tscn" id="3_hrfvy"]
 [ext_resource type="PackedScene" uid="uid://d0i54q40rin28" path="res://prefabs/visual/camera_fx.tscn" id="3_p6xfp"]
 [ext_resource type="AudioStream" uid="uid://cetqgf2kbjeu8" path="res://assets/sounds/footsteps/footstep_01.ogg" id="4_ee4hq"]
@@ -104,10 +104,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v25mb"]
 _data = {
-"RESET": SubResource("Animation_sx2nl"),
-"player_jump": SubResource("Animation_uh6hg"),
-"player_take_fall": SubResource("Animation_j6pxq"),
-"player_walking": SubResource("Animation_omk0n")
+&"RESET": SubResource("Animation_sx2nl"),
+&"player_jump": SubResource("Animation_uh6hg"),
+&"player_take_fall": SubResource("Animation_j6pxq"),
+&"player_walking": SubResource("Animation_omk0n")
 }
 
 [sub_resource type="Animation" id="Animation_q4477"]
@@ -115,7 +115,7 @@ resource_name = "crouch_begin"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6vjj"]
 _data = {
-"crouch_begin": SubResource("Animation_q4477")
+&"crouch_begin": SubResource("Animation_q4477")
 }
 
 [node name="Player" type="CharacterBody3D"]

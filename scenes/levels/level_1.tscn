@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://d2005iq2a4ocn"]
 
-[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_s78rj"]
+[ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
 [ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="4_fmrw6"]
@@ -18,9 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
 [ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
-[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue_trigger.tscn" id="17_ndhgi"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="17_ndhgi"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="18_8nmu8"]
-[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/dialogue_handler.tscn" id="18_xss3e"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="18_xss3e"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
 
@@ -230,8 +230,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtl4c"]
 _data = {
-"RESET": SubResource("Animation_t616l"),
-"opening": SubResource("Animation_qac2f")
+&"RESET": SubResource("Animation_t616l"),
+&"opening": SubResource("Animation_qac2f")
 }
 
 [sub_resource type="GDScript" id="GDScript_k3yni"]
@@ -758,7 +758,7 @@ skipable = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jtl4c")
+&"": SubResource("AnimationLibrary_jtl4c")
 }
 
 [node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]

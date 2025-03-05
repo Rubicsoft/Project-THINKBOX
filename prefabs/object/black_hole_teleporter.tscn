@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhjxhk7hg1rcu"]
 
-[ext_resource type="Script" path="res://scripts/platforms/teleport_zone.gd" id="1_tymih"]
+[ext_resource type="Script" uid="uid://drra6l0q8ixxj" path="res://scripts/platforms/teleport_zone.gd" id="1_tymih"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_wt03v"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ixsqc"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bc3fo1jqnsy7v"]
 
-[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_q8osr"]
+[ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_q8osr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_qotat"]
 [ext_resource type="PackedScene" uid="uid://baiy2smi6x1tv" path="res://scenes/prototypes/obstacle_test/obstacle_test_level.tscn" id="2_1c0qx"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_lnn7i"]

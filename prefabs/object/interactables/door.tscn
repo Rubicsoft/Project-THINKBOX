@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bpf8q8g1rtg1e"]
 
-[ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_yoyqc"]
+[ext_resource type="Script" uid="uid://17h3ql1dvai2" path="res://scripts/interactables/door.gd" id="1_yoyqc"]
 [ext_resource type="ArrayMesh" uid="uid://b14ucul5ucp3l" path="res://assets/model/door/door_base.obj" id="2_7crcp"]
 [ext_resource type="Material" uid="uid://b71grmrowo1xu" path="res://materials/door/door_wood.tres" id="3_l8k4e"]
 [ext_resource type="AudioStream" uid="uid://c6kfrmofx7kar" path="res://assets/sounds/door_open.ogg" id="4_gwxu0"]
@@ -208,11 +208,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56mby"]
 _data = {
-"RESET": SubResource("Animation_w3l2g"),
-"door_close_left_handle": SubResource("Animation_ykx3g"),
-"door_close_right_handle": SubResource("Animation_n1y4o"),
-"door_open_left_handle": SubResource("Animation_nmnkh"),
-"door_open_right_handle": SubResource("Animation_k5ite")
+&"RESET": SubResource("Animation_w3l2g"),
+&"door_close_left_handle": SubResource("Animation_ykx3g"),
+&"door_close_right_handle": SubResource("Animation_n1y4o"),
+&"door_open_left_handle": SubResource("Animation_nmnkh"),
+&"door_open_right_handle": SubResource("Animation_k5ite")
 }
 
 [node name="Door" type="Node3D"]

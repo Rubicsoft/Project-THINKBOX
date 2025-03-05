@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk0u3y3sy6ff0"]
 
-[ext_resource type="Script" path="res://scripts/visual/main_menu.gd" id="1_3125w"]
+[ext_resource type="Script" uid="uid://dy6cly8848xnw" path="res://scripts/visual/main_menu.gd" id="1_3125w"]
 [ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="1_gnbra"]
 
 [sub_resource type="Theme" id="Theme_7w1f0"]

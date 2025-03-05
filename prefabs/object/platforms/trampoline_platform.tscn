@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://k2mmvmj0c3vt"]
 
-[ext_resource type="Script" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
+[ext_resource type="Script" uid="uid://ynedmqhuo05n" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
 [ext_resource type="AudioStream" uid="uid://dmbm6uqy8nno5" path="res://assets/sounds/trampoline_platform.ogg" id="2_y4wrk"]
 [ext_resource type="Texture2D" uid="uid://dvt06rlt4vmxm" path="res://assets/img/trampoline_tex/trampoline_base.png" id="3_7juf3"]
 [ext_resource type="Texture2D" uid="uid://dktmy5glo1q0" path="res://assets/img/trampoline_tex/trampoline_01.png" id="4_m0176"]
@@ -92,8 +92,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wg7ly"]
 _data = {
-"RESET": SubResource("Animation_ubc0n"),
-"spin_loop": SubResource("Animation_aba6x")
+&"RESET": SubResource("Animation_ubc0n"),
+&"spin_loop": SubResource("Animation_aba6x")
 }
 
 [node name="Trampoline_Platform" type="Area3D"]

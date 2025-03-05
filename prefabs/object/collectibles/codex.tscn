@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://tps266mromjo"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/codex.gd" id="1_340sp"]
+[ext_resource type="Script" uid="uid://cmxcxxx1opuv4" path="res://scripts/collectibles/codex.gd" id="1_340sp"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="2_b25hg"]
 [ext_resource type="AudioStream" uid="uid://kufasch8m0a0" path="res://assets/sounds/checkpoint.ogg" id="3_17mat"]
 
@@ -96,9 +96,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djrux"]
 _data = {
-"RESET": SubResource("Animation_37jax"),
-"codex_pickup": SubResource("Animation_2th4b"),
-"codex_spin": SubResource("Animation_srxcg")
+&"RESET": SubResource("Animation_37jax"),
+&"codex_pickup": SubResource("Animation_2th4b"),
+&"codex_spin": SubResource("Animation_srxcg")
 }
 
 [node name="Codex" type="Area3D"]
