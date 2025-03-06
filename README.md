@@ -1,4 +1,6 @@
-# Codex-RUN
+# Codex-RUN Game
+
+![thumbnail_img]
 
 *This game is still under alpha development*
 
@@ -44,6 +46,7 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 
 © 2024-2025 REMI Games
 
+[thumbnail_img]: thumbnail.webp
 [level_design_doc]: LEVEL_DESIGN_DOC.md
 [mechanic_doc]: MECHANICS.md
 [reymo_ig_link]: https://www.instagram.com/reymo_je_xefron/
