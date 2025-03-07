@@ -28,7 +28,6 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 ## Addons used
 
 * [JFA driven motion blur][motion_blur_link] : Jump flood algorithm driven motion blur compositor effect for Godot 4.3
-* [Godot Jolt][godot_jolt_link] : Godot Jolt is a native extension for the Godot game engine that allows you to use the Jolt physics engine to power Godot's 3D physics
 
 ## Shader used
 * [Glitch Effect Shader for Godot Engine 4][glitch_link]
@@ -44,15 +43,21 @@ Use **Git LFS** to clone this repository. For more info about Git LFS [Click Her
 
 *Created by **Reymo Je***
 
-© 2024-2025 REMI Games
+## License
 
+Codex-RUN © 2025 by REMI Games is licensed under [CC BY-NC-SA 4.0][license]
+
+[English][cc_deed_en] | [Bahasa Indonesia][cc_deed_id]
+
+[license]: LICENSE
 [thumbnail_img]: thumbnail.webp
 [level_design_doc]: LEVEL_DESIGN_DOC.md
 [mechanic_doc]: MECHANICS.md
 [reymo_ig_link]: https://www.instagram.com/reymo_je_xefron/
 [reymo_github_link]: https://github.com/Rubicsoft
 [lfs_link]: https://git-lfs.com/
-[godot_jolt_link]: https://github.com/godot-jolt/godot-jolt
 [motion_blur_link]: https://github.com/sphynx-owner/JFA_driven_motion_blur_addon
 [glitch_link]: https://godotshaders.com/shader/glitch-effect-shader-for-godot-engine-4/
 [lens_flare_link]: https://godotshaders.com/shader/screen-space-lens-flare-with-rainbow-colored-effect/
+[cc_deed_en]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+[cc_deed_id]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.id
