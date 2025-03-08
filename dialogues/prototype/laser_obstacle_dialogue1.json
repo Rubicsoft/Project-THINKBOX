@@ -1,0 +1,14 @@
+{
+	"chats": [
+		{
+			"actor": "HANS",
+			"dialogue": "WHAT THE FUCK!",
+			"disable-player-sfx": true
+		}, 
+        {
+			"actor": "HANS",
+			"dialogue": "Don't expect that fucking laser.",
+			"disable-player-sfx": true
+		}
+	]
+}
