@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://yvm4yg1gv1ug"]
+
+[ext_resource type="Script" uid="uid://dal4r0a3rbos6" path="res://scripts/obstacles/laser.gd" id="1_qh5rq"]
+
+[node name="Laser" type="Area3D"]
+editor_description = "Deadly laser that kills Player instantly
+Default always looping, but it can be set to One-Shot (Triggerbox required)"
+collision_mask = 3
+script = ExtResource("1_qh5rq")
+
+[connection signal="body_entered" from="." to="." method="_on_laser_entered"]

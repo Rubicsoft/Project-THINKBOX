@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=62 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -39,6 +39,9 @@
 [ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="37_06dfq"]
 [ext_resource type="PackedScene" uid="uid://ca3c63b6veah8" path="res://prefabs/tools/teleport_zone.tscn" id="38_empnd"]
 [ext_resource type="PackedScene" uid="uid://dhjxhk7hg1rcu" path="res://prefabs/object/black_hole_teleporter.tscn" id="39_m86oy"]
+[ext_resource type="PackedScene" uid="uid://ca2e1ti7w5atq" path="res://prefabs/object/obstacles/codex_gate/codex_gate.tscn" id="40_xmnpu"]
+[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="41_qbl0u"]
+[ext_resource type="PackedScene" uid="uid://c77snb08ho26e" path="res://prefabs/object/obstacles/codex_gate/codex_gate_label.tscn" id="42_xmjw6"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_46y18"]
 resource_local_to_scene = false
@@ -254,6 +257,12 @@ size = Vector3(27.75, 0.5, 47.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_200su"]
 size = Vector3(3, 2, 4.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8vnlb"]
+size = Vector3(5, 2.5, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kx0x1"]
+size = Vector3(5, 2.5, 0.05)
 
 [node name="PlatformerTest" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_1fcd3")
@@ -667,3 +676,20 @@ destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="TeleportZones/BlackHole_Teleporter2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39, -11.75, 15.75)
+
+[node name="CodexGates" type="Node3D" parent="."]
+
+[node name="CodexGate" parent="CodexGates" node_paths=PackedStringArray("codexcount") instance=ExtResource("40_xmnpu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.75, -9.5, 0)
+max_codex = 3
+codexcount = NodePath("CodexGate_Label")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CodexGates/CodexGate"]
+shape = SubResource("BoxShape3D_8vnlb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CodexGates/CodexGate"]
+mesh = SubResource("BoxMesh_kx0x1")
+surface_material_override/0 = ExtResource("41_qbl0u")
+
+[node name="CodexGate_Label" parent="CodexGates/CodexGate" instance=ExtResource("42_xmjw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09281e-08, 0, 0.25)

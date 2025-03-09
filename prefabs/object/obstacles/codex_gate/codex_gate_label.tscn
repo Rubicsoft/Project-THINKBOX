@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c77snb08ho26e"]
+
+[ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="1_4hmta"]
+
+[node name="CodexGate_Label" type="Label3D"]
+double_sided = false
+text = "0/5"
+font = ExtResource("1_4hmta")
+font_size = 256
+outline_size = 0

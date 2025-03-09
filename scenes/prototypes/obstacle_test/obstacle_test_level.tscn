@@ -1,19 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://baiy2smi6x1tv"]
+[gd_scene load_steps=2 format=3 uid="uid://baiy2smi6x1tv"]
 
-[ext_resource type="Shader" uid="uid://dd37cjnufvrn0" path="res://shaders/tron_map.tres" id="1_7i5iq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwgp5"]
-render_priority = 0
-shader = ExtResource("1_7i5iq")
-shader_parameter/Background_Color = Color(0.0569579, 0.0654212, 0.16316, 1)
-shader_parameter/Grid_Scale = 50.0
-shader_parameter/Grid_Color = Color(0, 0.79023, 0.222364, 1)
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_6lwjd"]
 
 [node name="ObstacleTest_Level" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = SubResource("ShaderMaterial_rwgp5")
+material_override = ExtResource("1_6lwjd")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.75, 2.5, -5.25)
+size = Vector3(29.5, 4, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.75, 2.5, 4.75)
+size = Vector3(29.5, 4, 0.5)

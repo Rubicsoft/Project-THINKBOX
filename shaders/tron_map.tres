@@ -52,7 +52,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform vec4 Background_Color : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
-uniform float Grid_Scale : hint_range(1, 100, 1) = 50;
+uniform float Grid_Scale : hint_range(1.0, 100.0, 1.0) = 50.0;
 uniform sampler2D tex_frg_2 : source_color;
 uniform vec4 Grid_Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 

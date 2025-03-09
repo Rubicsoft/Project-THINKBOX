@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc3fo1jqnsy7v"]
+[gd_scene load_steps=26 format=3 uid="uid://bc3fo1jqnsy7v"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_q8osr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_qotat"]
@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_lnn7i"]
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="5_8pmdl"]
 [ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="5_23010"]
+[ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="5_he4wh"]
+[ext_resource type="PackedScene" uid="uid://yvm4yg1gv1ug" path="res://prefabs/object/obstacles/laser.tscn" id="7_hp2dy"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="8_up1g0"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="9_he4wh"]
+[ext_resource type="JSON" path="res://dialogues/prototype/laser_obstacle_dialogue1.json" id="9_qn1of"]
+[ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="12_dmsfy"]
+[ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="13_qb8o3"]
 
 [sub_resource type="GDScript" id="GDScript_fx2l4"]
 resource_name = "kill_player_zonetest"
@@ -21,16 +28,46 @@ func _on_body_entered(body):
 
 [sub_resource type="BoxMesh" id="BoxMesh_wipsc"]
 
-[node name="Obstacle_TestLevel" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hp2dy"]
+size = Vector3(1, 2.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hp2dy"]
+size = Vector3(1, 2.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_up1g0"]
+size = Vector3(3, 1.75, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qn1of"]
+size = Vector3(0.25, 4, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_up1g0"]
+size = Vector3(0.25, 4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he4wh"]
+size = Vector3(4, 3.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb8o3"]
+size = Vector3(0.25, 2.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dmsfy"]
+size = Vector3(0.25, 2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmsfy"]
+size = Vector3(1, 3.75, 11)
+
+[node name="Obstacle_TestLevel" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_q8osr")
+player = NodePath("Player")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_qotat")]
 
 [node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5, 0)
+transform = Transform3D(0.866025, 0.433012, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, 0, 5, 0)
 shadow_enabled = true
 
 [node name="ObstacleTest_Level" parent="." instance=ExtResource("2_1c0qx")]
+
+[node name="Dialogue_GUI" parent="." instance=ExtResource("5_he4wh")]
 
 [node name="Player" parent="." instance=ExtResource("3_lnn7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
@@ -54,5 +91,204 @@ modulate = Color(1, 0, 0, 1)
 text = "Kill Player"
 font = ExtResource("5_23010")
 outline_size = 0
+
+[node name="OneShot_Laser" type="Node3D" parent="."]
+
+[node name="Laser_1" type="Node3D" parent="OneShot_Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0, -0.75)
+
+[node name="Laser" parent="OneShot_Laser/Laser_1" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.75, 1.75, -2.25)
+end_position = NodePath("../End_Position_1")
+triggerbox = NodePath("../DialogueTrigger")
+sine_interpolation = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_1/Laser"]
+shape = SubResource("BoxShape3D_hp2dy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_1/Laser"]
+mesh = SubResource("BoxMesh_hp2dy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="End_Position_1" type="Node3D" parent="OneShot_Laser/Laser_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.75, 1.75)
+
+[node name="DialogueTrigger" parent="OneShot_Laser/Laser_1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_he4wh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, -0.25)
+dialog_handler = NodePath("DialogueHandler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_1/DialogueTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("BoxShape3D_up1g0")
+
+[node name="DialogueHandler" parent="OneShot_Laser/Laser_1/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("8_up1g0")]
+dialogue_file = ExtResource("9_qn1of")
+dialogue_gui = NodePath("../../../../Dialogue_GUI")
+
+[node name="Laser_2" type="Node3D" parent="OneShot_Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_2" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+end_position = NodePath("../End_Position")
+duration = 0.5
+one_shot = true
+anticipation_duration = 0.5
+triggerbox = NodePath("../Triggerbox")
+sine_interpolation = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_2/Laser"]
+shape = SubResource("BoxShape3D_qn1of")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_2/Laser"]
+mesh = SubResource("BoxMesh_up1g0")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="End_Position" type="Node3D" parent="OneShot_Laser/Laser_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.5, 0)
+
+[node name="Triggerbox" type="Area3D" parent="OneShot_Laser/Laser_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_2/Triggerbox"]
+shape = SubResource("BoxShape3D_he4wh")
+
+[node name="Laser_Group_1" type="Node3D" parent="OneShot_Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 0)
+
+[node name="Laser1" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser1" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser1/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser1/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+
+[node name="Laser2" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser2" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser2/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser2/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+
+[node name="Laser3" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser3" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser3/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser3/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+
+[node name="Laser4" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser4" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser4/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser4/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+
+[node name="Laser5" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser5" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser5/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser5/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+
+[node name="Laser6" type="Node3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Laser" parent="OneShot_Laser/Laser_Group_1/Laser6" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("7_hp2dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 4)
+end_position = NodePath("../Laser_End")
+triggerbox = NodePath("../../Triggerbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Laser6/Laser"]
+shape = SubResource("BoxShape3D_qb8o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OneShot_Laser/Laser_Group_1/Laser6/Laser"]
+mesh = SubResource("BoxMesh_dmsfy")
+surface_material_override/0 = ExtResource("5_8pmdl")
+
+[node name="Laser_End" type="Node3D" parent="OneShot_Laser/Laser_Group_1/Laser6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -4)
+
+[node name="Triggerbox" type="Area3D" parent="OneShot_Laser/Laser_Group_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_Group_1/Triggerbox"]
+shape = SubResource("BoxShape3D_dmsfy")
+
+[node name="Guidebox" type="Node3D" parent="."]
+
+[node name="Guidebox_1" parent="Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("12_dmsfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, -1.25)
+player = NodePath("../../Player")
+guidebox_message = "LASERS ahead"
+visible_distance = 2.5
+
+[node name="Guidebox_2" parent="Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("12_dmsfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.75, 1.5, -1.25)
+player = NodePath("../../Player")
+guidebox_message = "Piece of cake right"
+
+[node name="Checkpoint" type="Node3D" parent="."]
+
+[node name="Checkpoint_1" parent="Checkpoint" node_paths=PackedStringArray("custom_position") instance=ExtResource("13_qb8o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 1.1, 0.75)
+custom_position = NodePath("Node3D")
+
+[node name="Node3D" type="Node3D" parent="Checkpoint/Checkpoint_1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.75, 0, -0.75)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
