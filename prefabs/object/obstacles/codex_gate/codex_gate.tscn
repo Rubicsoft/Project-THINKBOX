@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca2e1ti7w5atq"]
+
+[ext_resource type="Script" uid="uid://b84hwuwt4edlg" path="res://scripts/obstacles/codex_gate.gd" id="1_mmnuh"]
+
+[node name="CodexGate" type="StaticBody3D"]
+script = ExtResource("1_mmnuh")
