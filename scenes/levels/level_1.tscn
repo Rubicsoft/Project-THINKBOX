@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=51 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
@@ -18,10 +18,13 @@
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
 [ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
+[ext_resource type="PackedScene" uid="uid://ca2e1ti7w5atq" path="res://prefabs/object/obstacles/codex_gate/codex_gate.tscn" id="17_mqh5v"]
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="17_ndhgi"]
+[ext_resource type="PackedScene" uid="uid://c77snb08ho26e" path="res://prefabs/object/obstacles/codex_gate/codex_gate_label.tscn" id="18_7o3do"]
 [ext_resource type="AudioStream" uid="uid://77ts427b8655" path="res://assets/sounds/player_starting1.ogg" id="18_8nmu8"]
 [ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="18_xss3e"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
+[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="19_o7j4k"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
@@ -70,6 +73,12 @@ size = Vector3(8, 11, 53.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_upqxj"]
 size = Vector3(3.25, 0.5, 28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7j4k"]
+size = Vector3(3, 2.5, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_31oqk"]
+size = Vector3(3, 2.5, 0.05)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hs2jk"]
 size = Vector3(11, 4.5, 1)
@@ -686,7 +695,7 @@ player = NodePath("../../../Player")
 guidebox_message = "You can climb to something climbable"
 
 [node name="Guidebox_6" parent="Level/Guideboxes" node_paths=PackedStringArray("player") instance=ExtResource("13_uuv5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2, 34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.25, 34)
 player = NodePath("../../../Player")
 guidebox_message = "Collect Codex in order to pass"
 visible_distance = 10.0
@@ -718,6 +727,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 8.5, 29)
 
 [node name="Codex3" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97363, -54)
+
+[node name="CodexGates" type="Node3D" parent="Level"]
+
+[node name="CodexGate_1" parent="Level/CodexGates" node_paths=PackedStringArray("codexcount") instance=ExtResource("17_mqh5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.5, 32.25)
+max_codex = 1
+codexcount = NodePath("CodexGate_Label")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/CodexGates/CodexGate_1"]
+shape = SubResource("BoxShape3D_o7j4k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/CodexGates/CodexGate_1"]
+mesh = SubResource("BoxMesh_31oqk")
+surface_material_override/0 = ExtResource("19_o7j4k")
+
+[node name="CodexGate_Label" parent="Level/CodexGates/CodexGate_1" instance=ExtResource("18_7o3do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 
 [node name="InvisibleWall" type="Node3D" parent="Level"]
 

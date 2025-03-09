@@ -423,6 +423,20 @@ size = Vector3(3, 0.5, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.125, -0.25)
 size = Vector3(55, 0.5, 9.5)
 
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.375, -4.76063)
+size = Vector3(55, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.750004, 0)
+operation = 2
+size = Vector3(3, 2.5, 0.75)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D2/CSGBox3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.750004, 0)
+operation = 2
+size = Vector3(3, 2.5, 0.75)
+
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 material_override = ExtResource("1_64ofg")
