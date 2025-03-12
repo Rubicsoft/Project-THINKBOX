@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dun0wiwk1nldj"]
+[gd_scene load_steps=16 format=3 uid="uid://dun0wiwk1nldj"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_6tvc2"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_dkmff"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_tqnjk"]
 [ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="5_4yvy6"]
 [ext_resource type="PackedScene" uid="uid://dhjxhk7hg1rcu" path="res://prefabs/object/black_hole_teleporter.tscn" id="6_inqaj"]
-[ext_resource type="PackedScene" uid="uid://3kh0826i2wm8" path="res://scenes/prototypes/level_blocking/level_3/level3_blockyspikes.tscn" id="7_jhle1"]
+[ext_resource type="PackedScene" uid="uid://yvm4yg1gv1ug" path="res://prefabs/object/obstacles/laser.tscn" id="8_ugcn1"]
+[ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="9_2bnyt"]
+[ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="9_pimnq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oagbt"]
 
@@ -15,6 +17,15 @@ size = Vector3(60.5, 1, 60.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yns5"]
 size = Vector3(90, 1, 90)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bnyt"]
+size = Vector3(4.5, 4, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n6eey"]
+size = Vector3(4.5, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6eey"]
+size = Vector3(9, 3, 1)
 
 [node name="Level_3" type="Node3D"]
 
@@ -30,9 +41,6 @@ transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 43.5, 24.3
 [node name="Level" type="Node3D" parent="."]
 
 [node name="Level3_BlockyFloaty" parent="Level" instance=ExtResource("3_3l7yq")]
-
-[node name="Level3_BlockySpikes" parent="Level" instance=ExtResource("7_jhle1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.75, -74.75)
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
@@ -83,3 +91,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 24.25, -59.75)
 [node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -1.75)
 light_energy = 4.0
+
+[node name="Laser" type="Node3D" parent="Level"]
+
+[node name="Laser_1" type="Node3D" parent="Level/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Laser" parent="Level/Laser/Laser_1" node_paths=PackedStringArray("end_position", "triggerbox") instance=ExtResource("8_ugcn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+end_position = NodePath("../End_Pos")
+duration = 0.2
+one_shot = true
+triggerbox = NodePath("../DialogueTrigger")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Laser/Laser_1/Laser"]
+shape = SubResource("BoxShape3D_2bnyt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Laser/Laser_1/Laser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_n6eey")
+surface_material_override/0 = ExtResource("9_2bnyt")
+
+[node name="DialogueTrigger" parent="Level/Laser/Laser_1" instance=ExtResource("9_pimnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Laser/Laser_1/DialogueTrigger"]
+shape = SubResource("BoxShape3D_n6eey")
+
+[node name="End_Pos" type="Node3D" parent="Level/Laser/Laser_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6.5)
