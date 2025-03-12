@@ -10,12 +10,14 @@ extends Area3D
 
 # Variables
 var position_origin: Vector3 = Vector3.ZERO
+
 var triggered: bool = false:
 	set(new_value):
 		triggered = new_value
 		if new_value == false:
 			reset_laser()
-var collision_shape: CollisionShape3D
+
+var collision_shapes: Array[CollisionShape3D]
 var tween: Tween
 
 
@@ -23,18 +25,14 @@ var tween: Tween
 func _ready() -> void:
 	position_origin = global_position
 	
-	# Get the child: CollisionShape3D
-	for i in get_child_count():
-		if get_child(i) is CollisionShape3D:
-			collision_shape = get_child(i)
-			break
+	# Get the children: CollisionShape3D
+	collision_shapes = get_collision_shapes()
 	
 	# Adjust some settings if Triggerbox is defined
 	if triggerbox:
 		visible = false
 		triggerbox.set_collision_mask_value(2, true)
-		if collision_shape:
-			collision_shape.disabled = true
+		disable_collision_shapes(collision_shapes, true)
 	
 	# Do Actions
 	if end_position:
@@ -66,6 +64,29 @@ func create_tweening() -> void:
 		tween.set_trans(Tween.TRANS_SINE)
 
 
+# Get the collision shapes
+func get_collision_shapes() -> Array[CollisionShape3D]:
+	var shapes: Array[CollisionShape3D]
+	
+	for child in get_children():
+		if child is CollisionShape3D:
+			shapes.append(child)
+	
+	if not shapes.is_empty():
+		return shapes
+	else:
+		printerr("No CollisionShape3D is found in Node: " + get_parent().name + "/" + name)
+	
+	return []
+
+
+# Set the collision shapes disability value
+func disable_collision_shapes(collisions: Array[CollisionShape3D], enable: bool) -> void:
+	if not collisions.is_empty():
+		for shapes in collisions:
+			shapes.disabled = enable
+
+
 # Handles loop movement of the laser
 func looping(destination: Node3D) -> void:
 	# Tweening setup
@@ -89,8 +110,7 @@ func oneshot_strike(destination: Node3D) -> void:
 func reset_laser() -> void:
 	if triggerbox:
 		visible = false
-		if collision_shape:
-			collision_shape.disabled = true
+		disable_collision_shapes(collision_shapes, true)
 	
 	global_position = position_origin
 
@@ -102,8 +122,7 @@ func _on_oneshot_attack(body: Node3D) -> void:
 	if not triggered:
 		triggered = true
 		visible = true
-		if collision_shape:
-			collision_shape.disabled = false
+		disable_collision_shapes(collision_shapes, false)
 		
 		await get_tree().create_timer(anticipation_duration).timeout
 		
@@ -119,8 +138,7 @@ func _on_looping_attack(body: Node3D) -> void:
 	if not triggered:
 		# Adjust settings
 		triggered = true
-		if collision_shape:
-			collision_shape.disabled = false
+		disable_collision_shapes(collision_shapes, false)
 		visible = true
 		
 		# Do Action
