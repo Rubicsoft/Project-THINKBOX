@@ -13,7 +13,7 @@
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oagbt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3k6v"]
-size = Vector3(60.5, 1, 60.5)
+size = Vector3(73.5, 1, 61)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yns5"]
 size = Vector3(90, 1, 90)
@@ -56,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 47.75)
 player = NodePath("../../../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.25)
 shape = SubResource("BoxShape3D_k3k6v")
 
 [node name="Killzone_2" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("4_tqnjk")]
@@ -80,7 +81,7 @@ destination = NodePath("Node3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 22.35, 68.75)
 
 [node name="BlackHole_Teleporter2" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("6_inqaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.75, -0.25)
 destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter2"]
@@ -89,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 24.25, -59.75)
 [node name="Lighting" type="Node3D" parent="Level"]
 
 [node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -1.75)
 light_energy = 4.0
 
 [node name="Laser" type="Node3D" parent="Level"]
