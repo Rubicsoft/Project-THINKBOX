@@ -161,13 +161,13 @@ mesh = SubResource("BoxMesh_ku0vs")
 
 [node name="Spin" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kufat")
+&"": SubResource("AnimationLibrary_kufat")
 }
 autoplay = "platform_loop"
 
 [node name="ShowUp" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_708b4")
+&"": SubResource("AnimationLibrary_708b4")
 }
 
 [connection signal="showup_changed" from="." to="." method="_on_showup_changed"]
