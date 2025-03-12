@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_np74h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_y5nra"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_17dgu"]
-[ext_resource type="AudioStream" uid="uid://31v18ukarh5x" path="res://assets/bgm/bgm_04.ogg" id="4_l0bfs"]
 [ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="4_mhsh6"]
+[ext_resource type="AudioStream" uid="uid://bufv57twht73a" path="res://assets/bgm/bgm_05.ogg" id="5_5niy6"]
 [ext_resource type="PackedScene" uid="uid://c7yp6vvu2u176" path="res://scenes/prototypes/level_blocking/level_2/level2_floating_world.tscn" id="6_6jydl"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="6_ac0nd"]
 [ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="6_jyy8i"]
@@ -67,7 +67,7 @@ bus = &"VO"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("4_l0bfs")
+stream = ExtResource("5_5niy6")
 autoplay = true
 bus = &"BGM"
 
