@@ -94,9 +94,10 @@ dialog_handler = NodePath("DialogueHandler")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger2"]
 shape = SubResource("BoxShape3D_geph4")
 
-[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger2" node_paths=PackedStringArray("dialogue_gui", "audio_stream") instance=ExtResource("7_dp56e")]
+[node name="DialogueHandler" parent="D_Triggers/DialogueTrigger2" node_paths=PackedStringArray("dialogue_gui", "audio_stream", "played_parent") instance=ExtResource("7_dp56e")]
 dialogue_file = ExtResource("9_4f0oy")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
 audio_stream = NodePath("../../../Player/PlayerAudioStream")
+played_parent = NodePath("../../DialogueTrigger1/DialogueHandler")
 
 [node name="Dialogue_GUI" parent="." instance=ExtResource("9_74aop")]
