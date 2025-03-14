@@ -1,0 +1,10 @@
+{
+	"chats": [
+		{
+			"actor": "HANS",
+			"dialogue": "Damn! A laser?",
+			"disable-player-sfx": true,
+			"empty-timer": 0.5
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+	"chats": [
+		{
+			"actor": "HANS",
+			"dialogue": "Got it.",
+			"disable-player-sfx": true
+		}, 
+		{
+			"actor": "HANS",
+			"dialogue": "You are a smart but also tricky AI.",
+			"disable-player-sfx": true
+		}, 
+		{
+			"actor": "IRIS",
+			"dialogue": "[blushing], You are also a smart hackerman."
+		}, 
+		{
+			"actor": "IRIS",
+			"dialogue": "Just for now."
+		}
+	]
+}

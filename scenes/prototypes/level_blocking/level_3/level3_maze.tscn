@@ -23,23 +23,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 0, 55.5)
 size = Vector3(53.25, 1, 28.25)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Rooms/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 13.875)
-size = Vector3(53, 7, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.875, 13.875)
+size = Vector3(53, 8.75, 0.25)
 
 [node name="CSGDoor" parent="Rooms/CSGBox3D/CSGBox3D" instance=ExtResource("3_56hoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.885, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Rooms/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -13.875)
-size = Vector3(53, 7, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.875, -13.875)
+size = Vector3(53, 8.75, 0.25)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Rooms/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.375, 4, 0)
-size = Vector3(0.25, 7, 27.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.375, 4.875, 0)
+size = Vector3(0.25, 8.75, 27.5)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Rooms/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.375, 4, 0)
-size = Vector3(0.25, 7, 27.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.375, 4.875, 0)
+size = Vector3(0.25, 8.75, 27.5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Rooms/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 12.375)
+size = Vector3(7, 4, 2.75)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 18.5)
@@ -96,7 +100,7 @@ material_override = ExtResource("2_oofxn")
 use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Halls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.75, 0, 75.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.75, 4, 75.125)
 size = Vector3(45.5, 1, 11.25)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Halls/CSGBox3D2"]

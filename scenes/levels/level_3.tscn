@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dun0wiwk1nldj"]
+[gd_scene load_steps=25 format=3 uid="uid://dun0wiwk1nldj"]
 
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_6tvc2"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_dkmff"]
 [ext_resource type="PackedScene" uid="uid://0ci3px1i3780" path="res://scenes/prototypes/level_blocking/level_3/level3_blockyfloaty.tscn" id="3_3l7yq"]
+[ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="3_apo5x"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_tqnjk"]
 [ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="5_4yvy6"]
 [ext_resource type="PackedScene" uid="uid://doc0ufx1mnxx" path="res://scenes/prototypes/level_blocking/level_3/level3_maze.tscn" id="5_n6eey"]
@@ -11,12 +12,18 @@
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="9_2bnyt"]
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="9_pimnq"]
 [ext_resource type="AudioStream" uid="uid://bufv57twht73a" path="res://assets/bgm/bgm_05.ogg" id="10_2bnyt"]
+[ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="12_f6egh"]
+[ext_resource type="JSON" path="res://dialogues/level_3/level3_dialogue_3.json" id="12_josfm"]
 [ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="12_qi5uv"]
+[ext_resource type="JSON" path="res://dialogues/level_3/level3_dialogue_2.json" id="14_josfm"]
+[ext_resource type="JSON" path="res://dialogues/level_3/level3_dialogue_4.json" id="17_lgrx1"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oagbt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3k6v"]
 size = Vector3(73.5, 1, 61)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_apo5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bnyt"]
 size = Vector3(4.5, 4, 0.1)
@@ -26,6 +33,9 @@ size = Vector3(4.5, 4, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6eey"]
 size = Vector3(9, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_josfm"]
+size = Vector3(6, 5.75, 1)
 
 [node name="Level_3" type="Node3D"]
 
@@ -37,6 +47,8 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_dkmff")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 43.5, 24.35, 65.75)
+
+[node name="Dialogue_GUI" parent="." instance=ExtResource("3_apo5x")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -50,6 +62,7 @@ bus = &"BGM"
 
 [node name="Level3_Maze" parent="Level" instance=ExtResource("5_n6eey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -157)
+visible = false
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
@@ -82,12 +95,22 @@ destination = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 22.35, 68.75)
 
+[node name="DialogueTrigger" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
+dialog_handler = NodePath("DialogueHandler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1/DialogueTrigger"]
+shape = SubResource("SphereShape3D_apo5x")
+
+[node name="DialogueHandler" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("12_f6egh")]
+dialogue_file = ExtResource("12_josfm")
+dialogue_gui = NodePath("../../../../../Dialogue_GUI")
+
 [node name="BlackHole_Teleporter2" parent="Level/BlackHole_Teleporter" node_paths=PackedStringArray("destination") instance=ExtResource("6_inqaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.75, -0.25)
 destination = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 71.75, 13.25, -96.75)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 71.75, 17.25, -96.75)
 
 [node name="Lighting" type="Node3D" parent="Level"]
 
@@ -96,13 +119,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -1.75)
 light_energy = 4.0
 
 [node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.75, 3, -88.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.75, 7, -88.25)
 light_energy = 4.0
 shadow_enabled = true
 omni_range = 12.0
 
 [node name="OmniLight3D_3" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.25, 3, -82)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.25, 7, -82)
 light_energy = 4.0
 shadow_enabled = true
 omni_range = 12.0
@@ -127,11 +150,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_n6eey")
 surface_material_override/0 = ExtResource("9_2bnyt")
 
-[node name="DialogueTrigger" parent="Level/Laser/Laser_1" instance=ExtResource("9_pimnq")]
+[node name="DialogueTrigger" parent="Level/Laser/Laser_1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4.5)
+dialog_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Laser/Laser_1/DialogueTrigger"]
 shape = SubResource("BoxShape3D_n6eey")
+
+[node name="DialogueHandler" parent="Level/Laser/Laser_1/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("12_f6egh")]
+dialogue_file = ExtResource("14_josfm")
+dialogue_gui = NodePath("../../../../../Dialogue_GUI")
 
 [node name="End_Pos" type="Node3D" parent="Level/Laser/Laser_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6.5)
@@ -139,4 +167,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6.5)
 [node name="Door" type="Node3D" parent="Level"]
 
 [node name="Door_1" parent="Level/Door" instance=ExtResource("12_qi5uv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 1.75, -87.6214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 5.75, -87.6214)
+
+[node name="Dialogues" type="Node3D" parent="Level"]
+editor_description = "Some dialogues are not in this node. They are mostly triggers by another object."
+
+[node name="DialogueTrigger_1" parent="Level/Dialogues" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -3)
+dialog_handler = NodePath("DialogueHandler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogues/DialogueTrigger_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("BoxShape3D_josfm")
+
+[node name="DialogueHandler" parent="Level/Dialogues/DialogueTrigger_1" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("12_f6egh")]
+dialogue_file = ExtResource("17_lgrx1")
+dialogue_gui = NodePath("../../../../Dialogue_GUI")

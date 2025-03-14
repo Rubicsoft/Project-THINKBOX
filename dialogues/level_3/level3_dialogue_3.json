@@ -1,0 +1,18 @@
+{
+	"chats": [
+		{
+			"actor": "HANS",
+			"dialogue": "What the heck?",
+			"disable-player-sfx": true
+		}, 
+		{
+			"actor": "IRIS",
+			"dialogue": "Well you have to think out of the box."
+		}, 
+		{
+			"actor": "HANS",
+			"dialogue": "So you're trying to trick me, huh.",
+			"disable-player-sfx": true
+		}
+    ]
+}
