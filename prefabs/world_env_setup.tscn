@@ -55,8 +55,8 @@ metadata/_custom_type_script = "uid://brvgmghbi1tqy"
 [sub_resource type="Compositor" id="Compositor_duupt"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_bj6cm"), SubResource("CompositorEffect_52r8q")])
 script = ExtResource("14_400q1")
-samples = 16
-intensity = 1.0
+samples = 8
+intensity = 0.7
 center_fade = 0.0
 framerate_independent = true
 uncapped_independence = false
