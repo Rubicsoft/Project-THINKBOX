@@ -12,6 +12,7 @@ class_name DialogHandler
 @export var dialogue_file: JSON
 @export var dialogue_gui: DialogueGUI
 @export var audio_stream: AudioStreamPlayer
+@export var played_parent: DialogHandler
 @export var player_controlability: bool = true
 
 # DialogueJSON keywords
@@ -40,6 +41,13 @@ func _ready() -> void:
 		audio_stream.bus = &"VO"
 	else:
 		printerr("No AudioStreamPlayer available in " + get_parent().name + "/" + name)
+
+
+func _process(delta: float) -> void:
+	# If Played Parent is defined, the 'played' variable depends on the Played Parent node
+	if played_parent and not played:
+		played = played_parent.played
+
 
 
 # ------ SUPPORTING FUNCTIONS ------

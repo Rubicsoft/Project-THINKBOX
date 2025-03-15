@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k2mmvmj0c3vt"]
+[gd_scene load_steps=16 format=3 uid="uid://k2mmvmj0c3vt"]
 
 [ext_resource type="Script" uid="uid://ynedmqhuo05n" path="res://scripts/platforms/trampoline_platform.gd" id="1_482j1"]
 [ext_resource type="AudioStream" uid="uid://dmbm6uqy8nno5" path="res://assets/sounds/trampoline_platform.ogg" id="2_y4wrk"]
@@ -96,6 +96,37 @@ _data = {
 &"spin_loop": SubResource("Animation_aba6x")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hk1l2"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_hk1l2"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ij652"]
+gradient = SubResource("Gradient_hk1l2")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk1l2"]
+transparency = 4
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = SubResource("GradientTexture2D_ij652")
+billboard_mode = 2
+proximity_fade_enabled = true
+proximity_fade_distance = 5.0
+distance_fade_mode = 3
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ij652"]
+material = SubResource("StandardMaterial3D_hk1l2")
+size = Vector2(0.005, 1)
+orientation = 2
+
 [node name="Trampoline_Platform" type="Area3D"]
 collision_mask = 2
 script = ExtResource("1_482j1")
@@ -167,8 +198,17 @@ texture = ExtResource("6_jjmny")
 
 [node name="Spin" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wg7ly")
+&"": SubResource("AnimationLibrary_wg7ly")
 }
 autoplay = "spin_loop"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.5, 0)
+amount = 12
+lifetime = 0.75
+speed_scale = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hk1l2")
+draw_pass_1 = SubResource("PlaneMesh_ij652")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
