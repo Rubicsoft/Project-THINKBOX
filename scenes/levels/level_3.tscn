@@ -62,7 +62,6 @@ bus = &"BGM"
 
 [node name="Level3_Maze" parent="Level" instance=ExtResource("5_n6eey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -157)
-visible = false
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
