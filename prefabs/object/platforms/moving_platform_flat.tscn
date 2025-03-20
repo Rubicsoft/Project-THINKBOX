@@ -10,6 +10,7 @@ size = Vector3(1.5, 0.2, 1.5)
 size = Vector3(1.5, 0.2, 1.5)
 
 [node name="MovingPlatform_Flat" type="AnimatableBody3D"]
+collision_layer = 5
 script = ExtResource("1_2mne4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

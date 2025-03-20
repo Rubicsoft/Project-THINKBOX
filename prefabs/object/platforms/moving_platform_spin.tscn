@@ -137,6 +137,7 @@ _data = {
 }
 
 [node name="MovingPlatform_Spin" type="AnimatableBody3D"]
+collision_layer = 5
 script = ExtResource("1_g7dbe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
