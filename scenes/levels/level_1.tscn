@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=56 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
@@ -26,6 +26,7 @@
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="19_o7j4k"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
+[ext_resource type="PackedScene" uid="uid://d0v581pvxjurx" path="res://prefabs/tools/quickclimb_zone.tscn" id="24_31oqk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -85,6 +86,18 @@ size = Vector3(11, 4.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nsr25"]
 size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7jkp"]
+size = Vector3(4.5, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31oqk"]
+size = Vector3(4.25, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qwwm"]
+size = Vector3(15.5, 0.25, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4umt"]
+size = Vector3(2.75, 0.25, 1.25)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -362,7 +375,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -36.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -371,7 +384,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -39.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
@@ -380,6 +393,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -42.75)
 is_moving = true
 end_position = NodePath("Node3D")
+duration = 3.0
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -388,7 +403,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 3.5, -45.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
@@ -397,7 +412,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 3.5, -48.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 8.5
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
@@ -436,6 +451,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 25.25)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 3.5
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
@@ -445,6 +461,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 4.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 2.0
+sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
@@ -459,6 +476,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5.75, 28.0736)
 
 [node name="Trampoline_Platform_3" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 25.3236)
+JUMP_FORCE = 8.0
 
 [node name="Trampoline_Platform_4" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.25, 8.8236)
@@ -769,6 +787,33 @@ shape = SubResource("BoxShape3D_nsr25")
 [node name="DialogueHandler" parent="Level/Dialogue/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("18_xss3e")]
 dialogue_file = ExtResource("19_ekjhw")
 dialogue_gui = NodePath("../../../../Dialogue_GUI")
+
+[node name="QuickClimb_Zones" type="Node3D" parent="Level"]
+
+[node name="QuickClimb_Zone_1" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.75, 12.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_1"]
+shape = SubResource("BoxShape3D_x7jkp")
+
+[node name="QuickClimb_Zone_2" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 4.75, 24.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_2"]
+shape = SubResource("BoxShape3D_31oqk")
+
+[node name="QuickClimb_Zone_3" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.25, -13.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_3"]
+shape = SubResource("BoxShape3D_0qwwm")
+
+[node name="QuickClimb_Zone_4" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -62)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+shape = SubResource("BoxShape3D_t4umt")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
