@@ -178,12 +178,16 @@ script = ExtResource("2_563i8")
 
 [node name="CameraAnimation" type="AnimationPlayer" parent="CameraPivot"]
 libraries = {
-"": SubResource("AnimationLibrary_v25mb")
+&"": SubResource("AnimationLibrary_v25mb")
 }
 
 [node name="QuickClimbRaycast" type="RayCast3D" parent="."]
+editor_description = "QuickClimb collision mask is 3"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 1, 0)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="AfterDying" type="Timer" parent="."]
 wait_time = 0.2
@@ -191,7 +195,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_w6vjj")
+&"": SubResource("AnimationLibrary_w6vjj")
 }
 
 [connection signal="timeout" from="AfterDying" to="." method="_on_after_dying_timeout"]
