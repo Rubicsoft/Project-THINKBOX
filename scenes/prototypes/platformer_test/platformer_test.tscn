@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cbj2k6ds1813r"]
+[gd_scene load_steps=67 format=3 uid="uid://cbj2k6ds1813r"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_1fcd3"]
 [ext_resource type="Environment" uid="uid://db02yl6vga2e2" path="res://scenes/prototypes/clear_world_env.tres" id="1_7ihx3"]
@@ -273,6 +273,9 @@ size = Vector3(15, 0.25, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1nknb"]
 size = Vector3(20.5, 0.25, 9.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rj2s"]
+size = Vector3(21, 0.25, 5)
 
 [node name="PlatformerTest" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_1fcd3")
@@ -713,7 +716,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 shape = SubResource("BoxShape3D_m54b5")
 
 [node name="QuickClimb_Zone_2" parent="QuickClimb_Zones" instance=ExtResource("43_m54b5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -2.75)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_2"]
 shape = SubResource("BoxShape3D_trf8d")
@@ -723,3 +726,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_3"]
 shape = SubResource("BoxShape3D_1nknb")
+
+[node name="QuickClimb_Zone_4" parent="QuickClimb_Zones" instance=ExtResource("43_m54b5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_4"]
+shape = SubResource("BoxShape3D_3rj2s")
