@@ -416,19 +416,16 @@ surface_material_override/0 = ExtResource("16_gh6k2")
 
 [node name="Guidebox" type="Node3D" parent="Level"]
 
-[node name="Guidebox_1" parent="Level/Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+[node name="Guidebox_1" parent="Level/Guidebox" instance=ExtResource("17_iwtrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 9.25, 187.75)
-player = NodePath("../../../Player")
 guidebox_message = "Enter the black hole to teleport into another place"
 
-[node name="Guidebox_2" parent="Level/Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+[node name="Guidebox_2" parent="Level/Guidebox" instance=ExtResource("17_iwtrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 1.5, 211)
-player = NodePath("../../../Player")
 guidebox_message = "Collect DASH ORB to be able to dash"
 
-[node name="Guidebox_3" parent="Level/Guidebox" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+[node name="Guidebox_3" parent="Level/Guidebox" instance=ExtResource("17_iwtrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, 1.5, 125.25)
-player = NodePath("../../../Player")
 guidebox_message = "When the platform goes up, JUMP to gain momentum"
 
 [node name="Dialogue" type="Node3D" parent="Level"]
@@ -459,9 +456,8 @@ audio_stream = NodePath("../../../../Player/DialogueSFX")
 [node name="DebugPortal" type="Node3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75, 1.75, 281.514)
 
-[node name="Guidebox_Title" parent="Level/DebugPortal" node_paths=PackedStringArray("player") instance=ExtResource("17_iwtrf")]
+[node name="Guidebox_Title" parent="Level/DebugPortal" instance=ExtResource("17_iwtrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-player = NodePath("../../../Player")
 guidebox_message = "Debug Portals"
 visible_distance = 10.0
 

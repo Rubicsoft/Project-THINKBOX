@@ -1,13 +1,20 @@
 extends Node3D
 
-@export var player: Player
-@export var guidebox_message: String = "This is Guidebox"
+
+@export_multiline var guidebox_message: String = "This is a Guidebox"
 @export var visible_distance: float = 5.0
 
 @onready var label: Label3D = $Label3D
 
+var player: Player
 var is_visible: bool = false
 const fade_duration = 0.5
+
+
+
+func _ready() -> void:
+	player = Global.get_player()
+
 
 func _process(delta: float) -> void:
 	label.text = guidebox_message
@@ -18,6 +25,9 @@ func _process(delta: float) -> void:
 		else:
 			# Hide label
 			toggle_show(false)
+
+
+# ------ SUPPORTING FUNCTIONS ------
 
 func toggle_show(visibility: bool) -> void:
 	var tween = get_tree().create_tween()
