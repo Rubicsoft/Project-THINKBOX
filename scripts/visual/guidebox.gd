@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export_multiline var guidebox_message: String = "This is a Guidebox"
+@export_multiline var guidebox_message: String = "Guidebox"
 @export var visible_distance: float = 5.0
 
 @onready var label: Label3D = $Label3D
@@ -14,6 +14,12 @@ const fade_duration = 0.5
 
 func _ready() -> void:
 	player = Global.get_player()
+	
+	# Label Setup
+	label.modulate.a = 0.0
+	label.pixel_size = 0.002
+	label.no_depth_test = true
+	label.fixed_size = true
 
 
 func _process(delta: float) -> void:
