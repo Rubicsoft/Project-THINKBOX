@@ -8,6 +8,7 @@ class_name Player
 @onready var camera_fx: Control = $CameraFX
 @onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
 @onready var after_dying: Timer = $AfterDying
+@onready var player_collision_shape: CollisionShape3D = $CollisionShape3D
 
 # Sound Effects
 @onready var run_sfx = $Audios/Run
@@ -124,12 +125,16 @@ func gamepad_look_input(delta: float) -> void:
 # Spectator Mode controller
 func spectator_controller(input_dir: Vector2, delta: float) -> void:
 	if Global.get_global_condition("spectator_mode") and Global.get_global_condition("is_player_controllable"):
+		player_collision_shape.disabled = true
+		
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
 			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
+	else:
+		player_collision_shape.disabled = false
 
 
 # Player takes some action when fall
