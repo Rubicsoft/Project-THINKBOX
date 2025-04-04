@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccqhi340y01gb"]
 
 [ext_resource type="Script" uid="uid://b1wh424dt1e3x" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
-[ext_resource type="FontFile" uid="uid://nigfj3c785xk" path="res://assets/font/Oxanium-Bold.ttf" id="3_avurv"]
+[ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="2_fob5h"]
 [ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="4_avurv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fob5h"]
 content_margin_left = 72.0
-content_margin_top = 12.0
+content_margin_top = 24.0
 content_margin_right = 72.0
-content_margin_bottom = 12.0
-bg_color = Color(0, 0, 0, 0.501961)
+content_margin_bottom = 24.0
+bg_color = Color(1, 1, 1, 0.113725)
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 1
@@ -19,15 +19,15 @@ content_margin_left = 64.0
 content_margin_top = 128.0
 content_margin_right = 64.0
 content_margin_bottom = 128.0
-bg_color = Color(0, 0, 0, 0.282353)
-corner_radius_top_left = 48
-corner_radius_bottom_right = 48
+bg_color = Color(0.0063, 0.02541, 0.07, 0.596078)
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_ejwgg"]
 default_font = ExtResource("4_avurv")
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("3_avurv")
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("2_fob5h")
 Button/styles/normal = SubResource("StyleBoxFlat_fob5h")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ejwgg")
 VBoxContainer/constants/separation = 12
@@ -42,6 +42,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7ukfp")
+
+[node name="DarkBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -61,7 +70,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/MenuButtons/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
