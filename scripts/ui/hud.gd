@@ -12,8 +12,8 @@ extends Control
 
 
 func _process(delta) -> void:
-	# Set only visible when the game is playing and not playing cutscene
-	visible = not get_tree().paused and not Global.get_global_condition("is_playing_cutscene")
+	# Visibility based on 'show_hud' global variable and process pause
+	visible = Global.get_global_condition("show_hud") and (not get_tree().paused)
 	
 	crosshair.texture = crosshair_texture
 	crosshair.visible = GameSettings.enable_crosshair

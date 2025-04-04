@@ -294,6 +294,7 @@ shadow_enabled = true
 [node name="Begin_Cutscene" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_o02wy")]
 cutscene = NodePath("../Cutscene/Opening_Cutscene")
 cutscene_name = "opening"
+play_at_beginning = true
 skipable = true
 
 [node name="Doors" type="Node3D" parent="."]
