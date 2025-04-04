@@ -32,10 +32,13 @@ general/balloon_path="res://prefabs/visual/dialogue_balloon/balloon_canvas.tscn"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=960
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/always_on_top=true
+window/size/sharp_corners=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=2
 
 [editor_plugins]
 
