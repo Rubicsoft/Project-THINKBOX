@@ -12,9 +12,10 @@
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_7cifc"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_ip4ny"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_johce"]
-[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="12_nklfr"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone/killzone.tscn" id="12_nklfr"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="13_uuv5u"]
 [ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_66vgj"]
+[ext_resource type="PackedScene" uid="uid://b0xnobfe073th" path="res://prefabs/tools/killzone/world_killzone.tscn" id="14_x7jkp"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
 [ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
@@ -57,8 +58,6 @@ size = Vector3(1, 4, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71lm4"]
 size = Vector3(1, 4, 0.2)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qmfwk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ii88j"]
 size = Vector3(30, 0.5, 30)
@@ -627,12 +626,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, -9.25)
 
 [node name="Killzones" type="Node3D" parent="Level"]
 
-[node name="World_Killzone" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
+[node name="WorldKillzone" parent="Level/Killzones" instance=ExtResource("14_x7jkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
-player = NodePath("../../../Player")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/World_Killzone"]
-shape = SubResource("WorldBoundaryShape3D_qmfwk")
 
 [node name="Killzone1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549121, 0)
@@ -818,6 +813,7 @@ bus = &"BGM"
 [node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_ck3ym")]
 cutscene = NodePath("../AnimationPlayer")
 cutscene_name = "opening"
+play_at_beginning = true
 skipable = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

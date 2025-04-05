@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]
-[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="4_qhd6p"]
+[ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone/killzone.tscn" id="4_qhd6p"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="5_l4gqo"]
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="6_arxb6"]
 [ext_resource type="PackedScene" uid="uid://bqw6vt3lxpfai" path="res://prefabs/tools/dialogue/dialogue_handler.tscn" id="7_dp56e"]
