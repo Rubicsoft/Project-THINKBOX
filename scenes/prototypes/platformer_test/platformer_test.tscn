@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone.tscn" id="34_y384k"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="35_2hvfs"]
 [ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="36_nni7k"]
+[ext_resource type="PackedScene" uid="uid://b0xnobfe073th" path="res://prefabs/tools/killzone/world_killzone.tscn" id="36_trf8d"]
 [ext_resource type="PackedScene" uid="uid://bpq82gwibi6rr" path="res://prefabs/object/collectibles/dash_orb.tscn" id="37_06dfq"]
 [ext_resource type="PackedScene" uid="uid://ca3c63b6veah8" path="res://prefabs/tools/teleport_zone.tscn" id="38_empnd"]
 [ext_resource type="PackedScene" uid="uid://dhjxhk7hg1rcu" path="res://prefabs/object/black_hole_teleporter.tscn" id="39_m86oy"]
@@ -250,8 +251,6 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_phq7y"]
 size = Vector3(1, 2.25, 2.75)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_j6b72"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ff2i"]
 size = Vector3(27.75, 0.5, 47.75)
@@ -617,14 +616,6 @@ hide_hud = false
 
 [node name="Killzones" type="Node3D" parent="."]
 
-[node name="Fall_Killzone" parent="Killzones" node_paths=PackedStringArray("player") instance=ExtResource("34_y384k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.25, 0)
-player = NodePath("../../Player")
-activate_above_player = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzones/Fall_Killzone"]
-shape = SubResource("WorldBoundaryShape3D_j6b72")
-
 [node name="Killzone" parent="Killzones" node_paths=PackedStringArray("player") instance=ExtResource("34_y384k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32581, -36)
 player = NodePath("../../Player")
@@ -633,6 +624,10 @@ activate_above_player = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzones/Killzone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.875, 0, -4.375)
 shape = SubResource("BoxShape3D_8ff2i")
+
+[node name="WorldKillzone" parent="Killzones" node_paths=PackedStringArray("parent_node_array") instance=ExtResource("36_trf8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.75, 0)
+parent_node_array = [NodePath("../../AmbaBalls2"), NodePath("../../AmbaBalls")]
 
 [node name="FlatPlatform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
