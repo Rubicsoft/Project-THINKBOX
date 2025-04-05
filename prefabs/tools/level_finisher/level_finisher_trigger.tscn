@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://g21l8eymfqi4"]
+
+[ext_resource type="Script" uid="uid://bxq5uwpcb5gxr" path="res://scripts/level/level_finisher/level_finisher_trigger.gd" id="1_5v464"]
+[ext_resource type="Material" uid="uid://d0qtg35t447mm" path="res://scenes/prototypes/kenney_prototype_textures/materials/flat/orange_grid_flat.tres" id="2_2hsm4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnnq3"]
+size = Vector3(4.25, 4.25, 2)
+
+[node name="LevelFinisher_Trigger" type="Area3D"]
+editor_description = "Trigger level to be finished"
+collision_mask = 2
+script = ExtResource("1_5v464")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bnnq3")
+
+[node name="Model" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("2_2hsm4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Model"]
+size = Vector3(3, 3, 0.25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Model/CSGBox3D"]
+operation = 2
+size = Vector3(2, 2, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Model"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, -0.5)
+size = Vector3(3, 3, 0.25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Model/CSGBox3D2"]
+operation = 2
+size = Vector3(2, 2, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Model"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0.5)
+size = Vector3(3, 3, 0.25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Model/CSGBox3D3"]
+operation = 2
+size = Vector3(2, 2, 0.5)
+
+[connection signal="body_entered" from="." to="." method="_on_level_finisher_entered"]

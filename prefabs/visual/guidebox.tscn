@@ -8,7 +8,7 @@ script = ExtResource("1_k6yfx")
 
 [node name="Label3D" type="Label3D" parent="."]
 billboard = 1
-text = "This is Guidebox"
+text = "Guidebox"
 font = ExtResource("1_finwj")
 outline_size = 0
 text_direction = 1

@@ -9,11 +9,14 @@ class_name DialogHandler
 			played = true
 
 @export var played: bool = false
+@export var player_controlability: bool = true
+@export_category("Dialogue Resources")
 @export var dialogue_file: JSON
 @export var dialogue_gui: DialogueGUI
 @export var audio_stream: AudioStreamPlayer
 @export var played_parent: DialogHandler
-@export var player_controlability: bool = true
+@export var profiles: Array[Texture2D]
+
 
 # DialogueJSON keywords
 const CHATS = "chats"
@@ -40,10 +43,13 @@ func _ready() -> void:
 	if audio_stream:
 		audio_stream.bus = &"VO"
 	else:
-		printerr("No AudioStreamPlayer available in " + get_parent().name + "/" + name)
+		# Add new AudioStreamPlayer node when it's empty
+		audio_stream = AudioStreamPlayer.new()
+		audio_stream.bus = &"VO"
+		add_child(audio_stream)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# If Played Parent is defined, the 'played' variable depends on the Played Parent node
 	if played_parent and not played:
 		played = played_parent.played
@@ -100,9 +106,13 @@ func play_dialogue() -> void:
 					
 					# Set the timer. If 'empty-timer' is defined, use its value for the timing, or else use default.
 					if dialogue_dict[CHATS][i].has(EMPTY_TIMER):
-						await get_tree().create_timer(dialogue_dict[CHATS][i][EMPTY_TIMER]).timeout
+						# ON-PROGRESS : Need a bugfix with the process mode, the timer keeps running even though the game is paused
+						
+						await get_tree().create_timer(dialogue_dict[CHATS][i][EMPTY_TIMER], false, false, true).timeout
 					else:
-						await get_tree().create_timer(default_voice_duration).timeout
+						# ON-PROGRESS : Need a bugfix with the process mode, the timer keeps running even though the game is paused
+						
+						await get_tree().create_timer(default_voice_duration, false, false, true).timeout
 			
 			Global.set_global_condition("is_on_dialogue", false)
 			if not player_controlability:

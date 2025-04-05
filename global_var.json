@@ -5,7 +5,8 @@
 		"is_playing_cutscene" : false, 
 		"spectator_mode" : false, 
 		"is_on_dialogue" : false, 
-		"hans_on_dialogue" : false
+		"hans_on_dialogue" : false, 
+		"show_hud" : true
 	}, 
 	
 	"state" : {
