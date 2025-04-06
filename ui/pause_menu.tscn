@@ -1,8 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccqhi340y01gb"]
+[gd_scene load_steps=9 format=3 uid="uid://ccqhi340y01gb"]
 
 [ext_resource type="Script" uid="uid://b1wh424dt1e3x" path="res://scripts/ui/pause_menu.gd" id="1_7ukfp"]
+[ext_resource type="Shader" uid="uid://dkb01ibw2ucdo" path="res://shaders/gaussian_blur.gdshader" id="2_avurv"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="2_fob5h"]
 [ext_resource type="FontFile" uid="uid://d7m18pwnninr" path="res://assets/font/Oxanium-Medium.ttf" id="4_avurv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fob5h"]
+shader = ExtResource("2_avurv")
+shader_parameter/blur_radius = 8
+shader_parameter/Darkness = 0.125
+shader_parameter/R = 0.0
+shader_parameter/G = 0.0
+shader_parameter/B = 0.0
+shader_parameter/blur_strength = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fob5h"]
 content_margin_left = 72.0
@@ -19,7 +29,7 @@ content_margin_left = 64.0
 content_margin_top = 128.0
 content_margin_right = 64.0
 content_margin_bottom = 128.0
-bg_color = Color(0.0063, 0.02541, 0.07, 0.596078)
+bg_color = Color(0.0063, 0.02541, 0.07, 0.337255)
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 corner_detail = 1
@@ -44,13 +54,14 @@ grow_vertical = 2
 script = ExtResource("1_7ukfp")
 
 [node name="DarkBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fob5h")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
