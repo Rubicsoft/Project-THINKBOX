@@ -9,28 +9,33 @@ class_name Player
 @onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
 @onready var after_dying: Timer = $AfterDying
 @onready var player_collision_shape: CollisionShape3D = $CollisionShape3D
-
 # Sound Effects
 @onready var run_sfx = $Audios/Run
 @onready var jump_sfx = $Audios/Jump
 @onready var player_voice = $Audios/PlayerVoice
 @onready var jump_ground = $Audios/JumpGround
 
+# Exported Properties
+## Controls how fast the Player moves
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
+## Controls how high the Player jumps
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
+## Controls the Player's dash force
 @export_range(1, 20, 0.1) var DASH_SPEED: float = 10.0
-@export_range(0.1, 12.5, 0.1) var QUICKCLIMB_ENERGY = 8.0
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
+## Smooth-out the camera pitch rotation
+@export_range(0.1, 1.0, 0.1) var PITCH_SMOOTHING_STRENGTH: float = 0.7
 
 # Variables
 var was_in_air: bool = false
 var fall_velocity_before: float
 var spec_double_speed: bool = false
+var mouse_y_sensitivity: float
+var gamepad_y_sensitivity: float
 
 # Constants
 const MOVEMENT_SMOOTHNESS = 8.0
-const YAW_LIMIT_SMOOTHNESS = 5.0
-const FALL_DAMAGE_SPEED = 20.0
+const PITCH_ROTATION_LIMIT = 60.0
 
 
 func _ready():
@@ -40,9 +45,7 @@ func _ready():
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
 	if Global.get_global_condition("is_player_controllable"):
-		if event is InputEventMouseMotion:
-			rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
-			camera.rotate_x(deg_to_rad(-event.relative.y) * (GameSettings.mouse_sensitivity / 20.0))
+		mouse_look_input(event)
 		
 		
 		if event.is_action_pressed("spectator"):
@@ -61,13 +64,11 @@ func _input(event) -> void:
 
 
 func _process(delta) -> void:
-	# Limit the camera yaw and also smooth it out
-	var camera_yaw_limit = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-	if is_on_floor():
-		camera.rotation.x = lerp(camera.rotation.x, camera_yaw_limit, YAW_LIMIT_SMOOTHNESS * delta)
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	# Clamp the pitch rotation so that it won't be over-rotate
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-PITCH_ROTATION_LIMIT), deg_to_rad(PITCH_ROTATION_LIMIT))
 	
 	gamepad_look_input(delta)		# Handles gamepad input for camera looking
+	pitch_sensitivity_smoothing(PITCH_ROTATION_LIMIT, PITCH_SMOOTHING_STRENGTH)
 
 
 func _physics_process(delta) -> void:
@@ -92,7 +93,9 @@ func _physics_process(delta) -> void:
 
 
 
-# Handle Player's movement
+# ------ SUPPORTING FUNCTIONS ------
+
+## Handle Player's movement
 func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	if Global.get_global_condition("is_player_controllable"):
 		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -113,16 +116,34 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	return Vector3.ZERO
 
 
-# Handles gamepad input for camera looking
+## Handles camera rotation based on mouse input
+func mouse_look_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
+		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_y_sensitivity / 20.0))
+
+
+## Handles gamepad input for camera looking
 func gamepad_look_input(delta: float) -> void:
 	if Global.get_global_condition("is_player_controllable"):
 		var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 		
 		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
-		camera.rotate_x(gamepad_look_dir.y * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
+		camera.rotate_x(gamepad_look_dir.y * (gamepad_y_sensitivity * 2.0) * delta)
 
 
-# Spectator Mode controller
+## Smooth-out the MouseY sensitivity until it reaches its maximum pitch rotation
+func pitch_sensitivity_smoothing(max_pitch: float, strength: float) -> void:
+	var normalized_pitch: float = rad_to_deg(camera.rotation.x) / abs(max_pitch)
+	var scale_factor: float = 1.0 - (abs(normalized_pitch) * strength)
+	
+	scale_factor = max(scale_factor, 0.1)
+	
+	mouse_y_sensitivity = GameSettings.mouse_sensitivity * scale_factor
+	gamepad_y_sensitivity = GameSettings.gamepad_look_sensitivity * scale_factor
+
+
+## Spectator Mode controller
 func spectator_controller(input_dir: Vector2, delta: float) -> void:
 	if Global.get_global_condition("spectator_mode") and Global.get_global_condition("is_player_controllable"):
 		player_collision_shape.disabled = true
@@ -137,7 +158,7 @@ func spectator_controller(input_dir: Vector2, delta: float) -> void:
 		player_collision_shape.disabled = false
 
 
-# Player takes some action when fall
+## Player takes some action when fall
 func take_fall() -> void:
 	if not is_on_floor():
 		# Get value for next frame
@@ -150,7 +171,7 @@ func take_fall() -> void:
 		fall_velocity_before = velocity.y
 
 
-# Quick climbing mechanic
+## Quick climbing mechanic
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		# Do Actions
@@ -158,7 +179,7 @@ func quick_climbing() -> void:
 		#jump(false)
 
 
-# Handle Jump
+## Handles Jump
 func jump(do_action: bool = true) -> void:
 	if Global.get_global_condition("is_player_controllable"):
 		if do_action:
@@ -168,7 +189,7 @@ func jump(do_action: bool = true) -> void:
 		jump_ground.play()
 
 
-# Handle dashing
+## Handles dashing
 func dash(input_direction: Vector3) -> void:
 	const dash_fov = 30.0
 	
@@ -181,7 +202,7 @@ func dash(input_direction: Vector3) -> void:
 			whoosh_camera(dash_fov)
 
 
-# Make camera whoosh animation
+## Make camera whoosh animation
 func whoosh_camera(fov: float) -> void:
 	var anim = get_tree().create_tween()
 	anim.set_trans(Tween.TRANS_SINE)
@@ -190,7 +211,7 @@ func whoosh_camera(fov: float) -> void:
 	anim.tween_property(camera, "fov", camera.fov + fov, 0.05)
 
 
-# To kill the Player
+## To kill the Player
 func kill_self() -> void:
 	Checkpoint.respawn(self)
 	Global.increase_global_state("death_count", 1)
@@ -198,7 +219,8 @@ func kill_self() -> void:
 	camera_fx.play_effect("glitch_fadeout", false)
 
 
-# SIGNALS
+
+# ------ SIGNALS ------
 
 func _on_after_dying_timeout() -> void:
 	Global.set_global_condition("is_player_controllable", true)
