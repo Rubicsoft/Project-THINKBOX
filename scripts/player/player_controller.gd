@@ -6,7 +6,8 @@ class_name Player
 @onready var interact_raycast: RayCast3D = $CameraPivot/Camera3D/InteractRayCast
 @onready var camera_animation: AnimationPlayer = $CameraPivot/CameraAnimation
 @onready var camera_fx: Control = $CameraFX
-@onready var quickclimb_raycast: RayCast3D = $QuickClimbRaycast
+@onready var quickclimb_raycast: RayCast3D = $QuickClimbing/QuickClimbRaycast
+@onready var max_ray_height: Node3D = $QuickClimbing/MaxRayHeight
 @onready var after_dying: Timer = $AfterDying
 @onready var player_collision_shape: CollisionShape3D = $CollisionShape3D
 # Sound Effects
@@ -22,6 +23,11 @@ class_name Player
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
 ## Controls the Player's dash force
 @export_range(1, 20, 0.1) var DASH_SPEED: float = 10.0
+## Maximum force of QuickClimb mechanic
+@export_range(1.0, 5.0, 0.1) var MAX_QUICKCLIMB_FORCE: float = 2.0
+## Minimum force of QuickClimb mechanic
+@export_range(0.1, 1.0, 0.1) var MIN_QUICKCLIMB_FORCE: float = 1.0
+
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
 ## Smooth-out the camera pitch rotation
 @export_range(0.1, 1.0, 0.1) var PITCH_SMOOTHING_STRENGTH: float = 0.7
@@ -32,6 +38,9 @@ var fall_velocity_before: float
 var spec_double_speed: bool = false
 var mouse_y_sensitivity: float
 var gamepad_y_sensitivity: float
+var quickclimb_pos_increment: float
+var init_qc_ray_pos: Vector3
+var max_qc_ray_distance: float
 
 # Constants
 const MOVEMENT_SMOOTHNESS = 8.0
@@ -41,6 +50,9 @@ const PITCH_ROTATION_LIMIT = 60.0
 func _ready():
 	# Default checkpoint position
 	Checkpoint.last_position = global_position
+	
+	init_qc_ray_pos = quickclimb_raycast.position
+	quickclimb_pos_increment = MIN_QUICKCLIMB_FORCE
 
 func _input(event) -> void:
 	# Handle camera movement based on mouse input
@@ -61,6 +73,9 @@ func _input(event) -> void:
 					SPEED = SPEED * 1/2.0
 		if not Global.get_global_condition("spectator_mode"):
 			spec_double_speed = false
+		
+		
+		quickclimb_ray_heightpos(event, max_ray_height.position.y, MIN_QUICKCLIMB_FORCE, MAX_QUICKCLIMB_FORCE)
 
 
 func _process(delta) -> void:
@@ -175,8 +190,29 @@ func take_fall() -> void:
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		# Do Actions
-		get_tree().create_tween().tween_property(self, "global_position:y", global_position.y + 1.0, 0.1)
+		get_tree().create_tween().tween_property(self, "global_position:y", global_position.y + quickclimb_pos_increment, 0.1)
 		#jump(false)
+		velocity = Vector3.ZERO
+
+
+## Adjust QuickClimb raycast position based on camera angle
+func quickclimb_ray_heightpos(event: InputEvent, max_height: float, min_energy: float, max_energy: float) -> void:
+	if event is InputEventMouseMotion:
+		if camera.rotation.x > 0:
+			var normalized_pitch: float = rad_to_deg(camera.rotation.x) / PITCH_ROTATION_LIMIT
+			
+			# Adjust the raycast y-position
+			var position_threshold: float = (max_height - init_qc_ray_pos.y) * normalized_pitch
+			quickclimb_raycast.position = Vector3(init_qc_ray_pos.x, init_qc_ray_pos.y + position_threshold, init_qc_ray_pos.z)
+			
+			# Adjust the energy
+			var energy_threshold: float = (max_energy - min_energy) * normalized_pitch
+			quickclimb_pos_increment = energy_threshold + min_energy
+			
+		else:
+			# Reset to initial value
+			quickclimb_raycast.position = init_qc_ray_pos
+			quickclimb_pos_increment = min_energy
 
 
 ## Handles Jump

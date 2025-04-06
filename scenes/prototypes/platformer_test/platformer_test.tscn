@@ -712,7 +712,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 shape = SubResource("BoxShape3D_m54b5")
 
 [node name="QuickClimb_Zone_2" parent="QuickClimb_Zones" instance=ExtResource("43_m54b5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2.75)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_2"]
 shape = SubResource("BoxShape3D_trf8d")

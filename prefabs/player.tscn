@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjon57h655mw0"]
+[gd_scene load_steps=22 format=3 uid="uid://cjon57h655mw0"]
 
 [ext_resource type="Script" uid="uid://78rino2fx5d" path="res://scripts/player/player_controller.gd" id="1_jk8oh"]
 [ext_resource type="Script" uid="uid://srkr6o31v3mj" path="res://scripts/player/player_interaction.gd" id="2_563i8"]
@@ -110,14 +110,6 @@ _data = {
 &"player_walking": SubResource("Animation_omk0n")
 }
 
-[sub_resource type="Animation" id="Animation_q4477"]
-resource_name = "crouch_begin"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6vjj"]
-_data = {
-&"crouch_begin": SubResource("Animation_q4477")
-}
-
 [node name="Player" type="CharacterBody3D"]
 editor_description = "Handle the gameplay. Everything is always controlled by the player."
 collision_layer = 2
@@ -181,7 +173,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_v25mb")
 }
 
-[node name="QuickClimbRaycast" type="RayCast3D" parent="."]
+[node name="QuickClimbing" type="Node3D" parent="."]
+
+[node name="QuickClimbRaycast" type="RayCast3D" parent="QuickClimbing"]
 editor_description = "QuickClimb collision mask is 3"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 1, 0)
@@ -189,13 +183,11 @@ collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 
+[node name="MaxRayHeight" type="Node3D" parent="QuickClimbing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
 [node name="AfterDying" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_w6vjj")
-}
 
 [connection signal="timeout" from="AfterDying" to="." method="_on_after_dying_timeout"]
