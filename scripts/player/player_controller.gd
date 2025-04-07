@@ -190,7 +190,7 @@ func take_fall() -> void:
 func quick_climbing() -> void:
 	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
 		# Do Actions
-		get_tree().create_tween().tween_property(self, "global_position:y", global_position.y + quickclimb_pos_increment, 0.1)
+		get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS).tween_property(self, "global_position:y", global_position.y + quickclimb_pos_increment, 0.1)
 		#jump(false)
 		velocity = Vector3.ZERO
 
