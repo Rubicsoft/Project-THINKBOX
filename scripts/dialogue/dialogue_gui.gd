@@ -22,12 +22,13 @@ func _ready() -> void:
 	
 	# Default property when first time loaded
 	visible = false
-	dialogue.modulate = Color.TRANSPARENT
+	#dialogue.modulate = Color.TRANSPARENT
 
 
 func _process(_delta: float) -> void:
 	# Only visible when inside the dialogue
-	gui_visible = Global.get_global_condition("is_on_dialogue")
+	#gui_visible = Global.get_global_condition("is_on_dialogue")
+	visible = Global.get_global_condition("is_on_dialogue")
 
 
 
