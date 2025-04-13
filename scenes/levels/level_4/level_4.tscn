@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbvsqrhmm4l8n"]
+
+[ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_o2n0b"]
+[ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="2_4f3hn"]
+[ext_resource type="PackedScene" uid="uid://ctkks87qfjen2" path="res://scenes/levels/level_4/level_4_world.tscn" id="3_bvs1t"]
+
+[node name="Level_4" type="Node3D" node_paths=PackedStringArray("player")]
+editor_description = "Level 4 : Racing Time"
+script = ExtResource("1_o2n0b")
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("2_4f3hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975, 0)
+
+[node name="Level4_Worldbuilding" parent="." instance=ExtResource("3_bvs1t")]

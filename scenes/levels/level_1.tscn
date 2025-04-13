@@ -47,12 +47,6 @@ size = Vector3(1, 5, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3epa"]
 size = Vector3(1, 5, 0.2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_7n5pv"]
-size = Vector3(1, 1.5, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hgk4f"]
-size = Vector3(1, 1.5, 0.2)
-
 [sub_resource type="BoxMesh" id="BoxMesh_wo5lc"]
 size = Vector3(1, 4, 0.2)
 
@@ -66,7 +60,7 @@ size = Vector3(30, 0.5, 30)
 size = Vector3(2.75, 0.5, 16)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43r4u"]
-size = Vector3(65.5, 1.25, 80)
+size = Vector3(65.5, 1.25, 72)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8k1qn"]
 size = Vector3(8, 11, 53.5)
@@ -96,7 +90,13 @@ size = Vector3(4.25, 0.25, 0.5)
 size = Vector3(15.5, 0.25, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4umt"]
-size = Vector3(2.75, 0.25, 1.25)
+size = Vector3(3, 0.25, 3.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4yk0h"]
+size = Vector3(2, 0.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmrhw"]
+size = Vector3(1.75, 0.25, 3)
 
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
@@ -264,6 +264,7 @@ func _process(delta: float) -> void:
 "
 
 [node name="Level_1" type="Node3D" node_paths=PackedStringArray("player")]
+editor_description = "Level 1 : Connection Succesful"
 script = ExtResource("1_s78rj")
 player = NodePath("Player")
 
@@ -416,40 +417,11 @@ sine_interpolation = true
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
 
-[node name="MovingPlatform_Flat_9" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -69.486)
-is_moving = true
-end_position = NodePath("Node3D")
-duration = 3.0
-delay_time = 0.5
-
-[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
-
-[node name="MovingPlatform_Flat_10" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -72.486)
-is_moving = true
-end_position = NodePath("Node3D")
-duration = 3.0
-delay_time = 0.8
-
-[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
-
-[node name="MovingPlatform_Flat_11" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50631, 11.0269, -75.486)
-is_moving = true
-end_position = NodePath("Node3D")
-duration = 3.0
-
-[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
-
 [node name="MovingPlatform_Flat_12" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 25.25)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 3.5
+duration = 2.5
 sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_12"]
@@ -459,7 +431,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 4.75)
 is_moving = true
 end_position = NodePath("Node3D")
-duration = 2.0
+duration = 2.5
 sine_interpolation = true
 
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_13"]
@@ -496,7 +468,6 @@ JUMP_FORCE = 15.0
 
 [node name="Trampoline_Platform_9" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -84)
-JUMP_FORCE = 13.0
 
 [node name="Lighting" type="Node3D" parent="Level"]
 
@@ -564,16 +535,6 @@ surface_material_override/0 = ExtResource("9_7cifc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_2/Climbable_Platform"]
 shape = SubResource("BoxShape3D_6kikp")
 
-[node name="Climbable_6" type="MeshInstance3D" parent="Level/Climbable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 7.75, -61.25)
-mesh = SubResource("BoxMesh_l4vsb")
-surface_material_override/0 = ExtResource("9_7cifc")
-
-[node name="Climbable_Platform" parent="Level/Climbable/Climbable_6" instance=ExtResource("10_ip4ny")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_6/Climbable_Platform"]
-shape = SubResource("BoxShape3D_6kikp")
-
 [node name="Climbable_3" type="MeshInstance3D" parent="Level/Climbable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 4.97672, -52.5)
 mesh = SubResource("BoxMesh_7o1c0")
@@ -585,24 +546,24 @@ surface_material_override/0 = ExtResource("9_7cifc")
 shape = SubResource("BoxShape3D_d3epa")
 
 [node name="Climbable_4" type="MeshInstance3D" parent="Level/Climbable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 6.72672, -61.25)
-mesh = SubResource("BoxMesh_7n5pv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 9.47672, -62.875)
+mesh = SubResource("BoxMesh_wo5lc")
 surface_material_override/0 = ExtResource("9_7cifc")
 
 [node name="Climbable_Platform" parent="Level/Climbable/Climbable_4" instance=ExtResource("10_ip4ny")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_4/Climbable_Platform"]
-shape = SubResource("BoxShape3D_hgk4f")
+shape = SubResource("BoxShape3D_71lm4")
 
 [node name="Climbable_5" type="MeshInstance3D" parent="Level/Climbable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 9.47672, -62.875)
-mesh = SubResource("BoxMesh_wo5lc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 7.75, -61.25)
+mesh = SubResource("BoxMesh_l4vsb")
 surface_material_override/0 = ExtResource("9_7cifc")
 
 [node name="Climbable_Platform" parent="Level/Climbable/Climbable_5" instance=ExtResource("10_ip4ny")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_5/Climbable_Platform"]
-shape = SubResource("BoxShape3D_71lm4")
+shape = SubResource("BoxShape3D_6kikp")
 
 [node name="SpinningPlatform" type="Node3D" parent="Level"]
 
@@ -651,7 +612,7 @@ player = NodePath("../../../Player")
 activate_above_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Killzones/Killzone3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.375)
 shape = SubResource("BoxShape3D_43r4u")
 
 [node name="Killzone4" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
@@ -800,8 +761,21 @@ shape = SubResource("BoxShape3D_0qwwm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -62)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.375)
 shape = SubResource("BoxShape3D_t4umt")
+
+[node name="QuickClimb_Zone_5" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.25, -62)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_5"]
+shape = SubResource("BoxShape3D_4yk0h")
+
+[node name="QuickClimb_Zone_6" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 11.25, -64.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+shape = SubResource("BoxShape3D_vmrhw")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
