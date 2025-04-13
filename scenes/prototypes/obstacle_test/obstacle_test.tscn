@@ -128,9 +128,8 @@ surface_material_override/0 = ExtResource("5_8pmdl")
 [node name="End_Position_1" type="Node3D" parent="OneShot_Laser/Laser_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.75, 1.75)
 
-[node name="DialogueTrigger" parent="OneShot_Laser/Laser_1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_he4wh")]
+[node name="DialogueTrigger" parent="OneShot_Laser/Laser_1" instance=ExtResource("9_he4wh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, -0.25)
-dialog_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OneShot_Laser/Laser_1/DialogueTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)

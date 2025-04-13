@@ -4,8 +4,11 @@
 		"is_pausable" : true, 
 		"is_playing_cutscene" : false, 
 		"spectator_mode" : false, 
+		
 		"is_on_dialogue" : false, 
+		"show_dialogue_gui" : false, 
 		"hans_on_dialogue" : false, 
+		
 		"show_hud" : true
 	}, 
 	

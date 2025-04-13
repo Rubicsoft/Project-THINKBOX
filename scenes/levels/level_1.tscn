@@ -765,9 +765,9 @@ shape = SubResource("BoxShape3D_hs2jk")
 dialogue_file = ExtResource("20_hyy7m")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
 
-[node name="DialogueTrigger" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("17_ndhgi")]
+[node name="DialogueTrigger" parent="Level/Dialogue" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("17_ndhgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 6.5, 21.25)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogue/DialogueTrigger"]
 shape = SubResource("BoxShape3D_nsr25")

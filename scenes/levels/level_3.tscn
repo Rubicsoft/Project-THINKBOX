@@ -94,8 +94,7 @@ destination = NodePath("Node3D")
 [node name="Node3D" type="Node3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 22.35, 68.75)
 
-[node name="DialogueTrigger" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
-dialog_handler = NodePath("DialogueHandler")
+[node name="DialogueTrigger" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1" instance=ExtResource("9_pimnq")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BlackHole_Teleporter/BlackHole_Teleporter1/DialogueTrigger"]
 shape = SubResource("SphereShape3D_apo5x")
@@ -149,9 +148,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_n6eey")
 surface_material_override/0 = ExtResource("9_2bnyt")
 
-[node name="DialogueTrigger" parent="Level/Laser/Laser_1" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
+[node name="DialogueTrigger" parent="Level/Laser/Laser_1" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("9_pimnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4.5)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Laser/Laser_1/DialogueTrigger"]
 shape = SubResource("BoxShape3D_n6eey")
@@ -171,9 +170,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 5.75, -87.6214)
 [node name="Dialogues" type="Node3D" parent="Level"]
 editor_description = "Some dialogues are not in this node. They are mostly triggers by another object."
 
-[node name="DialogueTrigger_1" parent="Level/Dialogues" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("9_pimnq")]
+[node name="DialogueTrigger_1" parent="Level/Dialogues" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("9_pimnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.25, -3)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogues/DialogueTrigger_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)

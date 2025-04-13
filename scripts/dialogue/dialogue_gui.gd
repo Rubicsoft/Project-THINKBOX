@@ -27,8 +27,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Only visible when inside the dialogue
-	#gui_visible = Global.get_global_condition("is_on_dialogue")
-	visible = Global.get_global_condition("is_on_dialogue")
+	visible = Global.get_global_condition("show_dialogue_gui") and (not get_tree().paused)
 
 
 

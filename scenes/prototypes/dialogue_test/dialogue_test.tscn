@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4q5vkqbjwjnf"]
+[gd_scene load_steps=17 format=3 uid="uid://b4q5vkqbjwjnf"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_oyhnr"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_y6pgr"]
 [ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_h4aj3"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_6el13"]
+[ext_resource type="PackedScene" uid="uid://d0v581pvxjurx" path="res://prefabs/tools/quickclimb_zone.tscn" id="4_1r5q7"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone/killzone.tscn" id="4_qhd6p"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="5_l4gqo"]
 [ext_resource type="PackedScene" uid="uid://bfgcg0dhxpoh3" path="res://prefabs/tools/dialogue/dialogue_trigger.tscn" id="6_arxb6"]
@@ -11,6 +12,9 @@
 [ext_resource type="JSON" path="res://dialogues/prototype/testing_dialogue.json" id="8_84myy"]
 [ext_resource type="JSON" path="res://dialogues/prototype/testing_dialogue_2.json" id="9_4f0oy"]
 [ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="9_74aop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1r5q7"]
+size = Vector3(3.5, 0.5, 3.5)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_saa3v"]
 
@@ -52,6 +56,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0.5)
 operation = 2
 size = Vector3(2.5, 3.25, 2)
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="Sandbox/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.375, -8)
+size = Vector3(1, 0.25, 1)
+
+[node name="QuickClimb" type="Node3D" parent="Sandbox"]
+
+[node name="QuickClimb_Zone" parent="Sandbox/QuickClimb" instance=ExtResource("4_1r5q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.5, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandbox/QuickClimb/QuickClimb_Zone"]
+shape = SubResource("BoxShape3D_1r5q7")
+
 [node name="Player" parent="." instance=ExtResource("3_6el13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
@@ -73,9 +89,9 @@ guidebox_message = "Enter this area to toggle a dialogue"
 
 [node name="D_Triggers" type="Node3D" parent="."]
 
-[node name="DialogueTrigger1" parent="D_Triggers" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("6_arxb6")]
+[node name="DialogueTrigger1" parent="D_Triggers" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("6_arxb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -8)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -85,14 +101,15 @@ shape = SubResource("BoxShape3D_fiou7")
 dialogue_file = ExtResource("8_84myy")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
 
-[node name="DialogueTrigger2" parent="D_Triggers" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("6_arxb6")]
+[node name="DialogueTrigger2" parent="D_Triggers" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("6_arxb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="D_Triggers/DialogueTrigger2"]
 shape = SubResource("BoxShape3D_geph4")
 
 [node name="DialogueHandler" parent="D_Triggers/DialogueTrigger2" node_paths=PackedStringArray("dialogue_gui", "audio_stream", "played_parent") instance=ExtResource("7_dp56e")]
+reusable = true
 dialogue_file = ExtResource("9_4f0oy")
 dialogue_gui = NodePath("../../../Dialogue_GUI")
 audio_stream = NodePath("../../../Player/PlayerAudioStream")

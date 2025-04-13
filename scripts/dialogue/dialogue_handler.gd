@@ -1,21 +1,30 @@
 extends Node
-class_name DialogHandler
+class_name DialogueHandler
 
-
+# Exported Properties
+## Play the dialogue once it toggled.
 @export var play: bool = false:
 	set(new_value):
 		if new_value:
 			play_dialogue()
-			played = true
 
 @export var played: bool = false
+## The dialogue can be played many times.
+@export var reusable: bool = false
+## If the dialogue is playing, the player can't be controlled.
 @export var player_controlability: bool = true
+
 @export_category("Dialogue Resources")
+## Insert the JSON file of the dialogue here.
 @export var dialogue_file: JSON
+## Set up the dialogue user interface. If it's empty, the dialogue won't be displayed.
 @export var dialogue_gui: DialogueGUI
+## Custom AudioStreamPlayer. if it's empty, DialogueHandler will automatically create its own AudioStreamPlayer.
 @export var audio_stream: AudioStreamPlayer
-@export var played_parent: DialogHandler
-@export var profiles: Array[Texture2D]
+
+@export_category("Dialogue Parent")
+## Custom dialogue timeline based on the parent's played property.
+@export var played_parent: DialogueHandler
 
 
 # DialogueJSON keywords
@@ -58,12 +67,13 @@ func _process(_delta: float) -> void:
 
 # ------ SUPPORTING FUNCTIONS ------
 
-# Play the dialogue
+## Play the dialogue
 func play_dialogue() -> void:
 	if dialogue_dict.has(CHATS):
-		if not played:
+		if not played and (not Global.get_global_condition("is_on_dialogue")):
 			played = true
 			Global.set_global_condition("is_on_dialogue", true)
+			Global.set_global_condition("show_dialogue_gui", true)
 			
 			# If the Player can't be controlled, disable its controlability
 			if not player_controlability:
@@ -84,18 +94,21 @@ func play_dialogue() -> void:
 						if dialogue_dict[CHATS][i][DISABLE_PLAYER_SFX]:
 							Global.set_global_condition("hans_on_dialogue", true)
 					
-					# Set the DialogueGUI
+					# Set the DialogueGUI labels
 					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
 					
 					# Wait for the audio to be finished
 					await audio_stream.finished
 					Global.set_global_condition("hans_on_dialogue", false)
 					
+					
 					# if 'delay' is defined, add delay to the current dialogue
 					if dialogue_dict[CHATS][i].has(DELAY):
-						Global.set_global_condition("is_on_dialogue", false)
-						await get_tree().create_timer(dialogue_dict[CHATS][i][DELAY]).timeout
-						Global.set_global_condition("is_on_dialogue", true)
+						Global.set_global_condition("show_dialogue_gui", false)
+						
+						await set_dialogue_delay(dialogue_dict[CHATS][i][DELAY]).timeout
+						
+						Global.set_global_condition("show_dialogue_gui", true)
 					
 				else:
 					# If 'voice-path' is not defined and there is no AudioStreamPlayer, add timer to the current dialogue
@@ -104,27 +117,46 @@ func play_dialogue() -> void:
 					# Set the DialogueGUI
 					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
 					
+					
 					# Set the timer. If 'empty-timer' is defined, use its value for the timing, or else use default.
 					if dialogue_dict[CHATS][i].has(EMPTY_TIMER):
-						# ON-PROGRESS : Need a bugfix with the process mode, the timer keeps running even though the game is paused
+						await set_dialogue_delay(dialogue_dict[CHATS][i][EMPTY_TIMER]).timeout
 						
-						await get_tree().create_timer(dialogue_dict[CHATS][i][EMPTY_TIMER], false, false, true).timeout
 					else:
-						# ON-PROGRESS : Need a bugfix with the process mode, the timer keeps running even though the game is paused
-						
-						await get_tree().create_timer(default_voice_duration, false, false, true).timeout
+						await set_dialogue_delay(default_voice_duration).timeout
+			
 			
 			Global.set_global_condition("is_on_dialogue", false)
+			Global.set_global_condition("show_dialogue_gui", false)
+			
 			if not player_controlability:
 				Global.set_global_condition("is_player_controllable", true)
+			if reusable:
+				played = false
 		
 	else:
 		# Invalid DialogueJSON format when 'chats' is not defined
 		printerr("No <" + CHATS + "> key found inside DialogueJSON in " + get_parent().name + "/" + name)
 
 
-# Set the DialogueGUI elements
+# ON-PROGRESS : This function is needed for safety purpose and avoid any crash at runtime.
+## Check if the Dialogue Dictionary is valid
+func is_dialogue_dict_valid(dict: Dictionary) -> bool:
+	if dict.has(CHATS):
+		if dict[CHATS].has(ACTOR) and dict[CHATS].has(DIALOGUE):
+			return true
+	
+	printerr("Invalid JSON format for DialogueHandler at Node : " + get_parent().name + "/" + name)
+	return false
+
+
+## Set the DialogueGUI elements
 func set_gui_dialogue(actor_label: String, chat_label: String) -> void:
 	if dialogue_gui and (not dialogue_dict.is_empty()):
 		dialogue_gui.actor_label.text = actor_label
 		dialogue_gui.chat_label.text = chat_label
+
+
+## Set up delay timer
+func set_dialogue_delay(duration: float) -> SceneTreeTimer:
+	return get_tree().create_timer(duration, false, false, true)

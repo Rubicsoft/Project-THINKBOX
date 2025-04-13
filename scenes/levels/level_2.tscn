@@ -423,9 +423,9 @@ guidebox_message = "When the platform goes up, JUMP to gain momentum"
 
 [node name="Dialogue" type="Node3D" parent="Level"]
 
-[node name="DialogueTrigger_1" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("18_7245i")]
+[node name="DialogueTrigger_1" parent="Level/Dialogue" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("18_7245i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 266.75)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogue/DialogueTrigger_1"]
 shape = SubResource("BoxShape3D_dgb8d")
@@ -434,9 +434,9 @@ shape = SubResource("BoxShape3D_dgb8d")
 dialogue_file = ExtResource("21_xltxl")
 dialogue_gui = NodePath("../../../../Dialogue_GUI")
 
-[node name="DialogueTrigger_2" parent="Level/Dialogue" node_paths=PackedStringArray("dialog_handler") instance=ExtResource("18_7245i")]
+[node name="DialogueTrigger_2" parent="Level/Dialogue" node_paths=PackedStringArray("dialogue_handler") instance=ExtResource("18_7245i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.75, 13, 183.5)
-dialog_handler = NodePath("DialogueHandler")
+dialogue_handler = NodePath("DialogueHandler")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Dialogue/DialogueTrigger_2"]
 shape = SubResource("BoxShape3D_7o5a3")
