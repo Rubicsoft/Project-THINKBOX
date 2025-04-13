@@ -16,6 +16,7 @@ class_name Player
 @onready var player_voice = $Audios/PlayerVoice
 @onready var jump_ground = $Audios/JumpGround
 
+
 # Exported Properties
 ## Controls how fast the Player moves
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
@@ -32,6 +33,19 @@ class_name Player
 ## Smooth-out the camera pitch rotation
 @export_range(0.1, 1.0, 0.1) var PITCH_SMOOTHING_STRENGTH: float = 0.7
 
+@export_category("Player's Custom Ability")
+## Player can jump if it sets to TRUE.
+@export var can_jump: bool = true
+## Player can quick climb if it sets to TRUE.
+@export var can_quick_climb: bool = true
+## Player can dash if it sets to TRUE
+@export var can_dash: bool = true
+## Player will be headbobing when walking if it sets to TRUE.
+@export var head_bobing: bool = true
+## Multiplies the mouse/gamepad sensitivity.
+@export_range(0.0, 1.0, 0.1) var sensitivity_multiplier: float = 1.0
+
+
 # Variables
 var was_in_air: bool = false
 var fall_velocity_before: float
@@ -45,6 +59,7 @@ var max_qc_ray_distance: float
 # Constants
 const MOVEMENT_SMOOTHNESS = 8.0
 const PITCH_ROTATION_LIMIT = 60.0
+
 
 
 func _ready():
@@ -118,7 +133,7 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
 			if is_on_floor():
-				if GameSettings.head_bobing:
+				if GameSettings.head_bobing and head_bobing:
 					camera_animation.play("player_walking")
 				run_sfx.play_audio()
 		else:
@@ -134,8 +149,8 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 ## Handles camera rotation based on mouse input
 func mouse_look_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0))
-		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_y_sensitivity / 20.0))
+		rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0) * sensitivity_multiplier)
+		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_y_sensitivity / 20.0) * sensitivity_multiplier)
 
 
 ## Handles gamepad input for camera looking
@@ -143,8 +158,8 @@ func gamepad_look_input(delta: float) -> void:
 	if Global.get_global_condition("is_player_controllable"):
 		var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 		
-		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * delta)
-		camera.rotate_x(gamepad_look_dir.y * (gamepad_y_sensitivity * 2.0) * delta)
+		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * sensitivity_multiplier * delta)
+		camera.rotate_x(gamepad_look_dir.y * (gamepad_y_sensitivity * 2.0) * sensitivity_multiplier * delta)
 
 
 ## Smooth-out the MouseY sensitivity until it reaches its maximum pitch rotation
@@ -188,11 +203,12 @@ func take_fall() -> void:
 
 ## Quick climbing mechanic
 func quick_climbing() -> void:
-	if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
-		# Do Actions
-		get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS).tween_property(self, "global_position:y", global_position.y + quickclimb_pos_increment, 0.1)
-		#jump(false)
-		velocity = Vector3.ZERO
+	if can_quick_climb:
+		if quickclimb_raycast.is_colliding() and not is_on_floor() and Input.is_action_pressed("move_foreward"):
+			# Do Actions
+			get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS).tween_property(self, "global_position:y", global_position.y + quickclimb_pos_increment, 0.1)
+			#jump(false)
+			velocity = Vector3.ZERO
 
 
 ## Adjust QuickClimb raycast position based on camera angle
@@ -217,7 +233,7 @@ func quickclimb_ray_heightpos(event: InputEvent, max_height: float, min_energy: 
 
 ## Handles Jump
 func jump(do_action: bool = true) -> void:
-	if Global.get_global_condition("is_player_controllable"):
+	if can_jump and Global.get_global_condition("is_player_controllable"):
 		if do_action:
 			velocity.y = JUMP_VELOCITY
 		camera_animation.play("player_jump")
@@ -229,13 +245,14 @@ func jump(do_action: bool = true) -> void:
 func dash(input_direction: Vector3) -> void:
 	const dash_fov = 30.0
 	
-	if Input.is_action_just_pressed("dash") and Global.get_global_state("dash_orbs") > 0:
-		if input_direction != Vector3.ZERO:
-			velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
-			velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
-			
-			Global.decrease_global_state("dash_orbs", 1)
-			whoosh_camera(dash_fov)
+	if can_dash:
+		if Input.is_action_just_pressed("dash") and Global.get_global_state("dash_orbs") > 0:
+			if input_direction != Vector3.ZERO:
+				velocity.x = (SPEED * DASH_SPEED) * input_direction.normalized().x
+				velocity.z = (SPEED * DASH_SPEED) * input_direction.normalized().z
+				
+				Global.decrease_global_state("dash_orbs", 1)
+				whoosh_camera(dash_fov)
 
 
 ## Make camera whoosh animation

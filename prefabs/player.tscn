@@ -117,6 +117,7 @@ script = ExtResource("1_jk8oh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0qlb0")
+debug_color = Color(0.7, 0.478333, 0, 0.627451)
 
 [node name="HUD" parent="." node_paths=PackedStringArray("interact_raycast") instance=ExtResource("3_hrfvy")]
 interact_raycast = NodePath("../CameraPivot/Camera3D/InteractRayCast")
