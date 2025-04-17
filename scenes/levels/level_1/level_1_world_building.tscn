@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=3 uid="uid://55tvvrdnpc0d"]
+
+[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level1_blockingmap.tscn" id="1_5el7g"]
+[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_hv1bc"]
+[ext_resource type="PackedScene" uid="uid://b0xnobfe073th" path="res://prefabs/tools/killzone/world_killzone.tscn" id="2_hv1bc"]
+[ext_resource type="PackedScene" uid="uid://d0v581pvxjurx" path="res://prefabs/tools/quickclimb_zone.tscn" id="3_kny3c"]
+[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="4_k2hdd"]
+[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="5_40xrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7jkp"]
+size = Vector3(4.5, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31oqk"]
+size = Vector3(4.25, 0.25, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qwwm"]
+size = Vector3(15.5, 0.25, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4umt"]
+size = Vector3(3, 0.25, 3.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4yk0h"]
+size = Vector3(2, 0.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmrhw"]
+size = Vector3(1.75, 0.25, 3)
+
+[node name="Level1_WorldBuilding" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_hv1bc")]
+
+[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.965926, 0.183013, -0.183013, 0.00188781, 0.702105, 0.712071, 0.258812, -0.688154, 0.677836, 0, 3, 0)
+light_energy = 3.0
+shadow_enabled = true
+
+[node name="Level1_BlockingMap" parent="." instance=ExtResource("1_5el7g")]
+
+[node name="WorldKillzone" parent="." instance=ExtResource("2_hv1bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="QuickClimb_Zones" type="Node3D" parent="."]
+
+[node name="QuickClimb_Zone_1" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.75, 12.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_1"]
+shape = SubResource("BoxShape3D_x7jkp")
+
+[node name="QuickClimb_Zone_2" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 4.75, 24.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_2"]
+shape = SubResource("BoxShape3D_31oqk")
+
+[node name="QuickClimb_Zone_3" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.25, -13.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_3"]
+shape = SubResource("BoxShape3D_0qwwm")
+
+[node name="QuickClimb_Zone_4" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -62)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.375)
+shape = SubResource("BoxShape3D_t4umt")
+
+[node name="QuickClimb_Zone_5" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.25, -62)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_5"]
+shape = SubResource("BoxShape3D_4yk0h")
+
+[node name="QuickClimb_Zone_6" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 11.25, -64.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+shape = SubResource("BoxShape3D_vmrhw")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="OmniLight3D_1" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 22.3177)
+shadow_enabled = true
+
+[node name="OmniLight3D_2" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 17.1906)
+shadow_enabled = true
+
+[node name="OmniLight3D_3" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.75382, 36.4406)
+light_energy = 5.695
+shadow_enabled = true
+
+[node name="OmniLight3D_4" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 33)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_5" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 47)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_6" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 61)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_7" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 75)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 9.25
+
+[node name="OmniLight3D_8" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250002, -1.24618, 26.8177)
+light_energy = 3.0
+shadow_enabled = true
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door_1" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.25, 15)
+handle_position = "Left"
+
+[node name="Door_2" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.26, 20.078)
+
+[node name="Door_3" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.5725, 0)
+
+[node name="Door_4" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
+handle_position = "Left"
+
+[node name="Door_5" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
+handle_position = "Left"
+
+[node name="Door_6" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.219301, 6.76, -15)
+
+[node name="Door_7" parent="Doors" instance=ExtResource("4_k2hdd")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.24464, 6.76, -27.75)
+handle_position = "Left"
+
+[node name="Benches" type="Node3D" parent="."]
+
+[node name="Bench01_1" parent="Benches" instance=ExtResource("5_40xrm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.25, 40.5)
+
+[node name="Bench01_3" parent="Benches" instance=ExtResource("5_40xrm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.25, 40.5)
+
+[node name="Bench01_2" parent="Benches" instance=ExtResource("5_40xrm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)

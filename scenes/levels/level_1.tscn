@@ -1,11 +1,9 @@
-[gd_scene load_steps=56 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=45 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
-[ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="2_s6g0h"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
 [ext_resource type="PackedScene" uid="uid://ctu8crcah47p" path="res://ui/dialogue_gui.tscn" id="4_fmrw6"]
-[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level1_blockingmap.tscn" id="4_guvhk"]
-[ext_resource type="PackedScene" uid="uid://bpf8q8g1rtg1e" path="res://prefabs/object/interactables/door.tscn" id="5_dp3n0"]
+[ext_resource type="PackedScene" uid="uid://55tvvrdnpc0d" path="res://scenes/levels/level_1/level_1_world_building.tscn" id="5_mqh5v"]
 [ext_resource type="PackedScene" uid="uid://cchnpmgryo14" path="res://prefabs/object/interactables/checkpoint.tscn" id="6_pvjjm"]
 [ext_resource type="PackedScene" uid="uid://3rb1lofm2fi6" path="res://prefabs/object/platforms/moving_platform_flat.tscn" id="7_gqcia"]
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_g25en"]
@@ -14,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_johce"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone/killzone.tscn" id="12_nklfr"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="13_uuv5u"]
-[ext_resource type="PackedScene" uid="uid://b8g2lfsi28ala" path="res://prefabs/object/decor/bench01.tscn" id="14_66vgj"]
-[ext_resource type="PackedScene" uid="uid://b0xnobfe073th" path="res://prefabs/tools/killzone/world_killzone.tscn" id="14_x7jkp"]
 [ext_resource type="PackedScene" uid="uid://tps266mromjo" path="res://prefabs/object/collectibles/codex.tscn" id="15_vsnb6"]
 [ext_resource type="AudioStream" uid="uid://ctvs55w8f2edq" path="res://assets/bgm/bgm_02.ogg" id="16_gihbv"]
 [ext_resource type="PackedScene" uid="uid://b1oqblkft5t7" path="res://prefabs/cutscene_handler.tscn" id="17_ck3ym"]
@@ -27,7 +23,6 @@
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="19_o7j4k"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
-[ext_resource type="PackedScene" uid="uid://d0v581pvxjurx" path="res://prefabs/tools/quickclimb_zone.tscn" id="24_31oqk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -80,30 +75,12 @@ size = Vector3(11, 4.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nsr25"]
 size = Vector3(3, 3, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x7jkp"]
-size = Vector3(4.5, 0.25, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_31oqk"]
-size = Vector3(4.25, 0.25, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0qwwm"]
-size = Vector3(15.5, 0.25, 2.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_t4umt"]
-size = Vector3(3, 0.25, 3.75)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4yk0h"]
-size = Vector3(2, 0.25, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vmrhw"]
-size = Vector3(1.75, 0.25, 3)
-
 [sub_resource type="Animation" id="Animation_t616l"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Camera3D:position")
+tracks/0/path = NodePath("OpeningCutscene/Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Camera3D:current")
+tracks/1/path = NodePath("OpeningCutscene/Camera3D:current")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,7 +104,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/Camera3D:rotation")
+tracks/2/path = NodePath("OpeningCutscene/Camera3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -139,7 +116,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/3/path = NodePath("OpeningCutscene/ColorRect:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -151,7 +128,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/Camera3D/PlayerVoice:playing")
+tracks/4/path = NodePath("OpeningCutscene/Camera3D/PlayerVoice:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -179,7 +156,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Camera3D:position")
+tracks/0/path = NodePath("OpeningCutscene/Camera3D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -191,7 +168,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Camera3D:current")
+tracks/1/path = NodePath("OpeningCutscene/Camera3D:current")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -203,7 +180,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/Camera3D:rotation")
+tracks/2/path = NodePath("OpeningCutscene/Camera3D:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -215,7 +192,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/ColorRect:color")
+tracks/3/path = NodePath("OpeningCutscene/ColorRect:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -227,7 +204,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/Camera3D/PlayerVoice:playing")
+tracks/4/path = NodePath("OpeningCutscene/Camera3D/PlayerVoice:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -268,47 +245,14 @@ editor_description = "Level 1 : Connection Succesful"
 script = ExtResource("1_s78rj")
 player = NodePath("Player")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("2_s6g0h")]
-
-[node name="SunLight" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.965926, 0.183013, -0.183013, 0.00188781, 0.702105, 0.712071, 0.258812, -0.688154, 0.677836, 0, 3, 0)
-shadow_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("3_xvyq1")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -12.15, 53)
 
 [node name="Dialogue_GUI" parent="." instance=ExtResource("4_fmrw6")]
 
+[node name="Level1_WorldBuilding" parent="." instance=ExtResource("5_mqh5v")]
+
 [node name="Level" type="Node3D" parent="."]
-
-[node name="Level1_BlockingMap" parent="Level" instance=ExtResource("4_guvhk")]
-
-[node name="Doors" type="Node3D" parent="Level"]
-
-[node name="Door_1" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.25, 15)
-handle_position = "Left"
-
-[node name="Door_2" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, 6.26, 20.078)
-
-[node name="Door_3" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8443, 2.5725, 0)
-
-[node name="Door_4" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 2.51, 0)
-handle_position = "Left"
-
-[node name="Door_5" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.6557, 8.76, 0)
-handle_position = "Left"
-
-[node name="Door_6" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.219301, 6.76, -15)
-
-[node name="Door_7" parent="Level/Doors" instance=ExtResource("5_dp3n0")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.24464, 6.76, -27.75)
-handle_position = "Left"
 
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
@@ -469,50 +413,6 @@ JUMP_FORCE = 15.0
 [node name="Trampoline_Platform_9" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -84)
 
-[node name="Lighting" type="Node3D" parent="Level"]
-
-[node name="OmniLight3D_1" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 22.3177)
-shadow_enabled = true
-
-[node name="OmniLight3D_2" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 7.50382, 17.1906)
-shadow_enabled = true
-
-[node name="OmniLight3D_3" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.75382, 36.4406)
-light_energy = 5.695
-shadow_enabled = true
-
-[node name="OmniLight3D_4" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 33)
-light_energy = 5.0
-light_bake_mode = 1
-omni_range = 9.25
-
-[node name="OmniLight3D_5" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 47)
-light_energy = 5.0
-light_bake_mode = 1
-omni_range = 9.25
-
-[node name="OmniLight3D_6" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 61)
-light_energy = 5.0
-light_bake_mode = 1
-omni_range = 9.25
-
-[node name="OmniLight3D_7" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.75, 75)
-light_energy = 5.0
-light_bake_mode = 1
-omni_range = 9.25
-
-[node name="OmniLight3D_8" type="OmniLight3D" parent="Level/Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250002, -1.24618, 26.8177)
-light_energy = 3.0
-shadow_enabled = true
-
 [node name="Climbable" type="Node3D" parent="Level"]
 
 [node name="Climbable_1" type="MeshInstance3D" parent="Level/Climbable"]
@@ -586,9 +486,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -4.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, -9.25)
 
 [node name="Killzones" type="Node3D" parent="Level"]
-
-[node name="WorldKillzone" parent="Level/Killzones" instance=ExtResource("14_x7jkp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 
 [node name="Killzone1" parent="Level/Killzones" node_paths=PackedStringArray("player") instance=ExtResource("12_nklfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549121, 0)
@@ -673,17 +570,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 9.25, -62.75)
 guidebox_message = "There is a Codex around here"
 visible_distance = 15.0
 
-[node name="Benches" type="Node3D" parent="Level"]
-
-[node name="Bench01_1" parent="Level/Benches" instance=ExtResource("14_66vgj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 1.25, 40.5)
-
-[node name="Bench01_3" parent="Level/Benches" instance=ExtResource("14_66vgj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.25, 40.5)
-
-[node name="Bench01_2" parent="Level/Benches" instance=ExtResource("14_66vgj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.5, 1.25, 40.5)
-
 [node name="Codexes" type="Node3D" parent="Level"]
 
 [node name="Codex1" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
@@ -737,46 +623,6 @@ shape = SubResource("BoxShape3D_nsr25")
 dialogue_file = ExtResource("19_ekjhw")
 dialogue_gui = NodePath("../../../../Dialogue_GUI")
 
-[node name="QuickClimb_Zones" type="Node3D" parent="Level"]
-
-[node name="QuickClimb_Zone_1" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.75, 12.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_1"]
-shape = SubResource("BoxShape3D_x7jkp")
-
-[node name="QuickClimb_Zone_2" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 4.75, 24.75)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_2"]
-shape = SubResource("BoxShape3D_31oqk")
-
-[node name="QuickClimb_Zone_3" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.25, -13.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_3"]
-shape = SubResource("BoxShape3D_0qwwm")
-
-[node name="QuickClimb_Zone_4" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -62)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.375)
-shape = SubResource("BoxShape3D_t4umt")
-
-[node name="QuickClimb_Zone_5" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.25, -62)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_5"]
-shape = SubResource("BoxShape3D_4yk0h")
-
-[node name="QuickClimb_Zone_6" parent="Level/QuickClimb_Zones" instance=ExtResource("24_31oqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 11.25, -64.5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/QuickClimb_Zones/QuickClimb_Zone_6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
-shape = SubResource("BoxShape3D_vmrhw")
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("16_gihbv")
@@ -785,25 +631,25 @@ autoplay = true
 bus = &"BGM"
 
 [node name="CutsceneHandler" parent="." node_paths=PackedStringArray("cutscene") instance=ExtResource("17_ck3ym")]
-cutscene = NodePath("../AnimationPlayer")
+cutscene = NodePath("../OpeningCutscene")
 cutscene_name = "opening"
 play_at_beginning = true
 skipable = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="OpeningCutscene" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_jtl4c")
 }
 
-[node name="Camera3D" type="Camera3D" parent="AnimationPlayer"]
+[node name="Camera3D" type="Camera3D" parent="OpeningCutscene"]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -11.7086, 53)
 fov = 85.0
 script = SubResource("GDScript_k3yni")
 
-[node name="PlayerVoice" type="AudioStreamPlayer3D" parent="AnimationPlayer/Camera3D"]
+[node name="PlayerVoice" type="AudioStreamPlayer3D" parent="OpeningCutscene/Camera3D"]
 stream = ExtResource("18_8nmu8")
 
-[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+[node name="ColorRect" type="ColorRect" parent="OpeningCutscene"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -13,3 +13,7 @@ player = NodePath("Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975, 0)
 
 [node name="Level4_Worldbuilding" parent="." instance=ExtResource("3_bvs1t")]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Killzone" type="Node3D" parent="Level"]
