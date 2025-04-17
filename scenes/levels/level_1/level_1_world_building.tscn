@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://55tvvrdnpc0d"]
 
-[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level1_blockingmap.tscn" id="1_5el7g"]
+[ext_resource type="PackedScene" uid="uid://cu8l5o17qk5o5" path="res://scenes/prototypes/level_blocking/level_1/level1_blockingmap.tscn" id="1_5el7g"]
 [ext_resource type="PackedScene" uid="uid://cvrmwy7eblbem" path="res://prefabs/world_env_setup.tscn" id="1_hv1bc"]
 [ext_resource type="PackedScene" uid="uid://b0xnobfe073th" path="res://prefabs/tools/killzone/world_killzone.tscn" id="2_hv1bc"]
 [ext_resource type="PackedScene" uid="uid://d0v581pvxjurx" path="res://prefabs/tools/quickclimb_zone.tscn" id="3_kny3c"]
@@ -79,6 +79,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 11.25, -64.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
 shape = SubResource("BoxShape3D_vmrhw")
 
+[node name="QuickClimb_Zone_7" parent="QuickClimb_Zones" instance=ExtResource("3_kny3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -104.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickClimb_Zones/QuickClimb_Zone_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.375)
+shape = SubResource("BoxShape3D_t4umt")
+
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="OmniLight3D_1" type="OmniLight3D" parent="Lighting"]
@@ -91,6 +98,11 @@ shadow_enabled = true
 
 [node name="OmniLight3D_3" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.75382, 36.4406)
+light_energy = 5.695
+shadow_enabled = true
+
+[node name="OmniLight3D_9" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 3.75382, 36.4406)
 light_energy = 5.695
 shadow_enabled = true
 

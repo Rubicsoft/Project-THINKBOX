@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=48 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://k2mmvmj0c3vt" path="res://prefabs/object/platforms/trampoline_platform.tscn" id="8_g25en"]
 [ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="9_7cifc"]
 [ext_resource type="PackedScene" uid="uid://q033lllgbdjo" path="res://prefabs/object/platforms/climbable_platform.tscn" id="10_ip4ny"]
+[ext_resource type="Material" uid="uid://d0qtg35t447mm" path="res://scenes/prototypes/kenney_prototype_textures/materials/flat/orange_grid_flat.tres" id="10_mqh5v"]
 [ext_resource type="PackedScene" uid="uid://brue55wemoi8a" path="res://prefabs/object/platforms/moving_platform_spin.tscn" id="11_johce"]
 [ext_resource type="PackedScene" uid="uid://dv1e2int8rjlw" path="res://prefabs/tools/killzone/killzone.tscn" id="12_nklfr"]
 [ext_resource type="PackedScene" uid="uid://bogopsy06xw2a" path="res://prefabs/visual/guidebox.tscn" id="13_uuv5u"]
@@ -47,6 +48,12 @@ size = Vector3(1, 4, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71lm4"]
 size = Vector3(1, 4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7o3do"]
+size = Vector3(0.1, 8, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqh5v"]
+size = Vector3(0.1, 8, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ii88j"]
 size = Vector3(30, 0.5, 30)
@@ -361,25 +368,91 @@ sine_interpolation = true
 [node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 0)
 
-[node name="MovingPlatform_Flat_12" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+[node name="MovingPlatform_Flat_9" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 25.25)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 2.5
 sine_interpolation = true
 
-[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_12"]
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.5)
 
-[node name="MovingPlatform_Flat_13" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+[node name="MovingPlatform_Flat_10" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.75, 4.75)
 is_moving = true
 end_position = NodePath("Node3D")
 duration = 2.5
 sine_interpolation = true
 
-[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_13"]
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+
+[node name="MovingPlatform_Flat_11" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 8, -114.25)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
+
+[node name="MovingPlatform_Flat_12" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 8, -102.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="MovingPlatform_Flat_13" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 8, -112.5)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="MovingPlatform_Flat_14" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 8, -114.25)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
+
+[node name="MovingPlatform_Flat_15" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 8, -112.5)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="MovingPlatform_Flat_16" parent="Level/FlatPlatform" node_paths=PackedStringArray("end_position") instance=ExtResource("7_gqcia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 8, -102.75)
+is_moving = true
+end_position = NodePath("Node3D")
+duration = 3.0
+delay_time = 0.5
+sine_interpolation = true
+
+[node name="Node3D" type="Node3D" parent="Level/FlatPlatform/MovingPlatform_Flat_16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 
 [node name="Trampolines" type="Node3D" parent="Level"]
 
@@ -464,6 +537,26 @@ surface_material_override/0 = ExtResource("9_7cifc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_5/Climbable_Platform"]
 shape = SubResource("BoxShape3D_6kikp")
+
+[node name="Climbable_Platform_6" parent="Level/Climbable" instance=ExtResource("10_ip4ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62871, 4.75, -112.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Climbable/Climbable_Platform_6"]
+mesh = SubResource("BoxMesh_7o3do")
+surface_material_override/0 = ExtResource("10_mqh5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_Platform_6"]
+shape = SubResource("BoxShape3D_mqh5v")
+
+[node name="Climbable_Platform_7" parent="Level/Climbable" instance=ExtResource("10_ip4ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.629, 4.75, -112.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Climbable/Climbable_Platform_7"]
+mesh = SubResource("BoxMesh_7o3do")
+surface_material_override/0 = ExtResource("10_mqh5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Climbable/Climbable_Platform_7"]
+shape = SubResource("BoxShape3D_mqh5v")
 
 [node name="SpinningPlatform" type="Node3D" parent="Level"]
 
@@ -570,16 +663,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 9.25, -62.75)
 guidebox_message = "There is a Codex around here"
 visible_distance = 15.0
 
-[node name="Codexes" type="Node3D" parent="Level"]
+[node name="Codex" type="Node3D" parent="Level"]
 
-[node name="Codex1" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.5, 33)
+[node name="Codex1" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.5, 33.25)
 
-[node name="Codex2" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
+[node name="Codex2" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 8.5, 29)
 
-[node name="Codex3" parent="Level/Codexes" instance=ExtResource("15_vsnb6")]
+[node name="Codex3" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.97363, -54)
+
+[node name="Codex4" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 12.4736, -64.75)
+
+[node name="Codex5" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.474, -39.75)
+
+[node name="Codex6" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 10.474, -71.5)
+
+[node name="Codex7" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.25, 13.25)
+
+[node name="Codex8" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 2.5, 37)
+
+[node name="Codex9" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 2.5, 37)
 
 [node name="CodexGates" type="Node3D" parent="Level"]
 

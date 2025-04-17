@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu8l5o17qk5o5"]
+[gd_scene load_steps=6 format=3 uid="uid://cu8l5o17qk5o5"]
 
-[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="1_64ofg"]
-[ext_resource type="PackedScene" uid="uid://dmk7w4h7y6k" path="res://prefabs/tools/prototyping/door_csg.tscn" id="2_5iilh"]
-[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="3_d7508"]
-[ext_resource type="PackedScene" uid="uid://d33fhdw2yl4c8" path="res://scenes/prototypes/level_blocking/level_1/level_1_platforming_side_blocking.tscn" id="4_bq3f7"]
+[ext_resource type="Material" uid="uid://cmbebk8h1r2wg" path="res://scenes/prototypes/kenney_prototype_textures/materials/orange_grid.tres" id="1_mseja"]
+[ext_resource type="Material" uid="uid://o872c8nywhx5" path="res://scenes/prototypes/kenney_prototype_textures/materials/grey_grid.tres" id="2_uju4o"]
+[ext_resource type="PackedScene" uid="uid://dmk7w4h7y6k" path="res://prefabs/tools/prototyping/door_csg.tscn" id="3_otrw6"]
+[ext_resource type="PackedScene" uid="uid://d33fhdw2yl4c8" path="res://scenes/prototypes/level_blocking/level_1/level_1_platforming_side_blocking.tscn" id="4_gq7fa"]
+[ext_resource type="PackedScene" uid="uid://qccayehxviru" path="res://scenes/prototypes/level_blocking/level_1/level_1_finisher_island_blocking.tscn" id="5_505em"]
 
 [node name="Level1_BlockingMap" type="Node3D"]
 
 [node name="Pillars" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("3_d7508")
+material_override = ExtResource("1_mseja")
 use_collision = true
 
 [node name="Pillar1" type="CSGBox3D" parent="Pillars"]
@@ -142,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302086, 2.68049, -0.391754)
 size = Vector3(0.7, 1.49133, 0.7)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_64ofg")
+material_override = ExtResource("2_uju4o")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -168,7 +169,7 @@ size = Vector3(15, 5.5, 2.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.75, 6.6875, 0)
 size = Vector3(0.5, 14.625, 30)
 
-[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D2" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D2" instance=ExtResource("3_otrw6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -4.125, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
@@ -179,10 +180,10 @@ size = Vector3(2.25, 1.25, 4.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.75, 7, 0)
 size = Vector3(0.5, 14, 30)
 
-[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D3" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D3" instance=ExtResource("3_otrw6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -4.5, 0)
 
-[node name="CSGDoor2" parent="CSGCombiner3D/CSGBox3D3" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor2" parent="CSGCombiner3D/CSGBox3D3" instance=ExtResource("3_otrw6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.76, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
@@ -193,7 +194,7 @@ size = Vector3(1.5, 0.5, 2)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 7, 15)
 size = Vector3(0.5, 14, 30)
 
-[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D4" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D4" instance=ExtResource("3_otrw6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.740001, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
@@ -204,12 +205,12 @@ size = Vector3(2.5, 1.25, 6.75)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.25, 7, -15)
 size = Vector3(0.5, 14, 60.5)
 
-[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D5" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor" parent="CSGCombiner3D/CSGBox3D5" instance=ExtResource("3_otrw6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.239997, 0)
 
 [node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 15)
-material_override = ExtResource("1_64ofg")
+material_override = ExtResource("2_uju4o")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D3"]
@@ -276,7 +277,7 @@ size = Vector3(5, 0.5, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.375)
 size = Vector3(3, 3, 0.25)
 
-[node name="CSGDoor" parent="CSGCombiner3D3/CSGBox3D/CSGBox3D13" instance=ExtResource("2_5iilh")]
+[node name="CSGDoor" parent="CSGCombiner3D3/CSGBox3D/CSGBox3D13" instance=ExtResource("3_otrw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.239996, 0)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D3/CSGBox3D"]
@@ -444,12 +445,15 @@ size = Vector3(3, 2.5, 0.75)
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
-material_override = ExtResource("1_64ofg")
+material_override = ExtResource("2_uju4o")
 use_collision = true
 
 [node name="Bridge" type="CSGBox3D" parent="CSGCombiner3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 5.125, 2.625)
 size = Vector3(1.5, 0.75, 12.25)
 
-[node name="Level1_PlatformingSide_Blocking" parent="." instance=ExtResource("4_bq3f7")]
+[node name="Level1_PlatformingSide_Blocking" parent="." instance=ExtResource("4_gq7fa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="Level1_FinisherIsland_Blocking" parent="." instance=ExtResource("5_505em")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.25, -145)
