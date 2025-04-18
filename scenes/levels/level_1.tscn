@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=49 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
@@ -24,6 +24,7 @@
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_dialogue_1.json" id="19_ekjhw"]
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="19_o7j4k"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
+[ext_resource type="PackedScene" uid="uid://g21l8eymfqi4" path="res://prefabs/tools/level_finisher/level_finisher_trigger.tscn" id="22_7o3do"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -261,6 +262,9 @@ transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -0.25, -
 
 [node name="Level" type="Node3D" parent="."]
 
+[node name="LevelFinisher_Trigger" parent="Level" instance=ExtResource("22_7o3do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, -172.75)
+
 [node name="Checkpoints" type="Node3D" parent="Level"]
 
 [node name="Checkpoint_1" parent="Level/Checkpoints" node_paths=PackedStringArray("custom_position") instance=ExtResource("6_pvjjm")]
@@ -486,6 +490,33 @@ JUMP_FORCE = 15.0
 [node name="Trampoline_Platform_9" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, -84)
 
+[node name="Trampoline_Platform_10" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -126.5)
+
+[node name="Trampoline_Platform_11" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 9.25, -135.5)
+
+[node name="Trampoline_Platform_12" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 9.25, -144)
+
+[node name="Trampoline_Platform_13" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9.25, -152)
+
+[node name="Trampoline_Platform_18" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 9.25, -152)
+
+[node name="Trampoline_Platform_14" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 9.25, -160.5)
+
+[node name="Trampoline_Platform_15" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 9.25, -135.5)
+
+[node name="Trampoline_Platform_16" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 9.25, -144)
+
+[node name="Trampoline_Platform_17" parent="Level/Trampolines" instance=ExtResource("8_g25en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 9.25, -160.5)
+
 [node name="Climbable" type="Node3D" parent="Level"]
 
 [node name="Climbable_1" type="MeshInstance3D" parent="Level/Climbable"]
@@ -681,7 +712,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 12.4736, -64.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.474, -39.75)
 
 [node name="Codex6" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 10.474, -71.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 12.974, -71.5)
 
 [node name="Codex7" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.25, 13.25)
@@ -691,6 +722,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 2.5, 37)
 
 [node name="Codex9" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 2.5, 37)
+
+[node name="Codex10" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 10.4736, -63)
+
+[node name="Codex11" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.974, -94.5)
+
+[node name="Codex12" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 10.474, -107.25)
+
+[node name="Codex13" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.974, -101.25)
+
+[node name="Codex14" parent="Level/Codex" instance=ExtResource("15_vsnb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.974, -101.25)
 
 [node name="CodexGates" type="Node3D" parent="Level"]
 

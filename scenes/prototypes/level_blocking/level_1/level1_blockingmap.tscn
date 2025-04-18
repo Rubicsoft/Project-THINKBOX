@@ -456,4 +456,4 @@ size = Vector3(1.5, 0.75, 12.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
 
 [node name="Level1_FinisherIsland_Blocking" parent="." instance=ExtResource("5_505em")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.25, -145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.25, -172)
