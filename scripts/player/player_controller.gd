@@ -102,9 +102,6 @@ func _input(event) -> void:
 					SPEED = SPEED * 1/2.0
 		if not Global.get_global_condition("spectator_mode"):
 			spec_double_speed = false
-		
-		
-		quickclimb_ray_heightpos(event, max_ray_height.position.y, MIN_QUICKCLIMB_FORCE, MAX_QUICKCLIMB_FORCE)
 
 
 func _process(delta) -> void:
@@ -113,6 +110,8 @@ func _process(delta) -> void:
 	
 	gamepad_look_input(delta)		# Handles gamepad input for camera looking
 	pitch_sensitivity_smoothing(PITCH_ROTATION_LIMIT, PITCH_SMOOTHING_STRENGTH)
+	
+	quickclimb_ray_heightpos(max_ray_height.position.y, MIN_QUICKCLIMB_FORCE, MAX_QUICKCLIMB_FORCE)
 
 
 func _physics_process(delta) -> void:
@@ -232,23 +231,22 @@ func quick_climbing() -> void:
 
 
 ## Adjust QuickClimb raycast position based on camera angle
-func quickclimb_ray_heightpos(event: InputEvent, max_height: float, min_energy: float, max_energy: float) -> void:
-	if event is InputEventMouseMotion:
-		if camera.rotation.x > 0:
-			var normalized_pitch: float = rad_to_deg(camera.rotation.x) / PITCH_ROTATION_LIMIT
-			
-			# Adjust the raycast y-position
-			var position_threshold: float = (max_height - init_qc_ray_pos.y) * normalized_pitch
-			quickclimb_raycast.position = Vector3(init_qc_ray_pos.x, init_qc_ray_pos.y + position_threshold, init_qc_ray_pos.z)
-			
-			# Adjust the energy
-			var energy_threshold: float = (max_energy - min_energy) * normalized_pitch
-			quickclimb_pos_increment = energy_threshold + min_energy
-			
-		else:
-			# Reset to initial value
-			quickclimb_raycast.position = init_qc_ray_pos
-			quickclimb_pos_increment = min_energy
+func quickclimb_ray_heightpos(max_height: float, min_energy: float, max_energy: float) -> void:
+	if camera.rotation.x > 0:
+		var normalized_pitch: float = rad_to_deg(camera.rotation.x) / PITCH_ROTATION_LIMIT
+		
+		# Adjust the raycast y-position
+		var position_threshold: float = (max_height - init_qc_ray_pos.y) * normalized_pitch
+		quickclimb_raycast.position = Vector3(init_qc_ray_pos.x, init_qc_ray_pos.y + position_threshold, init_qc_ray_pos.z)
+		
+		# Adjust the energy
+		var energy_threshold: float = (max_energy - min_energy) * normalized_pitch
+		quickclimb_pos_increment = energy_threshold + min_energy
+		
+	else:
+		# Reset to initial value
+		quickclimb_raycast.position = init_qc_ray_pos
+		quickclimb_pos_increment = min_energy
 
 
 ## Handles Jump
