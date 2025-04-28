@@ -4,6 +4,7 @@
 			"actor" : "HANS",
 			"dialogue" : "Should I just dash.", 
 			"voice-path" : "res://assets/voicebanks/hans/hans_vo3.ogg", 
+			"actor-profile" : "res://dialogues/prototype/profile_prototype/profile_proto1.jpg", 
 			"delay" : 2.0, 
 			"disable-player-sfx" : true
 		}, 
@@ -11,6 +12,7 @@
 			"actor" : "HANS",
 			"dialogue" : "It is too far away.", 
 			"voice-path" : "res://assets/voicebanks/hans/hans_vo4.ogg", 
+			"actor-profile" : "res://dialogues/prototype/profile_prototype/profile_proto1.jpg", 
 			"disable-player-sfx" : true
 		}
 	]

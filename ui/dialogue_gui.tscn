@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctu8crcah47p"]
+[gd_scene load_steps=8 format=3 uid="uid://ctu8crcah47p"]
 
 [ext_resource type="Script" uid="uid://cw65rcog67v1c" path="res://scripts/dialogue/dialogue_gui.gd" id="1_kwgsa"]
 [ext_resource type="FontFile" uid="uid://d4l0eikde40fs" path="res://assets/font/Oxanium-SemiBold.ttf" id="2_6ojj1"]
+[ext_resource type="Texture2D" uid="uid://c8mbd7tmjetqd" path="res://dialogues/prototype/profile_prototype/profile_proto1.jpg" id="3_fem5w"]
 
 [sub_resource type="Theme" id="Theme_5epro"]
 default_font = ExtResource("2_6ojj1")
+
+[sub_resource type="Animation" id="Animation_fem5w"]
+resource_name = "show_up"
+length = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tjf75"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjf75"]
+_data = {
+&"RESET": SubResource("Animation_tjf75"),
+&"show_up": SubResource("Animation_fem5w")
+}
 
 [node name="Dialogue_GUI" type="Control"]
 layout_mode = 3
@@ -33,6 +71,7 @@ theme = SubResource("Theme_5epro")
 [node name="ActorLabel" type="Label" parent="Dialogue"]
 modulate = Color(1, 0.815686, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "ACTOR"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -42,3 +81,22 @@ layout_mode = 2
 text = "Lorem Ipsum dolor sit amet."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ActorProfile" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -146.0
+offset_right = 264.0
+offset_bottom = 146.0
+grow_vertical = 2
+texture = ExtResource("3_fem5w")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ShowUp" type="AnimationPlayer" parent="ActorProfile"]
+libraries = {
+&"": SubResource("AnimationLibrary_tjf75")
+}

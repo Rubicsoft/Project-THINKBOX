@@ -32,6 +32,7 @@ const CHATS = "chats"
 const ACTOR = "actor"
 const DIALOGUE = "dialogue"
 const VOICE_PATH = "voice-path"
+const ACTOR_PROFILE = "actor-profile"
 const DELAY = "delay"
 const DISABLE_PLAYER_SFX = "disable-player-sfx"
 const EMPTY_TIMER = "empty-timer"
@@ -95,7 +96,11 @@ func play_dialogue() -> void:
 							Global.set_global_condition("hans_on_dialogue", true)
 					
 					# Set the DialogueGUI labels
-					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
+					dialogue_gui.set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
+					
+					# Show the dialogue profile when it is available
+					if dialogue_dict[CHATS][i].has(ACTOR_PROFILE):
+						dialogue_gui.show_profile(dialogue_dict[CHATS][i][ACTOR_PROFILE])
 					
 					# Wait for the audio to be finished
 					await audio_stream.finished
@@ -115,8 +120,11 @@ func play_dialogue() -> void:
 					const default_voice_duration: float = 2.0
 					
 					# Set the DialogueGUI
-					set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
+					dialogue_gui.set_gui_dialogue(dialogue_dict[CHATS][i][ACTOR], dialogue_dict[CHATS][i][DIALOGUE])
 					
+					# Show the dialogue profile when it is available
+					if dialogue_dict[CHATS][i].has(ACTOR_PROFILE):
+						dialogue_gui.show_profile(dialogue_dict[CHATS][i][ACTOR_PROFILE])
 					
 					# Set the timer. If 'empty-timer' is defined, use its value for the timing, or else use default.
 					if dialogue_dict[CHATS][i].has(EMPTY_TIMER):
@@ -126,6 +134,7 @@ func play_dialogue() -> void:
 						await set_dialogue_delay(default_voice_duration).timeout
 			
 			
+			dialogue_gui.close_profile()
 			Global.set_global_condition("is_on_dialogue", false)
 			Global.set_global_condition("show_dialogue_gui", false)
 			
@@ -148,13 +157,6 @@ func is_dialogue_dict_valid(dict: Dictionary) -> bool:
 	
 	printerr("Invalid JSON format for DialogueHandler at Node : " + get_parent().name + "/" + name)
 	return false
-
-
-## Set the DialogueGUI elements
-func set_gui_dialogue(actor_label: String, chat_label: String) -> void:
-	if dialogue_gui and (not dialogue_dict.is_empty()):
-		dialogue_gui.actor_label.text = actor_label
-		dialogue_gui.chat_label.text = chat_label
 
 
 ## Set up delay timer
