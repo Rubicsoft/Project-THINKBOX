@@ -22,8 +22,6 @@ class_name Player
 @export_group("Speed")
 ## Controls how fast the Player moves
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
-## Smooth-out the Player's movement when running
-@export_range(1.0, 12.0, 0.1) var MOVEMENT_SMOOTHNESS: float = 8.0
 ## Smooth-out the Player's movement when it's on air
 @export_range(1.0, 12.0, 0.1) var ON_AIR_MOVEMENT_SMOOTHNESS: float = 3.0
 
@@ -145,20 +143,24 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 		
 		
 		if direction:
-			if is_on_floor():
-				velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-				velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-				if is_on_floor():
-					if GameSettings.head_bobing and head_bobing:
-						camera_animation.play("player_walking")
-					run_sfx.play_audio()
+			# When WASD or Joystick is active
+			if is_on_floor() or Global.get_global_condition("spectator_mode"):
+				# When Player is grounded
+				velocity.x = direction.x * SPEED * 100.0 * delta
+				velocity.z = direction.z * SPEED * 100.0 * delta
+				
+				if GameSettings.head_bobing and head_bobing:
+					camera_animation.play("player_walking")
+				run_sfx.play_audio()
 			else:
+				# When Player is on air (smooth-out the player's movement)
 				velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, ON_AIR_MOVEMENT_SMOOTHNESS * delta)
 				velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, ON_AIR_MOVEMENT_SMOOTHNESS * delta)
 		else:
+			# When WASD or Joystick is released
 			if is_on_floor() or Global.get_global_condition("spectator_mode"):
-				velocity.x = move_toward(velocity.x, 0.0, SPEED * delta * 10.0)
-				velocity.z = move_toward(velocity.z, 0.0, SPEED * delta * 10.0)
+				velocity.x = 0.0
+				velocity.z = 0.0
 		
 		return direction
 	
@@ -197,10 +199,11 @@ func spectator_controller(input_dir: Vector2, delta: float) -> void:
 	if Global.get_global_condition("spectator_mode") and Global.get_global_condition("is_player_controllable"):
 		player_collision_shape.disabled = true
 		
+		# NOTE : Just use standard floating number instead of Vector3 (too much memory consumption)
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
-			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+			velocity.y = spectator_direction.y * SPEED * 100.0 * delta
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	else:
