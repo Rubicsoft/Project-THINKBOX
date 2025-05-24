@@ -17,21 +17,35 @@ class_name Player
 @onready var jump_ground = $Audios/JumpGround
 
 
+
 # Exported Properties
+@export_group("Speed")
 ## Controls how fast the Player moves
 @export_range(0.1, 15.0, 0.1) var SPEED: float = 5.0
+## Smooth-out the Player's movement when it's on air
+@export_range(1.0, 12.0, 0.1) var ON_AIR_MOVEMENT_SMOOTHNESS: float = 3.0
+
+@export_group("Movement Skill")
 ## Controls how high the Player jumps
 @export_range(0.1, 12.5, 0.1) var JUMP_VELOCITY = 8.0
 ## Controls the Player's dash force
 @export_range(1, 20, 0.1) var DASH_SPEED: float = 10.0
+
+@export_group("Quick Climbing")
 ## Maximum force of QuickClimb mechanic
 @export_range(1.0, 5.0, 0.1) var MAX_QUICKCLIMB_FORCE: float = 2.0
 ## Minimum force of QuickClimb mechanic
 @export_range(0.1, 1.0, 0.1) var MIN_QUICKCLIMB_FORCE: float = 1.0
 
+@export_group("Cheat")
 @export_range(1.0, 5.0, 1.0) var SPECTATOR_SPEED_MULTIPLIER: float = 2.0
+
+@export_group("Camera")
 ## Smooth-out the camera pitch rotation
 @export_range(0.1, 1.0, 0.1) var PITCH_SMOOTHING_STRENGTH: float = 0.7
+## Multiplies the mouse/gamepad sensitivity.
+@export_range(0.0, 1.0, 0.1) var SENSITIVITY_MULTIPLIER: float = 1.0
+
 
 @export_category("Player's Custom Ability")
 ## Player can jump if it sets to TRUE.
@@ -42,8 +56,7 @@ class_name Player
 @export var can_dash: bool = true
 ## Player will be headbobing when walking if it sets to TRUE.
 @export var head_bobing: bool = true
-## Multiplies the mouse/gamepad sensitivity.
-@export_range(0.0, 1.0, 0.1) var sensitivity_multiplier: float = 1.0
+
 
 
 # Variables
@@ -57,7 +70,6 @@ var init_qc_ray_pos: Vector3
 var max_qc_ray_distance: float
 
 # Constants
-const MOVEMENT_SMOOTHNESS = 8.0
 const PITCH_ROTATION_LIMIT = 60.0
 
 
@@ -88,9 +100,6 @@ func _input(event) -> void:
 					SPEED = SPEED * 1/2.0
 		if not Global.get_global_condition("spectator_mode"):
 			spec_double_speed = false
-		
-		
-		quickclimb_ray_heightpos(event, max_ray_height.position.y, MIN_QUICKCLIMB_FORCE, MAX_QUICKCLIMB_FORCE)
 
 
 func _process(delta) -> void:
@@ -99,6 +108,8 @@ func _process(delta) -> void:
 	
 	gamepad_look_input(delta)		# Handles gamepad input for camera looking
 	pitch_sensitivity_smoothing(PITCH_ROTATION_LIMIT, PITCH_SMOOTHING_STRENGTH)
+	
+	quickclimb_ray_heightpos(max_ray_height.position.y, MIN_QUICKCLIMB_FORCE, MAX_QUICKCLIMB_FORCE)
 
 
 func _physics_process(delta) -> void:
@@ -129,17 +140,27 @@ func _physics_process(delta) -> void:
 func move_player(input_dir: Vector2, delta: float) -> Vector3:
 	if Global.get_global_condition("is_player_controllable"):
 		var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
+		
 		if direction:
-			velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-			velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
-			if is_on_floor():
+			# When WASD or Joystick is active
+			if is_on_floor() or Global.get_global_condition("spectator_mode"):
+				# When Player is grounded
+				velocity.x = direction.x * SPEED * 100.0 * delta
+				velocity.z = direction.z * SPEED * 100.0 * delta
+				
 				if GameSettings.head_bobing and head_bobing:
 					camera_animation.play("player_walking")
 				run_sfx.play_audio()
+			else:
+				# When Player is on air (smooth-out the player's movement)
+				velocity.x = lerp(velocity.x, direction.x * SPEED * 100.0 * delta, ON_AIR_MOVEMENT_SMOOTHNESS * delta)
+				velocity.z = lerp(velocity.z, direction.z * SPEED * 100.0 * delta, ON_AIR_MOVEMENT_SMOOTHNESS * delta)
 		else:
+			# When WASD or Joystick is released
 			if is_on_floor() or Global.get_global_condition("spectator_mode"):
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.z = move_toward(velocity.z, 0, SPEED)
+				velocity.x = 0.0
+				velocity.z = 0.0
 		
 		return direction
 	
@@ -149,8 +170,8 @@ func move_player(input_dir: Vector2, delta: float) -> Vector3:
 ## Handles camera rotation based on mouse input
 func mouse_look_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0) * sensitivity_multiplier)
-		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_y_sensitivity / 20.0) * sensitivity_multiplier)
+		rotate_y(deg_to_rad(-event.relative.x) * (GameSettings.mouse_sensitivity / 20.0) * SENSITIVITY_MULTIPLIER)
+		camera.rotate_x(deg_to_rad(-event.relative.y) * (mouse_y_sensitivity / 20.0) * SENSITIVITY_MULTIPLIER)
 
 
 ## Handles gamepad input for camera looking
@@ -158,8 +179,8 @@ func gamepad_look_input(delta: float) -> void:
 	if Global.get_global_condition("is_player_controllable"):
 		var gamepad_look_dir: Vector2 = Input.get_vector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
 		
-		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * sensitivity_multiplier * delta)
-		camera.rotate_x(gamepad_look_dir.y * (gamepad_y_sensitivity * 2.0) * sensitivity_multiplier * delta)
+		rotate_y(-gamepad_look_dir.x * (GameSettings.gamepad_look_sensitivity * 2.0) * SENSITIVITY_MULTIPLIER * delta)
+		camera.rotate_x(gamepad_look_dir.y * (gamepad_y_sensitivity * 2.0) * SENSITIVITY_MULTIPLIER * delta)
 
 
 ## Smooth-out the MouseY sensitivity until it reaches its maximum pitch rotation
@@ -178,10 +199,11 @@ func spectator_controller(input_dir: Vector2, delta: float) -> void:
 	if Global.get_global_condition("spectator_mode") and Global.get_global_condition("is_player_controllable"):
 		player_collision_shape.disabled = true
 		
+		# NOTE : Just use standard floating number instead of Vector3 (too much memory consumption)
 		var spectator_updown = Input.get_axis("go_down", "go_up")
 		var spectator_direction = (transform.basis * Vector3(input_dir.x, spectator_updown, input_dir.y)).normalized()
 		if spectator_direction:
-			velocity.y = lerp(velocity.y, spectator_direction.y * SPEED * 100.0 * delta, MOVEMENT_SMOOTHNESS * delta)
+			velocity.y = spectator_direction.y * SPEED * 100.0 * delta
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	else:
@@ -212,23 +234,22 @@ func quick_climbing() -> void:
 
 
 ## Adjust QuickClimb raycast position based on camera angle
-func quickclimb_ray_heightpos(event: InputEvent, max_height: float, min_energy: float, max_energy: float) -> void:
-	if event is InputEventMouseMotion:
-		if camera.rotation.x > 0:
-			var normalized_pitch: float = rad_to_deg(camera.rotation.x) / PITCH_ROTATION_LIMIT
-			
-			# Adjust the raycast y-position
-			var position_threshold: float = (max_height - init_qc_ray_pos.y) * normalized_pitch
-			quickclimb_raycast.position = Vector3(init_qc_ray_pos.x, init_qc_ray_pos.y + position_threshold, init_qc_ray_pos.z)
-			
-			# Adjust the energy
-			var energy_threshold: float = (max_energy - min_energy) * normalized_pitch
-			quickclimb_pos_increment = energy_threshold + min_energy
-			
-		else:
-			# Reset to initial value
-			quickclimb_raycast.position = init_qc_ray_pos
-			quickclimb_pos_increment = min_energy
+func quickclimb_ray_heightpos(max_height: float, min_energy: float, max_energy: float) -> void:
+	if camera.rotation.x > 0:
+		var normalized_pitch: float = rad_to_deg(camera.rotation.x) / PITCH_ROTATION_LIMIT
+		
+		# Adjust the raycast y-position
+		var position_threshold: float = (max_height - init_qc_ray_pos.y) * normalized_pitch
+		quickclimb_raycast.position = Vector3(init_qc_ray_pos.x, init_qc_ray_pos.y + position_threshold, init_qc_ray_pos.z)
+		
+		# Adjust the energy
+		var energy_threshold: float = (max_energy - min_energy) * normalized_pitch
+		quickclimb_pos_increment = energy_threshold + min_energy
+		
+	else:
+		# Reset to initial value
+		quickclimb_raycast.position = init_qc_ray_pos
+		quickclimb_pos_increment = min_energy
 
 
 ## Handles Jump

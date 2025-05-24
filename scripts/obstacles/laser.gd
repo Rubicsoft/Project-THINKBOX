@@ -124,12 +124,12 @@ func _on_oneshot_attack(body: Node3D) -> void:
 		visible = true
 		disable_collision_shapes(collision_shapes, false)
 		
-		await get_tree().create_timer(anticipation_duration).timeout
+		await get_tree().create_timer(anticipation_duration, false).timeout
 		
 		oneshot_strike(end_position)
 		
 		await tween.finished
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.0, false).timeout
 		
 		triggered = false
 

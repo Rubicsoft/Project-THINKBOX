@@ -1,28 +1,17 @@
 extends Control
 class_name DialogueGUI
 
-@onready var actor_label: Label = $Dialogue/ActorLabel
-@onready var chat_label: Label = $Dialogue/ChatLabel
-
-@onready var dialogue: VBoxContainer = $Dialogue
-
-
-signal gui_visibility_changed(visibility: bool)
-var gui_visible: bool = false:
-	set(new_value):
-		gui_visible = new_value
-		emit_signal("gui_visibility_changed", new_value)
-
-var gui_tween: Tween
+@onready var actor: Label = $Dialogue/ActorLabel
+@onready var chat: Label = $Dialogue/ChatLabel
+@onready var actor_profile: TextureRect = $ActorProfile
+@onready var actor_profile_showup_anim: AnimationPlayer = $ActorProfile/ShowUp
 
 
 
 func _ready() -> void:
-	connect("gui_visibility_changed", Callable(self, "_on_gui_visible"))
-	
 	# Default property when first time loaded
 	visible = false
-	#dialogue.modulate = Color.TRANSPARENT
+	actor_profile.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -31,23 +20,21 @@ func _process(_delta: float) -> void:
 
 
 
-# ------ SIGNALS ------
+# ------ SUPPORTING FUNCTIONS ------
 
-func _on_gui_visible(visibility: bool) -> void:
-	match visibility:
-		true:
-			visible = true
-			
-			gui_tween = get_tree().create_tween()
-			gui_tween.set_ease(Tween.EASE_IN)
-			gui_tween.set_trans(Tween.TRANS_QUAD)
-			
-			gui_tween.tween_property(dialogue, "modulate", Color.WHITE, 0.1)
-		
-		false:
-			gui_tween = get_tree().create_tween()
-			
-			gui_tween.tween_property(dialogue, "modulate", Color.TRANSPARENT, 0.1)
-			
-			await gui_tween.finished
-			visible = false
+# Set the Actor and Dialogue label on DialogueGUI
+func set_gui_dialogue(actor_label: String, chat_label: String) -> void:
+	actor.text = actor_label
+	chat.text = chat_label
+
+
+# Show actor profile
+func show_profile(profile_img: String) -> void:
+	actor_profile.texture = ResourceLoader.load(profile_img)
+	actor_profile_showup_anim.play("show_up")
+	actor_profile.visible = true
+
+
+# Hide the actor profile
+func close_profile() -> void:
+	actor_profile.visible = false
