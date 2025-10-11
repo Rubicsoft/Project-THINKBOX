@@ -694,6 +694,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 9.25, -62.75)
 guidebox_message = "There is a Codex around here"
 visible_distance = 15.0
 
+[node name="Guidebox_8" parent="Level/Guideboxes" instance=ExtResource("13_uuv5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.75, -171.25)
+guidebox_message = "Sorry, this level finisher is undone
+We really appreciate your effort for completing this first level
+Thank you for playing :)"
+visible_distance = 2.0
+
+[node name="Guidebox_9" parent="Level/Guideboxes" instance=ExtResource("13_uuv5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.75, -174.5)
+guidebox_message = "Actually, there are 3 more levels but all of them are unfinished
+You can't access it because those scene data is not included in this build
+As always, you can break down the source code and play the other levels"
+visible_distance = 2.0
+
 [node name="Codex" type="Node3D" parent="Level"]
 
 [node name="Codex1" parent="Level/Codex" instance=ExtResource("15_vsnb6")]

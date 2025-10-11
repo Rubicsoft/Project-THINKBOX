@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="Codex-RUN"
-config/description="Hans need to collect Codex'es"
-config/version="0.0.1"
+config/description="Move faster and collect the codex to reveal what's hiding behind this virtual world
+NOTE : This project is discontinued"
+config/version="0.0.3"
 config/tags=PackedStringArray("3d", "project")
-run/main_scene="res://scenes/main_menu_scene.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://d2005iq2a4ocn"
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/fullsize=false
 boot_splash/image="res://assets/img/remi_logo.png"
 config/icon="res://icon.svg"
@@ -34,15 +35,11 @@ general/balloon_path="res://prefabs/visual/dialogue_balloon/balloon_canvas.tscn"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/size/mode=4
 window/size/always_on_top=true
-window/size/sharp_corners=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg")
 
 [file_customization]
 

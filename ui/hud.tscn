@@ -81,10 +81,27 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -96.0
+offset_top = -97.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Game is still under alpha development. Not the final product."
+text = "Game is still under alpha development. Not the final product.
+
+UPDATE FROM THE CREATOR
+This game is no longer in development since May 25, 2025
+However, you can still access the source code at https://github.com/Rubicsoft/Project-THINKBOX
+"
+label_settings = SubResource("LabelSettings_x804b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreatedBy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "
+Created by Reymo Je"
 label_settings = SubResource("LabelSettings_x804b")
 horizontal_alignment = 1
 vertical_alignment = 1

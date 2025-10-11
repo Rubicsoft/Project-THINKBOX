@@ -101,11 +101,6 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
 text = "RESTART LEVEL"
 
-[node name="MainMenu_Button" type="Button" parent="CenterContainer/MenuButtons/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 0.498039)
-text = "BACK TO MAIN MENU"
-
 [node name="DesktopQuit_Button" type="Button" parent="CenterContainer/MenuButtons/VBoxContainer"]
 layout_mode = 2
 text = "QUIT TO DESKTOP"
@@ -113,5 +108,4 @@ text = "QUIT TO DESKTOP"
 [connection signal="pressed" from="CenterContainer/MenuButtons/VBoxContainer/Resume_Button" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/VBoxContainer/RestartCheckpoint_Button" to="." method="_on_restart_checkpoint_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/VBoxContainer/Restart_Button" to="." method="_on_restart_btn_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuButtons/VBoxContainer/MainMenu_Button" to="." method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/VBoxContainer/DesktopQuit_Button" to="." method="_on_quit_btn_pressed"]
