@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d2005iq2a4ocn"]
+[gd_scene load_steps=58 format=3 uid="uid://d2005iq2a4ocn"]
 
 [ext_resource type="Script" uid="uid://b8ybwh2jsonba" path="res://scripts/game_state.gd" id="1_s78rj"]
 [ext_resource type="PackedScene" uid="uid://cjon57h655mw0" path="res://prefabs/player.tscn" id="3_xvyq1"]
@@ -25,6 +25,15 @@
 [ext_resource type="Material" uid="uid://c4d2k75757a8x" path="res://scenes/prototypes/kenney_prototype_textures/materials/red_grid.tres" id="19_o7j4k"]
 [ext_resource type="JSON" path="res://dialogues/level_1/level1_opening_dialogue_1.json" id="20_hyy7m"]
 [ext_resource type="PackedScene" uid="uid://g21l8eymfqi4" path="res://prefabs/tools/level_finisher/level_finisher_trigger.tscn" id="22_7o3do"]
+[ext_resource type="Texture2D" uid="uid://doatf3uw2rkso" path="res://assets/img/meme_stickers/meme_5.jpg" id="23_o7j4k"]
+[ext_resource type="Texture2D" uid="uid://cgoob48cqc0uh" path="res://assets/img/meme_stickers/meme_8.jpg" id="24_31oqk"]
+[ext_resource type="Texture2D" uid="uid://dwan56grwjxjn" path="res://assets/img/meme_stickers/meme_3.jpg" id="24_wvtie"]
+[ext_resource type="Texture2D" uid="uid://bvnunpf2mxoyf" path="res://assets/img/meme_stickers/meme_9.jpg" id="25_x7jkp"]
+[ext_resource type="Texture2D" uid="uid://coe1dn1633ipf" path="res://assets/img/meme_stickers/meme_7.jpg" id="26_0qwwm"]
+[ext_resource type="Texture2D" uid="uid://bl6w8qpxkugn7" path="res://assets/img/meme_stickers/meme_2.jpg" id="27_4yk0h"]
+[ext_resource type="Texture2D" uid="uid://drx7v5jp88kff" path="res://assets/img/meme_stickers/meme_1.jpg" id="27_t4umt"]
+[ext_resource type="Texture2D" uid="uid://de8qbpugb7sp7" path="res://assets/img/meme_stickers/meme_4.jpg" id="29_vmrhw"]
+[ext_resource type="Texture2D" uid="uid://cdsg7pe30ypux" path="res://assets/img/meme_stickers/meme_6.jpg" id="30_cfnpk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_polhk"]
 size = Vector3(0.25, 8, 1)
@@ -793,6 +802,81 @@ shape = SubResource("BoxShape3D_nsr25")
 [node name="DialogueHandler" parent="Level/Dialogue/DialogueTrigger" node_paths=PackedStringArray("dialogue_gui") instance=ExtResource("18_xss3e")]
 dialogue_file = ExtResource("19_ekjhw")
 dialogue_gui = NodePath("../../../../Dialogue_GUI")
+
+[node name="MemeStickers" type="Node3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.25, -172)
+
+[node name="Sticker_1" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 1.75, 1.5, 1.5)
+cast_shadow = 0
+pixel_size = 0.005
+transparent = false
+double_sided = false
+texture = ExtResource("23_o7j4k")
+
+[node name="Sticker_2" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(0.25881898, -0.25, -0.93301266, -7.450581e-09, 0.9659258, -0.25881904, 0.9659258, 0.06698729, 0.24999993, 2.25, 2.25, 2)
+cast_shadow = 0
+pixel_size = 0.0019
+transparent = false
+double_sided = false
+texture = ExtResource("24_31oqk")
+
+[node name="Sticker_3" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(0.7071068, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.7071068, -3.5, 1.75, 1.5)
+cast_shadow = 0
+pixel_size = 0.0047
+transparent = false
+double_sided = false
+texture = ExtResource("25_x7jkp")
+
+[node name="Sticker_4" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 1.75, -5.75, 141.5)
+cast_shadow = 0
+pixel_size = 0.0015
+transparent = false
+double_sided = false
+texture = ExtResource("26_0qwwm")
+
+[node name="Sticker_5" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.5, -5.75, 150.5)
+cast_shadow = 0
+pixel_size = 0.005
+transparent = false
+double_sided = false
+texture = ExtResource("27_t4umt")
+
+[node name="Sticker_6" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -7.5, 121.75)
+cast_shadow = 0
+pixel_size = 0.0049
+transparent = false
+double_sided = false
+texture = ExtResource("27_4yk0h")
+
+[node name="Sticker_7" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -4, -4.75, 108.25)
+cast_shadow = 0
+pixel_size = 0.0031
+transparent = false
+double_sided = false
+texture = ExtResource("29_vmrhw")
+
+[node name="Sticker_8" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(0.70710677, -0.35355344, 0.6123725, 0, 0.8660255, 0.50000006, -0.70710677, -0.35355344, 0.6123725, -7.5, -4.75, 98)
+cast_shadow = 0
+pixel_size = 0.0031
+transparent = false
+double_sided = false
+texture = ExtResource("30_cfnpk")
+
+[node name="Sticker_9" type="Sprite3D" parent="Level/MemeStickers"]
+transform = Transform3D(2.8000002, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0.5, -3.25, 30.25)
+cast_shadow = 0
+pixel_size = 0.0024
+transparent = false
+double_sided = false
+texture = ExtResource("24_wvtie")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 process_mode = 3

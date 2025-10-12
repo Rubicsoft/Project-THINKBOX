@@ -17,6 +17,7 @@ config/version="0.0.3"
 config/tags=PackedStringArray("3d", "project")
 run/main_scene="uid://d2005iq2a4ocn"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
 boot_splash/image="res://assets/img/remi_logo.png"
 config/icon="res://icon.svg"

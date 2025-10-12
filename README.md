@@ -6,7 +6,7 @@
 
 If you're interested, please support the development of the game :)
 
-This project is using *Godot 4.4*
+This project is using *Godot 4.5*
 
 ## Cloning
 
